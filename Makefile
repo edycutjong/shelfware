@@ -1,4 +1,4 @@
-.PHONY: help setup lint test test-live bench bench-replay seed site demo census snapshot verify check audit ci all
+.PHONY: help setup lint test test-live test-api bench bench-replay seed site demo census snapshot verify check audit ci all
 
 help:  ## show targets
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-13s %s\n",$$1,$$2}'
@@ -14,6 +14,9 @@ test:  ## pytest, offline only (no internet)
 
 test-live:  ## the live tests — hit the real CoinMarketCap API, keyless
 	pytest -q -m live
+
+test-api:  ## the three Vercel functions, in-process with a stubbed fetch
+	node --test tests/api.test.mjs
 
 demo:  ## the judged capability, live, zero config: does MS have a wrapper that trades, and whose?
 	python3 -m shelfware MS
@@ -48,5 +51,5 @@ check:  ## refuse to ship a placeholder, a key, or a page that drifted from its 
 	python3 scripts/render_site.py --check
 	python3 scripts/verify.py
 
-ci: lint test check  ## everything CI runs, offline
+ci: lint test test-api check  ## everything CI runs, offline
 all: ci bench-replay  ## ci plus the deterministic benchmark
