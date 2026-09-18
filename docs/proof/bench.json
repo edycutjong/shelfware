@@ -1,0 +1,49 @@
+{
+  "credits_used": 0,
+  "errors": [],
+  "iterations": 10,
+  "join_seed": {
+    "max": 5.286,
+    "n": 200,
+    "p50": 1.113,
+    "p95": 2.183,
+    "unit": "ms",
+    "wrappers": 236
+  },
+  "lookup": {
+    "max": 1039.519,
+    "n": 10,
+    "p50": 566.217,
+    "p95": 1039.519,
+    "unit": "ms"
+  },
+  "mode": "live",
+  "recount_census": {
+    "max": 3.88,
+    "n": 200,
+    "p50": 1.902,
+    "p95": 2.163,
+    "unit": "ms",
+    "wrappers": 1435
+  },
+  "status_leg": {
+    "max": 786.029,
+    "n": 10,
+    "p50": 283.057,
+    "p95": 786.029,
+    "unit": "ms"
+  },
+  "tickers": [
+    "MS",
+    "APH",
+    "GILD",
+    "NVDA",
+    "AAPL",
+    "TSLA",
+    "GOLD",
+    "IBIT",
+    "PLD",
+    "MSFT"
+  ],
+  "utc": "2026-09-18T22:25:03Z"
+}

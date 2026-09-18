@@ -26,8 +26,11 @@ target-version = "py311"
 select = ["E", "F", "W", "I", "UP", "B", "SIM"]
 
 [tool.ruff.lint.per-file-ignores]
-# the CLI prints sentences to a human; wrapping them to 100 columns hurts more than it helps
+# the CLI and the scripts print sentences to a human; wrapping them to 100 columns hurts more
+# than it helps. Library code (client, join, lookup, delta, verify) keeps the limit.
 "shelfware/cli.py" = ["E501"]
+"scripts/*.py" = ["E501"]
+"tests/*.py" = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -17,10 +17,10 @@ ROOT = Path(__file__).resolve().parents[1]
 CENSUS = ROOT / "data" / "census.json"
 
 JQ_RECIPE = (
-    "jq '[.wrappers[] | select(.status==\"untracked\")] | length' data/census.json   "
-    "# wrappers on the shelf\n"
-    'jq \'[.wrappers[] | group_by(.rwa_id)[] | select(all(.[]; .status=="untracked"))] '
-    "| length' data/census.json   # underlyings with zero tracked wrapper"
+    "jq '[.wrappers[] | select(.status==\"untracked\")] | length' data/census.json"
+    "   # wrappers on the shelf -> untracked\n"
+    "jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .status==\"untracked\"))) | length'"
+    " data/census.json   # underlyings with zero tracked wrapper -> underlyings_zero_tracked"
 )
 
 
