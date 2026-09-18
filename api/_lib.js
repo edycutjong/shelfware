@@ -1,0 +1,98 @@
+// Shared by the three functions. Underscore-prefixed: not a route.
+"use strict";
+const fs = require("fs");
+const path = require("path");
+const crypto = require("crypto");
+
+const KEYED = "https://pro-api.coinmarketcap.com";
+const KEYLESS = "https://pro-api.coinmarketcap.com/public-api";
+const SYMBOL = /^[A-Za-z0-9.$-]{1,16}$/; // what the RWA roster accepts
+const FILTERABLE = /^[A-Za-z0-9]{1,16}$/; // what the map's symbol filter accepts (dots rejected, verified 2026-09-18)
+const MAP_AUX = "first_historical_data,last_historical_data,status,platform";
+const INFO_AUX = "status,date_added,platform";
+const TTL_MS = 60000;
+const cache = new Map();
+
+function readData(name) {
+  for (const base of [process.cwd(), path.join(__dirname, "..")]) {
+    const p = path.join(base, "data", name);
+    if (fs.existsSync(p)) return JSON.parse(fs.readFileSync(p, "utf8"));
+  }
+  return null;
+}
+
+let rosterSnapshot = null;
+function snapshot() {
+  if (!rosterSnapshot) rosterSnapshot = readData("roster_snapshot.json");
+  return rosterSnapshot;
+}
+
+function cached(key, fn) {
+  const hit = cache.get(key);
+  if (hit && Date.now() - hit.at < TTL_MS) return Promise.resolve({ ...hit.value, cached: true });
+  return fn().then((value) => {
+    cache.set(key, { at: Date.now(), value });
+    return value;
+  });
+}
+
+/** One GET, backoff on 429/5xx (1 s, 2 s), the body passed through verbatim under `raw`.
+ *  Returns {url, http, credit_count, bytes, sha256, elapsed_ms, raw, error}. Never throws. */
+async function get(url, key) {
+  const headers = { Accept: "application/json", "User-Agent": "shelfware-proxy/0.1" };
+  if (key) headers["X-CMC_PRO_API_KEY"] = key;
+  const t0 = Date.now();
+  let res;
+  let text;
+  let attempt = 0;
+  for (;;) {
+    attempt += 1;
+    try {
+      res = await fetch(url, { headers, signal: AbortSignal.timeout(20000) });
+      text = await res.text();
+    } catch (e) {
+      res = null;
+      text = String(e);
+    }
+    const status = res ? res.status : 0;
+    if ((status === 429 || status >= 500 || status === 0) && attempt < 3) {
+      await new Promise((r) => setTimeout(r, 1000 * attempt));
+      continue;
+    }
+    break;
+  }
+  let raw = null;
+  try {
+    raw = JSON.parse(text);
+  } catch (e) {
+    raw = null;
+  }
+  const status = res ? res.status : 0;
+  const st = raw && raw.status ? raw.status : {};
+  const error =
+    status === 200 ? null : st.error_message ? `HTTP ${status} error_code ${st.error_code}: ${st.error_message}` : `HTTP ${status}`;
+  return {
+    url,
+    http: status,
+    credit_count: st.credit_count == null ? null : st.credit_count,
+    bytes: Buffer.byteLength(text || ""),
+    sha256: crypto.createHash("sha256").update(text || "").digest("hex").slice(0, 16),
+    elapsed_ms: Date.now() - t0,
+    attempts: attempt,
+    raw,
+    error,
+  };
+}
+
+function send(res, status, body) {
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Cache-Control", "no-store");
+  res.status(status).send(JSON.stringify(body));
+}
+
+function nowUtc() {
+  return new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
+}
+
+module.exports = { KEYED, KEYLESS, SYMBOL, FILTERABLE, MAP_AUX, INFO_AUX, get, send, cached, snapshot, readData, nowUtc };

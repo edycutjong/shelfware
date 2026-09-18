@@ -190,6 +190,22 @@ def type_bars(wrappers):
     return sorted(rows.values(), key=lambda e: -e["attached"])
 
 
+def type_underlyings(wrappers):
+    """Per asset type, the underlyings with >= 1 attached wrapper and how many of them have
+    no tracked wrapper (strict rule) — the headline, split by type."""
+    groups = by_underlying(wrappers)
+    rows = {}
+    for ws in groups.values():
+        t = ws[0].get("asset_type") or "unknown"
+        e = rows.setdefault(t, {"asset_type": t, "underlyings": 0, "zero_tracked": 0})
+        e["underlyings"] += 1
+        if all(is_shelf(w) for w in ws):
+            e["zero_tracked"] += 1
+    for e in rows.values():
+        e["share"] = round(e["zero_tracked"] / e["underlyings"], 4) if e["underlyings"] else None
+    return sorted(rows.values(), key=lambda e: -e["underlyings"])
+
+
 def pct_rank(values, p):
     """Nearest-rank percentile: always a real observation, never an interpolation."""
     if not values:
@@ -311,6 +327,7 @@ def census(
         "hero": hero(wrappers, has_tokens),
         "by_issuer": scorecard(wrappers, issuers),
         "by_type": type_bars(wrappers),
+        "by_type_underlyings": type_underlyings(wrappers),
         "chains_of_untracked": chains(w for w in wrappers if is_shelf(w)),
         "unresolved": [
             {k: w.get(k) for k in ("crypto_id", "symbol", "underlying", "issuer_name")}

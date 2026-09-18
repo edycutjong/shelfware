@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shelfware — {{share_pct}}% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market</title>
+<meta name="description" content="{{zero_tracked}} of {{has_tokens}} tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Type a ticker: every wrapper, its issuer, chain and listing state, with the raw API rows beside it.">
+<meta name="author" content="Edy Cu">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shelfware — {{share_pct}}% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market">
+<meta property="og:description" content="{{zero_tracked}} of {{has_tokens}} underlyings, counted {{generated_short}} UTC from the CoinMarketCap API. Type a ticker and see the raw rows.">
+<meta property="og:url" content="{{site_url}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@edycutjong">
+<link rel="icon" href="data:image/svg+xml,{{favicon}}">
+<style>
+:root{--bg:#0B0F14;--surface:#131A22;--border:#26313F;--text:#E8EEF4;--muted:#8A98A8;--lit:#3BD37D;--shelf:#3A4453;--flag:#FFB020;--unknown:#8B7CF6;--danger:#FF5C5C;
+--sans:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{color-scheme:dark;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--text)}a:hover,a:focus-visible{color:var(--flag)}
+main{max-width:1120px;margin:0 auto;padding:24px 20px 80px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 0 28px;border-bottom:1px solid var(--border);margin-bottom:36px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:15px}
+.brand svg{width:34px;height:22px}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);text-decoration:none;font-size:15px;font-family:var(--mono);min-height:44px;transition:border-color .15s,transform .15s,background .15s}
+.btn:hover,.btn:focus-visible{border-color:var(--flag);color:var(--text);transform:translateY(-1px);outline:none}
+.btn:active{transform:translateY(0)}
+.btn.primary{background:var(--flag);color:#0B0F14;border-color:var(--flag);font-weight:600}
+.btn.primary:hover{background:#ffc247}
+section{margin:0 0 44px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 14px}
+.headline{display:grid;grid-template-columns:auto 1fr;gap:8px 28px;align-items:end}
+.big{font-size:clamp(3.4rem,10vw,7.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--flag)}
+.claim{font-size:clamp(1.35rem,3vw,2rem);font-weight:600;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.sub b{color:var(--text);font-weight:600}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.bar{position:relative;display:flex;height:22px;width:100%;border-radius:6px;overflow:hidden;background:var(--surface);border:1px solid var(--border);margin:14px 0 8px}
+.bar>span{display:block;height:100%;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.bar .dim{background:repeating-linear-gradient(90deg,var(--shelf) 0 7px,transparent 7px 9px)}
+.bar .lit{background:repeating-linear-gradient(90deg,var(--lit) 0 7px,transparent 7px 9px)}
+.bar .unk{background:repeating-linear-gradient(90deg,var(--unknown) 0 7px,transparent 7px 9px)}
+.bar.small{height:14px;margin:0}
+.legend{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font-size:15px}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+.sw.dim{background:var(--shelf)}.sw.lit{background:var(--lit)}.sw.unk{background:var(--unknown)}
+.recipe{font-family:var(--mono);font-size:14px;color:var(--muted);margin-top:10px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px}
+.search form{display:flex;gap:10px;flex-wrap:wrap}
+.search input{flex:1 1 220px;min-height:52px;font-size:22px;font-family:var(--mono);padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);text-transform:uppercase;transition:border-color .15s}
+.search input:focus{outline:none;border-color:var(--flag)}
+.search button{min-width:120px}
+.hint{color:var(--muted);font-size:15px;margin:10px 0 0}
+.hint code{font-family:var(--mono)}
+.tcard{margin-top:18px}
+.uline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:20px;font-weight:600}
+.pill{font-family:var(--mono);font-size:13px;padding:3px 9px;border-radius:999px;border:1px solid var(--flag);color:var(--flag);font-weight:500}
+.pill.off{border-color:var(--muted);color:var(--muted)}
+.src{font-size:14px;color:var(--muted);margin:4px 0 10px}
+.src b{color:var(--text);font-weight:600}
+.wrow{display:grid;grid-template-columns:18px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--border)}
+.box{width:16px;height:16px;border-radius:4px;margin-top:5px;background:var(--shelf)}
+.box.lit{background:var(--lit)}.box.unk{background:var(--unknown)}
+.wsym{font-family:var(--mono);font-size:18px;font-weight:600}
+.wmeta{color:var(--muted);font-size:15px;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin-top:4px}
+.wmeta span:nth-child(odd){color:var(--muted)}
+.wmeta span:nth-child(even){color:var(--text);font-family:var(--mono);font-size:14px;overflow-wrap:anywhere}
+.chip{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;padding:2px 8px;border-radius:6px;font-weight:700;margin-left:8px;vertical-align:2px}
+.chip.untracked{background:var(--shelf);color:var(--text)}.chip.active{background:var(--lit);color:#0B0F14}.chip.unresolved,.chip.inactive{background:var(--unknown);color:#0B0F14}
+.verdict{font-size:22px;font-weight:700;margin:14px 0 6px}
+details{margin-top:10px}
+summary{cursor:pointer;color:var(--muted);font-size:15px;list-style:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;transition:color .15s}
+summary::before{content:"▸";display:inline-block;transition:transform .15s}
+details[open] summary::before{transform:rotate(90deg)}
+summary:hover,summary:focus-visible{color:var(--flag);outline:none}
+pre{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-family:var(--mono);font-size:13px;line-height:1.45;overflow-x:auto;margin:8px 0;color:#c9d4e0;max-height:420px}
+.ev{font-size:14px;color:var(--muted);font-family:var(--mono);margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th{text-align:left;color:var(--muted);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:0 10px 10px 0;white-space:nowrap}
+td{padding:10px 10px 10px 0;border-top:1px solid var(--border);vertical-align:middle}
+td.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+th.n{text-align:right}
+td.barcell{width:34%;min-width:140px}
+.rate{font-family:var(--mono);font-weight:700}
+.rate.full{color:var(--danger)}
+tr.issuer{transition:background .15s}
+tr.issuer:hover{background:rgba(255,255,255,.025)}
+.issuer-name{font-weight:600}
+.smaller{margin-top:8px}
+.types{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.types .card{padding:16px 18px}
+.types .t{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.types .t b{font-size:22px;font-family:var(--mono)}
+.stat{display:flex;gap:28px;flex-wrap:wrap}
+.stat div{min-width:160px}
+.stat .v{font-size:28px;font-weight:700;font-family:var(--mono);line-height:1.1}
+.stat .l{color:var(--muted);font-size:14px}
+.limits li{margin:6px 0}
+.receipt td,.receipt th{font-size:14px}
+footer{border-top:1px solid var(--border);padding-top:20px;color:var(--muted);font-size:14px;display:flex;gap:18px;flex-wrap:wrap}
+.status-ok{color:var(--lit)}.status-bad{color:var(--danger)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:720px){.headline{grid-template-columns:1fr}.big{font-size:clamp(3.4rem,18vw,5.5rem)}td.hide-m,th.hide-m{display:none}body{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.bar>span,.btn,summary::before{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="brand">{{logo}} Shelfware</div>
+  <nav>
+    <a class="btn primary" href="#search">Type a ticker</a>
+    <a class="btn" href="{{repo}}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    <a class="btn" href="{{repo}}/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md ↗</a>
+  </nav>
+</header>
+
+<section class="headline-wrap" aria-labelledby="claim">
+  <div class="headline">
+    <div class="big mono" id="bignum" data-target="{{share_pct}}">{{share_pct}}%</div>
+    <div>
+      <p class="claim" id="claim">of the tokenised assets CoinMarketCap lists have <b>no wrapper with a tracked market</b>.</p>
+      <p class="sub"><b class="mono" id="zt">{{zero_tracked}}</b> of <b class="mono">{{has_tokens}}</b> underlyings flagged <span class="pill">has_tokens: true</span> · stocks alone <b class="mono">{{stock_zero}} of {{stock_under}}</b> ({{stock_pct}}%) · counted <b class="mono">{{generated_short}} UTC</b> · <b class="mono">{{credits}}</b> keyed credits</p>
+    </div>
+  </div>
+  <div class="bar" role="img" aria-label="{{zero_tracked}} of {{has_tokens}} underlyings have no tracked wrapper">
+    <span class="dim" id="bar-dim" style="width:{{share_pct}}%"></span><span class="lit" id="bar-lit" style="width:{{lit_pct}}%"></span>
+  </div>
+  <div class="legend"><span><i class="sw dim"></i>{{zero_tracked}} no tracked wrapper — <b>listed, no CMC-tracked market</b></span><span><i class="sw lit"></i>{{with_tracked}} at least one tracked wrapper</span></div>
+  <p class="recipe">recipe: wrappers = /v5/real-world-assets/quotes/latest tokens[] (price:null rows kept) · state = /public-api/v1/cryptocurrency/map status · count underlyings whose every wrapper is untracked · strict: an unresolved id never counts</p>
+</section>
+
+<section class="search" id="search" aria-labelledby="search-h">
+  <h2 id="search-h">Does this ticker have a wrapper that trades, and whose?</h2>
+  <div class="card">
+    <form id="f" autocomplete="off">
+      <label class="sr-only" for="t">Ticker</label>
+      <input id="t" name="t" placeholder="MS" value="{{hero_symbol}}" maxlength="16" spellcheck="false" aria-label="Ticker symbol">
+      <button class="btn primary" type="submit" id="go">Ask CMC</button>
+    </form>
+    <p class="hint">Roster from <code>/v5/real-world-assets/quotes/latest</code> (keyed, 1 credit — via this site's proxy; the committed snapshot if the key is unavailable, labelled). State from <code>/public-api/v1/cryptocurrency/map</code> and <code>/v2/cryptocurrency/info</code> — <b>live, keyless, 0 credits</b>. Same thing on your machine: <code>python3 -m shelfware {{hero_symbol}}</code>.</p>
+    <div class="tcard" id="tcard">{{hero_card}}</div>
+  </div>
+</section>
+
+<section aria-labelledby="iss-h">
+  <h2 id="iss-h">Issuers, by shelf rate — declared is the registry's <span class="mono">num_tokens</span>, attached is what any underlying lists</h2>
+  <div class="card">
+    <table class="issuers">
+      <thead><tr><th>Issuer</th><th>Wrappers</th><th class="n">Shelf</th><th class="n hide-m">Declared</th><th class="n">Attached</th><th class="n">Tracked</th><th class="n hide-m">Live market cap</th></tr></thead>
+      <tbody>{{issuer_rows}}</tbody>
+    </table>
+    <details class="smaller"><summary>smaller issuers ({{n_smaller}}), fewer than 5 attached wrappers</summary>
+      <table class="issuers"><tbody>{{issuer_rows_small}}</tbody></table>
+    </details>
+  </div>
+</section>
+
+<section aria-labelledby="type-h">
+  <h2 id="type-h">By asset type — wrappers on the shelf, and underlyings with no tracked wrapper</h2>
+  <div class="types">{{type_cards}}</div>
+</section>
+
+<section aria-labelledby="delta-h">
+  <h2 id="delta-h">Since the previous snapshot</h2>
+  <div class="card">{{delta_html}}</div>
+</section>
+
+<section aria-labelledby="age-h">
+  <h2 id="age-h">Ages</h2>
+  <div class="card stat">
+    <div><div class="v">{{age_median}} d</div><div class="l">median age of what trades (p10 {{age_p10}} · p90 {{age_p90}} · n={{age_n}} tracked wrappers, from <span class="mono">first_historical_data</span>)</div></div>
+    <div><div class="v">{{shelf_median}} d</div><div class="l">median time on the shelf (p10 {{shelf_p10}} · p90 {{shelf_p90}} · n={{shelf_n}} untracked wrappers, since <span class="mono">date_added</span> — the listing day, not a market day)</div></div>
+    <div><div class="v">{{top_chain_n}}</div><div class="l">of {{untracked}} shelf wrappers sit on {{top_chain}} — {{chains_rest}}</div></div>
+  </div>
+</section>
+
+<section aria-labelledby="lim-h">
+  <h2 id="lim-h">Limits — read before quoting</h2>
+  <div class="card"><ul class="limits">
+    <li><b>"untracked" is CoinMarketCap's listing state</b>, quoted from its map documentation: <em>"{{definition}}"</em>. It means <b>listed, no CMC-tracked market</b>. It does not mean never traded anywhere: Dinari dShares trade on Dinari's own venue, and some wrappers may sit in pools CMC does not index. The number is about CoinMarketCap's coverage of what CoinMarketCap calls tokenised — which is exactly why it can be re-derived.</li>
+    <li><b>{{unresolved}} wrapper ids do not resolve</b> on any public CMC surface ({{unresolved_list}}). They are shown in their own bucket and excluded from every count.</li>
+    <li><b>The RWA endpoints need a key</b> (keyless → 403 error 1005). The roster leg on this page is live through the site's proxy while its key has credits, otherwise the committed snapshot of {{generated_short}} UTC, labelled. The state leg is keyless and live for anyone.</li>
+    <li><b>The map's symbol filter rejects CMC's own dotted symbols</b> (NVDA.D, AI.FRx — {{dotted}} wrappers). Those take their live state from <span class="mono">/v2/cryptocurrency/info</span> (active / inactive) and the map's finer word from the committed snapshot; each row says which.</li>
+    <li><b>The census is a daily series, not a history.</b> Untracked map rows carry no dates; the series started 2026-09-18 and the delta panel shows what moved between the two latest days.</li>
+    <li><b><span class="mono">num_tokens</span> is undocumented.</b> It is shown as "declared by the registry" and never substituted for attached wrappers (Backed declares {{backed_declared}}, {{backed_attached}} are attached).</li>
+  </ul></div>
+</section>
+
+<section class="receipt" aria-labelledby="rec-h">
+  <h2 id="rec-h">Receipt — the committed census, {{generated_utc}}</h2>
+  <div class="card">
+    <table><thead><tr><th>Endpoint</th><th class="n">Calls</th><th class="n">HTTP</th><th class="n">Keyed credits</th><th class="n hide-m">Bytes</th><th class="hide-m">First sha256</th></tr></thead>
+    <tbody>{{receipt_rows}}</tbody></table>
+    <p class="ev">{{wall_clock}} s wall clock · {{keyed_calls}} keyed calls = {{credits}} credits · {{keyless_calls}} keyless calls = 0 credits to any key · key usage before/after from /v1/key/info: {{usage_before}} → {{usage_after}} · every call: <a href="{{repo}}/blob/main/docs/proof/live_run.json">docs/proof/live_run.json</a></p>
+    <details><summary>re-derive the headline by hand</summary><pre>{{jq}}</pre></details>
+  </div>
+</section>
+
+<footer>
+  <span>Built on the CoinMarketCap API for <a href="https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail" target="_blank" rel="noopener noreferrer">Build with CMC</a> · Real World Assets</span>
+  <a href="{{repo}}" target="_blank" rel="noopener noreferrer">Repository</a>
+  <a href="{{repo}}/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">API feedback</a>
+  <a href="{{repo}}/blob/main/docs/METHOD.md" target="_blank" rel="noopener noreferrer">Method</a>
+  <a href="/api/health">/api/health</a>
+  <span id="health"></span>
+</footer>
+</main>
+<script>
+window.SHELF = {{inline_json}};
+</script>
+<script>
+{{app_js}}
+</script>
+</body>
+</html>

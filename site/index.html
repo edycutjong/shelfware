@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market</title>
+<meta name="description" content="476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Type a ticker: every wrapper, its issuer, chain and listing state, with the raw API rows beside it.">
+<meta name="author" content="Edy Cu">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market">
+<meta property="og:description" content="476 of 791 underlyings, counted 2026-09-18 22:16 UTC from the CoinMarketCap API. Type a ticker and see the raw rows.">
+<meta property="og:url" content="https://shelfware-cmc.vercel.app">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@edycutjong">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2034%2022%22%3E%3Crect%20width%3D%2234%22%20height%3D%2222%22%20fill%3D%22%230B0F14%22/%3E%3Crect%20x%3D%220%22%20y%3D%2217%22%20width%3D%2234%22%20height%3D%222%22%20rx%3D%221%22%20fill%3D%22%2326313F%22/%3E%3Crect%20x%3D%221%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233A4453%22/%3E%3Crect%20x%3D%228%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233A4453%22/%3E%3Crect%20x%3D%2215%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233A4453%22/%3E%3Crect%20x%3D%2222%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233BD37D%22/%3E%3Crect%20x%3D%2229%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233BD37D%22/%3E%3C/svg%3E">
+<style>
+:root{--bg:#0B0F14;--surface:#131A22;--border:#26313F;--text:#E8EEF4;--muted:#8A98A8;--lit:#3BD37D;--shelf:#3A4453;--flag:#FFB020;--unknown:#8B7CF6;--danger:#FF5C5C;
+--sans:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{color-scheme:dark;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--text)}a:hover,a:focus-visible{color:var(--flag)}
+main{max-width:1120px;margin:0 auto;padding:24px 20px 80px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 0 28px;border-bottom:1px solid var(--border);margin-bottom:36px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:15px}
+.brand svg{width:34px;height:22px}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);text-decoration:none;font-size:15px;font-family:var(--mono);min-height:44px;transition:border-color .15s,transform .15s,background .15s}
+.btn:hover,.btn:focus-visible{border-color:var(--flag);color:var(--text);transform:translateY(-1px);outline:none}
+.btn:active{transform:translateY(0)}
+.btn.primary{background:var(--flag);color:#0B0F14;border-color:var(--flag);font-weight:600}
+.btn.primary:hover{background:#ffc247}
+section{margin:0 0 44px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 14px}
+.headline{display:grid;grid-template-columns:auto 1fr;gap:8px 28px;align-items:end}
+.big{font-size:clamp(3.4rem,10vw,7.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--flag)}
+.claim{font-size:clamp(1.35rem,3vw,2rem);font-weight:600;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.sub b{color:var(--text);font-weight:600}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.bar{position:relative;display:flex;height:22px;width:100%;border-radius:6px;overflow:hidden;background:var(--surface);border:1px solid var(--border);margin:14px 0 8px}
+.bar>span{display:block;height:100%;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.bar .dim{background:repeating-linear-gradient(90deg,var(--shelf) 0 7px,transparent 7px 9px)}
+.bar .lit{background:repeating-linear-gradient(90deg,var(--lit) 0 7px,transparent 7px 9px)}
+.bar .unk{background:repeating-linear-gradient(90deg,var(--unknown) 0 7px,transparent 7px 9px)}
+.bar.small{height:14px;margin:0}
+.legend{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font-size:15px}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+.sw.dim{background:var(--shelf)}.sw.lit{background:var(--lit)}.sw.unk{background:var(--unknown)}
+.recipe{font-family:var(--mono);font-size:14px;color:var(--muted);margin-top:10px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px}
+.search form{display:flex;gap:10px;flex-wrap:wrap}
+.search input{flex:1 1 220px;min-height:52px;font-size:22px;font-family:var(--mono);padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);text-transform:uppercase;transition:border-color .15s}
+.search input:focus{outline:none;border-color:var(--flag)}
+.search button{min-width:120px}
+.hint{color:var(--muted);font-size:15px;margin:10px 0 0}
+.hint code{font-family:var(--mono)}
+.tcard{margin-top:18px}
+.uline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:20px;font-weight:600}
+.pill{font-family:var(--mono);font-size:13px;padding:3px 9px;border-radius:999px;border:1px solid var(--flag);color:var(--flag);font-weight:500}
+.pill.off{border-color:var(--muted);color:var(--muted)}
+.src{font-size:14px;color:var(--muted);margin:4px 0 10px}
+.src b{color:var(--text);font-weight:600}
+.wrow{display:grid;grid-template-columns:18px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--border)}
+.box{width:16px;height:16px;border-radius:4px;margin-top:5px;background:var(--shelf)}
+.box.lit{background:var(--lit)}.box.unk{background:var(--unknown)}
+.wsym{font-family:var(--mono);font-size:18px;font-weight:600}
+.wmeta{color:var(--muted);font-size:15px;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin-top:4px}
+.wmeta span:nth-child(odd){color:var(--muted)}
+.wmeta span:nth-child(even){color:var(--text);font-family:var(--mono);font-size:14px;overflow-wrap:anywhere}
+.chip{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;padding:2px 8px;border-radius:6px;font-weight:700;margin-left:8px;vertical-align:2px}
+.chip.untracked{background:var(--shelf);color:var(--text)}.chip.active{background:var(--lit);color:#0B0F14}.chip.unresolved,.chip.inactive{background:var(--unknown);color:#0B0F14}
+.verdict{font-size:22px;font-weight:700;margin:14px 0 6px}
+details{margin-top:10px}
+summary{cursor:pointer;color:var(--muted);font-size:15px;list-style:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;transition:color .15s}
+summary::before{content:"▸";display:inline-block;transition:transform .15s}
+details[open] summary::before{transform:rotate(90deg)}
+summary:hover,summary:focus-visible{color:var(--flag);outline:none}
+pre{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-family:var(--mono);font-size:13px;line-height:1.45;overflow-x:auto;margin:8px 0;color:#c9d4e0;max-height:420px}
+.ev{font-size:14px;color:var(--muted);font-family:var(--mono);margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th{text-align:left;color:var(--muted);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:0 10px 10px 0;white-space:nowrap}
+td{padding:10px 10px 10px 0;border-top:1px solid var(--border);vertical-align:middle}
+td.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+th.n{text-align:right}
+td.barcell{width:34%;min-width:140px}
+.rate{font-family:var(--mono);font-weight:700}
+.rate.full{color:var(--danger)}
+tr.issuer{transition:background .15s}
+tr.issuer:hover{background:rgba(255,255,255,.025)}
+.issuer-name{font-weight:600}
+.smaller{margin-top:8px}
+.types{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.types .card{padding:16px 18px}
+.types .t{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.types .t b{font-size:22px;font-family:var(--mono)}
+.stat{display:flex;gap:28px;flex-wrap:wrap}
+.stat div{min-width:160px}
+.stat .v{font-size:28px;font-weight:700;font-family:var(--mono);line-height:1.1}
+.stat .l{color:var(--muted);font-size:14px}
+.limits li{margin:6px 0}
+.receipt td,.receipt th{font-size:14px}
+footer{border-top:1px solid var(--border);padding-top:20px;color:var(--muted);font-size:14px;display:flex;gap:18px;flex-wrap:wrap}
+.status-ok{color:var(--lit)}.status-bad{color:var(--danger)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:720px){.headline{grid-template-columns:1fr}.big{font-size:clamp(3.4rem,18vw,5.5rem)}td.hide-m,th.hide-m{display:none}body{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.bar>span,.btn,summary::before{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="brand"><svg viewBox="0 0 34 22" aria-hidden="true"><rect x="0" y="17" width="34" height="2" rx="1" fill="#26313F"/><rect x="1" y="4" width="5" height="12" rx="1.5" fill="#3A4453"/><rect x="8" y="4" width="5" height="12" rx="1.5" fill="#3A4453"/><rect x="15" y="4" width="5" height="12" rx="1.5" fill="#3A4453"/><rect x="22" y="4" width="5" height="12" rx="1.5" fill="#3BD37D"/><rect x="29" y="4" width="5" height="12" rx="1.5" fill="#3BD37D"/></svg> Shelfware</div>
+  <nav>
+    <a class="btn primary" href="#search">Type a ticker</a>
+    <a class="btn" href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    <a class="btn" href="https://github.com/edycutjong/shelfware/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md ↗</a>
+  </nav>
+</header>
+
+<section class="headline-wrap" aria-labelledby="claim">
+  <div class="headline">
+    <div class="big mono" id="bignum" data-target="60">60%</div>
+    <div>
+      <p class="claim" id="claim">of the tokenised assets CoinMarketCap lists have <b>no wrapper with a tracked market</b>.</p>
+      <p class="sub"><b class="mono" id="zt">476</b> of <b class="mono">791</b> underlyings flagged <span class="pill">has_tokens: true</span> · stocks alone <b class="mono">437 of 689</b> (63%) · counted <b class="mono">2026-09-18 22:16 UTC</b> · <b class="mono">5</b> keyed credits</p>
+    </div>
+  </div>
+  <div class="bar" role="img" aria-label="476 of 791 underlyings have no tracked wrapper">
+    <span class="dim" id="bar-dim" style="width:60%"></span><span class="lit" id="bar-lit" style="width:40%"></span>
+  </div>
+  <div class="legend"><span><i class="sw dim"></i>476 no tracked wrapper — <b>listed, no CMC-tracked market</b></span><span><i class="sw lit"></i>315 at least one tracked wrapper</span></div>
+  <p class="recipe">recipe: wrappers = /v5/real-world-assets/quotes/latest tokens[] (price:null rows kept) · state = /public-api/v1/cryptocurrency/map status · count underlyings whose every wrapper is untracked · strict: an unresolved id never counts</p>
+</section>
+
+<section class="search" id="search" aria-labelledby="search-h">
+  <h2 id="search-h">Does this ticker have a wrapper that trades, and whose?</h2>
+  <div class="card">
+    <form id="f" autocomplete="off">
+      <label class="sr-only" for="t">Ticker</label>
+      <input id="t" name="t" placeholder="MS" value="MS" maxlength="16" spellcheck="false" aria-label="Ticker symbol">
+      <button class="btn primary" type="submit" id="go">Ask CMC</button>
+    </form>
+    <p class="hint">Roster from <code>/v5/real-world-assets/quotes/latest</code> (keyed, 1 credit — via this site's proxy; the committed snapshot if the key is unavailable, labelled). State from <code>/public-api/v1/cryptocurrency/map</code> and <code>/v2/cryptocurrency/info</code> — <b>live, keyless, 0 credits</b>. Same thing on your machine: <code>python3 -m shelfware MS</code>.</p>
+    <div class="tcard" id="tcard"><noscript><p class="src">Enable JavaScript to ask, or run <code>python3 -m shelfware MS</code>.</p></noscript></div>
+  </div>
+</section>
+
+<section aria-labelledby="iss-h">
+  <h2 id="iss-h">Issuers, by shelf rate — declared is the registry's <span class="mono">num_tokens</span>, attached is what any underlying lists</h2>
+  <div class="card">
+    <table class="issuers">
+      <thead><tr><th>Issuer</th><th>Wrappers</th><th class="n">Shelf</th><th class="n hide-m">Declared</th><th class="n">Attached</th><th class="n">Tracked</th><th class="n hide-m">Live market cap</th></tr></thead>
+      <tbody><tr class="issuer"><td class="issuer-name"><details><summary>Dinari Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Dinari Assets&quot;,
+ &quot;website&quot;: &quot;https://dinari.com/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/5a59aaed_253f_4771_8e52_4ecc50ef127c_medium.jpg&quot;,
+ &quot;issuer_id&quot;: &quot;688c6172abae9b5b9fb30359&quot;,
+ &quot;num_tokens&quot;: 91
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;688c6172abae9b5b9fb30359&quot;,
+ &quot;issuer_name&quot;: &quot;Dinari Assets&quot;,
+ &quot;declared&quot;: 91,
+ &quot;attached&quot;: 27,
+ &quot;tracked&quot;: 0,
+ &quot;untracked&quot;: 27,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: 1.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Dinari Assets: 0 tracked, 27 untracked, 0 other of 27"><span class="dim" style="width:100.0%"></span><span class="lit" style="width:0.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate full">100%</span></td><td class="n hide-m">91</td><td class="n">27</td><td class="n">0</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Backed Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Backed Assets&quot;,
+ &quot;website&quot;: &quot;https://assets.backed.fi/&quot;,
+ &quot;logo&quot;: null,
+ &quot;issuer_id&quot;: &quot;6878977dcbbf471de3366e85&quot;,
+ &quot;num_tokens&quot;: 1176
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;6878977dcbbf471de3366e85&quot;,
+ &quot;issuer_name&quot;: &quot;Backed Assets&quot;,
+ &quot;declared&quot;: 1176,
+ &quot;attached&quot;: 772,
+ &quot;tracked&quot;: 140,
+ &quot;untracked&quot;: 632,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 669101579.01,
+ &quot;shelf_rate&quot;: 0.8187
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Backed Assets: 140 tracked, 632 untracked, 0 other of 772"><span class="dim" style="width:81.9%"></span><span class="lit" style="width:18.1%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">82%</span></td><td class="n hide-m">1176</td><td class="n">772</td><td class="n">140</td><td class="n hide-m">$669M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>(no issuer)</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>null</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: null,
+ &quot;issuer_name&quot;: &quot;(no issuer)&quot;,
+ &quot;declared&quot;: null,
+ &quot;attached&quot;: 5,
+ &quot;tracked&quot;: 3,
+ &quot;untracked&quot;: 1,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 1,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: 0.2
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="(no issuer): 3 tracked, 1 untracked, 1 other of 5"><span class="dim" style="width:20.0%"></span><span class="lit" style="width:60.0%"></span><span class="unk" style="width:20.0%"></span></div></td><td class="n"><span class="rate">20%</span></td><td class="n hide-m">—</td><td class="n">5</td><td class="n">3</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Robinhood</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Robinhood&quot;,
+ &quot;website&quot;: &quot;https://robinhood.com/us/en/&quot;,
+ &quot;logo&quot;: null,
+ &quot;issuer_id&quot;: &quot;6a465832fbe3004b1a0ea2dd&quot;,
+ &quot;num_tokens&quot;: 107
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;6a465832fbe3004b1a0ea2dd&quot;,
+ &quot;issuer_name&quot;: &quot;Robinhood&quot;,
+ &quot;declared&quot;: 107,
+ &quot;attached&quot;: 106,
+ &quot;tracked&quot;: 98,
+ &quot;untracked&quot;: 8,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 135432308.21,
+ &quot;shelf_rate&quot;: 0.0755
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Robinhood: 98 tracked, 8 untracked, 0 other of 106"><span class="dim" style="width:7.5%"></span><span class="lit" style="width:92.5%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">8%</span></td><td class="n hide-m">107</td><td class="n">106</td><td class="n">98</td><td class="n hide-m">$135M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Ondo Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Ondo Assets&quot;,
+ &quot;website&quot;: &quot;https://ondo.finance/&quot;,
+ &quot;logo&quot;: null,
+ &quot;issuer_id&quot;: &quot;688ca4ccabae9b5b9fb3167a&quot;,
+ &quot;num_tokens&quot;: 551
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;688ca4ccabae9b5b9fb3167a&quot;,
+ &quot;issuer_name&quot;: &quot;Ondo Assets&quot;,
+ &quot;declared&quot;: 551,
+ &quot;attached&quot;: 214,
+ &quot;tracked&quot;: 210,
+ &quot;untracked&quot;: 4,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 891329105.52,
+ &quot;shelf_rate&quot;: 0.0187
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Ondo Assets: 210 tracked, 4 untracked, 0 other of 214"><span class="dim" style="width:1.9%"></span><span class="lit" style="width:98.1%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">2%</span></td><td class="n hide-m">551</td><td class="n">214</td><td class="n">210</td><td class="n hide-m">$891M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>NA (Derivatives)</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;NA (Derivatives)&quot;,
+ &quot;website&quot;: null,
+ &quot;logo&quot;: null,
+ &quot;issuer_id&quot;: &quot;695e11f774b54210f3b95dc3&quot;,
+ &quot;num_tokens&quot;: 247
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;695e11f774b54210f3b95dc3&quot;,
+ &quot;issuer_name&quot;: &quot;NA (Derivatives)&quot;,
+ &quot;declared&quot;: 247,
+ &quot;attached&quot;: 131,
+ &quot;tracked&quot;: 128,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 3,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="NA (Derivatives): 128 tracked, 0 untracked, 3 other of 131"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:97.7%"></span><span class="unk" style="width:2.3%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">247</td><td class="n">131</td><td class="n">128</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>bStocks</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;bStocks&quot;,
+ &quot;website&quot;: null,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/Untitled_design__2_.png&quot;,
+ &quot;issuer_id&quot;: &quot;6a2aed5097c45356b1a5f710&quot;,
+ &quot;num_tokens&quot;: 77
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;6a2aed5097c45356b1a5f710&quot;,
+ &quot;issuer_name&quot;: &quot;bStocks&quot;,
+ &quot;declared&quot;: 77,
+ &quot;attached&quot;: 77,
+ &quot;tracked&quot;: 77,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 797027720.84,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="bStocks: 77 tracked, 0 untracked, 0 other of 77"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">77</td><td class="n">77</td><td class="n">77</td><td class="n hide-m">$797M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Reality</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Reality&quot;,
+ &quot;website&quot;: null,
+ &quot;logo&quot;: null,
+ &quot;issuer_id&quot;: &quot;6a43600c282e7240b76c8bbb&quot;,
+ &quot;num_tokens&quot;: 71
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;6a43600c282e7240b76c8bbb&quot;,
+ &quot;issuer_name&quot;: &quot;Reality&quot;,
+ &quot;declared&quot;: 71,
+ &quot;attached&quot;: 71,
+ &quot;tracked&quot;: 71,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 131344865.7,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Reality: 71 tracked, 0 untracked, 0 other of 71"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">71</td><td class="n">71</td><td class="n">71</td><td class="n hide-m">$131M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Hyperliquid Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Hyperliquid Assets&quot;,
+ &quot;website&quot;: &quot;https://app.hyperliquid.xyz/trade&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/hyperliquid.png&quot;,
+ &quot;issuer_id&quot;: &quot;699ed38db54c9320b15928e3&quot;,
+ &quot;num_tokens&quot;: 12
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;699ed38db54c9320b15928e3&quot;,
+ &quot;issuer_name&quot;: &quot;Hyperliquid Assets&quot;,
+ &quot;declared&quot;: 12,
+ &quot;attached&quot;: 12,
+ &quot;tracked&quot;: 12,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 1111.44,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Hyperliquid Assets: 12 tracked, 0 untracked, 0 other of 12"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">12</td><td class="n">12</td><td class="n">12</td><td class="n hide-m">$1,111</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Backpack</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Backpack&quot;,
+ &quot;website&quot;: &quot;https://backpack.exchange&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/M7sS2GzR_400x400.png&quot;,
+ &quot;issuer_id&quot;: &quot;6a2d54b697c45356b1a634f4&quot;,
+ &quot;num_tokens&quot;: 7
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;6a2d54b697c45356b1a634f4&quot;,
+ &quot;issuer_name&quot;: &quot;Backpack&quot;,
+ &quot;declared&quot;: 7,
+ &quot;attached&quot;: 5,
+ &quot;tracked&quot;: 5,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 17404738.82,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Backpack: 5 tracked, 0 untracked, 0 other of 5"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">7</td><td class="n">5</td><td class="n">5</td><td class="n hide-m">$17M</td></tr></tbody>
+    </table>
+    <details class="smaller"><summary>smaller issuers (16), fewer than 5 attached wrappers</summary>
+      <table class="issuers"><tbody><tr class="issuer"><td class="issuer-name"><details><summary>Superstate Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Superstate Assets&quot;,
+ &quot;website&quot;: &quot;https://superstate.com/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/Adobe_Express___file.png&quot;,
+ &quot;issuer_id&quot;: &quot;68b902a8f972b459c80de6a5&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68b902a8f972b459c80de6a5&quot;,
+ &quot;issuer_name&quot;: &quot;Superstate Assets&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 0,
+ &quot;untracked&quot;: 1,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: 1.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Superstate Assets: 0 tracked, 1 untracked, 0 other of 1"><span class="dim" style="width:100.0%"></span><span class="lit" style="width:0.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate full">100%</span></td><td class="n hide-m">1</td><td class="n">1</td><td class="n">0</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>PreStocks Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;PreStocks Assets&quot;,
+ &quot;website&quot;: &quot;https://prestocks.com/&quot;,
+ &quot;logo&quot;: null,
+ &quot;issuer_id&quot;: &quot;689612983f270c6ff4781b96&quot;,
+ &quot;num_tokens&quot;: 22
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;689612983f270c6ff4781b96&quot;,
+ &quot;issuer_name&quot;: &quot;PreStocks Assets&quot;,
+ &quot;declared&quot;: 22,
+ &quot;attached&quot;: 3,
+ &quot;tracked&quot;: 3,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 15985975.55,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="PreStocks Assets: 3 tracked, 0 untracked, 0 other of 3"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">22</td><td class="n">3</td><td class="n">3</td><td class="n hide-m">$16M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Tether Holdings</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Tether Holdings&quot;,
+ &quot;website&quot;: &quot;https://tether.to/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/tether.png&quot;,
+ &quot;issuer_id&quot;: &quot;68904e9cabae9b5b9fb358ac&quot;,
+ &quot;num_tokens&quot;: 2
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68904e9cabae9b5b9fb358ac&quot;,
+ &quot;issuer_name&quot;: &quot;Tether Holdings&quot;,
+ &quot;declared&quot;: 2,
+ &quot;attached&quot;: 2,
+ &quot;tracked&quot;: 2,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 2744320735.84,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Tether Holdings: 2 tracked, 0 untracked, 0 other of 2"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">2</td><td class="n">2</td><td class="n">2</td><td class="n hide-m">$2.74B</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Paxos</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Paxos&quot;,
+ &quot;website&quot;: &quot;https://www.paxos.com/&quot;,
+ &quot;logo&quot;: null,
+ &quot;issuer_id&quot;: &quot;68904c24abae9b5b9fb35815&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68904c24abae9b5b9fb35815&quot;,
+ &quot;issuer_name&quot;: &quot;Paxos&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 1,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 1899929026.14,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Paxos: 1 tracked, 0 untracked, 0 other of 1"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">1</td><td class="n">1</td><td class="n">1</td><td class="n hide-m">$1.90B</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Comtech Gold</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Comtech Gold&quot;,
+ &quot;website&quot;: &quot;https://www.comtechgold.com/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/comtech.png&quot;,
+ &quot;issuer_id&quot;: &quot;68904cceabae9b5b9fb35839&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68904cceabae9b5b9fb35839&quot;,
+ &quot;issuer_name&quot;: &quot;Comtech Gold&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 1,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 19662614.69,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Comtech Gold: 1 tracked, 0 untracked, 0 other of 1"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">1</td><td class="n">1</td><td class="n">1</td><td class="n hide-m">$20M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>VNX</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;VNX&quot;,
+ &quot;website&quot;: &quot;https://vnx.li/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/vnx.png&quot;,
+ &quot;issuer_id&quot;: &quot;68905b43abae9b5b9fb35a95&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68905b43abae9b5b9fb35a95&quot;,
+ &quot;issuer_name&quot;: &quot;VNX&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 1,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 5847849.12,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="VNX: 1 tracked, 0 untracked, 0 other of 1"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">1</td><td class="n">1</td><td class="n">1</td><td class="n hide-m">$6M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Matrixdock</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Matrixdock&quot;,
+ &quot;website&quot;: &quot;https://www.matrixdock.com/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/matrixdock.png&quot;,
+ &quot;issuer_id&quot;: &quot;68905a7babae9b5b9fb35a8d&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68905a7babae9b5b9fb35a8d&quot;,
+ &quot;issuer_name&quot;: &quot;Matrixdock&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 1,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 47874510.53,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Matrixdock: 1 tracked, 0 untracked, 0 other of 1"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">1</td><td class="n">1</td><td class="n">1</td><td class="n hide-m">$48M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Kinesis Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Kinesis Assets&quot;,
+ &quot;website&quot;: &quot;https://kinesis.money/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/3LFB_Kit_400x400.png&quot;,
+ &quot;issuer_id&quot;: &quot;68e25e8dd4cd001228754c7c&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68e25e8dd4cd001228754c7c&quot;,
+ &quot;issuer_name&quot;: &quot;Kinesis Assets&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 1,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Kinesis Assets: 1 tracked, 0 untracked, 0 other of 1"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">1</td><td class="n">1</td><td class="n">1</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>XAGx</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;XAGx&quot;,
+ &quot;website&quot;: &quot;https://xagx.org/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/bwdPlk2V_400x400.png&quot;,
+ &quot;issuer_id&quot;: &quot;68e27862d4cd001228754d31&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68e27862d4cd001228754d31&quot;,
+ &quot;issuer_name&quot;: &quot;XAGx&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 1,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="XAGx: 1 tracked, 0 untracked, 0 other of 1"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">1</td><td class="n">1</td><td class="n">1</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Token</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Token&quot;,
+ &quot;website&quot;: &quot;https://www.token.com.tr/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/hoGtBUTO_400x400.png&quot;,
+ &quot;issuer_id&quot;: &quot;68e27c8ad4cd001228754d67&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68e27c8ad4cd001228754d67&quot;,
+ &quot;issuer_name&quot;: &quot;Token&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 1,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Token: 1 tracked, 0 untracked, 0 other of 1"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">1</td><td class="n">1</td><td class="n">1</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Tessera Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Tessera Assets&quot;,
+ &quot;website&quot;: &quot;https://www.tessera.pe/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/tessera.png&quot;,
+ &quot;issuer_id&quot;: &quot;6a0be4e680ee5978ec4455ce&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;6a0be4e680ee5978ec4455ce&quot;,
+ &quot;issuer_name&quot;: &quot;Tessera Assets&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 1,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 663072.48,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Tessera Assets: 1 tracked, 0 untracked, 0 other of 1"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">1</td><td class="n">1</td><td class="n">1</td><td class="n hide-m">$663,072</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Republic</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Republic&quot;,
+ &quot;website&quot;: &quot;https://republic.com/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/for2i2.png&quot;,
+ &quot;issuer_id&quot;: &quot;6a436076282e7240b76c8bf9&quot;,
+ &quot;num_tokens&quot;: 2
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;6a436076282e7240b76c8bf9&quot;,
+ &quot;issuer_name&quot;: &quot;Republic&quot;,
+ &quot;declared&quot;: 2,
+ &quot;attached&quot;: 1,
+ &quot;tracked&quot;: 1,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 72085197.07,
+ &quot;shelf_rate&quot;: 0.0
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Republic: 1 tracked, 0 untracked, 0 other of 1"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">2</td><td class="n">1</td><td class="n">1</td><td class="n hide-m">$72M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Bitget Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Bitget Assets&quot;,
+ &quot;website&quot;: &quot;https://www.bitget.com/&quot;,
+ &quot;logo&quot;: null,
+ &quot;issuer_id&quot;: &quot;68a80be20135f56ec3188cdc&quot;,
+ &quot;num_tokens&quot;: 0
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68a80be20135f56ec3188cdc&quot;,
+ &quot;issuer_name&quot;: &quot;Bitget Assets&quot;,
+ &quot;declared&quot;: 0,
+ &quot;attached&quot;: 0,
+ &quot;tracked&quot;: 0,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: null
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Bitget Assets: 0 tracked, 0 untracked, 0 other of 0"></div></td><td class="n"><span class="rate">—</span></td><td class="n hide-m">0</td><td class="n">0</td><td class="n">0</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Coinbase</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Coinbase&quot;,
+ &quot;website&quot;: &quot;https://www.coinbase.com/en-sg/tokenize&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/m_UOfXvz_400x400.png&quot;,
+ &quot;issuer_id&quot;: &quot;6a72fe7072996604d45c6733&quot;,
+ &quot;num_tokens&quot;: 0
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;6a72fe7072996604d45c6733&quot;,
+ &quot;issuer_name&quot;: &quot;Coinbase&quot;,
+ &quot;declared&quot;: 0,
+ &quot;attached&quot;: 0,
+ &quot;tracked&quot;: 0,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: null
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Coinbase: 0 tracked, 0 untracked, 0 other of 0"></div></td><td class="n"><span class="rate">—</span></td><td class="n hide-m">0</td><td class="n">0</td><td class="n">0</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Fidelity Investments Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Fidelity Investments Assets&quot;,
+ &quot;website&quot;: &quot;https://www.fidelity.com/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/32.png&quot;,
+ &quot;issuer_id&quot;: &quot;68c117369d7eab1d58ebd51d&quot;,
+ &quot;num_tokens&quot;: 1
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;68c117369d7eab1d58ebd51d&quot;,
+ &quot;issuer_name&quot;: &quot;Fidelity Investments Assets&quot;,
+ &quot;declared&quot;: 1,
+ &quot;attached&quot;: 0,
+ &quot;tracked&quot;: 0,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: null
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Fidelity Investments Assets: 0 tracked, 0 untracked, 0 other of 0"></div></td><td class="n"><span class="rate">—</span></td><td class="n hide-m">1</td><td class="n">0</td><td class="n">0</td><td class="n hide-m">$0</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>Swarm Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+ &quot;name&quot;: &quot;Swarm Assets&quot;,
+ &quot;website&quot;: &quot;https://swarm.com/&quot;,
+ &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/11821.png&quot;,
+ &quot;issuer_id&quot;: &quot;688ca641abae9b5b9fb31815&quot;,
+ &quot;num_tokens&quot;: 0
+}</pre><p class="ev">joined row</p><pre>{
+ &quot;issuer_id&quot;: &quot;688ca641abae9b5b9fb31815&quot;,
+ &quot;issuer_name&quot;: &quot;Swarm Assets&quot;,
+ &quot;declared&quot;: 0,
+ &quot;attached&quot;: 0,
+ &quot;tracked&quot;: 0,
+ &quot;untracked&quot;: 0,
+ &quot;inactive&quot;: 0,
+ &quot;unresolved&quot;: 0,
+ &quot;live_market_cap_usd&quot;: 0.0,
+ &quot;shelf_rate&quot;: null
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Swarm Assets: 0 tracked, 0 untracked, 0 other of 0"></div></td><td class="n"><span class="rate">—</span></td><td class="n hide-m">0</td><td class="n">0</td><td class="n">0</td><td class="n hide-m">$0</td></tr></tbody></table>
+    </details>
+  </div>
+</section>
+
+<section aria-labelledby="type-h">
+  <h2 id="type-h">By asset type — wrappers on the shelf, and underlyings with no tracked wrapper</h2>
+  <div class="types"><div class="card"><div class="t"><span>stock</span><b>49% shelf</b></div><div class="bar small" role="img" aria-label="stock: 606 of 1244 wrappers untracked"><span class="dim" style="width:48.7%"></span><span class="lit" style="width:51.1%"></span><span class="unk" style="width:0.2%"></span></div><p class="sub" style="margin-top:8px"><b class="mono">606</b> of 1244 wrappers untracked · <b class="mono">437</b> of 689 underlyings with no tracked wrapper (63%)</p></div><div class="card"><div class="t"><span>etf</span><b>38% shelf</b></div><div class="bar small" role="img" aria-label="etf: 67 of 177 wrappers untracked"><span class="dim" style="width:37.9%"></span><span class="lit" style="width:61.6%"></span><span class="unk" style="width:0.6%"></span></div><p class="sub" style="margin-top:8px"><b class="mono">67</b> of 177 wrappers untracked · <b class="mono">39</b> of 98 underlyings with no tracked wrapper (40%)</p></div><div class="card"><div class="t"><span>commodity</span><b>0% shelf</b></div><div class="bar small" role="img" aria-label="commodity: 0 of 14 wrappers untracked"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:92.9%"></span><span class="unk" style="width:7.1%"></span></div><p class="sub" style="margin-top:8px"><b class="mono">0</b> of 14 wrappers untracked · <b class="mono">0</b> of 4 underlyings with no tracked wrapper (0%)</p></div></div>
+</section>
+
+<section aria-labelledby="delta-h">
+  <h2 id="delta-h">Since the previous snapshot</h2>
+  <div class="card"><p class="sub">The delta panel appears once two daily snapshots exist. Series so far: <b class="mono">2026-09-18</b> (taken by <span class="mono">scripts/snapshot.py</span>, ~5 keyed credits a day; untracked rows carry no dates of their own).</p></div>
+</section>
+
+<section aria-labelledby="age-h">
+  <h2 id="age-h">Ages</h2>
+  <div class="card stat">
+    <div><div class="v">80 d</div><div class="l">median age of what trades (p10 24 · p90 380 · n=757 tracked wrappers, from <span class="mono">first_historical_data</span>)</div></div>
+    <div><div class="v">38 d</div><div class="l">median time on the shelf (p10 38 · p90 100 · n=673 untracked wrappers, since <span class="mono">date_added</span> — the listing day, not a market day)</div></div>
+    <div><div class="v">603</div><div class="l">of 673 shelf wrappers sit on X Layer — Arbitrum 27, Solana 18, Ethereum 16, Robinhood Chain 8</div></div>
+  </div>
+</section>
+
+<section aria-labelledby="lim-h">
+  <h2 id="lim-h">Limits — read before quoting</h2>
+  <div class="card"><ul class="limits">
+    <li><b>"untracked" is CoinMarketCap's listing state</b>, quoted from its map documentation: <em>"registered cryptocurrency projects that are listed but do not yet meet methodology requirements to have tracked markets"</em>. It means <b>listed, no CMC-tracked market</b>. It does not mean never traded anywhere: Dinari dShares trade on Dinari's own venue, and some wrappers may sit in pools CMC does not index. The number is about CoinMarketCap's coverage of what CoinMarketCap calls tokenised — which is exactly why it can be re-derived.</li>
+    <li><b>4 wrapper ids do not resolve</b> on any public CMC surface (39318 SILVER, 39002 HOOD, 39839 QQQ, 42326 APLD). They are shown in their own bucket and excluded from every count.</li>
+    <li><b>The RWA endpoints need a key</b> (keyless → 403 error 1005). The roster leg on this page is live through the site's proxy while its key has credits, otherwise the committed snapshot of 2026-09-18 22:16 UTC, labelled. The state leg is keyless and live for anyone.</li>
+    <li><b>The map's symbol filter rejects CMC's own dotted symbols</b> (NVDA.D, AI.FRx — 38 wrappers). Those take their live state from <span class="mono">/v2/cryptocurrency/info</span> (active / inactive) and the map's finer word from the committed snapshot; each row says which.</li>
+    <li><b>The census is a daily series, not a history.</b> Untracked map rows carry no dates; the series started 2026-09-18 and the delta panel shows what moved between the two latest days.</li>
+    <li><b><span class="mono">num_tokens</span> is undocumented.</b> It is shown as "declared by the registry" and never substituted for attached wrappers (Backed declares 1176, 772 are attached).</li>
+  </ul></div>
+</section>
+
+<section class="receipt" aria-labelledby="rec-h">
+  <h2 id="rec-h">Receipt — the committed census, 2026-09-18T22:16:17Z</h2>
+  <div class="card">
+    <table><thead><tr><th>Endpoint</th><th class="n">Calls</th><th class="n">HTTP</th><th class="n">Keyed credits</th><th class="n hide-m">Bytes</th><th class="hide-m">First sha256</th></tr></thead>
+    <tbody><tr><td class="mono">/v1/key/info</td><td class="n">2</td><td class="n">200</td><td class="n">0</td><td class="n hide-m">988</td><td class="mono hide-m">ff8e91d04a06e7c2</td></tr><tr><td class="mono">/v5/real-world-assets/map</td><td class="n">32</td><td class="n">200</td><td class="n">0</td><td class="n hide-m">2,035,346</td><td class="mono hide-m">ea6b30df3278bd8b</td></tr><tr><td class="mono">/v5/real-world-assets/quotes/latest</td><td class="n">4</td><td class="n">200</td><td class="n">4</td><td class="n hide-m">823,434</td><td class="mono hide-m">400d85ed20bf2d20</td></tr><tr><td class="mono">/v5/real-world-assets/issuers/list</td><td class="n">1</td><td class="n">200</td><td class="n">1</td><td class="n hide-m">4,321</td><td class="mono hide-m">a39a35f4301375f5</td></tr><tr><td class="mono">/public-api/v1/cryptocurrency/map <span class="pill off">keyless</span></td><td class="n">9</td><td class="n">200</td><td class="n">0 to any key</td><td class="n hide-m">9,497,023</td><td class="mono hide-m">88aa8cae65749490</td></tr><tr><td class="mono">/public-api/v2/cryptocurrency/info <span class="pill off">keyless</span></td><td class="n">6</td><td class="n">200,400</td><td class="n">0 to any key</td><td class="n hide-m">579,404</td><td class="mono hide-m">e541f37029dbf103</td></tr></tbody></table>
+    <p class="ev">40.9 s wall clock · 39 keyed calls = 5 credits · 15 keyless calls = 0 credits to any key · key usage before/after from /v1/key/info: 12020 → 12025 · every call: <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/live_run.json">docs/proof/live_run.json</a></p>
+    <details><summary>re-derive the headline by hand</summary><pre>jq '[.wrappers[] | select(.status=="untracked")] | length' data/census.json   # wrappers on the shelf -> untracked
+jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .status=="untracked"))) | length' data/census.json   # underlyings with zero tracked wrapper -> underlyings_zero_tracked</pre></details>
+  </div>
+</section>
+
+<footer>
+  <span>Built on the CoinMarketCap API for <a href="https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail" target="_blank" rel="noopener noreferrer">Build with CMC</a> · Real World Assets</span>
+  <a href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">Repository</a>
+  <a href="https://github.com/edycutjong/shelfware/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">API feedback</a>
+  <a href="https://github.com/edycutjong/shelfware/blob/main/docs/METHOD.md" target="_blank" rel="noopener noreferrer">Method</a>
+  <a href="/api/health">/api/health</a>
+  <span id="health"></span>
+</footer>
+</main>
+<script>
+window.SHELF = {"definition":"registered cryptocurrency projects that are listed but do not yet meet methodology requirements to have tracked markets","generated_utc":"2026-09-18T22:16:17Z","hero_run":{"ticker":"MS","asked_utc":"2026-09-18T22:17:00Z","roster":{"source":"snapshot","as_of":"2026-09-18T22:16:17Z","call":null,"fallback_reason":null},"status":{"source":"live keyless","call":{"call":"cmc/map symbol=wMSx","url":"https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active%2Cinactive%2Cuntracked&symbol=wMSx&aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform","keyed":false,"http":200,"bytes":441,"sha256":"e06f2e194d322d57","credit_count":1,"rows":1,"elapsed_ms":293,"utc":"2026-09-18T22:17:00Z","error":null,"throttled":false,"attempts":1},"dropped_symbols":[],"fallback_reason":null,"info_calls":[{"call":"cmc/info batch 1 (1 ids)","url":"https://pro-api.coinmarketcap.com/public-api/v2/cryptocurrency/info?id=41513&aux=status%2Cdate_added%2Cplatform","keyed":false,"http":200,"bytes":925,"sha256":"0466fd1bdebe23fa","credit_count":1,"rows":1,"elapsed_ms":291,"utc":"2026-09-18T22:17:00Z","error":null,"throttled":false,"attempts":1}]},"underlyings":[{"rwa_id":35,"symbol":"MS","name":"Morgan Stanley","asset_type":"stock","rwa_rank":43,"has_tokens":true,"tokens_listed":1}],"wrappers":[{"crypto_id":41513,"symbol":"wMSx","name":"Wrapped Morgan Stanley Tokenized Stock (xStock)","rwa_id":35,"underlying":"MS","underlying_name":"Morgan Stanley","asset_type":"stock","rwa_rank":43,"issuer_id":"6878977dcbbf471de3366e85","issuer_name":"Backed Assets","price":null,"market_cap":null,"volume_24h":null,"status":"untracked","first_historical_data":null,"last_historical_data":null,"platform":{"name":"X Layer","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"},"status_source":"map","date_added":"2026-08-11T16:24:36.000Z","info_status":"inactive"}],"verdict":"0 of 1 wrapper(s) with a CMC-tracked market","evidence":{"tokens":[{"crypto_id":41513,"symbol":"wMSx","name":"Wrapped Morgan Stanley Tokenized Stock (xStock)","issuer_id":"6878977dcbbf471de3366e85","issuer_name":"Backed Assets","price":null,"market_cap":null,"volume_24h":null,"status":"untracked","first_historical_data":null,"date_added":"2026-08-11T16:24:36.000Z","platform":{"name":"X Layer","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"}}],"map_rows":[{"id":41513,"name":"Wrapped Morgan Stanley Tokenized Stock (xStock)","symbol":"wMSx","slug":"wrapped-morgan-stanley-tokenized-stock-xstock","rank":null,"status":"untracked","platform":{"id":216,"name":"X Layer","symbol":"OKB","slug":"okb","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"}}],"info_rows":[{"id":41513,"symbol":"wMSx","platform":{"id":"3897","name":"OKB","symbol":"OKB","slug":"okb","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"},"date_added":"2026-08-11T16:24:36.000Z","status":"inactive"}]},"calls":[{"call":"cmc/map symbol=wMSx","http":200,"keyed":false,"credit_count":1,"elapsed_ms":293,"sha256":"e06f2e194d322d57","fetched_utc":"2026-09-18T22:17:00Z"},{"call":"cmc/info batch 1 (1 ids)","http":200,"keyed":false,"credit_count":1,"elapsed_ms":291,"sha256":"0466fd1bdebe23fa","fetched_utc":"2026-09-18T22:17:00Z"}]}};
+</script>
+<script>
+/* Shelfware — the one screen. Nothing here computes the census; it renders window.SHELF
+   (inlined at build time from data/census.json) and asks the site's proxy the ticker question:
+   /api/roster (keyed, via the proxy; snapshot fallback labelled) then /api/status (keyless map +
+   info, live for anyone). The join per wrapper mirrors shelfware/lookup.py. */
+(function () {
+  "use strict";
+  var S = window.SHELF;
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var FILTERABLE = /^[A-Za-z0-9]+$/;
+  var fmt = function (x, dp) { return x == null ? "null" : Number(x).toLocaleString("en-US", { maximumFractionDigits: dp == null ? 0 : dp, minimumFractionDigits: dp == null ? 0 : dp }); };
+  var days = function (iso) { return Math.floor((Date.now() - Date.parse(iso)) / 86400000); };
+
+  // ── the one animation: the headline counts up while the shelf bar fills ──
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var big = $("bignum");
+  if (big && !reduce) {
+    var target = parseInt(big.getAttribute("data-target"), 10), zt = $("zt"), ztTarget = parseInt(zt.textContent, 10);
+    var dim = $("bar-dim"), lit = $("bar-lit"), dimW = dim.style.width, litW = lit.style.width;
+    dim.style.transition = "none"; lit.style.transition = "none"; dim.style.width = "0%"; lit.style.width = "0%";
+    var t0 = null;
+    var step = function (ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min(1, (ts - t0) / 1500), e = 1 - Math.pow(1 - p, 3);
+      big.textContent = Math.round(target * e) + "%";
+      zt.textContent = Math.round(ztTarget * e);
+      dim.style.width = (parseFloat(dimW) * e) + "%";
+      if (p >= 0.75) lit.style.width = (parseFloat(litW) * Math.min(1, (p - 0.75) / 0.25)) + "%";
+      if (p < 1) requestAnimationFrame(step); else { big.textContent = target + "%"; zt.textContent = ztTarget; dim.style.width = dimW; lit.style.width = litW; }
+    };
+    requestAnimationFrame(step);
+  }
+
+  // ── the ticker question ───────────────────────────────────────────────────
+  function chip(status) { return '<span class="chip ' + esc(status) + '">' + esc(status.toUpperCase()) + "</span>"; }
+  function sourceLine(w, asOf) {
+    if (w.status_source === "map") return "/public-api/v1/cryptocurrency/map · live · keyless · 0 credits";
+    if (w.status_source === "info") return "/public-api/v2/cryptocurrency/info · live · keyless (the map's symbol filter rejects this symbol)";
+    if (w.status_source === "info+snapshot") return "/public-api/v2/cryptocurrency/info says inactive · live · keyless; the map's finer state from the " + esc(asOf) + " snapshot (its symbol filter rejects \"" + esc(w.symbol) + "\")";
+    return "committed snapshot " + esc(asOf) + " — " + esc(w.fallback_reason || "the keyless pool did not answer");
+  }
+  function renderCard(res) {
+    var html = "";
+    var r = res.roster, asOf = (r.as_of || "").slice(0, 10);
+    if (!res.underlyings.length) {
+      html += '<p class="verdict">' + esc(res.verdict) + "</p>";
+      html += '<p class="src">roster: ' + (r.source === "live" ? "<b>live</b> — the RWA map has no such symbol" : "snapshot " + esc(asOf)) + "</p>";
+    }
+    res.underlyings.forEach(function (u) {
+      html += '<div class="uline"><span class="mono">' + esc(u.symbol) + "</span><span>" + esc(u.name || "") + "</span><span class=\"src\">" + esc(u.asset_type || "") + " · rwa_rank " + esc(u.rwa_rank) + '</span><span class="pill' + (u.has_tokens ? "" : " off") + '">has_tokens: ' + (u.has_tokens ? "true" : "false") + "</span></div>";
+    });
+    html += '<p class="src">roster: ' + (r.source === "live" ? "<b>live</b> via /api/roster → /v5/real-world-assets/quotes/latest · keyed · " + esc(r.credit_count == null ? 1 : r.credit_count) + " credit" : "<b>snapshot " + esc(asOf) + "</b>" + (r.fallback_reason ? " — " + esc(r.fallback_reason) : " (the RWA endpoints need a key)")) + "</p>";
+    res.wrappers.forEach(function (w) {
+      var p = w.platform || {};
+      html += '<div class="wrow"><div class="box ' + (w.status === "active" ? "lit" : (w.status === "untracked" ? "" : "unk")) + '"></div><div>';
+      html += '<div><span class="wsym">' + esc(w.symbol) + "</span> <span>" + esc(w.name || "") + "</span>" + chip(w.status) + "</div>";
+      html += '<div class="wmeta"><span>issuer</span><span>' + esc(w.issuer_name || "(no issuer)") + (w.issuer_id ? " · " + esc(w.issuer_id) : "") + "</span>";
+      html += "<span>chain</span><span>" + esc(p.name || "—") + (p.token_address ? " · " + esc(p.token_address) : "") + "</span>";
+      html += "<span>price</span><span>" + (w.price == null ? "null" : fmt(w.price, 4)) + " · market_cap " + fmt(w.market_cap) + " · volume_24h " + fmt(w.volume_24h) + "</span>";
+      html += "<span>state</span><span>" + sourceLine(w, asOf) + "</span>";
+      if (w.status === "untracked") html += "<span>meaning</span><span>listed, no CMC-tracked market — CMC: " + esc(S.definition) + (w.date_added ? " · listed " + esc(w.date_added.slice(0, 10)) + " (date_added) · " + days(w.date_added) + " days on the shelf" : "") + "</span>";
+      else if (w.status === "active") html += "<span>tracked since</span><span>" + esc((w.first_historical_data || "?").slice(0, 10)) + "</span>";
+      else if (w.status === "unresolved") html += "<span>meaning</span><span>this id is in tokens[] but on no public CMC surface — not counted as shelf</span>";
+      html += "</div></div></div>";
+    });
+    if (res.wrappers.length) html += '<p class="verdict">' + esc(res.verdict) + "</p>";
+    var ev = res.evidence || {};
+    html += "<details><summary>evidence — the raw rows, endpoint, HTTP status, credit_count</summary>";
+    (res.calls || []).forEach(function (c) { html += '<p class="ev">' + esc(c.call) + " → HTTP " + esc(c.http) + " · " + (c.keyed ? "keyed · " + esc(c.credit_count) + " credit" : "keyless · 0 credits to any key") + (c.elapsed_ms != null ? " · " + esc(c.elapsed_ms) + " ms" : "") + (c.sha256 ? " · sha256 " + esc(c.sha256) : "") + (c.fetched_utc ? " · " + esc(c.fetched_utc) : "") + "</p>"; });
+    if (ev.tokens) html += '<p class="ev">tokens[] entries — /v5/real-world-assets/quotes/latest</p><pre>' + esc(JSON.stringify(ev.tokens, null, 1)) + "</pre>";
+    if (ev.map_rows) html += '<p class="ev">map rows — /public-api/v1/cryptocurrency/map</p><pre>' + esc(JSON.stringify(ev.map_rows, null, 1)) + "</pre>";
+    if (ev.info_rows) html += '<p class="ev">info rows — /public-api/v2/cryptocurrency/info</p><pre>' + esc(JSON.stringify(ev.info_rows, null, 1)) + "</pre>";
+    html += "</details>";
+    return html;
+  }
+
+  function joinWrappers(tokens, mapRows, infoRows, snapTokens) {
+    var byId = {}, info = {}, snap = {};
+    (mapRows || []).forEach(function (r) { byId[r.id] = r; });
+    Object.keys(infoRows || {}).forEach(function (k) { info[k] = infoRows[k]; });
+    (snapTokens || []).forEach(function (t) { snap[t.crypto_id] = t; });
+    return tokens.map(function (t) {
+      var w = { crypto_id: t.crypto_id, symbol: t.symbol, name: t.name, issuer_id: t.issuer_id, issuer_name: t.issuer_name, price: t.price, market_cap: t.market_cap, volume_24h: t.volume_24h };
+      var m = byId[t.crypto_id], i = info[String(t.crypto_id)], s = snap[t.crypto_id];
+      w.date_added = i ? i.date_added : (s ? s.date_added : null);
+      if (m) { w.status = m.status; w.status_source = "map"; w.platform = m.platform; w.first_historical_data = m.first_historical_data; return w; }
+      if (mapRows === null) { w.status = s ? s.status : "unresolved"; w.status_source = "snapshot"; w.platform = s ? s.platform : null; w.first_historical_data = s ? s.first_historical_data : null; return w; }
+      if (i && i.status === "active") { w.status = "active"; w.status_source = "info"; w.platform = i.platform; return w; }
+      if (i && i.status === "inactive") { var fine = s ? s.status : null; w.status = (fine === "untracked" || fine === "inactive") ? fine : "inactive"; w.status_source = (fine === "untracked" || fine === "inactive") ? "info+snapshot" : "info"; w.platform = i.platform || (s ? s.platform : null); return w; }
+      w.status = "unresolved"; w.status_source = "info"; w.platform = null; return w;
+    });
+  }
+
+  function getJSON(url) { return fetch(url, { headers: { Accept: "application/json" } }).then(function (r) { return r.json().then(function (j) { j.__http = r.status; return j; }); }); }
+
+  function ask(ticker) {
+    var sym = ticker.trim().toUpperCase(), card = $("tcard"), btn = $("go");
+    if (!sym) return;
+    btn.disabled = true; btn.textContent = "asking…";
+    card.innerHTML = '<p class="src">asking /api/roster?symbol=' + esc(sym) + " …</p>";
+    history.replaceState(null, "", "?t=" + encodeURIComponent(sym));
+    var res = { ticker: sym, underlyings: [], wrappers: [], calls: [], evidence: {}, roster: {}, status: {} };
+    getJSON("/api/roster?symbol=" + encodeURIComponent(sym)).then(function (r) {
+      res.roster = { source: r.source, as_of: r.as_of, credit_count: r.credit_count, fallback_reason: r.fallback_reason };
+      res.calls.push({ call: "/api/roster → " + (r.source === "live" ? "/v5/real-world-assets/quotes/latest?symbol=" + sym : "data/roster_snapshot.json"), http: r.upstream_http || r.__http, keyed: r.source === "live", credit_count: r.credit_count, fetched_utc: r.fetched_utc, sha256: r.sha256 });
+      var assets = r.assets || [];
+      res.underlyings = assets.map(function (a) { return { rwa_id: a.rwa_id, symbol: a.symbol, name: a.name, asset_type: a.asset_type, rwa_rank: a.rwa_rank, has_tokens: a.has_tokens }; });
+      var tokens = []; assets.forEach(function (a) { (a.tokens || []).forEach(function (t) { tokens.push(t); }); });
+      res.evidence.tokens = tokens;
+      var snapTokens = r.snapshot_tokens || [];
+      if (!assets.length) { res.verdict = "CoinMarketCap's RWA map has no underlying " + sym; return res; }
+      if (!tokens.length) { res.verdict = sym + " is in the RWA map with has_tokens: false — 0 wrappers listed"; return res; }
+      var symbols = tokens.map(function (t) { return t.symbol; }).filter(function (x) { return x && FILTERABLE.test(x); });
+      var ids = tokens.map(function (t) { return t.crypto_id; }).filter(function (x) { return x != null; });
+      card.innerHTML += '<p class="src">asking /api/status — keyless map for ' + esc(symbols.join(",")) + " and info for " + ids.length + " ids …</p>";
+      return getJSON("/api/status?symbols=" + encodeURIComponent(symbols.join(",")) + "&ids=" + encodeURIComponent(ids.join(","))).then(function (s) {
+        var mapRows = null, infoRows = {};
+        if (s.map) { res.calls.push({ call: "/api/status → " + s.map.url, http: s.map.http, keyed: false, credit_count: s.map.credit_count, elapsed_ms: s.map.elapsed_ms, fetched_utc: s.fetched_utc, sha256: s.map.sha256 }); if (s.map.http === 200 && s.map.raw) mapRows = s.map.raw.data || []; }
+        if (s.info) { res.calls.push({ call: "/api/status → " + s.info.url, http: s.info.http, keyed: false, credit_count: s.info.credit_count, elapsed_ms: s.info.elapsed_ms, fetched_utc: s.fetched_utc, sha256: s.info.sha256 }); if (s.info.http === 200 && s.info.raw) infoRows = s.info.raw.data || {}; }
+        if (mapRows === null && symbols.length) { res.status.fallback_reason = (s.map && s.map.error) || s.error || "no answer from the keyless map"; }
+        if (mapRows === null && !symbols.length) mapRows = [];
+        var wanted = {}; ids.forEach(function (i) { wanted[i] = true; });
+        res.evidence.map_rows = mapRows ? mapRows.filter(function (row) { return wanted[row.id]; }) : null;
+        res.evidence.info_rows = Object.keys(infoRows).length ? infoRows : null;
+        res.wrappers = joinWrappers(tokens, mapRows, infoRows, snapTokens);
+        res.wrappers.forEach(function (w) { if (w.status_source === "snapshot") w.fallback_reason = res.status.fallback_reason; });
+        var tracked = res.wrappers.filter(function (w) { return w.status === "active"; }).length;
+        res.verdict = tracked + " of " + res.wrappers.length + " wrapper(s) with a CMC-tracked market";
+        return res;
+      }, function (e) {
+        res.wrappers = joinWrappers(tokens, null, {}, snapTokens);
+        res.wrappers.forEach(function (w) { w.fallback_reason = "/api/status unreachable: " + e; });
+        var tracked = res.wrappers.filter(function (w) { return w.status === "active"; }).length;
+        res.verdict = tracked + " of " + res.wrappers.length + " wrapper(s) with a CMC-tracked market (snapshot)";
+        return res;
+      });
+    }).then(function (r) { card.innerHTML = renderCard(r); }, function (e) {
+      card.innerHTML = '<p class="verdict">The search needs this site\'s proxy (/api/roster), which did not answer: ' + esc(e) + '</p><p class="src">Ask the same question on your machine, live and keyless: <code>python3 -m shelfware ' + esc(sym) + "</code></p>";
+    }).then(function () { btn.disabled = false; btn.textContent = "Ask CMC"; });
+  }
+
+  $("f").addEventListener("submit", function (e) { e.preventDefault(); ask($("t").value); });
+  var q = new URLSearchParams(location.search).get("t");
+  if (q) { $("t").value = q.toUpperCase(); ask(q); }
+  else if (S.hero_run) {
+    // the committed run of the hero ticker (docs/proof/ms.json), so the answer is on screen
+    // before anything is typed; Ask CMC re-runs it live
+    $("tcard").innerHTML = '<p class="src">committed run <b class="mono">' + esc(S.hero_run.asked_utc) + '</b> of <code>python3 -m shelfware ' + esc(S.hero_run.ticker) + '</code>, no key — press <b>Ask CMC</b> to re-run it live now</p>' + renderCard(S.hero_run);
+  }
+
+  getJSON("/api/health").then(function (h) {
+    $("health").innerHTML = h.ok ? '<span class="status-ok">● proxy up</span> · roster key ' + (h.roster_key_configured ? "configured" : "not configured (snapshot roster)") + " · " + esc(h.snapshots) + " daily snapshot(s)" : '<span class="status-bad">● proxy not answering</span>';
+  }, function () { $("health").innerHTML = '<span class="status-bad">● no proxy on this host — the search falls back to the CLI</span>'; });
+})();
+</script>
+</body>
+</html>

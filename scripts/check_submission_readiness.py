@@ -48,8 +48,11 @@ PATTERNS = [
 ]
 
 # A line that is itself the definition of a pattern is not a violation.
+# ...and so is the wording guard itself: a line that NEGATES the overclaim is the R6 rule at work.
 SELF_REFERENTIAL = re.compile(
-    r"placeholder|readiness|scanner|check_submission|wording guard|never \"never traded\"|never say|not \"never traded\""
+    r"placeholder|readiness|scanner|check_submission|wording guard|never \"never traded\"|never say"
+    r"|not \"never traded\"|does not mean never traded|not (a claim|mean) .*never traded"
+    r"|'never traded' would be false"
 )
 
 

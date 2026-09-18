@@ -17,6 +17,7 @@ from shelfware.join import (
     resolve,
     scorecard,
     type_bars,
+    type_underlyings,
     wrappers_from,
     zero_tracked,
 )
@@ -250,3 +251,24 @@ def test_committed_scorecard_sums_to_the_wrapper_count(committed_census):
     assert sum(e["attached"] for e in committed_census["by_issuer"]) == c["wrappers"]
     assert sum(e["attached"] for e in committed_census["by_type"]) == c["wrappers"]
     assert c["active"] + c["untracked"] + c["inactive"] + c["unresolved"] == c["wrappers"]
+
+
+def test_headline_split_by_type_counts_underlyings_not_wrappers(rwa_rows, quote_assets, cmc_map):
+    """NVDA has three wrappers and counts once; MS and APH are the two all-shelf stocks."""
+    rows = {e["asset_type"]: e for e in type_underlyings(joined(rwa_rows, quote_assets, cmc_map))}
+    assert rows["stock"]["underlyings"] == 5 and rows["stock"]["zero_tracked"] == 2
+    assert rows["commodity"] == {
+        "asset_type": "commodity",
+        "underlyings": 1,
+        "zero_tracked": 0,
+        "share": 0.0,
+    }
+
+
+def test_headline_split_by_type_sums_to_the_headline_on_the_committed_census(committed_census):
+    rows = type_underlyings(committed_census["wrappers"])
+    assert (
+        sum(e["zero_tracked"] for e in rows)
+        == committed_census["counts"]["underlyings_zero_tracked"]
+    )
+    assert sum(e["underlyings"] for e in rows) == committed_census["counts"]["has_tokens"]
