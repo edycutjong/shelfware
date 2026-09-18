@@ -1,6 +1,6 @@
 {
   "ticker": "MS",
-  "asked_utc": "2026-09-18T22:17:00Z",
+  "asked_utc": "2026-09-18T22:43:39Z",
   "roster": {
     "source": "snapshot",
     "as_of": "2026-09-18T22:16:17Z",
@@ -15,17 +15,18 @@
       "keyed": false,
       "http": 200,
       "bytes": 441,
-      "sha256": "e06f2e194d322d57",
+      "sha256": "d7e1ecdef293e6c8",
       "credit_count": 1,
       "rows": 1,
-      "elapsed_ms": 293,
-      "utc": "2026-09-18T22:17:00Z",
+      "elapsed_ms": 491,
+      "utc": "2026-09-18T22:43:39Z",
       "error": null,
       "throttled": false,
       "attempts": 1
     },
     "dropped_symbols": [],
     "fallback_reason": null,
+    "base": "keyless",
     "info_calls": [
       {
         "call": "cmc/info batch 1 (1 ids)",
@@ -33,11 +34,11 @@
         "keyed": false,
         "http": 200,
         "bytes": 925,
-        "sha256": "0466fd1bdebe23fa",
+        "sha256": "1559b2c185ccabe8",
         "credit_count": 1,
         "rows": 1,
-        "elapsed_ms": 291,
-        "utc": "2026-09-18T22:17:00Z",
+        "elapsed_ms": 762,
+        "utc": "2026-09-18T22:43:39Z",
         "error": null,
         "throttled": false,
         "attempts": 1
