@@ -47,6 +47,13 @@ exit: 0 ok · 1 failure · 75 keyless pool exhausted (retry, or export a free ke
 """
 
 
+def _rel(p):
+    try:
+        return str(Path(p).resolve().relative_to(ROOT))
+    except ValueError:
+        return str(p)
+
+
 def _fmt(x, dp=0):
     return "null" if x is None else f"{x:,.{dp}f}"
 
@@ -78,7 +85,8 @@ def compact(doc):
 # ── TICKER ─────────────────────────────────────────────────────────────────────
 
 
-def cmd_ticker(ticker, json_out=None, out=sys.stdout):
+def cmd_ticker(ticker, json_out=None, out=None):
+    out = out or sys.stdout
     client = Client(api_key=api_key())
     res = lookup(ticker, client, _load_roster_snapshot())
     p = lambda s="": print(s, file=out)  # noqa: E731
@@ -163,8 +171,9 @@ def cmd_ticker(ticker, json_out=None, out=sys.stdout):
 # ── census ─────────────────────────────────────────────────────────────────────
 
 
-def run_census(client, out=sys.stdout, now=None):
+def run_census(client, out=None, now=None):
     """A + B + C + D live, then the join. Returns the census document."""
+    out = out or sys.stdout
     p = lambda s="": print(s, file=out)  # noqa: E731
     t0 = time.time()
     before = client.key_info()
@@ -221,7 +230,8 @@ def run_census(client, out=sys.stdout, now=None):
     return doc
 
 
-def print_census(doc, out=sys.stdout):
+def print_census(doc, out=None):
+    out = out or sys.stdout
     p = lambda s="": print(s, file=out)  # noqa: E731
     c = doc["counts"]
     p("\njoin")
@@ -262,13 +272,14 @@ def print_census(doc, out=sys.stdout):
 
 
 def write_census(
-    doc, census_path=DATA / "census.json", receipt_path=PROOF / "live_run.json", out=sys.stdout
+    doc, census_path=DATA / "census.json", receipt_path=PROOF / "live_run.json", out=None
 ):
+    out = out or sys.stdout
     p = lambda s="": print(s, file=out)  # noqa: E731
     rwa_rows = doc.pop("_rwa_rows", [])
     census_path.parent.mkdir(parents=True, exist_ok=True)
     census_path.write_text(json.dumps(doc, indent=1))
-    p(f"wrote {census_path.relative_to(ROOT)}")
+    p(f"wrote {_rel(census_path)}")
     roster = roster_snapshot_from(doc, rwa_rows)
     (DATA / "roster_snapshot.json").write_text(json.dumps(roster, separators=(",", ":")))
     p(
@@ -294,16 +305,17 @@ def write_census(
             indent=1,
         )
     )
-    p(f"wrote {receipt_path.relative_to(ROOT)}")
+    p(f"wrote {_rel(receipt_path)}")
     SNAPSHOTS.mkdir(parents=True, exist_ok=True)
     day = doc["generated_utc"][:10]
     snap = SNAPSHOTS / f"{day}.json"
     snap.write_text(json.dumps(compact(doc), indent=1))
-    p(f"wrote {snap.relative_to(ROOT)}")
+    p(f"wrote {_rel(snap)}")
     write_delta(out)
 
 
-def write_delta(out=sys.stdout):
+def write_delta(out=None):
+    out = out or sys.stdout
     files = sorted(SNAPSHOTS.glob("*.json"))
     if len(files) < 2:
         print(f"delta: {len(files)} snapshot(s) — the delta panel needs two", file=out)
@@ -320,7 +332,8 @@ def write_delta(out=sys.stdout):
     return d
 
 
-def cmd_census(argv, out=sys.stdout):
+def cmd_census(argv, out=None):
+    out = out or sys.stdout
     ap = argparse.ArgumentParser(prog="shelfware census")
     ap.add_argument("--out", default=str(DATA / "census.json"))
     ap.add_argument("--receipt", default=str(PROOF / "live_run.json"))
@@ -352,7 +365,8 @@ def cmd_census(argv, out=sys.stdout):
 # ── verify ─────────────────────────────────────────────────────────────────────
 
 
-def cmd_verify(argv, out=sys.stdout):
+def cmd_verify(argv, out=None):
+    out = out or sys.stdout
     ap = argparse.ArgumentParser(prog="shelfware verify")
     ap.add_argument("--live", action="store_true", help="re-fetch 10 statuses keyless and compare")
     ap.add_argument("--census", default=str(DATA / "census.json"))
@@ -389,7 +403,8 @@ def cmd_verify(argv, out=sys.stdout):
 # ── delta ──────────────────────────────────────────────────────────────────────
 
 
-def cmd_delta(argv, out=sys.stdout):
+def cmd_delta(argv, out=None):
+    out = out or sys.stdout
     files = sorted(SNAPSHOTS.glob("*.json"))
     if len(files) < 2:
         print(f"delta needs two snapshots in data/snapshots/, found {len(files)}", file=out)

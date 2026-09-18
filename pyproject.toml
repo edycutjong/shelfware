@@ -33,3 +33,4 @@ select = ["E", "F", "W", "I", "UP", "B", "SIM"]
 testpaths = ["tests"]
 addopts = "-q"
 markers = ["live: hits the real CoinMarketCap API"]
+asyncio_default_fixture_loop_scope = "function"

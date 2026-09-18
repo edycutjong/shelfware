@@ -119,7 +119,9 @@ def scorecard(wrappers, issuers):
             k,
             {
                 "issuer_id": w.get("issuer_id"),
-                "issuer_name": w.get("issuer_name") or names.get(k) or NO_ISSUER,
+                "issuer_name": (w.get("issuer_name") or names.get(k) or NO_ISSUER)
+                if w.get("issuer_id")
+                else NO_ISSUER,
                 "declared": declared.get(k),
                 "attached": 0,
                 "tracked": 0,
