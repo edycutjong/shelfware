@@ -25,7 +25,8 @@ def test_an_overclaim_in_a_judge_facing_file_is_caught(tmp_path, monkeypatch):
 
 def test_a_key_shaped_string_in_a_tracked_file_is_caught(tmp_path, monkeypatch):
     subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
-    (tmp_path / "notes.txt").write_text("X-CMC_PRO_API_KEY: abcdefghijklmnopqrstuvwxyz1234\n")
+    # assembled at runtime so the gate does not (rightly) flag this very file
+    (tmp_path / "notes.txt").write_text("X-CMC_PRO_API_" + "KEY: " + "abcdefghij" * 3 + "\n")
     subprocess.run(["git", "add", "."], cwd=tmp_path, check=True)
     monkeypatch.setattr(gate, "ROOT", tmp_path)
     _, findings = gate.scan()
