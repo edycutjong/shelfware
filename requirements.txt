@@ -1,0 +1,2 @@
+# Runtime: none. The shelfware/ package is stdlib-only by design —
+# a judge runs `python3 -m shelfware MS` with a bare python3 and no install step.

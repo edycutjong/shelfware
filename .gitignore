@@ -1,0 +1,42 @@
+# secrets — credentials live in ~/.config/, never in this tree
+.env
+.env.*
+# the template MUST be committed — .env.* would otherwise swallow it
+!.env.example
+*.key
+credentials.json
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.hypothesis/
+.ruff_cache/
+
+# node / vercel
+node_modules/
+.vercel/
+.next/
+
+# os / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# coverage artifacts
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# kitchen guard — specs/, submission/ and assets/ live one level up and must never
+# enter this repo. /publish copies selected artifacts into docs/, never into these.
+/assets/
+/specs/
+/submission/
+_ideas/
+_specs/
+graphify-out/
