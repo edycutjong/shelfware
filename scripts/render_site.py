@@ -311,11 +311,7 @@ def main():
     html, health = render()
     targets = {SITE / "index.html": html, HEALTH_OUT: health}
     if check:
-        stale = [
-            str(p.relative_to(ROOT))
-            for p, want in targets.items()
-            if not p.exists() or p.read_text() != want
-        ]
+        stale = [p.name for p, want in targets.items() if not p.exists() or p.read_text() != want]
         if stale:
             print(
                 f"drift: {', '.join(stale)} is not what the census renders — run: python3 scripts/render_site.py"
