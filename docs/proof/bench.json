@@ -1,36 +1,39 @@
 {
   "credits_used": 0,
-  "errors": [],
+  "errors": [
+    "PLD: HTTP 429 error_code 1011: You've hit an IP rate limit. \u2014 transient status on eve",
+    "PLD: HTTP 429 error_code 1011: You've hit an IP rate limit. \u2014 transient status on eve"
+  ],
   "iterations": 10,
   "join_seed": {
-    "max": 5.286,
+    "max": 2.725,
     "n": 200,
-    "p50": 1.113,
-    "p95": 2.183,
+    "p50": 1.173,
+    "p95": 1.483,
     "unit": "ms",
-    "wrappers": 236
+    "wrappers": 243
   },
   "lookup": {
-    "max": 1039.519,
-    "n": 10,
-    "p50": 566.217,
-    "p95": 1039.519,
+    "max": 603.133,
+    "n": 9,
+    "p50": 551.578,
+    "p95": 603.133,
     "unit": "ms"
   },
   "mode": "live",
   "recount_census": {
-    "max": 3.88,
+    "max": 3.803,
     "n": 200,
-    "p50": 1.902,
-    "p95": 2.163,
+    "p50": 1.936,
+    "p95": 2.223,
     "unit": "ms",
     "wrappers": 1435
   },
   "status_leg": {
-    "max": 786.029,
-    "n": 10,
-    "p50": 283.057,
-    "p95": 786.029,
+    "max": 545.914,
+    "n": 9,
+    "p50": 282.382,
+    "p95": 545.914,
     "unit": "ms"
   },
   "tickers": [
@@ -45,5 +48,5 @@
     "PLD",
     "MSFT"
   ],
-  "utc": "2026-09-18T22:25:03Z"
+  "utc": "2026-09-18T22:55:13Z"
 }

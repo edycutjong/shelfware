@@ -47,7 +47,7 @@ raw map row and the raw info row.
 | **The number** | **476 of 791** tokenised underlyings with no wrapper that has a CMC-tracked market (60%); stocks alone 437 of 689 (63%); 673 of 1,435 wrappers untracked |
 | Issuers | Dinari 27 / 27 on the shelf · Backed 632 / 772 (82%, $669M live in the rest) · Robinhood 8 / 106 · Ondo 4 / 214 · bStocks 0 / 77 |
 | Tests | **99** (85 offline in ~1 s, 9 for the proxy functions, 5 live against the real contract), 9 named for the defect they pin, one property over 500 generated ledgers |
-| Latency | ticker question p50 **566 ms** keyless (p95 1,040 ms); the join itself 1.1 ms |
+| Latency | ticker question p50 **552 ms** keyless (p95 603 ms); the join itself 1.2 ms |
 | Raw receipts | [`docs/proof/live_run.json`](docs/proof/live_run.json) · [`ms.json`](docs/proof/ms.json) · [`bench.json`](docs/proof/bench.json) · [`spike.json`](docs/proof/spike.json) |
 
 ## Reproduce

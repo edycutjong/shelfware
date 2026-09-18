@@ -148,10 +148,13 @@ They are counted nowhere in our census and shown in their own bucket. **Either d
 
 **Observed 2026-09-18 22:37Z · first production deploy on Vercel (iad1) · severity: high for any hosted keyless integration**
 
-From our machine every keyless call in this project succeeds. From the serverless host's shared
-egress IP the very first call returned `429 error_code 1022 "You've reached the limit for
-anonymous access"`, on both the map and the info endpoints, and stayed there; a later invocation
-from another instance succeeded. No `Retry-After`, no `X-RateLimit-*` header on either the
+From our machine every keyless call in this project succeeds — until about twenty of them land
+inside fifteen seconds, when the tier answers `429 error_code 1011 "You've hit an IP rate
+limit."` (the benchmark on 2026-09-18T22:55Z records one). From the serverless host's shared
+egress IP the very first call returned a different code, `429 error_code 1022 "You've reached
+the limit for anonymous access"`, on both the map and the info endpoints, and stayed there; a
+later invocation from another instance succeeded. So there are two limits — a per-IP burst and
+a per-IP exhaustion — with two codes and no documentation of either. No `Retry-After`, no `X-RateLimit-*` header on either the
 refusal or a success, and every keyless 200 says `credit_count: 1` — a charge against an account
 that does not exist. We now repeat a refused call on the keyed base and label the row. **Publish
 the anonymous quota (per minute, per day, per IP), send `Retry-After`, and report `credit_count:

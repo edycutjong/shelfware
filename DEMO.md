@@ -66,7 +66,7 @@ wrote docs/proof/ms.json
 | **State leg** | `https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active,inactive,untracked&symbol=wMSx&aux=…` → HTTP 200 · **0 credits** |
 | **Listing date** | `/public-api/v2/cryptocurrency/info?id=41513&aux=status,date_added,platform` → HTTP 200 · 0 credits |
 | **Roster leg** | committed snapshot of the census below, labelled with its date (live with a key, 1 credit) |
-| **Wall clock** | 0.57 s median for the whole question over 10 tickers, keyless ([`bench.json`](docs/proof/bench.json)) |
+| **Wall clock** | 0.55 s median for the whole question over 9 tickers, keyless ([`bench.json`](docs/proof/bench.json)) |
 | **Raw receipt** | [`docs/proof/ms.json`](docs/proof/ms.json) — the `tokens[]` entry, the map row, the info row, both call metas |
 
 The two facts on that card come from the same API and disagree about what "tokenised" means:
@@ -168,14 +168,20 @@ make bench-replay    # the join alone, over the committed rows — no network, C
 The state leg, the whole question and the arithmetic are timed **separately**, because averaging
 them would hide the only interesting fact: the product's own work is a millisecond and everything
 a judge waits for is CoinMarketCap's network. Nearest-rank percentiles — every p95 is a real
-observation. Live run 2026-09-18T22:25:03Z, keyless, 0 credits ([`bench.json`](docs/proof/bench.json)):
+observation. Live run 2026-09-18T22:55:13Z, keyless, 0 credits ([`bench.json`](docs/proof/bench.json)):
 
 | Measurement | n | p50 | p95 |
 |---|---|---|---|
-| State leg — one keyless `map?symbol=` call | 10 | **283 ms** | 786 ms |
-| `shelfware TICKER`, no key — snapshot roster + live map + live info | 10 | **566 ms** | 1,040 ms |
-| Join + count, 236 real wrappers (seed set) | 200 | **1.11 ms** | 2.18 ms |
-| Recount, 1,435 committed wrappers | 200 | **1.90 ms** | 2.16 ms |
+| State leg — one keyless `map?symbol=` call | 9 | **282 ms** | 546 ms |
+| `shelfware TICKER`, no key — snapshot roster + live map + live info | 9 | **552 ms** | 603 ms |
+| Join + count, 243 real wrappers (seed set) | 200 | **1.17 ms** | 1.48 ms |
+| Recount, 1,435 committed wrappers | 200 | **1.94 ms** | 2.22 ms |
+
+That n=9 is not a typo: **the tenth ticker (PLD) hit the anonymous tier's per-IP burst limit —
+`429 error_code 1011 "You've hit an IP rate limit."` — after ~20 keyless calls in 15 seconds**, and
+the bench reports it under `errors` rather than smoothing it away. That is the honest cost of a
+keyless demo run in a tight loop; a judge typing tickers by hand never approaches it, and the
+CLI backs off (2, 4, 8, 16 s) when it does.
 
 ## Tests
 

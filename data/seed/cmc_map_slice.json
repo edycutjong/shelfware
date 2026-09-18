@@ -1,12 +1,12 @@
 {
  "_note": "A RECORDING with provenance, for offline tests and bench --replay. The judged path never reads it. Ids in tokens[] that are absent here are the unresolved cases.",
- "captured_utc": "2026-09-18T22:24:24Z",
+ "captured_utc": "2026-09-18T22:54:50Z",
  "endpoint": "https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map",
- "params": "listing_status=active%2Cinactive%2Cuntracked&symbol=wMSx%2CNVDAX%2CNVDAon%2CNVDA%2CNVDAB%2CrNVDA%2CWNVDAX%2CPAXG%2CXAUt%2CXAUM%2CCGO%2CVNXAU%2CXAUT0%2CXAU%2CSPACEX%2CSPCX%2CtSpaceX%2CSPCXB%2CSPCXx%2CSPCXon%2CpreSPCX%2CrSPCX%2CwSPCXx%2CwGILDx%2CwPLDx%2CwBKNGx%2CVVV%2CAAPLX%2CAAPLon%2CAAPL%2CrAAPL%2CAAPLB%2CWAAPLX%2CTSLAX%2CTSLAon%2CTSLA%2CTSLAB%2CrTSLA%2CWTSLAX%2CHOODX%2CHOODon%2CHOOD%2CrHOOD%2CHOODB%2CWHOODX%2CKAG%2CXAGX%2CGRAMS%2CXAG%2CwAPHx%2CwWELLx%2CwUNPx%2CGOOGLX%2CGOOGLon%2CGOOGL%2CrGOOGL%2CGOOGLB%2CWGOOGLX%2CGOOGon%2CMSFTX%2CMSFTon%2CMSFT%2CMSFTB%2CrMSFT%2CWMSFTX%2CSPYX%2CSPYon%2CSPY%2CrSPY%2CSPYB%2CwSPYx%2CQQQX%2CQQQon%2CQQQ%2CQQQB%2CrQQQ%2CwQQQx%2CAMZNX%2CAMZNon%2CAMZN%2CrAMZN%2CAMZNB%2CWAMZNX%2CMETAX%2CMETAon%2CMETA%2CMETAB%2CrMETA%2CWMETAX%2CMUon%2CMU%2CMUx%2CMUB%2CrMU%2CwMUx%2CSNDK%2CSNDKon%2CSNDKX%2CSNDKB%2CrSNDK%2CwSNDKx%2CCOINX%2CCOINon%2CCOIN%2CrCOIN%2CCOINB%2CWCOINX%2CAVGOX%2CAVGOon%2CrAVGO%2CAVGO%2CAVGOB%2CWAVGOX%2CINTCon%2CINTCX%2CINTC%2CINTCB%2CrINTC%2CWINTCX%2CAMATon%2CAMAT%2CAMATx%2CrAMAT%2CAMATB%2CwAMATx%2CORCLon%2CORCLX%2CORCL%2CrORCL%2CORCLB%2CWORCLX%2CAMDon%2CAMD%2CAMDB%2CrAMD%2CwAMDx%2CASMLon%2CASML%2CASMLx%2CrASML%2CASMLB%2CwASMLx%2CNFLXX%2CNFLXon%2CNFLX%2CNFLXB%2CWNFLXX%2CPLTRon%2CPLTRX%2CPLTR%2CPLTRB%2CrPLTR%2CWPLTRX%2CGLDX%2CGLDon%2CGLD%2CwGLDx%2CQCOMon%2CQCOM%2CrQCOM%2CQCOMB%2CwQCOMx%2CQCOMx%2CMSTRX%2CMSTRon%2CMSTR%2CMSTRB%2CrMSTR%2CWMSTRX%2CCRCLX%2CCRCLon%2CCRCL%2CCRCLB%2CrCRCL%2CwCRCLx%2CGMEX%2CGMEon%2CGME%2CGMEB%2CWGMEX&aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform",
+ "params": "listing_status=active%2Cinactive%2Cuntracked&symbol=wMSx%2CNVDAX%2CNVDAon%2CNVDA%2CNVDAB%2CrNVDA%2CWNVDAX%2CPAXG%2CXAUt%2CXAUM%2CCGO%2CVNXAU%2CXAUT0%2CXAU%2CSPACEX%2CSPCX%2CtSpaceX%2CSPCXB%2CSPCXx%2CSPCXon%2CpreSPCX%2CrSPCX%2CwSPCXx%2CwGILDx%2CwPLDx%2CwBKNGx%2CVVV%2CAAPLX%2CAAPLon%2CAAPL%2CrAAPL%2CAAPLB%2CWAAPLX%2CTSLAX%2CTSLAon%2CTSLA%2CTSLAB%2CrTSLA%2CWTSLAX%2CHOODX%2CHOODon%2CHOOD%2CrHOOD%2CHOODB%2CWHOODX%2CKAG%2CXAGX%2CGRAMS%2CXAG%2CwAPHx%2CwWELLx%2CwUNPx%2CGOOGLX%2CGOOGLon%2CGOOGL%2CrGOOGL%2CGOOGLB%2CWGOOGLX%2CGOOGon%2CMSFTX%2CMSFTon%2CMSFT%2CMSFTB%2CrMSFT%2CWMSFTX%2CQQQX%2CQQQon%2CQQQ%2CQQQB%2CrQQQ%2CwQQQx%2CSPYX%2CSPYon%2CSPY%2CrSPY%2CSPYB%2CwSPYx%2CAMZNX%2CAMZNon%2CAMZN%2CrAMZN%2CAMZNB%2CWAMZNX%2CCOINX%2CCOINon%2CCOIN%2CrCOIN%2CCOINB%2CWCOINX%2CMETAX%2CMETAon%2CMETA%2CMETAB%2CrMETA%2CWMETAX%2CMUon%2CMU%2CMUx%2CMUB%2CrMU%2CwMUx%2CSNDK%2CSNDKon%2CSNDKX%2CSNDKB%2CrSNDK%2CwSNDKx%2CAMATon%2CAMAT%2CAMATx%2CrAMAT%2CAMATB%2CwAMATx%2CAMDon%2CAMD%2CAMDB%2CrAMD%2CwAMDx%2CASMLon%2CASML%2CASMLx%2CrASML%2CASMLB%2CwASMLx%2CAVGOX%2CAVGOon%2CrAVGO%2CAVGO%2CAVGOB%2CWAVGOX%2CCRCLX%2CCRCLon%2CCRCL%2CCRCLB%2CrCRCL%2CwCRCLx%2CEWY%2CEWYon%2CEWYx%2CEWYB%2CrEWY%2CwEWYx%2CGLDX%2CGLDon%2CGLD%2CwGLDx%2CGMEX%2CGMEon%2CGME%2CGMEB%2CWGMEX%2CINTCon%2CINTCX%2CINTC%2CINTCB%2CrINTC%2CWINTCX%2CIRENon%2CIREN%2CIRENx%2CrIREN%2CIRENB%2CwIRENx%2CMSTRX%2CMSTRon%2CMSTR%2CMSTRB%2CrMSTR%2CWMSTRX%2CNFLXX%2CNFLXon%2CNFLX%2CNFLXB%2CWNFLXX%2CORCLon%2CORCLX%2CORCL%2CrORCL%2CORCLB%2CWORCLX%2CPLTRon%2CPLTRX%2CPLTR%2CPLTRB%2CrPLTR%2CWPLTRX&aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform",
  "http": 200,
  "keyed": false,
  "credit_count": 1,
- "sha256": "2e78fbaa00665c50",
+ "sha256": "fd025032d4d3df4f",
  "dropped_symbols": [
   "NVDA.D",
   "IBIT.D",
@@ -17,13 +17,13 @@
   "GOOGL.D",
   "MSFT.D",
   "SPY.D",
-  "META.D",
   "COIN.D",
-  "AVGO.D",
+  "META.D",
   "AMD.D",
-  "NFLX.D",
+  "AVGO.D",
   "GLD.D",
-  "GME.D"
+  "GME.D",
+  "NFLX.D"
  ],
  "rows": [
   {
@@ -46,10 +46,10 @@
    "name": "NVIDIA tokenized stock (xStock)",
    "symbol": "NVDAX",
    "slug": "nvidia-tokenized-stock-xstock",
-   "rank": 426,
+   "rank": 427,
    "status": "active",
    "first_historical_data": "2025-06-28T20:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -66,7 +66,7 @@
    "rank": 454,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -83,7 +83,7 @@
    "rank": 667,
    "status": "active",
    "first_historical_data": "2026-07-12T15:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -97,10 +97,10 @@
    "name": "NVIDIA (Derivatives)",
    "symbol": "NVDA",
    "slug": "nvidia-derivatives",
-   "rank": 4139,
+   "rank": 4142,
    "status": "active",
    "first_historical_data": "2025-12-16T05:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -108,10 +108,10 @@
    "name": "NVIDIA Tokenized bStocks",
    "symbol": "NVDAB",
    "slug": "nvidia-tokenized-bstocks",
-   "rank": 520,
+   "rank": 519,
    "status": "active",
    "first_historical_data": "2026-06-11T18:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -128,7 +128,7 @@
    "rank": 1251,
    "status": "active",
    "first_historical_data": "2026-07-02T04:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -142,10 +142,10 @@
    "name": "Wrapped NVIDIA Tokenized stock (xStock)",
    "symbol": "WNVDAX",
    "slug": "wrapped-nvidia-tokenized-stock-xstock",
-   "rank": 2211,
+   "rank": 2212,
    "status": "active",
    "first_historical_data": "2026-08-16T07:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -162,7 +162,7 @@
    "rank": 44,
    "status": "active",
    "first_historical_data": "2019-09-26T02:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -179,7 +179,7 @@
    "rank": 35,
    "status": "active",
    "first_historical_data": "2020-02-07T20:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -196,7 +196,7 @@
    "rank": 387,
    "status": "active",
    "first_historical_data": "2024-09-16T16:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -210,10 +210,10 @@
    "name": "Comtech Gold",
    "symbol": "CGO",
    "slug": "comtech-gold",
-   "rank": 691,
+   "rank": 690,
    "status": "active",
    "first_historical_data": "2022-05-23T16:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 163,
     "name": "XDC Network",
@@ -230,7 +230,7 @@
    "rank": 1182,
    "status": "active",
    "first_historical_data": "2022-08-19T15:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -244,10 +244,10 @@
    "name": "Tether Gold Tokens",
    "symbol": "XAUT0",
    "slug": "tether-gold-tokens",
-   "rank": 723,
+   "rank": 724,
    "status": "active",
    "first_historical_data": "2025-06-12T14:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 248,
     "name": "HyperEVM",
@@ -261,10 +261,10 @@
    "name": "Gold (Derivatives)",
    "symbol": "XAU",
    "slug": "gold-derivatives",
-   "rank": 7579,
+   "rank": 7580,
    "status": "active",
    "first_historical_data": "2026-01-12T06:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -272,10 +272,10 @@
    "name": "SpaceX tokenized stock (PreStocks)",
    "symbol": "SPACEX",
    "slug": "spacex-tokenized-stock-prestocks",
-   "rank": 1223,
+   "rank": 1224,
    "status": "active",
    "first_historical_data": "2025-08-08T08:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -289,10 +289,10 @@
    "name": "SpaceX tokenized stock (Backpack)",
    "symbol": "SPCX",
    "slug": "spacex-tokenized-stock-backpack",
-   "rank": 1144,
+   "rank": 1140,
    "status": "active",
    "first_historical_data": "2026-06-12T15:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -306,10 +306,10 @@
    "name": "SpaceX Tokenized Stock (Robinhood)",
    "symbol": "SPCX",
    "slug": "spacex-tokenized-stock-robinhood",
-   "rank": 4218,
+   "rank": 4219,
    "status": "active",
    "first_historical_data": "2026-08-31T09:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -323,10 +323,10 @@
    "name": "SpaceX (Derivatives)",
    "symbol": "SPCX",
    "slug": "spacex-derivatives",
-   "rank": 7626,
+   "rank": 7624,
    "status": "active",
    "first_historical_data": "2026-01-30T05:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -334,10 +334,10 @@
    "name": "T-SpaceX tokenized stock (Tessera)",
    "symbol": "tSpaceX",
    "slug": "t-spacex-tokenized-stock-tessera",
-   "rank": 2144,
+   "rank": 2145,
    "status": "active",
    "first_historical_data": "2026-02-12T08:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -354,7 +354,7 @@
    "rank": 308,
    "status": "active",
    "first_historical_data": "2026-06-12T17:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -371,7 +371,7 @@
    "rank": 432,
    "status": "active",
    "first_historical_data": "2026-06-12T04:30:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -388,7 +388,7 @@
    "rank": 926,
    "status": "active",
    "first_historical_data": "2026-06-12T16:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -402,10 +402,10 @@
    "name": "SpaceX \nPre-IPO stock (Republic)",
    "symbol": "preSPCX",
    "slug": "spacex-pre-ipo-stock-republic",
-   "rank": 300,
+   "rank": 301,
    "status": "active",
    "first_historical_data": "2026-06-30T06:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -419,10 +419,10 @@
    "name": "SpaceX Tokenized Stock (Reality)",
    "symbol": "rSPCX",
    "slug": "spacex-tokenized-stock-reality",
-   "rank": 939,
+   "rank": 938,
    "status": "active",
    "first_historical_data": "2026-07-02T05:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -436,10 +436,10 @@
    "name": "Wrapped SpaceX Tokenized ETF (xStock)",
    "symbol": "wSPCXx",
    "slug": "wrapped-spacex-tokenized-etf-xstock",
-   "rank": 4063,
+   "rank": 4062,
    "status": "active",
    "first_historical_data": "2026-07-28T19:30:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -507,10 +507,10 @@
    "name": "Apple tokenized stock (xStock)",
    "symbol": "AAPLX",
    "slug": "apple-tokenized-stock-xstock",
-   "rank": 826,
+   "rank": 825,
    "status": "active",
    "first_historical_data": "2025-06-27T15:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -524,10 +524,10 @@
    "name": "Apple Tokenized Stock (Ondo)",
    "symbol": "AAPLon",
    "slug": "apple-tokenized-stock-ondo",
-   "rank": 982,
+   "rank": 983,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -544,7 +544,7 @@
    "rank": 1213,
    "status": "active",
    "first_historical_data": "2026-07-16T02:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -558,10 +558,10 @@
    "name": "Apple Inc (Derivatives)",
    "symbol": "AAPL",
    "slug": "apple-inc-derivatives",
-   "rank": 7619,
+   "rank": 7617,
    "status": "active",
    "first_historical_data": "2026-01-30T05:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -569,10 +569,10 @@
    "name": "Apple Tokenized Stock (Hyperliquid)",
    "symbol": "AAPL",
    "slug": "apple-tokenized-stock-hyperliquid",
-   "rank": 7658,
+   "rank": 7654,
    "status": "active",
    "first_historical_data": "2026-02-25T11:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 248,
     "name": "HyperEVM",
@@ -586,10 +586,10 @@
    "name": "Apple Tokenized Stock (Reality)",
    "symbol": "rAAPL",
    "slug": "apple-tokenized-stock-reality",
-   "rank": 2053,
+   "rank": 2051,
    "status": "active",
    "first_historical_data": "2026-07-02T03:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -603,10 +603,10 @@
    "name": "Apple Tokenized bStocks",
    "symbol": "AAPLB",
    "slug": "apple-tokenized-bstocks",
-   "rank": 1136,
+   "rank": 1134,
    "status": "active",
    "first_historical_data": "2026-07-29T12:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -623,7 +623,7 @@
    "rank": 2422,
    "status": "active",
    "first_historical_data": "2026-08-16T07:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -640,7 +640,7 @@
    "rank": 309,
    "status": "active",
    "first_historical_data": "2025-06-30T17:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -654,10 +654,10 @@
    "name": "Tesla Tokenized Stock (Ondo)",
    "symbol": "TSLAon",
    "slug": "tesla-tokenized-stock-ondo",
-   "rank": 745,
+   "rank": 747,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -671,10 +671,10 @@
    "name": "Tesla Tokenized Stock (Robinhood)",
    "symbol": "TSLA",
    "slug": "tesla-tokenized-stock-robinhood",
-   "rank": 1234,
+   "rank": 1235,
    "status": "active",
    "first_historical_data": "2026-07-16T02:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -691,7 +691,7 @@
    "rank": 3919,
    "status": "active",
    "first_historical_data": "2026-02-25T11:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 248,
     "name": "HyperEVM",
@@ -705,10 +705,10 @@
    "name": "Tesla (Derivatives)",
    "symbol": "TSLA",
    "slug": "tesla-derivatives",
-   "rank": 7439,
+   "rank": 7438,
    "status": "active",
    "first_historical_data": "2025-12-16T05:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -719,7 +719,7 @@
    "rank": 676,
    "status": "active",
    "first_historical_data": "2026-06-11T18:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -736,7 +736,7 @@
    "rank": 1338,
    "status": "active",
    "first_historical_data": "2026-07-02T04:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -753,7 +753,7 @@
    "rank": 2597,
    "status": "active",
    "first_historical_data": "2026-08-16T07:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -770,7 +770,7 @@
    "rank": 836,
    "status": "active",
    "first_historical_data": "2025-07-03T16:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -784,10 +784,10 @@
    "name": "Robinhood Markets Tokenized Stock (Ondo)",
    "symbol": "HOODon",
    "slug": "robinhood-markets-tokenized-stock-ondo",
-   "rank": 1046,
+   "rank": 1045,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -801,10 +801,10 @@
    "name": "Robinhood Markets (Derivatives)",
    "symbol": "HOOD",
    "slug": "robinhood-markets-derivatives",
-   "rank": 4100,
+   "rank": 4098,
    "status": "active",
    "first_historical_data": "2026-01-29T05:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -812,10 +812,10 @@
    "name": "Robinhood Tokenized Stock (Hyperliquid)",
    "symbol": "HOOD",
    "slug": "robinhood-tokenized-stock-hyperliquid",
-   "rank": 4985,
+   "rank": 4982,
    "status": "active",
    "first_historical_data": "2026-03-02T02:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 236,
     "name": "Hyperliquid",
@@ -829,10 +829,10 @@
    "name": "Robinhood Tokenized Stock (Reality)",
    "symbol": "rHOOD",
    "slug": "robinhood-tokenized-stock-reality",
-   "rank": 1594,
+   "rank": 1595,
    "status": "active",
    "first_historical_data": "2026-07-02T04:30:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -849,7 +849,7 @@
    "rank": 1169,
    "status": "active",
    "first_historical_data": "2026-07-15T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -863,10 +863,10 @@
    "name": "Wrapped Robinhood Tokenized stock (xStock)",
    "symbol": "WHOODX",
    "slug": "wrapped-robinhood-tokenized-stock-xstock",
-   "rank": 2693,
+   "rank": 2692,
    "status": "active",
    "first_historical_data": "2026-08-17T00:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -883,7 +883,7 @@
    "rank": 4229,
    "status": "active",
    "first_historical_data": "2023-04-18T14:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -891,10 +891,10 @@
    "name": "Silver Token",
    "symbol": "XAGX",
    "slug": "silver-token-xagx",
-   "rank": 6864,
+   "rank": 6872,
    "status": "active",
    "first_historical_data": "2024-07-10T17:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 28,
     "name": "Avalanche C-Chain",
@@ -908,10 +908,10 @@
    "name": "Silver (Grams)",
    "symbol": "GRAMS",
    "slug": "silver-grams",
-   "rank": 7369,
+   "rank": 7370,
    "status": "active",
    "first_historical_data": "2025-07-02T05:55:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 25,
     "name": "Polygon",
@@ -925,10 +925,10 @@
    "name": "Silver (Derivatives)",
    "symbol": "XAG",
    "slug": "silver-derivatives",
-   "rank": 7578,
+   "rank": 7579,
    "status": "active",
    "first_historical_data": "2026-01-12T04:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -981,10 +981,10 @@
    "name": "Alphabet tokenized stock (xStock)",
    "symbol": "GOOGLX",
    "slug": "alphabet-tokenized-stock-xstock",
-   "rank": 486,
+   "rank": 487,
    "status": "active",
    "first_historical_data": "2025-07-01T14:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -998,10 +998,10 @@
    "name": "Alphabet Class A Tokenized Stock (Ondo)",
    "symbol": "GOOGLon",
    "slug": "alphabet-class-a-tokenized-stock-ondo",
-   "rank": 677,
+   "rank": 678,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -1015,10 +1015,10 @@
    "name": "Alphabet Class A Tokenized Stock (Robinhood)",
    "symbol": "GOOGL",
    "slug": "alphabet-class-a-tokenized-stock-robinhood",
-   "rank": 1200,
+   "rank": 1199,
    "status": "active",
    "first_historical_data": "2026-07-10T18:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -1032,10 +1032,10 @@
    "name": "Alphabet Inc (Derivatives)",
    "symbol": "GOOGL",
    "slug": "alphabet-inc-derivatives",
-   "rank": 7606,
+   "rank": 7604,
    "status": "active",
    "first_historical_data": "2026-01-29T01:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -1043,10 +1043,10 @@
    "name": "Alphabet Tokenized Stock (Hyperliquid)",
    "symbol": "GOOGL",
    "slug": "alphabet-tokenized-stock-hyperliquid",
-   "rank": 7656,
+   "rank": 7652,
    "status": "active",
    "first_historical_data": "2026-03-02T02:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 248,
     "name": "HyperEVM",
@@ -1060,10 +1060,10 @@
    "name": "Google Tokenized Stock (Reality)",
    "symbol": "rGOOGL",
    "slug": "google-tokenized-stock-reality",
-   "rank": 909,
+   "rank": 910,
    "status": "active",
    "first_historical_data": "2026-07-02T04:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -1080,7 +1080,7 @@
    "rank": 580,
    "status": "active",
    "first_historical_data": "2026-07-07T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -1094,10 +1094,10 @@
    "name": "Wrapped Alphabet Tokenized stock (xStock)",
    "symbol": "WGOOGLX",
    "slug": "wrapped-alphabet-tokenized-stock-xstock",
-   "rank": 2558,
+   "rank": 2556,
    "status": "active",
    "first_historical_data": "2026-08-16T07:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -1114,7 +1114,7 @@
    "rank": 3950,
    "status": "active",
    "first_historical_data": "2026-09-10T16:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -1128,10 +1128,10 @@
    "name": "Microsoft tokenized stock (xStock)",
    "symbol": "MSFTX",
    "slug": "microsoft-tokenized-stock-xstock",
-   "rank": 1067,
+   "rank": 1068,
    "status": "active",
    "first_historical_data": "2025-09-29T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -1148,7 +1148,7 @@
    "rank": 1044,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -1162,10 +1162,10 @@
    "name": "Microsoft Tokenized Stock (Robinhood)",
    "symbol": "MSFT",
    "slug": "microsoft-tokenized-stock-robinhood",
-   "rank": 1456,
+   "rank": 1457,
    "status": "active",
    "first_historical_data": "2026-07-15T21:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -1179,10 +1179,10 @@
    "name": "Microsoft Corporation (Derivatives)",
    "symbol": "MSFT",
    "slug": "microsoft-corporation-derivatives",
-   "rank": 4713,
+   "rank": 4705,
    "status": "active",
    "first_historical_data": "2026-01-30T05:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -1190,10 +1190,10 @@
    "name": "Microsoft Tokenized Stock (Hyperliquid)",
    "symbol": "MSFT",
    "slug": "microsoft-tokenized-stock-hyperliquid",
-   "rank": 7654,
+   "rank": 7650,
    "status": "active",
    "first_historical_data": "2026-02-26T01:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 248,
     "name": "HyperEVM",
@@ -1210,7 +1210,7 @@
    "rank": 1478,
    "status": "active",
    "first_historical_data": "2026-06-30T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -1224,10 +1224,10 @@
    "name": "Microsoft Tokenized Stock (Reality)",
    "symbol": "rMSFT",
    "slug": "microsoft-tokenized-stock-reality",
-   "rank": 1800,
+   "rank": 1803,
    "status": "active",
    "first_historical_data": "2026-07-02T03:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -1241,146 +1241,16 @@
    "name": "Wrapped Microsoft Tokenized stock (xStock)",
    "symbol": "WMSFTX",
    "slug": "wrapped-microsoft-tokenized-stock-xstock",
-   "rank": 2886,
+   "rank": 2888,
    "status": "active",
    "first_historical_data": "2026-08-16T08:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
     "symbol": "OKB",
     "slug": "okb",
     "token_address": "0x166Fbe68274b6a47e025F4ba17388c539f1fa1d0"
-   }
-  },
-  {
-   "id": 37006,
-   "name": "SP500 tokenized ETF (xStock)",
-   "symbol": "SPYX",
-   "slug": "sp500-tokenized-stock-xstock",
-   "rank": 323,
-   "status": "active",
-   "first_historical_data": "2025-06-30T17:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W"
-   }
-  },
-  {
-   "id": 38067,
-   "name": "SPDR S&P 500 Tokenized ETF (Ondo)",
-   "symbol": "SPYon",
-   "slug": "spdr-sp-500-tokenized-etf-ondo",
-   "rank": 406,
-   "status": "active",
-   "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0xFeDC5f4a6c38211c1338aa411018DFAf26612c08"
-   }
-  },
-  {
-   "id": 40694,
-   "name": "SPDR S&P 500 Trust Tokenized ETF (Robinhood)",
-   "symbol": "SPY",
-   "slug": "spdr-sp-500-trust-tokenized-etf-robinhood",
-   "rank": 586,
-   "status": "active",
-   "first_historical_data": "2026-07-16T02:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
-   }
-  },
-  {
-   "id": 39621,
-   "name": "SPDR S&P 500 ETF Trust Tokenized ETF (Hyperliquid)",
-   "symbol": "SPY",
-   "slug": "spdr-sp-500-etf-trust-tokenized-etf-hyperliquid",
-   "rank": 7655,
-   "status": "active",
-   "first_historical_data": "2026-03-01T05:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 248,
-    "name": "HyperEVM",
-    "symbol": "HYPE",
-    "slug": "hyperliquid",
-    "token_address": "0xb7bf37783db41a2851b77c6917280c56312c833a"
-   }
-  },
-  {
-   "id": 39732,
-   "name": "State Street SPDR S&P 500 ETF Trust (Derivatives)",
-   "symbol": "SPY",
-   "slug": "state-street-spdr-sp-500-etf-trust-derivatives",
-   "rank": 7686,
-   "status": "active",
-   "first_historical_data": "2026-03-22T08:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": null
-  },
-  {
-   "id": 40625,
-   "name": "SPDR S&P 500 Tokenized Stock (Reality)",
-   "symbol": "rSPY",
-   "slug": "spdr-sp-500-tokenized-stock-reality",
-   "rank": 1923,
-   "status": "active",
-   "first_historical_data": "2026-06-30T09:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 51,
-    "name": "Arbitrum",
-    "symbol": "ARB",
-    "slug": "arbitrum",
-    "token_address": "0x9a0fda21276f245b89d2b7f1120f42e4466b1cb5"
-   }
-  },
-  {
-   "id": 40790,
-   "name": "State Street SPDR S&P 500 ETF Tokenized bStocks",
-   "symbol": "SPYB",
-   "slug": "state-street-spdr-sp-500-etf-tokenized-bstocks",
-   "rank": 672,
-   "status": "active",
-   "first_historical_data": "2026-07-07T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8"
-   }
-  },
-  {
-   "id": 41525,
-   "name": "Wrapped SP500 Tokenized ETF (xStock)",
-   "symbol": "wSPYx",
-   "slug": "wrapped-sp500-tokenized-etf-xstock",
-   "rank": 7906,
-   "status": "active",
-   "first_historical_data": "2026-07-28T12:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0xE7E553Cd128F0011777323A0b44a7b96EA1CB540"
    }
   },
   {
@@ -1391,7 +1261,7 @@
    "rank": 458,
    "status": "active",
    "first_historical_data": "2025-07-01T18:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -1405,10 +1275,10 @@
    "name": "Invesco QQQ Tokenized ETF (Ondo)",
    "symbol": "QQQon",
    "slug": "invesco-qqq-tokenized-etf-ondo",
-   "rank": 510,
+   "rank": 513,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -1425,7 +1295,7 @@
    "rank": 1222,
    "status": "active",
    "first_historical_data": "2026-07-04T04:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -1439,10 +1309,10 @@
    "name": "QQQ (Derivatives)",
    "symbol": "QQQ",
    "slug": "ustech-derivatives",
-   "rank": 7636,
+   "rank": 7634,
    "status": "active",
    "first_historical_data": "2026-01-30T07:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -1450,10 +1320,10 @@
    "name": "Invesco QQQ Trust Tokenized ETF (Hyperliquid)",
    "symbol": "QQQ",
    "slug": "invesco-qqq-trust-tokenized-etf-hyperliquid",
-   "rank": 7657,
+   "rank": 7653,
    "status": "active",
    "first_historical_data": "2026-02-25T12:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 248,
     "name": "HyperEVM",
@@ -1467,10 +1337,10 @@
    "name": "Invesco QQQ Trust Tokenized bStocks",
    "symbol": "QQQB",
    "slug": "invesco-qqq-trust-tokenized-bstocks",
-   "rank": 347,
+   "rank": 346,
    "status": "active",
    "first_historical_data": "2026-06-30T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -1484,10 +1354,10 @@
    "name": "Invesco QQQ Tokenized Stock (Reality)",
    "symbol": "rQQQ",
    "slug": "invesco-qqq-tokenized-stock-reality",
-   "rank": 1476,
+   "rank": 1475,
    "status": "active",
    "first_historical_data": "2026-06-30T09:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -1501,10 +1371,10 @@
    "name": "Wrapped Nasdaq Tokenized ETF (xStock)",
    "symbol": "wQQQx",
    "slug": "wrapped-nasdaq-tokenized-etf-xstock",
-   "rank": 4262,
+   "rank": 4265,
    "status": "active",
    "first_historical_data": "2026-07-30T14:30:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -1514,14 +1384,144 @@
    }
   },
   {
+   "id": 37006,
+   "name": "SP500 tokenized ETF (xStock)",
+   "symbol": "SPYX",
+   "slug": "sp500-tokenized-stock-xstock",
+   "rank": 323,
+   "status": "active",
+   "first_historical_data": "2025-06-30T17:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W"
+   }
+  },
+  {
+   "id": 38067,
+   "name": "SPDR S&P 500 Tokenized ETF (Ondo)",
+   "symbol": "SPYon",
+   "slug": "spdr-sp-500-tokenized-etf-ondo",
+   "rank": 405,
+   "status": "active",
+   "first_historical_data": "2025-09-03T13:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0xFeDC5f4a6c38211c1338aa411018DFAf26612c08"
+   }
+  },
+  {
+   "id": 40694,
+   "name": "SPDR S&P 500 Trust Tokenized ETF (Robinhood)",
+   "symbol": "SPY",
+   "slug": "spdr-sp-500-trust-tokenized-etf-robinhood",
+   "rank": 586,
+   "status": "active",
+   "first_historical_data": "2026-07-16T02:45:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+   }
+  },
+  {
+   "id": 39621,
+   "name": "SPDR S&P 500 ETF Trust Tokenized ETF (Hyperliquid)",
+   "symbol": "SPY",
+   "slug": "spdr-sp-500-etf-trust-tokenized-etf-hyperliquid",
+   "rank": 7651,
+   "status": "active",
+   "first_historical_data": "2026-03-01T05:40:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 248,
+    "name": "HyperEVM",
+    "symbol": "HYPE",
+    "slug": "hyperliquid",
+    "token_address": "0xb7bf37783db41a2851b77c6917280c56312c833a"
+   }
+  },
+  {
+   "id": 39732,
+   "name": "State Street SPDR S&P 500 ETF Trust (Derivatives)",
+   "symbol": "SPY",
+   "slug": "state-street-spdr-sp-500-etf-trust-derivatives",
+   "rank": 7682,
+   "status": "active",
+   "first_historical_data": "2026-03-22T08:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 40625,
+   "name": "SPDR S&P 500 Tokenized Stock (Reality)",
+   "symbol": "rSPY",
+   "slug": "spdr-sp-500-tokenized-stock-reality",
+   "rank": 1921,
+   "status": "active",
+   "first_historical_data": "2026-06-30T09:15:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0x9a0fda21276f245b89d2b7f1120f42e4466b1cb5"
+   }
+  },
+  {
+   "id": 40790,
+   "name": "State Street SPDR S&P 500 ETF Tokenized bStocks",
+   "symbol": "SPYB",
+   "slug": "state-street-spdr-sp-500-etf-tokenized-bstocks",
+   "rank": 670,
+   "status": "active",
+   "first_historical_data": "2026-07-07T13:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8"
+   }
+  },
+  {
+   "id": 41525,
+   "name": "Wrapped SP500 Tokenized ETF (xStock)",
+   "symbol": "wSPYx",
+   "slug": "wrapped-sp500-tokenized-etf-xstock",
+   "rank": 4255,
+   "status": "active",
+   "first_historical_data": "2026-07-28T12:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0xE7E553Cd128F0011777323A0b44a7b96EA1CB540"
+   }
+  },
+  {
    "id": 37014,
    "name": "Amazon tokenized stock (xStock)",
    "symbol": "AMZNX",
    "slug": "amazon-tokenized-stock-xstock",
-   "rank": 1035,
+   "rank": 1036,
    "status": "active",
    "first_historical_data": "2025-07-01T23:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -1535,10 +1535,10 @@
    "name": "Amazon Tokenized Stock (Ondo)",
    "symbol": "AMZNon",
    "slug": "amazon-tokenized-stock-ondo",
-   "rank": 1158,
+   "rank": 1156,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -1555,7 +1555,7 @@
    "rank": 1391,
    "status": "active",
    "first_historical_data": "2026-07-16T02:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -1569,10 +1569,10 @@
    "name": "Amazon Tokenized Stock (Hyperliquid)",
    "symbol": "AMZN",
    "slug": "amazon-tokenized-stock-hyperliquid",
-   "rank": 5577,
+   "rank": 5584,
    "status": "active",
    "first_historical_data": "2026-03-02T02:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 248,
     "name": "HyperEVM",
@@ -1586,10 +1586,10 @@
    "name": "Amazon.com Inc (Derivatives)",
    "symbol": "AMZN",
    "slug": "amazon-com-inc-derivatives",
-   "rank": 7607,
+   "rank": 7605,
    "status": "active",
    "first_historical_data": "2026-01-29T01:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -1597,10 +1597,10 @@
    "name": "Amazon Tokenized Stock (Reality)",
    "symbol": "rAMZN",
    "slug": "amazon-tokenized-stock-reality",
-   "rank": 2033,
+   "rank": 2035,
    "status": "active",
    "first_historical_data": "2026-07-02T04:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -1614,10 +1614,10 @@
    "name": "Amazon Tokenized bStocks",
    "symbol": "AMZNB",
    "slug": "amazon-tokenized-bstocks",
-   "rank": 1664,
+   "rank": 1666,
    "status": "active",
    "first_historical_data": "2026-07-29T12:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -1631,10 +1631,10 @@
    "name": "Wrapped Amazon Tokenized stock (xStock)",
    "symbol": "WAMZNX",
    "slug": "wrapped-amazon-tokenized-stock-xstock",
-   "rank": 3253,
+   "rank": 3254,
    "status": "active",
    "first_historical_data": "2026-08-17T09:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -1644,393 +1644,14 @@
    }
   },
   {
-   "id": 37055,
-   "name": "Meta tokenized stock (xStock)",
-   "symbol": "METAX",
-   "slug": "meta-tokenized-stock-xstock",
-   "rank": 942,
-   "status": "active",
-   "first_historical_data": "2025-07-01T19:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu"
-   }
-  },
-  {
-   "id": 38065,
-   "name": "Meta Platforms Tokenized Stock (Ondo)",
-   "symbol": "METAon",
-   "slug": "meta-platforms-tokenized-stock-ondo",
-   "rank": 1109,
-   "status": "active",
-   "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0x59644165402b611b350645555B50Afb581C71EB2"
-   }
-  },
-  {
-   "id": 40780,
-   "name": "Meta Platforms Tokenized Stock (Robinhood)",
-   "symbol": "META",
-   "slug": "meta-platforms-tokenized-stock-robinhood",
-   "rank": 1159,
-   "status": "active",
-   "first_historical_data": "2026-07-16T02:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35"
-   }
-  },
-  {
-   "id": 39615,
-   "name": "Meta Platforms Tokenized Stock (Hyperliquid)",
-   "symbol": "META",
-   "slug": "meta-platforms-tokenized-stock-hyperliquid",
-   "rank": 5183,
-   "status": "active",
-   "first_historical_data": "2026-02-25T11:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 248,
-    "name": "HyperEVM",
-    "symbol": "HYPE",
-    "slug": "hyperliquid",
-    "token_address": "0x5a9d2deee7d8782011695623f1c453f46b2b566e"
-   }
-  },
-  {
-   "id": 40592,
-   "name": "Meta Tokenized bStocks",
-   "symbol": "METAB",
-   "slug": "meta-tokenized-bstocks",
-   "rank": 1345,
-   "status": "active",
-   "first_historical_data": "2026-06-30T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0x7425889fe94f9d693e8daefe88bcced6acfef4c0"
-   }
-  },
-  {
-   "id": 40602,
-   "name": "Meta Tokenized Stock (Reality)",
-   "symbol": "rMETA",
-   "slug": "meta-tokenized-stock-reality",
-   "rank": 1961,
-   "status": "active",
-   "first_historical_data": "2026-07-02T04:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 51,
-    "name": "Arbitrum",
-    "symbol": "ARB",
-    "slug": "arbitrum",
-    "token_address": "0xb65f3005ab2aeede3707f56223c7c45f68cca008"
-   }
-  },
-  {
-   "id": 37211,
-   "name": "Wrapped Meta Tokenized stock (xStock)",
-   "symbol": "WMETAX",
-   "slug": "wrapped-meta-tokenized-stock-xstock",
-   "rank": 2975,
-   "status": "active",
-   "first_historical_data": "2026-08-16T07:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0xe840946FfEBCd66B7C4E95095effaFaDfa0D0e56"
-   }
-  },
-  {
-   "id": 38014,
-   "name": "Micron Technology Tokenized Stock (Ondo)",
-   "symbol": "MUon",
-   "slug": "micron-technology-tokenized-stock-ondo",
-   "rank": 436,
-   "status": "active",
-   "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0x050362Ab1072Cb2Ce74d74770E22A3203Ad04ee5"
-   }
-  },
-  {
-   "id": 40817,
-   "name": "Micron Technology Inc tokenized stock (Backpack)",
-   "symbol": "MU",
-   "slug": "micron-technology-inc-tokenized-stock-backpack",
-   "rank": 1139,
-   "status": "active",
-   "first_historical_data": "2026-06-22T13:55:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "MUxEsUKSMACyw5fZf68wxf5FLnZVhtU9CwH8uNNGay1"
-   }
-  },
-  {
-   "id": 40696,
-   "name": "Micron Technology Tokenized Stock (Robinhood)",
-   "symbol": "MU",
-   "slug": "micron-technology-tokenized-stock-robinhood",
-   "rank": 1252,
-   "status": "active",
-   "first_historical_data": "2026-07-16T02:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0xfF080c8ce2E5feadaCa0Da81314Ae59D232d4afD"
-   }
-  },
-  {
-   "id": 39469,
-   "name": "Micron Technology Inc (Derivatives)",
-   "symbol": "MU",
-   "slug": "micron-technology-inc-derivatives",
-   "rank": 7605,
-   "status": "active",
-   "first_historical_data": "2026-01-28T15:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": null
-  },
-  {
-   "id": 40175,
-   "name": "Micron Technology tokenized stock (xStock)",
-   "symbol": "MUx",
-   "slug": "micron-technology-tokenized-stock-xstock",
-   "rank": 716,
-   "status": "active",
-   "first_historical_data": "2026-07-17T08:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "XsQLZycSZ7QnBBdBXQaTbQdiUcbRqjNJgyBGAMzhHav"
-   }
-  },
-  {
-   "id": 40212,
-   "name": "Micron Technology Tokenized bStocks",
-   "symbol": "MUB",
-   "slug": "micron-technology-tokenized-bstocks",
-   "rank": 401,
-   "status": "active",
-   "first_historical_data": "2026-06-11T17:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0xcdf2f3e0fa43c47a6662a91c9e4a7c5f69762699"
-   }
-  },
-  {
-   "id": 40616,
-   "name": "Micron Tokenized Stock (Reality)",
-   "symbol": "rMU",
-   "slug": "micron-tokenized-stock-reality",
-   "rank": 977,
-   "status": "active",
-   "first_historical_data": "2026-07-02T04:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 51,
-    "name": "Arbitrum",
-    "symbol": "ARB",
-    "slug": "arbitrum",
-    "token_address": "0x548cc634a64301a346f174071a90efa93dae4eb3"
-   }
-  },
-  {
-   "id": 41636,
-   "name": "Wrapped Micron Technology Tokenized Stock (xStock)",
-   "symbol": "wMUx",
-   "slug": "wrapped-micron-technology-tokenized-stock-xstock",
-   "rank": 4319,
-   "status": "active",
-   "first_historical_data": "2026-07-30T12:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0xe2047ee3bdDb5C99ae428AB83df63f8730698e30"
-   }
-  },
-  {
-   "id": 40815,
-   "name": "SanDisk Corp tokenized stock (Backpack)",
-   "symbol": "SNDK",
-   "slug": "sandisk-corp-tokenized-stock-backpack",
-   "rank": 1613,
-   "status": "active",
-   "first_historical_data": "2026-06-24T13:30:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "SNDKbwMUQvZhnLnxLduradgLHG5KrPuKwpnrkkGRhfH"
-   }
-  },
-  {
-   "id": 40700,
-   "name": "Sandisk Corporation Tokenized Stock (Robinhood)",
-   "symbol": "SNDK",
-   "slug": "sandisk-corporation-tokenized-stock-robinhood",
-   "rank": 1713,
-   "status": "active",
-   "first_historical_data": "2026-07-16T22:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0xB90A19fF0Af67f7779afF50A882A9CfF42446400"
-   }
-  },
-  {
-   "id": 39507,
-   "name": "SanDisk Corporation (Derivatives)",
-   "symbol": "SNDK",
-   "slug": "sandisk-corporation-derivatives",
-   "rank": 4088,
-   "status": "active",
-   "first_historical_data": "2026-01-30T05:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": null
-  },
-  {
-   "id": 39788,
-   "name": "SanDisk Tokenized Stock (Ondo)",
-   "symbol": "SNDKon",
-   "slug": "sandisk-tokenized-stock-ondo",
-   "rank": 1120,
-   "status": "active",
-   "first_historical_data": "2026-03-24T05:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "EJmUVvDqAdfH5zEohkdS4234bi3c6iunqEMobjmondo"
-   }
-  },
-  {
-   "id": 40037,
-   "name": "Sandisk Corporation tokenized stock(xstock)",
-   "symbol": "SNDKX",
-   "slug": "sandisk-corporation-xstock",
-   "rank": 734,
-   "status": "active",
-   "first_historical_data": "2026-07-17T05:30:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0xb63efbc28860c8097e341de1fcf59456161e9d98"
-   }
-  },
-  {
-   "id": 40216,
-   "name": "SanDisk Tokenized bStocks",
-   "symbol": "SNDKB",
-   "slug": "sandisk-tokenized-bstocks",
-   "rank": 381,
-   "status": "active",
-   "first_historical_data": "2026-06-11T18:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb"
-   }
-  },
-  {
-   "id": 40648,
-   "name": "SanDisk Tokenized Stock (Reality)",
-   "symbol": "rSNDK",
-   "slug": "sandisk-tokenized-stock-reality",
-   "rank": 1164,
-   "status": "active",
-   "first_historical_data": "2026-07-02T05:30:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 51,
-    "name": "Arbitrum",
-    "symbol": "ARB",
-    "slug": "arbitrum",
-    "token_address": "0xc78c5a7be0e8d72cdda205e53d1147aaacf5a075"
-   }
-  },
-  {
-   "id": 41493,
-   "name": "Wrapped Sandisk Corporation Tokenized Stock (xStock)",
-   "symbol": "wSNDKx",
-   "slug": "wrapped-sandisk-corporation-tokenized-stock-xstock",
-   "rank": 4198,
-   "status": "active",
-   "first_historical_data": "2026-07-30T12:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0x75e82E2884Ea10f72FCA777449B73377f4646219"
-   }
-  },
-  {
    "id": 36989,
    "name": "Coinbase tokenized stock (xStock)",
    "symbol": "COINX",
    "slug": "coinbase-tokenized-stock-xstock",
-   "rank": 833,
+   "rank": 830,
    "status": "active",
    "first_historical_data": "2025-07-01T06:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -2047,7 +1668,7 @@
    "rank": 957,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -2061,10 +1682,10 @@
    "name": "Coinbase Tokenized Stock (Robinhood)",
    "symbol": "COIN",
    "slug": "coinbase-tokenized-stock-robinhood",
-   "rank": 1574,
+   "rank": 1575,
    "status": "active",
    "first_historical_data": "2026-07-22T15:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -2078,10 +1699,10 @@
    "name": "Coinbase Global Inc (Derivatives)",
    "symbol": "COIN",
    "slug": "coinbase-global-inc-derivatives",
-   "rank": 7614,
+   "rank": 7612,
    "status": "active",
    "first_historical_data": "2026-01-29T12:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -2089,10 +1710,10 @@
    "name": "Coinbase Tokenized Stock (Reality)",
    "symbol": "rCOIN",
    "slug": "coinbase-tokenized-stock-reality",
-   "rank": 1417,
+   "rank": 1415,
    "status": "active",
    "first_historical_data": "2026-07-02T04:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -2106,10 +1727,10 @@
    "name": "Coinbase Tokenized bStocks",
    "symbol": "COINB",
    "slug": "coinbase-tokenized-bstocks",
-   "rank": 719,
+   "rank": 718,
    "status": "active",
    "first_historical_data": "2026-07-07T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -2126,7 +1747,7 @@
    "rank": 2889,
    "status": "active",
    "first_historical_data": "2026-08-16T23:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -2136,218 +1757,382 @@
    }
   },
   {
-   "id": 37021,
-   "name": "Broadcom tokenized stock (xStock)",
-   "symbol": "AVGOX",
-   "slug": "broadcom-tokenized-stock-xstock",
-   "rank": 1160,
+   "id": 37055,
+   "name": "Meta tokenized stock (xStock)",
+   "symbol": "METAX",
+   "slug": "meta-tokenized-stock-xstock",
+   "rank": 943,
    "status": "active",
-   "first_historical_data": "2025-09-18T14:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "first_historical_data": "2025-07-01T19:25:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
     "symbol": "SOL",
     "slug": "solana",
-    "token_address": "XsgSaSvNSqLTtFuyWPBhK9196Xb9Bbdyjj4fH3cPJGo"
+    "token_address": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu"
    }
   },
   {
-   "id": 38062,
-   "name": "Broadcom Tokenized Stock (Ondo)",
-   "symbol": "AVGOon",
-   "slug": "broadcom-tokenized-stock-ondo",
-   "rank": 1243,
+   "id": 38065,
+   "name": "Meta Platforms Tokenized Stock (Ondo)",
+   "symbol": "METAon",
+   "slug": "meta-platforms-tokenized-stock-ondo",
+   "rank": 1109,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
     "symbol": "ETH",
     "slug": "ethereum",
-    "token_address": "0x0d54D4279B9E8c54cD8547c2C75A8Ee81A0BcaE8"
+    "token_address": "0x59644165402b611b350645555B50Afb581C71EB2"
    }
   },
   {
-   "id": 40604,
-   "name": "Broadcom Tokenized Stock (Reality)",
-   "symbol": "rAVGO",
-   "slug": "broadcom-tokenized-stock-reality",
-   "rank": 1268,
+   "id": 40780,
+   "name": "Meta Platforms Tokenized Stock (Robinhood)",
+   "symbol": "META",
+   "slug": "meta-platforms-tokenized-stock-robinhood",
+   "rank": 1158,
    "status": "active",
-   "first_historical_data": "2026-07-02T04:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 51,
-    "name": "Arbitrum",
-    "symbol": "ARB",
-    "slug": "arbitrum",
-    "token_address": "0xb79b7b1022fd670f144c9d35af5492d8ba342f45"
-   }
-  },
-  {
-   "id": 40705,
-   "name": "Broadcom Tokenized Stock (Robinhood)",
-   "symbol": "AVGO",
-   "slug": "broadcom-tokenized-stock-robinhood",
-   "rank": 2732,
-   "status": "active",
-   "first_historical_data": "2026-08-31T18:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "first_historical_data": "2026-07-16T02:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
     "symbol": "-",
     "slug": "robinhood-placeholder",
-    "token_address": "0x156E175DD063a8cE274C50654eF40e0032b3fbcF"
+    "token_address": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35"
    }
   },
   {
-   "id": 40845,
-   "name": "Broadcom Tokenized bStocks",
-   "symbol": "AVGOB",
-   "slug": "broadcom-tokenized-bstocks",
-   "rank": 890,
+   "id": 39615,
+   "name": "Meta Platforms Tokenized Stock (Hyperliquid)",
+   "symbol": "META",
+   "slug": "meta-platforms-tokenized-stock-hyperliquid",
+   "rank": 5198,
    "status": "active",
-   "first_historical_data": "2026-07-15T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "first_historical_data": "2026-02-25T11:25:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 248,
+    "name": "HyperEVM",
+    "symbol": "HYPE",
+    "slug": "hyperliquid",
+    "token_address": "0x5a9d2deee7d8782011695623f1c453f46b2b566e"
+   }
+  },
+  {
+   "id": 40592,
+   "name": "Meta Tokenized bStocks",
+   "symbol": "METAB",
+   "slug": "meta-tokenized-bstocks",
+   "rank": 1342,
+   "status": "active",
+   "first_historical_data": "2026-06-30T13:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
     "symbol": "BNB",
     "slug": "bnb",
-    "token_address": "0x76682c454467b3a1150ad8b6a92fc5ee2c21d7ed"
+    "token_address": "0x7425889fe94f9d693e8daefe88bcced6acfef4c0"
    }
   },
   {
-   "id": 37129,
-   "name": "Wrapped Broadcom Tokenized stock (xStock)",
-   "symbol": "WAVGOX",
-   "slug": "wrapped-broadcom-tokenized-stock-xstock",
-   "rank": 2907,
+   "id": 40602,
+   "name": "Meta Tokenized Stock (Reality)",
+   "symbol": "rMETA",
+   "slug": "meta-tokenized-stock-reality",
+   "rank": 1962,
    "status": "active",
-   "first_historical_data": "2026-08-17T14:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "first_historical_data": "2026-07-02T04:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0xb65f3005ab2aeede3707f56223c7c45f68cca008"
+   }
+  },
+  {
+   "id": 37211,
+   "name": "Wrapped Meta Tokenized stock (xStock)",
+   "symbol": "WMETAX",
+   "slug": "wrapped-meta-tokenized-stock-xstock",
+   "rank": 2974,
+   "status": "active",
+   "first_historical_data": "2026-08-16T07:40:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
     "symbol": "OKB",
     "slug": "okb",
-    "token_address": "0xE89572bfe500ac7E8Ecd8dc8119d274214e06F14"
+    "token_address": "0xe840946FfEBCd66B7C4E95095effaFaDfa0D0e56"
    }
   },
   {
-   "id": 38035,
-   "name": "Intel Tokenized Stock (Ondo)",
-   "symbol": "INTCon",
-   "slug": "intel-tokenized-stock-ondo",
-   "rank": 707,
+   "id": 38014,
+   "name": "Micron Technology Tokenized Stock (Ondo)",
+   "symbol": "MUon",
+   "slug": "micron-technology-tokenized-stock-ondo",
+   "rank": 436,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
     "symbol": "ETH",
     "slug": "ethereum",
-    "token_address": "0xFdA09936DbD717368De0835bA441d9E62069d36f"
+    "token_address": "0x050362Ab1072Cb2Ce74d74770E22A3203Ad04ee5"
    }
   },
   {
-   "id": 37028,
-   "name": "Intel tokenized stock (xStock)",
-   "symbol": "INTCX",
-   "slug": "intel-tokenized-stock-xstock",
-   "rank": 839,
+   "id": 40817,
+   "name": "Micron Technology Inc tokenized stock (Backpack)",
+   "symbol": "MU",
+   "slug": "micron-technology-inc-tokenized-stock-backpack",
+   "rank": 1137,
    "status": "active",
-   "first_historical_data": "2025-10-23T09:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "first_historical_data": "2026-06-22T13:55:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
     "symbol": "SOL",
     "slug": "solana",
-    "token_address": "XshPgPdXFRWB8tP1j82rebb2Q9rPgGX37RuqzohmArM"
+    "token_address": "MUxEsUKSMACyw5fZf68wxf5FLnZVhtU9CwH8uNNGay1"
    }
   },
   {
-   "id": 40697,
-   "name": "Intel Tokenized Stock (Robinhood)",
-   "symbol": "INTC",
-   "slug": "intel-tokenized-stock-robinhood",
-   "rank": 1639,
+   "id": 40696,
+   "name": "Micron Technology Tokenized Stock (Robinhood)",
+   "symbol": "MU",
+   "slug": "micron-technology-tokenized-stock-robinhood",
+   "rank": 1254,
    "status": "active",
-   "first_historical_data": "2026-07-16T06:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "first_historical_data": "2026-07-16T02:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
     "symbol": "-",
     "slug": "robinhood-placeholder",
-    "token_address": "0xc72b96e0E48ecd4DC75E1e45396e26300BC39681"
+    "token_address": "0xfF080c8ce2E5feadaCa0Da81314Ae59D232d4afD"
    }
   },
   {
-   "id": 39472,
-   "name": "Intel Corp (Derivatives)",
-   "symbol": "INTC",
-   "slug": "intel-corp-derivatives",
-   "rank": 4092,
+   "id": 39469,
+   "name": "Micron Technology Inc (Derivatives)",
+   "symbol": "MU",
+   "slug": "micron-technology-inc-derivatives",
+   "rank": 7603,
    "status": "active",
-   "first_historical_data": "2026-01-29T01:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "first_historical_data": "2026-01-28T15:00:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
-   "id": 40540,
-   "name": "Intel Tokenized bStocks",
-   "symbol": "INTCB",
-   "slug": "intel-tokenized-bstocks",
-   "rank": 815,
+   "id": 40175,
+   "name": "Micron Technology tokenized stock (xStock)",
+   "symbol": "MUx",
+   "slug": "micron-technology-tokenized-stock-xstock",
+   "rank": 717,
    "status": "active",
-   "first_historical_data": "2026-06-23T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "first_historical_data": "2026-07-17T08:40:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "XsQLZycSZ7QnBBdBXQaTbQdiUcbRqjNJgyBGAMzhHav"
+   }
+  },
+  {
+   "id": 40212,
+   "name": "Micron Technology Tokenized bStocks",
+   "symbol": "MUB",
+   "slug": "micron-technology-tokenized-bstocks",
+   "rank": 399,
+   "status": "active",
+   "first_historical_data": "2026-06-11T17:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
     "symbol": "BNB",
     "slug": "bnb",
-    "token_address": "0xe614e2fc6c787035ff51f452e8e826bfd32d5283"
+    "token_address": "0xcdf2f3e0fa43c47a6662a91c9e4a7c5f69762699"
    }
   },
   {
-   "id": 40618,
-   "name": "Intel Tokenized Stock (Reality)",
-   "symbol": "rINTC",
-   "slug": "intel-tokenized-stock-reality",
-   "rank": 1092,
+   "id": 40616,
+   "name": "Micron Tokenized Stock (Reality)",
+   "symbol": "rMU",
+   "slug": "micron-tokenized-stock-reality",
+   "rank": 975,
    "status": "active",
    "first_historical_data": "2026-07-02T04:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
     "symbol": "ARB",
     "slug": "arbitrum",
-    "token_address": "0xafa43b4badfd062f5f1891a398a0579c904da776"
+    "token_address": "0x548cc634a64301a346f174071a90efa93dae4eb3"
    }
   },
   {
-   "id": 37202,
-   "name": "Wrapped Intel Tokenized stock (xStock)",
-   "symbol": "WINTCX",
-   "slug": "wrapped-intel-tokenized-stock-xstock",
-   "rank": 2981,
+   "id": 41636,
+   "name": "Wrapped Micron Technology Tokenized Stock (xStock)",
+   "symbol": "wMUx",
+   "slug": "wrapped-micron-technology-tokenized-stock-xstock",
+   "rank": 4321,
    "status": "active",
-   "first_historical_data": "2026-08-16T07:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "first_historical_data": "2026-07-30T12:00:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
     "symbol": "OKB",
     "slug": "okb",
-    "token_address": "0x33AA35B0271FFfE2048Cc093aB7fE60931786719"
+    "token_address": "0xe2047ee3bdDb5C99ae428AB83df63f8730698e30"
+   }
+  },
+  {
+   "id": 40815,
+   "name": "SanDisk Corp tokenized stock (Backpack)",
+   "symbol": "SNDK",
+   "slug": "sandisk-corp-tokenized-stock-backpack",
+   "rank": 1614,
+   "status": "active",
+   "first_historical_data": "2026-06-24T13:30:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "SNDKbwMUQvZhnLnxLduradgLHG5KrPuKwpnrkkGRhfH"
+   }
+  },
+  {
+   "id": 40700,
+   "name": "Sandisk Corporation Tokenized Stock (Robinhood)",
+   "symbol": "SNDK",
+   "slug": "sandisk-corporation-tokenized-stock-robinhood",
+   "rank": 1714,
+   "status": "active",
+   "first_historical_data": "2026-07-16T22:10:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0xB90A19fF0Af67f7779afF50A882A9CfF42446400"
+   }
+  },
+  {
+   "id": 39507,
+   "name": "SanDisk Corporation (Derivatives)",
+   "symbol": "SNDK",
+   "slug": "sandisk-corporation-derivatives",
+   "rank": 4087,
+   "status": "active",
+   "first_historical_data": "2026-01-30T05:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 39788,
+   "name": "SanDisk Tokenized Stock (Ondo)",
+   "symbol": "SNDKon",
+   "slug": "sandisk-tokenized-stock-ondo",
+   "rank": 1120,
+   "status": "active",
+   "first_historical_data": "2026-03-24T05:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "EJmUVvDqAdfH5zEohkdS4234bi3c6iunqEMobjmondo"
+   }
+  },
+  {
+   "id": 40037,
+   "name": "Sandisk Corporation tokenized stock(xstock)",
+   "symbol": "SNDKX",
+   "slug": "sandisk-corporation-xstock",
+   "rank": 736,
+   "status": "active",
+   "first_historical_data": "2026-07-17T05:30:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0xb63efbc28860c8097e341de1fcf59456161e9d98"
+   }
+  },
+  {
+   "id": 40216,
+   "name": "SanDisk Tokenized bStocks",
+   "symbol": "SNDKB",
+   "slug": "sandisk-tokenized-bstocks",
+   "rank": 383,
+   "status": "active",
+   "first_historical_data": "2026-06-11T18:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb"
+   }
+  },
+  {
+   "id": 40648,
+   "name": "SanDisk Tokenized Stock (Reality)",
+   "symbol": "rSNDK",
+   "slug": "sandisk-tokenized-stock-reality",
+   "rank": 1165,
+   "status": "active",
+   "first_historical_data": "2026-07-02T05:30:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0xc78c5a7be0e8d72cdda205e53d1147aaacf5a075"
+   }
+  },
+  {
+   "id": 41493,
+   "name": "Wrapped Sandisk Corporation Tokenized Stock (xStock)",
+   "symbol": "wSNDKx",
+   "slug": "wrapped-sandisk-corporation-tokenized-stock-xstock",
+   "rank": 4198,
+   "status": "active",
+   "first_historical_data": "2026-07-30T12:45:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0x75e82E2884Ea10f72FCA777449B73377f4646219"
    }
   },
   {
@@ -2355,10 +2140,10 @@
    "name": "Applied Materials Tokenized Stock (Ondo)",
    "symbol": "AMATon",
    "slug": "applied-materials-tokenized-stock-ondo",
-   "rank": 2141,
+   "rank": 2142,
    "status": "active",
    "first_historical_data": "2026-01-08T16:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -2375,7 +2160,7 @@
    "rank": 3042,
    "status": "active",
    "first_historical_data": "2026-07-18T19:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -2389,10 +2174,10 @@
    "name": "Applied Materials Inc (Derivatives)",
    "symbol": "AMAT",
    "slug": "applied-materials-inc-derivatives",
-   "rank": 7770,
+   "rank": 7769,
    "status": "active",
    "first_historical_data": "2026-05-28T09:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -2400,10 +2185,10 @@
    "name": "Applied Materials, Inc. tokenized stock (xStock)",
    "symbol": "AMATx",
    "slug": "applied-materials-inc-tokenized-stock-xstock",
-   "rank": 2133,
+   "rank": 2132,
    "status": "active",
    "first_historical_data": "2026-07-28T06:30:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -2417,10 +2202,10 @@
    "name": "Applied Materials Tokenized Stock (Reality)",
    "symbol": "rAMAT",
    "slug": "applied-materials-tokenized-stock-reality",
-   "rank": 2514,
+   "rank": 2513,
    "status": "active",
    "first_historical_data": "2026-07-02T04:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -2434,10 +2219,10 @@
    "name": "Applied Materials Tokenized bStocks",
    "symbol": "AMATB",
    "slug": "applied-materials-tokenized-bstocks",
-   "rank": 1532,
+   "rank": 1531,
    "status": "active",
    "first_historical_data": "2026-07-29T12:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -2462,127 +2247,14 @@
    }
   },
   {
-   "id": 38009,
-   "name": "Oracle Tokenized Stock (Ondo)",
-   "symbol": "ORCLon",
-   "slug": "oracle-tokenized-stock-ondo",
-   "rank": 1249,
-   "status": "active",
-   "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0x8a23C6BaadB88512b30475C83Df6A63881e33e1E"
-   }
-  },
-  {
-   "id": 37059,
-   "name": "Oracle tokenized stock (xStock)",
-   "symbol": "ORCLX",
-   "slug": "oracle-tokenized-stock-xstock",
-   "rank": 1377,
-   "status": "active",
-   "first_historical_data": "2025-10-23T09:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "XsjFwUPiLofddX5cWFHW35GCbXcSu1BCUGfxoQAQjeL"
-   }
-  },
-  {
-   "id": 40773,
-   "name": "Oracle Tokenized Stock (Robinhood)",
-   "symbol": "ORCL",
-   "slug": "oracle-tokenized-stock-robinhood",
-   "rank": 1963,
-   "status": "active",
-   "first_historical_data": "2026-07-17T18:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0xb0992820E760d836549ba69BC7598b4af75dEE03"
-   }
-  },
-  {
-   "id": 39482,
-   "name": "Oracle Corp (Derivatives)",
-   "symbol": "ORCL",
-   "slug": "oracle-corp-derivatives",
-   "rank": 7613,
-   "status": "active",
-   "first_historical_data": "2026-01-29T10:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": null
-  },
-  {
-   "id": 40654,
-   "name": "Oracle Tokenized Stock (Reality)",
-   "symbol": "rORCL",
-   "slug": "oracle-tokenized-stock-reality",
-   "rank": 1897,
-   "status": "active",
-   "first_historical_data": "2026-07-02T04:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 51,
-    "name": "Arbitrum",
-    "symbol": "ARB",
-    "slug": "arbitrum",
-    "token_address": "0x6b45804a1996365f774e87da6fa2debf1eb026ab"
-   }
-  },
-  {
-   "id": 40882,
-   "name": "Oracle Tokenized bStocks",
-   "symbol": "ORCLB",
-   "slug": "oracle-tokenized-bstocks",
-   "rank": 1402,
-   "status": "active",
-   "first_historical_data": "2026-07-22T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0x4684d9887fc1c71cba7bab8e88835cec217eb598"
-   }
-  },
-  {
-   "id": 37218,
-   "name": "Wrapped Oracle Tokenized stock (xStock)",
-   "symbol": "WORCLX",
-   "slug": "wrapped-oracle-tokenized-stock-xstock",
-   "rank": 2950,
-   "status": "active",
-   "first_historical_data": "2026-08-17T09:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0x1349456830Ddc3D8599E4d6A63698883Eca67ADa"
-   }
-  },
-  {
    "id": 38027,
    "name": "AMD Tokenized Stock (Ondo)",
    "symbol": "AMDon",
    "slug": "amd-tokenized-stock-ondo",
-   "rank": 976,
+   "rank": 974,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -2596,10 +2268,10 @@
    "name": "AMD Tokenized Stock (Robinhood)",
    "symbol": "AMD",
    "slug": "amd-tokenized-stock-robinhood",
-   "rank": 1657,
+   "rank": 1660,
    "status": "active",
    "first_historical_data": "2026-07-16T03:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -2613,10 +2285,10 @@
    "name": "Advanced Micro Devices Inc (Derivatives)",
    "symbol": "AMD",
    "slug": "advanced-micro-devices-inc-derivatives",
-   "rank": 7617,
+   "rank": 7615,
    "status": "active",
    "first_historical_data": "2026-01-30T05:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -2624,10 +2296,10 @@
    "name": "Advanced Micro Devices Tokenized bStocks",
    "symbol": "AMDB",
    "slug": "advanced-micro-devices-tokenized-bstocks",
-   "rank": 1370,
+   "rank": 1372,
    "status": "active",
    "first_historical_data": "2026-06-23T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -2641,10 +2313,10 @@
    "name": "AMD Tokenized Stock (Reality)",
    "symbol": "rAMD",
    "slug": "amd-tokenized-stock-reality",
-   "rank": 1549,
+   "rank": 1548,
    "status": "active",
    "first_historical_data": "2026-07-02T04:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -2661,7 +2333,7 @@
    "rank": 7898,
    "status": "active",
    "first_historical_data": "2026-07-30T14:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -2678,7 +2350,7 @@
    "rank": 1419,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -2695,7 +2367,7 @@
    "rank": 2725,
    "status": "active",
    "first_historical_data": "2026-07-10T21:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -2709,10 +2381,10 @@
    "name": "ASML Holding NV (Derivatives)",
    "symbol": "ASML",
    "slug": "asml-holding-nv-derivatives",
-   "rank": 7676,
+   "rank": 7672,
    "status": "active",
    "first_historical_data": "2026-03-11T09:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -2723,7 +2395,7 @@
    "rank": 2073,
    "status": "active",
    "first_historical_data": "2026-07-28T06:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -2737,10 +2409,10 @@
    "name": "ASML Tokenized Stock (Reality)",
    "symbol": "rASML",
    "slug": "asml-tokenized-stock-reality",
-   "rank": 2239,
+   "rank": 2241,
    "status": "active",
    "first_historical_data": "2026-07-02T04:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -2757,7 +2429,7 @@
    "rank": 1374,
    "status": "active",
    "first_historical_data": "2026-08-05T12:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -2771,10 +2443,10 @@
    "name": "Wrapped ASML Tokenized Stock (xStock)",
    "symbol": "wASMLx",
    "slug": "wrapped-asml-tokenized-stock-xstock",
-   "rank": 4336,
+   "rank": 4333,
    "status": "active",
    "first_historical_data": "2026-07-30T14:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -2784,14 +2456,869 @@
    }
   },
   {
+   "id": 37021,
+   "name": "Broadcom tokenized stock (xStock)",
+   "symbol": "AVGOX",
+   "slug": "broadcom-tokenized-stock-xstock",
+   "rank": 1160,
+   "status": "active",
+   "first_historical_data": "2025-09-18T14:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "XsgSaSvNSqLTtFuyWPBhK9196Xb9Bbdyjj4fH3cPJGo"
+   }
+  },
+  {
+   "id": 38062,
+   "name": "Broadcom Tokenized Stock (Ondo)",
+   "symbol": "AVGOon",
+   "slug": "broadcom-tokenized-stock-ondo",
+   "rank": 1245,
+   "status": "active",
+   "first_historical_data": "2025-09-03T13:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0x0d54D4279B9E8c54cD8547c2C75A8Ee81A0BcaE8"
+   }
+  },
+  {
+   "id": 40604,
+   "name": "Broadcom Tokenized Stock (Reality)",
+   "symbol": "rAVGO",
+   "slug": "broadcom-tokenized-stock-reality",
+   "rank": 1271,
+   "status": "active",
+   "first_historical_data": "2026-07-02T04:10:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0xb79b7b1022fd670f144c9d35af5492d8ba342f45"
+   }
+  },
+  {
+   "id": 40705,
+   "name": "Broadcom Tokenized Stock (Robinhood)",
+   "symbol": "AVGO",
+   "slug": "broadcom-tokenized-stock-robinhood",
+   "rank": 2727,
+   "status": "active",
+   "first_historical_data": "2026-08-31T18:45:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0x156E175DD063a8cE274C50654eF40e0032b3fbcF"
+   }
+  },
+  {
+   "id": 40845,
+   "name": "Broadcom Tokenized bStocks",
+   "symbol": "AVGOB",
+   "slug": "broadcom-tokenized-bstocks",
+   "rank": 889,
+   "status": "active",
+   "first_historical_data": "2026-07-15T13:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0x76682c454467b3a1150ad8b6a92fc5ee2c21d7ed"
+   }
+  },
+  {
+   "id": 37129,
+   "name": "Wrapped Broadcom Tokenized stock (xStock)",
+   "symbol": "WAVGOX",
+   "slug": "wrapped-broadcom-tokenized-stock-xstock",
+   "rank": 2907,
+   "status": "active",
+   "first_historical_data": "2026-08-17T14:45:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0xE89572bfe500ac7E8Ecd8dc8119d274214e06F14"
+   }
+  },
+  {
+   "id": 37005,
+   "name": "Circle tokenized stock (xStock)",
+   "symbol": "CRCLX",
+   "slug": "circle-tokenized-stock-xstock",
+   "rank": 270,
+   "status": "active",
+   "first_historical_data": "2025-06-30T16:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1"
+   }
+  },
+  {
+   "id": 38056,
+   "name": "Circle Internet Group Tokenized Stock (Ondo)",
+   "symbol": "CRCLon",
+   "slug": "circle-internet-group-tokenized-stock-ondo",
+   "rank": 247,
+   "status": "active",
+   "first_historical_data": "2025-09-03T12:55:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0x3632DEa96A953C11dac2f00b4A05a32CD1063fAE"
+   }
+  },
+  {
+   "id": 40708,
+   "name": "Circle Internet Group Tokenized Stock (Robinhood)",
+   "symbol": "CRCL",
+   "slug": "circle-internet-group-tokenized-stock-robinhood",
+   "rank": 1275,
+   "status": "active",
+   "first_historical_data": "2026-07-23T15:25:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0xdF0992E440dD0be65BD8439b609d6D4366bf1CB5"
+   }
+  },
+  {
+   "id": 38154,
+   "name": "Circle Internet Group (Derivatives)",
+   "symbol": "CRCL",
+   "slug": "circle-internet-group-derivatives",
+   "rank": 7439,
+   "status": "active",
+   "first_historical_data": "2025-12-16T05:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 40213,
+   "name": "Circle Internet Group Tokenized bStocks",
+   "symbol": "CRCLB",
+   "slug": "circle-internet-group-tokenized-bstocks",
+   "rank": 242,
+   "status": "active",
+   "first_historical_data": "2026-06-11T18:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0x80f3d493ebce97e343c53d29a137942416b4ffc0"
+   }
+  },
+  {
+   "id": 40635,
+   "name": "Circle Tokenized Stock (Reality)",
+   "symbol": "rCRCL",
+   "slug": "circle-tokenized-stock-reality",
+   "rank": 771,
+   "status": "active",
+   "first_historical_data": "2026-07-02T05:10:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0x861a85a78c371bc0a02675bbe00a4cbc0826b421"
+   }
+  },
+  {
+   "id": 41268,
+   "name": "Wrapped Circle Tokenized Stock (xStock)",
+   "symbol": "wCRCLx",
+   "slug": "wrapped-circle-tokenized-stock-xstock",
+   "rank": 4089,
+   "status": "active",
+   "first_historical_data": "2026-07-30T11:55:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0xb11134F14d5B94DB60d4599DfdC3bF1bbA2150e8"
+   }
+  },
+  {
+   "id": 40763,
+   "name": "iShares MSCI South Korea fund Tokenized ETF (Robinhood)",
+   "symbol": "EWY",
+   "slug": "ishares-msci-south-korea-fund-tokenized-etf-robinhood",
+   "rank": 2836,
+   "status": "active",
+   "first_historical_data": "2026-09-02T07:45:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0x7f0aBeF0C07280F82c6a08ead09dEd6BAE2C13Fc"
+   }
+  },
+  {
+   "id": 39654,
+   "name": "Ishares Msci South Korea ETF (Derivatives)",
+   "symbol": "EWY",
+   "slug": "ishares-msci-south-korea-etf-derivatives",
+   "rank": 7663,
+   "status": "active",
+   "first_historical_data": "2026-03-04T02:40:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 39781,
+   "name": "iShares MSCI South Korea Tokenized ETF (Ondo)",
+   "symbol": "EWYon",
+   "slug": "ishares-msci-south-korea-tokenized-etf-ondo",
+   "rank": 1993,
+   "status": "active",
+   "first_historical_data": "2026-03-24T04:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "C8pSaSgjkiTWixS3GM6Hxd6HKnKrgAbY9WDgfVeondo"
+   }
+  },
+  {
+   "id": 40159,
+   "name": "iShares MSCI South Korea tokenized ETF (xStock)",
+   "symbol": "EWYx",
+   "slug": "ishares-msci-south-korea-tokenized-etf-xstock",
+   "rank": 1594,
+   "status": "active",
+   "first_historical_data": "2026-07-17T08:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "XswenHXJtDWYMh89uRYx2tZcABxwXSn7j3jidDPS1Yo"
+   }
+  },
+  {
+   "id": 40539,
+   "name": "iShares MSCI South Korea ETF Tokenized bStocks",
+   "symbol": "EWYB",
+   "slug": "ishares-msci-south-korea-etf-tokenized-bstocks",
+   "rank": 972,
+   "status": "active",
+   "first_historical_data": "2026-06-23T13:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0xbe82f76637dba2c114c41df856c2c51e522e2cb8"
+   }
+  },
+  {
+   "id": 40645,
+   "name": "iShares MSCI South Korea ETF Tokenized Stock (Reality)",
+   "symbol": "rEWY",
+   "slug": "ishares-msci-south-korea-etf-tokenized-stock-reality",
+   "rank": 2584,
+   "status": "active",
+   "first_historical_data": "2026-06-30T09:10:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0x716e5acbf09813435112ad314fc7499203a0766f"
+   }
+  },
+  {
+   "id": 41388,
+   "name": "Wrapped iShares MSCI South Korea Tokenized ETF (xStock)",
+   "symbol": "wEWYx",
+   "slug": "wrapped-ishares-msci-south-korea-tokenized-etf-xstock",
+   "rank": null,
+   "status": "untracked",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0x021b40617982074748C81a19d22046CC2548C3bE"
+   }
+  },
+  {
+   "id": 37024,
+   "name": "Gold tokenized ETF (xStock)",
+   "symbol": "GLDX",
+   "slug": "gold-tokenized-stock-xstock",
+   "rank": 896,
+   "status": "active",
+   "first_historical_data": "2025-07-11T03:10:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re"
+   }
+  },
+  {
+   "id": 39276,
+   "name": "SPDR Gold Shares Tokenized Stock (Ondo)",
+   "symbol": "GLDon",
+   "slug": "spdr-gold-shares-tokenized-stock-ondo",
+   "rank": 1408,
+   "status": "active",
+   "first_historical_data": "2026-01-08T15:45:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0x423d42e505e64f99b6e277eb7ed324cc5606f139"
+   }
+  },
+  {
+   "id": 41994,
+   "name": "SPDR Gold Shares Tokenized ETF (Robinhood)",
+   "symbol": "GLD",
+   "slug": "spdr-gold-shares-tokenized-etf-robinhood",
+   "rank": 3991,
+   "status": "active",
+   "first_historical_data": "2026-08-21T16:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0xc9a981fee1f9dec688bb123ccdecc63d0debfc4e"
+   }
+  },
+  {
+   "id": 39617,
+   "name": "SPDR Gold Shares Tokenized ETF (Hyperliquid)",
+   "symbol": "GLD",
+   "slug": "spdr-gold-shares-tokenized-etf-hyperliquid",
+   "rank": 5216,
+   "status": "active",
+   "first_historical_data": "2026-02-25T11:15:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 248,
+    "name": "HyperEVM",
+    "symbol": "HYPE",
+    "slug": "hyperliquid",
+    "token_address": "0x35eeda03e55ff217a013892e9e2e37e792b264ea"
+   }
+  },
+  {
+   "id": 41957,
+   "name": "SPDR Gold Shares Tokenized ETF (Derivatives)",
+   "symbol": "GLD",
+   "slug": "spdr-gold-shares-tokenized-etf-derivatives",
+   "rank": 7939,
+   "status": "active",
+   "first_historical_data": "2026-08-31T06:15:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 41367,
+   "name": "Wrapped Gold Tokenized ETF (xStock)",
+   "symbol": "wGLDx",
+   "slug": "wrapped-gold-tokenized-etf-xstock",
+   "rank": null,
+   "status": "untracked",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0x735f1509Bff25e27Cd442B9bFb231324648eAD9B"
+   }
+  },
+  {
+   "id": 37023,
+   "name": "Gamestop tokenized stock (xStock)",
+   "symbol": "GMEX",
+   "slug": "gamestop-tokenized-stock-xstock",
+   "rank": 1797,
+   "status": "active",
+   "first_historical_data": "2025-07-12T03:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc"
+   }
+  },
+  {
+   "id": 37997,
+   "name": "GameStop Tokenized Stock (Ondo)",
+   "symbol": "GMEon",
+   "slug": "gamestop-tokenized-stock-ondo",
+   "rank": 2365,
+   "status": "active",
+   "first_historical_data": "2025-09-03T13:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0x71d24Baeb0A033ec5F90FF65C4210545AF378D97"
+   }
+  },
+  {
+   "id": 40704,
+   "name": "GameStop Tokenized Stock (Robinhood)",
+   "symbol": "GME",
+   "slug": "gamestop-tokenized-stock-robinhood",
+   "rank": 1460,
+   "status": "active",
+   "first_historical_data": "2026-07-10T21:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0x1b0E319c6A659F002271B69dB8A7df2F911c153E"
+   }
+  },
+  {
+   "id": 39928,
+   "name": "GameStop Corp (Derivatives)",
+   "symbol": "GME",
+   "slug": "gamestop-corp-derivatives",
+   "rank": 7710,
+   "status": "active",
+   "first_historical_data": "2026-05-04T04:00:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 41077,
+   "name": "GameStop Tokenized bStocks",
+   "symbol": "GMEB",
+   "slug": "gamestop-tokenized-bstocks",
+   "rank": 1148,
+   "status": "active",
+   "first_historical_data": "2026-08-12T12:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0x46ceefda28dd7207059ed19b0acdc026955bb15c"
+   }
+  },
+  {
+   "id": 37120,
+   "name": "Wrapped Gamestop Tokenized stock (xStock)",
+   "symbol": "WGMEX",
+   "slug": "wrapped-gamestop-tokenized-stock-xstock",
+   "rank": 2761,
+   "status": "active",
+   "first_historical_data": "2026-08-20T13:45:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0x459D3ae62B86cC6125e06260DddFd3AFED24A877"
+   }
+  },
+  {
+   "id": 38035,
+   "name": "Intel Tokenized Stock (Ondo)",
+   "symbol": "INTCon",
+   "slug": "intel-tokenized-stock-ondo",
+   "rank": 709,
+   "status": "active",
+   "first_historical_data": "2025-09-03T13:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0xFdA09936DbD717368De0835bA441d9E62069d36f"
+   }
+  },
+  {
+   "id": 37028,
+   "name": "Intel tokenized stock (xStock)",
+   "symbol": "INTCX",
+   "slug": "intel-tokenized-stock-xstock",
+   "rank": 840,
+   "status": "active",
+   "first_historical_data": "2025-10-23T09:40:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "XshPgPdXFRWB8tP1j82rebb2Q9rPgGX37RuqzohmArM"
+   }
+  },
+  {
+   "id": 40697,
+   "name": "Intel Tokenized Stock (Robinhood)",
+   "symbol": "INTC",
+   "slug": "intel-tokenized-stock-robinhood",
+   "rank": 1638,
+   "status": "active",
+   "first_historical_data": "2026-07-16T06:10:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0xc72b96e0E48ecd4DC75E1e45396e26300BC39681"
+   }
+  },
+  {
+   "id": 39472,
+   "name": "Intel Corp (Derivatives)",
+   "symbol": "INTC",
+   "slug": "intel-corp-derivatives",
+   "rank": 4094,
+   "status": "active",
+   "first_historical_data": "2026-01-29T01:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 40540,
+   "name": "Intel Tokenized bStocks",
+   "symbol": "INTCB",
+   "slug": "intel-tokenized-bstocks",
+   "rank": 815,
+   "status": "active",
+   "first_historical_data": "2026-06-23T13:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0xe614e2fc6c787035ff51f452e8e826bfd32d5283"
+   }
+  },
+  {
+   "id": 40618,
+   "name": "Intel Tokenized Stock (Reality)",
+   "symbol": "rINTC",
+   "slug": "intel-tokenized-stock-reality",
+   "rank": 1091,
+   "status": "active",
+   "first_historical_data": "2026-07-02T04:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0xafa43b4badfd062f5f1891a398a0579c904da776"
+   }
+  },
+  {
+   "id": 37202,
+   "name": "Wrapped Intel Tokenized stock (xStock)",
+   "symbol": "WINTCX",
+   "slug": "wrapped-intel-tokenized-stock-xstock",
+   "rank": 2979,
+   "status": "active",
+   "first_historical_data": "2026-08-16T07:40:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0x33AA35B0271FFfE2048Cc093aB7fE60931786719"
+   }
+  },
+  {
+   "id": 39254,
+   "name": "IREN Tokenized Stock (Ondo)",
+   "symbol": "IRENon",
+   "slug": "iren-tokenized-stock-ondo",
+   "rank": 1406,
+   "status": "active",
+   "first_historical_data": "2026-01-08T15:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0x0b59fdb1a233a7477ea14061004b9dd776e73cb3"
+   }
+  },
+  {
+   "id": 40731,
+   "name": "IREN Limited Tokenized Stock (Robinhood)",
+   "symbol": "IREN",
+   "slug": "iren-limited-tokenized-stock-robinhood",
+   "rank": 3514,
+   "status": "active",
+   "first_historical_data": "2026-07-30T12:15:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0xF0AB0c93bE6F41369d302e55db1A96b3c430212D"
+   }
+  },
+  {
+   "id": 40117,
+   "name": "IREN Ltd (Derivatives)",
+   "symbol": "IREN",
+   "slug": "iren-ltd-derivatives",
+   "rank": 7783,
+   "status": "active",
+   "first_historical_data": "2026-06-03T09:25:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 40162,
+   "name": "IREN tokenized stock (xStock)",
+   "symbol": "IRENx",
+   "slug": "iren-tokenized-stock-xstock",
+   "rank": 2018,
+   "status": "active",
+   "first_historical_data": "2026-07-23T03:55:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "Xshh1dRsnxatP45yBfrzU9MrvrFCvxHQGTrWjgdA81E"
+   }
+  },
+  {
+   "id": 40623,
+   "name": "IREN Tokenized Stock (Reality)",
+   "symbol": "rIREN",
+   "slug": "iren-tokenized-stock-reality",
+   "rank": 2585,
+   "status": "active",
+   "first_historical_data": "2026-07-02T04:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0x798b5967a0debe6ed3dc16aa36d5cecda1e19f93"
+   }
+  },
+  {
+   "id": 40970,
+   "name": "IREN Limited Tokenized bStocks",
+   "symbol": "IRENB",
+   "slug": "iren-limited-tokenized-bstocks",
+   "rank": 1698,
+   "status": "active",
+   "first_historical_data": "2026-08-05T12:05:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0xfdc2f2cab77b28f7ef6c819a404706cfa9bca33b"
+   }
+  },
+  {
+   "id": 41291,
+   "name": "Wrapped IREN Tokenized Stock (xStock)",
+   "symbol": "wIRENx",
+   "slug": "wrapped-iren-tokenized-stock-xstock",
+   "rank": 7901,
+   "status": "active",
+   "first_historical_data": "2026-08-23T06:40:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0xb3a16DB475A9cb321fc8956aA2cB01385a022E75"
+   }
+  },
+  {
+   "id": 37003,
+   "name": "MicroStrategy tokenized stock (xStock)",
+   "symbol": "MSTRX",
+   "slug": "microstrategy-tokenized-stock-xstock",
+   "rank": 256,
+   "status": "active",
+   "first_historical_data": "2025-06-30T17:00:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ"
+   }
+  },
+  {
+   "id": 38092,
+   "name": "MicroStrategy Tokenized Stock (Ondo)",
+   "symbol": "MSTRon",
+   "slug": "microstrategy-tokenized-stock-ondo",
+   "rank": 541,
+   "status": "active",
+   "first_historical_data": "2025-09-03T13:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0xCabD955322dfbf94C084929ac5E9Eca3fEB5556F"
+   }
+  },
+  {
+   "id": 40745,
+   "name": "Strategy Inc. Tokenized Stock (Robinhood)",
+   "symbol": "MSTR",
+   "slug": "strategy-inc-tokenized-stock-robinhood",
+   "rank": 1424,
+   "status": "active",
+   "first_historical_data": "2026-07-10T22:00:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0xec262a75e413fAfD0dF80480274532C79D42da09"
+   }
+  },
+  {
+   "id": 39473,
+   "name": "MicroStrategy Inc (Derivatives)",
+   "symbol": "MSTR",
+   "slug": "microstrategy-inc-derivatives",
+   "rank": 4013,
+   "status": "active",
+   "first_historical_data": "2026-01-29T01:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 40536,
+   "name": "Strategy Tokenized bStocks",
+   "symbol": "MSTRB",
+   "slug": "strategy-tokenized-bstocks",
+   "rank": 335,
+   "status": "active",
+   "first_historical_data": "2026-06-23T13:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0xe87afb3076aeb0f9b14e368de8145ae6a2826a14"
+   }
+  },
+  {
+   "id": 40632,
+   "name": "MicroStrategy Tokenized Stock (Reality)",
+   "symbol": "rMSTR",
+   "slug": "microstrategy-tokenized-stock-reality",
+   "rank": 842,
+   "status": "active",
+   "first_historical_data": "2026-07-02T04:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0x10fe806857055d3b5ae00d2eabafd3e61f0e89aa"
+   }
+  },
+  {
+   "id": 37215,
+   "name": "Wrapped MicroStrategy Tokenized stock (xStock)",
+   "symbol": "WMSTRX",
+   "slug": "wrapped-microstrategy-tokenized-stock-xstock",
+   "rank": 2758,
+   "status": "active",
+   "first_historical_data": "2026-08-16T07:40:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0x30987adF0B11dc698438a99BA04ec3a1AB2c7EaB"
+   }
+  },
+  {
    "id": 37060,
    "name": "Netflix tokenized stock (xStock)",
    "symbol": "NFLXX",
    "slug": "netflix-tokenized-stock-xstock",
-   "rank": 1845,
+   "rank": 1847,
    "status": "active",
    "first_historical_data": "2025-09-19T16:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -2805,10 +3332,10 @@
    "name": "Netflix Tokenized Stock (Ondo)",
    "symbol": "NFLXon",
    "slug": "netflix-tokenized-stock-ondo",
-   "rank": 2013,
+   "rank": 2011,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -2825,7 +3352,7 @@
    "rank": 2060,
    "status": "active",
    "first_historical_data": "2026-07-10T22:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -2839,10 +3366,10 @@
    "name": "Netflix (Derivatives)",
    "symbol": "NFLX",
    "slug": "netflix-derivatives",
-   "rank": 7610,
+   "rank": 7608,
    "status": "active",
    "first_historical_data": "2026-01-29T04:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -2850,10 +3377,10 @@
    "name": "Netflix Tokenized bStocks",
    "symbol": "NFLXB",
    "slug": "netflix-tokenized-bstocks",
-   "rank": 1833,
+   "rank": 1832,
    "status": "active",
    "first_historical_data": "2026-08-05T12:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -2878,14 +3405,127 @@
    }
   },
   {
+   "id": 38009,
+   "name": "Oracle Tokenized Stock (Ondo)",
+   "symbol": "ORCLon",
+   "slug": "oracle-tokenized-stock-ondo",
+   "rank": 1250,
+   "status": "active",
+   "first_historical_data": "2025-09-03T13:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "token_address": "0x8a23C6BaadB88512b30475C83Df6A63881e33e1E"
+   }
+  },
+  {
+   "id": 37059,
+   "name": "Oracle tokenized stock (xStock)",
+   "symbol": "ORCLX",
+   "slug": "oracle-tokenized-stock-xstock",
+   "rank": 1377,
+   "status": "active",
+   "first_historical_data": "2025-10-23T09:40:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 16,
+    "name": "Solana",
+    "symbol": "SOL",
+    "slug": "solana",
+    "token_address": "XsjFwUPiLofddX5cWFHW35GCbXcSu1BCUGfxoQAQjeL"
+   }
+  },
+  {
+   "id": 40773,
+   "name": "Oracle Tokenized Stock (Robinhood)",
+   "symbol": "ORCL",
+   "slug": "oracle-tokenized-stock-robinhood",
+   "rank": 1963,
+   "status": "active",
+   "first_historical_data": "2026-07-17T18:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 300,
+    "name": "Robinhood Chain",
+    "symbol": "-",
+    "slug": "robinhood-placeholder",
+    "token_address": "0xb0992820E760d836549ba69BC7598b4af75dEE03"
+   }
+  },
+  {
+   "id": 39482,
+   "name": "Oracle Corp (Derivatives)",
+   "symbol": "ORCL",
+   "slug": "oracle-corp-derivatives",
+   "rank": 7611,
+   "status": "active",
+   "first_historical_data": "2026-01-29T10:45:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": null
+  },
+  {
+   "id": 40654,
+   "name": "Oracle Tokenized Stock (Reality)",
+   "symbol": "rORCL",
+   "slug": "oracle-tokenized-stock-reality",
+   "rank": 1896,
+   "status": "active",
+   "first_historical_data": "2026-07-02T04:15:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 51,
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "slug": "arbitrum",
+    "token_address": "0x6b45804a1996365f774e87da6fa2debf1eb026ab"
+   }
+  },
+  {
+   "id": 40882,
+   "name": "Oracle Tokenized bStocks",
+   "symbol": "ORCLB",
+   "slug": "oracle-tokenized-bstocks",
+   "rank": 1402,
+   "status": "active",
+   "first_historical_data": "2026-07-22T13:35:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 14,
+    "name": "BNB Smart Chain (BEP20)",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "token_address": "0x4684d9887fc1c71cba7bab8e88835cec217eb598"
+   }
+  },
+  {
+   "id": 37218,
+   "name": "Wrapped Oracle Tokenized stock (xStock)",
+   "symbol": "WORCLX",
+   "slug": "wrapped-oracle-tokenized-stock-xstock",
+   "rank": 2950,
+   "status": "active",
+   "first_historical_data": "2026-08-17T09:50:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
+   "platform": {
+    "id": 216,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "slug": "okb",
+    "token_address": "0x1349456830Ddc3D8599E4d6A63698883Eca67ADa"
+   }
+  },
+  {
    "id": 38073,
    "name": "Palantir Technologies Tokenized Stock (Ondo)",
    "symbol": "PLTRon",
    "slug": "palantir-technologies-tokenized-stock-ondo",
-   "rank": 1438,
+   "rank": 1441,
    "status": "active",
    "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 1,
     "name": "Ethereum",
@@ -2899,10 +3539,10 @@
    "name": "Palantir tokenized stock (xStock)",
    "symbol": "PLTRX",
    "slug": "palantir-tokenized-stock-xstock",
-   "rank": 1522,
+   "rank": 1517,
    "status": "active",
    "first_historical_data": "2025-10-23T09:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 16,
     "name": "Solana",
@@ -2916,10 +3556,10 @@
    "name": "Palantir Technologies Tokenized Stock (Robinhood)",
    "symbol": "PLTR",
    "slug": "palantir-technologies-tokenized-stock-robinhood",
-   "rank": 1539,
+   "rank": 1537,
    "status": "active",
    "first_historical_data": "2026-07-16T21:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 300,
     "name": "Robinhood Chain",
@@ -2933,10 +3573,10 @@
    "name": "Palantir Technologies Inc (Derivatives)",
    "symbol": "PLTR",
    "slug": "palantir-technologies-inc-derivatives",
-   "rank": 7609,
+   "rank": 7607,
    "status": "active",
    "first_historical_data": "2026-01-29T02:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": null
   },
   {
@@ -2944,10 +3584,10 @@
    "name": "Palantir Tokenized bStocks",
    "symbol": "PLTRB",
    "slug": "palantir-tokenized-bstocks",
-   "rank": 1631,
+   "rank": 1635,
    "status": "active",
    "first_historical_data": "2026-06-30T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 14,
     "name": "BNB Smart Chain (BEP20)",
@@ -2961,10 +3601,10 @@
    "name": "Palantir Tokenized Stock (Reality)",
    "symbol": "rPLTR",
    "slug": "palantir-tokenized-stock-reality",
-   "rank": 2147,
+   "rank": 2146,
    "status": "active",
    "first_historical_data": "2026-07-02T04:30:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 51,
     "name": "Arbitrum",
@@ -2978,10 +3618,10 @@
    "name": "Wrapped Palantir Tokenized stock (xStock)",
    "symbol": "WPLTRX",
    "slug": "wrapped-palantir-tokenized-stock-xstock",
-   "rank": 2970,
+   "rank": 2968,
    "status": "active",
    "first_historical_data": "2026-08-16T08:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
+   "last_historical_data": "2026-09-18T22:50:00.000Z",
    "platform": {
     "id": 216,
     "name": "X Layer",
@@ -2989,537 +3629,10 @@
     "slug": "okb",
     "token_address": "0x4A2df09536F62341C9f946427D16414C04e21342"
    }
-  },
-  {
-   "id": 37024,
-   "name": "Gold tokenized ETF (xStock)",
-   "symbol": "GLDX",
-   "slug": "gold-tokenized-stock-xstock",
-   "rank": 896,
-   "status": "active",
-   "first_historical_data": "2025-07-11T03:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re"
-   }
-  },
-  {
-   "id": 39276,
-   "name": "SPDR Gold Shares Tokenized Stock (Ondo)",
-   "symbol": "GLDon",
-   "slug": "spdr-gold-shares-tokenized-stock-ondo",
-   "rank": 1408,
-   "status": "active",
-   "first_historical_data": "2026-01-08T15:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0x423d42e505e64f99b6e277eb7ed324cc5606f139"
-   }
-  },
-  {
-   "id": 41994,
-   "name": "SPDR Gold Shares Tokenized ETF (Robinhood)",
-   "symbol": "GLD",
-   "slug": "spdr-gold-shares-tokenized-etf-robinhood",
-   "rank": 3991,
-   "status": "active",
-   "first_historical_data": "2026-08-21T16:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0xc9a981fee1f9dec688bb123ccdecc63d0debfc4e"
-   }
-  },
-  {
-   "id": 39617,
-   "name": "SPDR Gold Shares Tokenized ETF (Hyperliquid)",
-   "symbol": "GLD",
-   "slug": "spdr-gold-shares-tokenized-etf-hyperliquid",
-   "rank": 5203,
-   "status": "active",
-   "first_historical_data": "2026-02-25T11:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 248,
-    "name": "HyperEVM",
-    "symbol": "HYPE",
-    "slug": "hyperliquid",
-    "token_address": "0x35eeda03e55ff217a013892e9e2e37e792b264ea"
-   }
-  },
-  {
-   "id": 41957,
-   "name": "SPDR Gold Shares Tokenized ETF (Derivatives)",
-   "symbol": "GLD",
-   "slug": "spdr-gold-shares-tokenized-etf-derivatives",
-   "rank": 7940,
-   "status": "active",
-   "first_historical_data": "2026-08-31T06:15:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": null
-  },
-  {
-   "id": 41367,
-   "name": "Wrapped Gold Tokenized ETF (xStock)",
-   "symbol": "wGLDx",
-   "slug": "wrapped-gold-tokenized-etf-xstock",
-   "rank": null,
-   "status": "untracked",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0x735f1509Bff25e27Cd442B9bFb231324648eAD9B"
-   }
-  },
-  {
-   "id": 38048,
-   "name": "Qualcomm Tokenized Stock (Ondo)",
-   "symbol": "QCOMon",
-   "slug": "qualcomm-tokenized-stock-ondo",
-   "rank": 1363,
-   "status": "active",
-   "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0xE3419710c1f77D44B4DaB02316d3f048818C4E59"
-   }
-  },
-  {
-   "id": 40749,
-   "name": "Qualcomm Tokenized Stock (Robinhood)",
-   "symbol": "QCOM",
-   "slug": "qualcomm-tokenized-stock-robinhood",
-   "rank": 3543,
-   "status": "active",
-   "first_historical_data": "2026-08-31T09:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0x0f17206447090e464C277571124dD2688E48AEA9"
-   }
-  },
-  {
-   "id": 39932,
-   "name": "Qualcomm (Derivatives)",
-   "symbol": "QCOM",
-   "slug": "qualcomm-derivatives",
-   "rank": 7713,
-   "status": "active",
-   "first_historical_data": "2026-05-06T13:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": null
-  },
-  {
-   "id": 40649,
-   "name": "Qualcomm Tokenized Stock (Reality)",
-   "symbol": "rQCOM",
-   "slug": "qualcomm-tokenized-stock-reality",
-   "rank": 2226,
-   "status": "active",
-   "first_historical_data": "2026-07-02T04:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 51,
-    "name": "Arbitrum",
-    "symbol": "ARB",
-    "slug": "arbitrum",
-    "token_address": "0x9382ed4f9024ee0dd3d48fbd474b2735b8e2dbba"
-   }
-  },
-  {
-   "id": 40792,
-   "name": "Qualcomm Tokenized bStocks",
-   "symbol": "QCOMB",
-   "slug": "qualcomm-tokenized-bstocks",
-   "rank": 1514,
-   "status": "active",
-   "first_historical_data": "2026-07-07T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0x5f7a56e877b9130608bf8be962621011182fefe1"
-   }
-  },
-  {
-   "id": 41622,
-   "name": "Wrapped Qualcomm Tokenized Stock (xStock)",
-   "symbol": "wQCOMx",
-   "slug": "wrapped-qualcomm-tokenized-stock-xstock",
-   "rank": null,
-   "status": "untracked",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0x1C67a6C400CF3c8d207B43d709b88ce5a374dF2C"
-   }
-  },
-  {
-   "id": 41907,
-   "name": "Qualcomm tokenized stock (xStock)",
-   "symbol": "QCOMx",
-   "slug": "qualcomm-tokenized-stock-xstock",
-   "rank": 2230,
-   "status": "active",
-   "first_historical_data": "2026-08-22T11:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0x2D73ed3b4F20bd8f9Abe92786740bA79E9Fa0ef6"
-   }
-  },
-  {
-   "id": 37003,
-   "name": "MicroStrategy tokenized stock (xStock)",
-   "symbol": "MSTRX",
-   "slug": "microstrategy-tokenized-stock-xstock",
-   "rank": 255,
-   "status": "active",
-   "first_historical_data": "2025-06-30T17:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ"
-   }
-  },
-  {
-   "id": 38092,
-   "name": "MicroStrategy Tokenized Stock (Ondo)",
-   "symbol": "MSTRon",
-   "slug": "microstrategy-tokenized-stock-ondo",
-   "rank": 541,
-   "status": "active",
-   "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0xCabD955322dfbf94C084929ac5E9Eca3fEB5556F"
-   }
-  },
-  {
-   "id": 40745,
-   "name": "Strategy Inc. Tokenized Stock (Robinhood)",
-   "symbol": "MSTR",
-   "slug": "strategy-inc-tokenized-stock-robinhood",
-   "rank": 1420,
-   "status": "active",
-   "first_historical_data": "2026-07-10T22:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0xec262a75e413fAfD0dF80480274532C79D42da09"
-   }
-  },
-  {
-   "id": 39473,
-   "name": "MicroStrategy Inc (Derivatives)",
-   "symbol": "MSTR",
-   "slug": "microstrategy-inc-derivatives",
-   "rank": 4015,
-   "status": "active",
-   "first_historical_data": "2026-01-29T01:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": null
-  },
-  {
-   "id": 40536,
-   "name": "Strategy Tokenized bStocks",
-   "symbol": "MSTRB",
-   "slug": "strategy-tokenized-bstocks",
-   "rank": 335,
-   "status": "active",
-   "first_historical_data": "2026-06-23T13:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0xe87afb3076aeb0f9b14e368de8145ae6a2826a14"
-   }
-  },
-  {
-   "id": 40632,
-   "name": "MicroStrategy Tokenized Stock (Reality)",
-   "symbol": "rMSTR",
-   "slug": "microstrategy-tokenized-stock-reality",
-   "rank": 842,
-   "status": "active",
-   "first_historical_data": "2026-07-02T04:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 51,
-    "name": "Arbitrum",
-    "symbol": "ARB",
-    "slug": "arbitrum",
-    "token_address": "0x10fe806857055d3b5ae00d2eabafd3e61f0e89aa"
-   }
-  },
-  {
-   "id": 37215,
-   "name": "Wrapped MicroStrategy Tokenized stock (xStock)",
-   "symbol": "WMSTRX",
-   "slug": "wrapped-microstrategy-tokenized-stock-xstock",
-   "rank": 2758,
-   "status": "active",
-   "first_historical_data": "2026-08-16T07:40:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0x30987adF0B11dc698438a99BA04ec3a1AB2c7EaB"
-   }
-  },
-  {
-   "id": 37005,
-   "name": "Circle tokenized stock (xStock)",
-   "symbol": "CRCLX",
-   "slug": "circle-tokenized-stock-xstock",
-   "rank": 270,
-   "status": "active",
-   "first_historical_data": "2025-06-30T16:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1"
-   }
-  },
-  {
-   "id": 38056,
-   "name": "Circle Internet Group Tokenized Stock (Ondo)",
-   "symbol": "CRCLon",
-   "slug": "circle-internet-group-tokenized-stock-ondo",
-   "rank": 247,
-   "status": "active",
-   "first_historical_data": "2025-09-03T12:55:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0x3632DEa96A953C11dac2f00b4A05a32CD1063fAE"
-   }
-  },
-  {
-   "id": 40708,
-   "name": "Circle Internet Group Tokenized Stock (Robinhood)",
-   "symbol": "CRCL",
-   "slug": "circle-internet-group-tokenized-stock-robinhood",
-   "rank": 1274,
-   "status": "active",
-   "first_historical_data": "2026-07-23T15:25:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0xdF0992E440dD0be65BD8439b609d6D4366bf1CB5"
-   }
-  },
-  {
-   "id": 38154,
-   "name": "Circle Internet Group (Derivatives)",
-   "symbol": "CRCL",
-   "slug": "circle-internet-group-derivatives",
-   "rank": 7440,
-   "status": "active",
-   "first_historical_data": "2025-12-16T05:35:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": null
-  },
-  {
-   "id": 40213,
-   "name": "Circle Internet Group Tokenized bStocks",
-   "symbol": "CRCLB",
-   "slug": "circle-internet-group-tokenized-bstocks",
-   "rank": 242,
-   "status": "active",
-   "first_historical_data": "2026-06-11T18:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0x80f3d493ebce97e343c53d29a137942416b4ffc0"
-   }
-  },
-  {
-   "id": 40635,
-   "name": "Circle Tokenized Stock (Reality)",
-   "symbol": "rCRCL",
-   "slug": "circle-tokenized-stock-reality",
-   "rank": 772,
-   "status": "active",
-   "first_historical_data": "2026-07-02T05:10:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 51,
-    "name": "Arbitrum",
-    "symbol": "ARB",
-    "slug": "arbitrum",
-    "token_address": "0x861a85a78c371bc0a02675bbe00a4cbc0826b421"
-   }
-  },
-  {
-   "id": 41268,
-   "name": "Wrapped Circle Tokenized Stock (xStock)",
-   "symbol": "wCRCLx",
-   "slug": "wrapped-circle-tokenized-stock-xstock",
-   "rank": 4090,
-   "status": "active",
-   "first_historical_data": "2026-07-30T11:55:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0xb11134F14d5B94DB60d4599DfdC3bF1bbA2150e8"
-   }
-  },
-  {
-   "id": 37023,
-   "name": "Gamestop tokenized stock (xStock)",
-   "symbol": "GMEX",
-   "slug": "gamestop-tokenized-stock-xstock",
-   "rank": 1796,
-   "status": "active",
-   "first_historical_data": "2025-07-12T03:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 16,
-    "name": "Solana",
-    "symbol": "SOL",
-    "slug": "solana",
-    "token_address": "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc"
-   }
-  },
-  {
-   "id": 37997,
-   "name": "GameStop Tokenized Stock (Ondo)",
-   "symbol": "GMEon",
-   "slug": "gamestop-tokenized-stock-ondo",
-   "rank": 2364,
-   "status": "active",
-   "first_historical_data": "2025-09-03T13:20:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 1,
-    "name": "Ethereum",
-    "symbol": "ETH",
-    "slug": "ethereum",
-    "token_address": "0x71d24Baeb0A033ec5F90FF65C4210545AF378D97"
-   }
-  },
-  {
-   "id": 40704,
-   "name": "GameStop Tokenized Stock (Robinhood)",
-   "symbol": "GME",
-   "slug": "gamestop-tokenized-stock-robinhood",
-   "rank": 1461,
-   "status": "active",
-   "first_historical_data": "2026-07-10T21:50:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 300,
-    "name": "Robinhood Chain",
-    "symbol": "-",
-    "slug": "robinhood-placeholder",
-    "token_address": "0x1b0E319c6A659F002271B69dB8A7df2F911c153E"
-   }
-  },
-  {
-   "id": 39928,
-   "name": "GameStop Corp (Derivatives)",
-   "symbol": "GME",
-   "slug": "gamestop-corp-derivatives",
-   "rank": 7710,
-   "status": "active",
-   "first_historical_data": "2026-05-04T04:00:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": null
-  },
-  {
-   "id": 41077,
-   "name": "GameStop Tokenized bStocks",
-   "symbol": "GMEB",
-   "slug": "gamestop-tokenized-bstocks",
-   "rank": 1148,
-   "status": "active",
-   "first_historical_data": "2026-08-12T12:05:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 14,
-    "name": "BNB Smart Chain (BEP20)",
-    "symbol": "BNB",
-    "slug": "bnb",
-    "token_address": "0x46ceefda28dd7207059ed19b0acdc026955bb15c"
-   }
-  },
-  {
-   "id": 37120,
-   "name": "Wrapped Gamestop Tokenized stock (xStock)",
-   "symbol": "WGMEX",
-   "slug": "wrapped-gamestop-tokenized-stock-xstock",
-   "rank": 2762,
-   "status": "active",
-   "first_historical_data": "2026-08-20T13:45:00.000Z",
-   "last_historical_data": "2026-09-18T22:20:00.000Z",
-   "platform": {
-    "id": 216,
-    "name": "X Layer",
-    "symbol": "OKB",
-    "slug": "okb",
-    "token_address": "0x459D3ae62B86cC6125e06260DddFd3AFED24A877"
-   }
   }
  ],
  "info": {
-  "captured_utc": "2026-09-18T22:24:25Z",
+  "captured_utc": "2026-09-18T22:54:51Z",
   "endpoint": "https://pro-api.coinmarketcap.com/public-api/v2/cryptocurrency/info",
   "unknown_ids": [
    39002,
@@ -3540,17 +3653,17 @@
      "token_address": "0xfbfb4f79cfb4c34dcd7c82bdee5a0fa199b2e7f9"
     }
    },
-   "40973": {
-    "id": 40973,
-    "symbol": "NFLXB",
+   "41994": {
+    "id": 41994,
+    "symbol": "GLD",
     "status": "active",
-    "date_added": "2026-08-04T03:57:39.000Z",
+    "date_added": "2026-08-04T07:31:32.000Z",
     "platform": {
-     "id": "1839",
-     "name": "BNB",
-     "symbol": "BNB",
-     "slug": "bnb",
-     "token_address": "0xd6829ea836b6fa224d099d40e54b31262f874631"
+     "id": "40670",
+     "name": "Robinhood",
+     "symbol": "-",
+     "slug": "robinhood-placeholder",
+     "token_address": "0xc9a981fee1f9dec688bb123ccdecc63d0debfc4e"
     }
    },
    "41493": {
@@ -3626,20 +3739,6 @@
     "date_added": "2026-01-29T01:38:26.000Z",
     "platform": null
    },
-   "39472": {
-    "id": 39472,
-    "symbol": "INTC",
-    "status": "active",
-    "date_added": "2026-01-29T01:41:12.000Z",
-    "platform": null
-   },
-   "39475": {
-    "id": 39475,
-    "symbol": "PLTR",
-    "status": "active",
-    "date_added": "2026-01-29T01:55:50.000Z",
-    "platform": null
-   },
    "41525": {
     "id": 41525,
     "symbol": "wSPYx",
@@ -3660,13 +3759,6 @@
     "date_added": "2026-01-29T04:17:23.000Z",
     "platform": null
    },
-   "39479": {
-    "id": 39479,
-    "symbol": "NFLX",
-    "status": "active",
-    "date_added": "2026-01-29T04:29:34.000Z",
-    "platform": null
-   },
    "5176": {
     "id": 5176,
     "symbol": "XAUt",
@@ -3679,13 +3771,6 @@
      "slug": "ethereum",
      "token_address": "0x68749665FF8D2d112Fa859AA293F07A622782F38"
     }
-   },
-   "39482": {
-    "id": 39482,
-    "symbol": "ORCL",
-    "status": "active",
-    "date_added": "2026-01-29T10:38:50.000Z",
-    "platform": null
    },
    "39483": {
     "id": 39483,
@@ -3755,17 +3840,17 @@
      "token_address": "0x75fd4cf6f8392e41e70391d60c90c0d5211603a1"
     }
    },
-   "40540": {
-    "id": 40540,
-    "symbol": "INTCB",
+   "40539": {
+    "id": 40539,
+    "symbol": "EWYB",
     "status": "active",
-    "date_added": "2026-06-21T05:25:59.000Z",
+    "date_added": "2026-06-21T05:25:14.000Z",
     "platform": {
      "id": "1839",
      "name": "BNB",
      "symbol": "BNB",
      "slug": "bnb",
-     "token_address": "0xe614e2fc6c787035ff51f452e8e826bfd32d5283"
+     "token_address": "0xbe82f76637dba2c114c41df856c2c51e522e2cb8"
     }
    },
    "39517": {
@@ -3801,6 +3886,19 @@
      "token_address": "0xb63efbc28860c8097e341de1fcf59456161e9d98"
     }
    },
+   "37997": {
+    "id": 37997,
+    "symbol": "GMEon",
+    "status": "active",
+    "date_added": "2025-09-03T10:54:57.000Z",
+    "platform": {
+     "id": "1027",
+     "name": "Ethereum",
+     "symbol": "ETH",
+     "slug": "ethereum",
+     "token_address": "0x71d24Baeb0A033ec5F90FF65C4210545AF378D97"
+    }
+   },
    "38001": {
     "id": 38001,
     "symbol": "GOOGLon",
@@ -3827,17 +3925,17 @@
      "token_address": "0x998f02A9E343EF6E3E6f28700d5A20F839fD74E6"
     }
    },
-   "38009": {
-    "id": 38009,
-    "symbol": "ORCLon",
+   "41077": {
+    "id": 41077,
+    "symbol": "GMEB",
     "status": "active",
-    "date_added": "2025-09-03T10:55:12.000Z",
+    "date_added": "2026-08-11T03:55:00.000Z",
     "platform": {
-     "id": "1027",
-     "name": "Ethereum",
-     "symbol": "ETH",
-     "slug": "ethereum",
-     "token_address": "0x8a23C6BaadB88512b30475C83Df6A63881e33e1E"
+     "id": "1839",
+     "name": "BNB",
+     "symbol": "BNB",
+     "slug": "bnb",
+     "token_address": "0x46ceefda28dd7207059ed19b0acdc026955bb15c"
     }
    },
    "36989": {
@@ -3970,6 +4068,19 @@
      "token_address": "0x80106cb3ead06659a5ad19df39d9b4733863b9b0"
     }
    },
+   "37005": {
+    "id": 37005,
+    "symbol": "CRCLX",
+    "status": "active",
+    "date_added": "2025-07-01T12:51:56.000Z",
+    "platform": {
+     "id": "5426",
+     "name": "Solana",
+     "symbol": "SOL",
+     "slug": "solana",
+     "token_address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1"
+    }
+   },
    "37006": {
     "id": 37006,
     "symbol": "SPYX",
@@ -3981,19 +4092,6 @@
      "symbol": "SOL",
      "slug": "solana",
      "token_address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W"
-    }
-   },
-   "40590": {
-    "id": 40590,
-    "symbol": "PLTRB",
-    "status": "active",
-    "date_added": "2026-07-02T07:38:49.000Z",
-    "platform": {
-     "id": "1839",
-     "name": "BNB",
-     "symbol": "BNB",
-     "slug": "bnb",
-     "token_address": "0x0ca5d51d0277bd006fd9607d3e560785ebad8222"
     }
    },
    "40592": {
@@ -4009,19 +4107,6 @@
      "token_address": "0x7425889fe94f9d693e8daefe88bcced6acfef4c0"
     }
    },
-   "38032": {
-    "id": 38032,
-    "symbol": "NFLXon",
-    "status": "active",
-    "date_added": "2025-09-03T10:55:23.000Z",
-    "platform": {
-     "id": "1027",
-     "name": "Ethereum",
-     "symbol": "ETH",
-     "slug": "ethereum",
-     "token_address": "0x032deC3372F25C41EA8054B4987a7c4832CDB338"
-    }
-   },
    "40593": {
     "id": 40593,
     "symbol": "QQQB",
@@ -4033,19 +4118,6 @@
      "symbol": "BNB",
      "slug": "bnb",
      "token_address": "0x205812cdbed920aff76c6580abd681a46d11efc7"
-    }
-   },
-   "38035": {
-    "id": 38035,
-    "symbol": "INTCon",
-    "status": "active",
-    "date_added": "2025-09-03T10:55:20.000Z",
-    "platform": {
-     "id": "1027",
-     "name": "Ethereum",
-     "symbol": "ETH",
-     "slug": "ethereum",
-     "token_address": "0xFdA09936DbD717368De0835bA441d9E62069d36f"
     }
    },
    "38037": {
@@ -4224,6 +4296,32 @@
      "token_address": "0xF042cfa86cf1D598a75Bdb55c3507a1F39f9493b"
     }
    },
+   "37023": {
+    "id": 37023,
+    "symbol": "GMEX",
+    "status": "active",
+    "date_added": "2025-07-01T15:49:25.000Z",
+    "platform": {
+     "id": "5426",
+     "name": "Solana",
+     "symbol": "SOL",
+     "slug": "solana",
+     "token_address": "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc"
+    }
+   },
+   "37024": {
+    "id": 37024,
+    "symbol": "GLDX",
+    "status": "active",
+    "date_added": "2025-07-01T15:49:18.000Z",
+    "platform": {
+     "id": "5426",
+     "name": "Solana",
+     "symbol": "SOL",
+     "slug": "solana",
+     "token_address": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re"
+    }
+   },
    "40609": {
     "id": 40609,
     "symbol": "rMSFT",
@@ -4263,19 +4361,6 @@
      "token_address": "0xe2047ee3bdDb5C99ae428AB83df63f8730698e30"
     }
    },
-   "37028": {
-    "id": 37028,
-    "symbol": "INTCX",
-    "status": "active",
-    "date_added": "2025-07-01T15:48:56.000Z",
-    "platform": {
-     "id": "5426",
-     "name": "Solana",
-     "symbol": "SOL",
-     "slug": "solana",
-     "token_address": "XshPgPdXFRWB8tP1j82rebb2Q9rPgGX37RuqzohmArM"
-    }
-   },
    "40613": {
     "id": 40613,
     "symbol": "rGOOGL",
@@ -4302,17 +4387,17 @@
      "token_address": "0x548cc634a64301a346f174071a90efa93dae4eb3"
     }
    },
-   "40618": {
-    "id": 40618,
-    "symbol": "rINTC",
+   "38056": {
+    "id": 38056,
+    "symbol": "CRCLon",
     "status": "active",
-    "date_added": "2026-07-02T07:39:09.000Z",
+    "date_added": "2025-09-03T10:55:40.000Z",
     "platform": {
-     "id": "11841",
-     "name": "Arbitrum",
-     "symbol": "ARB",
-     "slug": "arbitrum",
-     "token_address": "0xafa43b4badfd062f5f1891a398a0579c904da776"
+     "id": "1027",
+     "name": "Ethereum",
+     "symbol": "ETH",
+     "slug": "ethereum",
+     "token_address": "0x3632DEa96A953C11dac2f00b4A05a32CD1063fAE"
     }
    },
    "40620": {
@@ -4406,19 +4491,6 @@
      "token_address": "0xFeDC5f4a6c38211c1338aa411018DFAf26612c08"
     }
    },
-   "38073": {
-    "id": 38073,
-    "symbol": "PLTRon",
-    "status": "active",
-    "date_added": "2025-09-03T10:55:39.000Z",
-    "platform": {
-     "id": "1027",
-     "name": "Ethereum",
-     "symbol": "ETH",
-     "slug": "ethereum",
-     "token_address": "0x0c666485b02F7A87d21AdD7AEb9F5e64975AA490"
-    }
-   },
    "41146": {
     "id": 41146,
     "symbol": "wAPHx",
@@ -4430,6 +4502,19 @@
      "symbol": "OKB",
      "slug": "okb",
      "token_address": "0x8F30F8988CACE5980cb2F6Afe68e6A57d1267404"
+    }
+   },
+   "40635": {
+    "id": 40635,
+    "symbol": "rCRCL",
+    "status": "active",
+    "date_added": "2026-07-02T07:39:16.000Z",
+    "platform": {
+     "id": "11841",
+     "name": "Arbitrum",
+     "symbol": "ARB",
+     "slug": "arbitrum",
+     "token_address": "0x861a85a78c371bc0a02675bbe00a4cbc0826b421"
     }
    },
    "37055": {
@@ -4510,6 +4595,19 @@
      "token_address": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ"
     }
    },
+   "39617": {
+    "id": 39617,
+    "symbol": "GLD",
+    "status": "active",
+    "date_added": "2026-02-25T10:53:01.000Z",
+    "platform": {
+     "id": "32196",
+     "name": "Hyperliquid",
+     "symbol": "HYPE",
+     "slug": "hyperliquid",
+     "token_address": "0x35eeda03e55ff217a013892e9e2e37e792b264ea"
+    }
+   },
    "39618": {
     "id": 39618,
     "symbol": "TSLA",
@@ -4562,32 +4660,6 @@
      "token_address": "0xc304a9d52cf9165024ebc7814250ef3a5013f924"
     }
    },
-   "37059": {
-    "id": 37059,
-    "symbol": "ORCLX",
-    "status": "active",
-    "date_added": "2025-07-01T18:35:09.000Z",
-    "platform": {
-     "id": "5426",
-     "name": "Solana",
-     "symbol": "SOL",
-     "slug": "solana",
-     "token_address": "XsjFwUPiLofddX5cWFHW35GCbXcSu1BCUGfxoQAQjeL"
-    }
-   },
-   "37060": {
-    "id": 37060,
-    "symbol": "NFLXX",
-    "status": "active",
-    "date_added": "2025-07-01T18:40:23.000Z",
-    "platform": {
-     "id": "5426",
-     "name": "Solana",
-     "symbol": "SOL",
-     "slug": "solana",
-     "token_address": "XsEH7wWfJJu2ZT3UCFeVfALnVA6CP5ur7Ee11KmzVpL"
-    }
-   },
    "39621": {
     "id": 39621,
     "symbol": "SPY",
@@ -4599,6 +4671,19 @@
      "symbol": "HYPE",
      "slug": "hyperliquid",
      "token_address": "0xb7bf37783db41a2851b77c6917280c56312c833a"
+    }
+   },
+   "40645": {
+    "id": 40645,
+    "symbol": "rEWY",
+    "status": "active",
+    "date_added": "2026-07-02T07:39:20.000Z",
+    "platform": {
+     "id": "11841",
+     "name": "Arbitrum",
+     "symbol": "ARB",
+     "slug": "arbitrum",
+     "token_address": "0x716e5acbf09813435112ad314fc7499203a0766f"
     }
    },
    "39622": {
@@ -4625,19 +4710,6 @@
      "symbol": "ETH",
      "slug": "ethereum",
      "token_address": "0xB812837b81a3a6b81d7CD74CfB19A7f2784555E5"
-    }
-   },
-   "37062": {
-    "id": 37062,
-    "symbol": "PLTRX",
-    "status": "active",
-    "date_added": "2025-07-01T18:35:10.000Z",
-    "platform": {
-     "id": "5426",
-     "name": "Solana",
-     "symbol": "SOL",
-     "slug": "solana",
-     "token_address": "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4"
     }
    },
    "39623": {
@@ -4757,32 +4829,6 @@
      "token_address": "0x0e397938C1Aa0680954093495B70A9F5e2249aBa"
     }
    },
-   "40654": {
-    "id": 40654,
-    "symbol": "rORCL",
-    "status": "active",
-    "date_added": "2026-07-02T07:39:24.000Z",
-    "platform": {
-     "id": "11841",
-     "name": "Arbitrum",
-     "symbol": "ARB",
-     "slug": "arbitrum",
-     "token_address": "0x6b45804a1996365f774e87da6fa2debf1eb026ab"
-    }
-   },
-   "40655": {
-    "id": 40655,
-    "symbol": "rPLTR",
-    "status": "active",
-    "date_added": "2026-07-02T07:39:24.000Z",
-    "platform": {
-     "id": "11841",
-     "name": "Arbitrum",
-     "symbol": "ARB",
-     "slug": "arbitrum",
-     "token_address": "0xdb1a79026ba57e67c0e769e8be8318fdcacbc909"
-    }
-   },
    "41170": {
     "id": 41170,
     "symbol": "wASMLx",
@@ -4807,6 +4853,19 @@
      "symbol": "POL",
      "slug": "polygon-ecosystem-token",
      "token_address": "0x97cf07b5401b76d69bf48a4f6fdf63684e0748e0"
+    }
+   },
+   "37081": {
+    "id": 37081,
+    "symbol": "GLD.D",
+    "status": "inactive",
+    "date_added": "2025-07-02T05:39:22.000Z",
+    "platform": {
+     "id": "11841",
+     "name": "Arbitrum",
+     "symbol": "ARB",
+     "slug": "arbitrum",
+     "token_address": "0xbe8e3f4d5bd6ee0175359982cc91dafa3cf72502"
     }
    },
    "37082": {
@@ -4848,6 +4907,19 @@
      "token_address": "0x5181b7dd097b42d7787ee78efab86f43d4e12f44"
     }
    },
+   "40159": {
+    "id": 40159,
+    "symbol": "EWYx",
+    "status": "active",
+    "date_added": "2026-06-10T06:33:27.000Z",
+    "platform": {
+     "id": "5426",
+     "name": "Solana",
+     "symbol": "SOL",
+     "slug": "solana",
+     "token_address": "XswenHXJtDWYMh89uRYx2tZcABxwXSn7j3jidDPS1Yo"
+    }
+   },
    "37091": {
     "id": 37091,
     "symbol": "IBIT.D",
@@ -4873,6 +4945,13 @@
      "slug": "arbitrum",
      "token_address": "0x4cb894d1a5fc353ec18ba50cb087b88f6f73121f"
     }
+   },
+   "39654": {
+    "id": 39654,
+    "symbol": "EWY",
+    "status": "active",
+    "date_added": "2026-03-04T02:33:57.000Z",
+    "platform": null
    },
    "40170": {
     "id": 40170,
@@ -4937,32 +5016,6 @@
      "symbol": "-",
      "slug": "robinhood-placeholder",
      "token_address": "0x86923f96303D656E4aa86D9d42D1e57ad2023fdC"
-    }
-   },
-   "40688": {
-    "id": 40688,
-    "symbol": "NFLX",
-    "status": "active",
-    "date_added": "2026-08-04T07:31:26.000Z",
-    "platform": {
-     "id": "40670",
-     "name": "Robinhood",
-     "symbol": "-",
-     "slug": "robinhood-placeholder",
-     "token_address": "0xE0444EF8BF4eD74f74FD73686e2ddF4C1c5591E8"
-    }
-   },
-   "40689": {
-    "id": 40689,
-    "symbol": "PLTR",
-    "status": "active",
-    "date_added": "2026-08-04T07:31:26.000Z",
-    "platform": {
-     "id": "40670",
-     "name": "Robinhood",
-     "symbol": "-",
-     "slug": "robinhood-placeholder",
-     "token_address": "0x894E1EC2D74FFE5AEF8Dc8A9e84686acCB964F2A"
     }
    },
    "40691": {
@@ -5043,19 +5096,6 @@
      "token_address": "XshuHQ6o6SVpUNawvnnTMxsZ4tacZsNgVCLorv7TkFq"
     }
    },
-   "40697": {
-    "id": 40697,
-    "symbol": "INTC",
-    "status": "active",
-    "date_added": "2026-08-04T07:31:29.000Z",
-    "platform": {
-     "id": "40670",
-     "name": "Robinhood",
-     "symbol": "-",
-     "slug": "robinhood-placeholder",
-     "token_address": "0xc72b96e0E48ecd4DC75E1e45396e26300BC39681"
-    }
-   },
    "40700": {
     "id": 40700,
     "symbol": "SNDK",
@@ -5076,6 +5116,19 @@
     "date_added": "2026-03-11T08:54:30.000Z",
     "platform": null
    },
+   "37117": {
+    "id": 37117,
+    "symbol": "GME.D",
+    "status": "inactive",
+    "date_added": "2025-07-03T06:25:03.000Z",
+    "platform": {
+     "id": "11841",
+     "name": "Arbitrum",
+     "symbol": "ARB",
+     "slug": "arbitrum",
+     "token_address": "0xb415998a7bb6f11dc589e0eb20adf586ba32f12a"
+    }
+   },
    "40703": {
     "id": 40703,
     "symbol": "AAPL",
@@ -5087,6 +5140,19 @@
      "symbol": "-",
      "slug": "robinhood-placeholder",
      "token_address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    }
+   },
+   "40704": {
+    "id": 40704,
+    "symbol": "GME",
+    "status": "active",
+    "date_added": "2026-08-04T07:31:32.000Z",
+    "platform": {
+     "id": "40670",
+     "name": "Robinhood",
+     "symbol": "-",
+     "slug": "robinhood-placeholder",
+     "token_address": "0x1b0E319c6A659F002271B69dB8A7df2F911c153E"
     }
    },
    "37121": {
@@ -5128,6 +5194,19 @@
      "token_address": "0x0861a1786dF357A9B289D6B5c7C6420E4eF7d3CD"
     }
    },
+   "40708": {
+    "id": 40708,
+    "symbol": "CRCL",
+    "status": "active",
+    "date_added": "2026-08-04T07:31:34.000Z",
+    "platform": {
+     "id": "40670",
+     "name": "Robinhood",
+     "symbol": "-",
+     "slug": "robinhood-placeholder",
+     "token_address": "0xdF0992E440dD0be65BD8439b609d6D4366bf1CB5"
+    }
+   },
    "37126": {
     "id": 37126,
     "symbol": "AVGO.D",
@@ -5167,6 +5246,13 @@
      "slug": "okb",
      "token_address": "0xE89572bfe500ac7E8Ecd8dc8119d274214e06F14"
     }
+   },
+   "38154": {
+    "id": 38154,
+    "symbol": "CRCL",
+    "status": "active",
+    "date_added": "2025-08-21T03:50:46.000Z",
+    "platform": null
    },
    "40718": {
     "id": 40718,
@@ -5218,6 +5304,19 @@
      "symbol": "XDC",
      "slug": "xdc-network",
      "token_address": "0x8f9920283470F52128bF11B0c14E798bE704fD15"
+    }
+   },
+   "40213": {
+    "id": 40213,
+    "symbol": "CRCLB",
+    "status": "active",
+    "date_added": "2026-06-11T03:03:59.000Z",
+    "platform": {
+     "id": "1839",
+     "name": "BNB",
+     "symbol": "BNB",
+     "slug": "bnb",
+     "token_address": "0x80f3d493ebce97e343c53d29a137942416b4ffc0"
     }
    },
    "40214": {
@@ -5383,6 +5482,19 @@
     "date_added": "2026-03-22T08:20:50.000Z",
     "platform": null
    },
+   "41268": {
+    "id": 41268,
+    "symbol": "wCRCLx",
+    "status": "active",
+    "date_added": "2026-08-11T16:22:02.000Z",
+    "platform": {
+     "id": "3897",
+     "name": "OKB",
+     "symbol": "OKB",
+     "slug": "okb",
+     "token_address": "0xb11134F14d5B94DB60d4599DfdC3bF1bbA2150e8"
+    }
+   },
    "40757": {
     "id": 40757,
     "symbol": "GOOGL",
@@ -5396,17 +5508,17 @@
      "token_address": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3"
     }
    },
-   "40773": {
-    "id": 40773,
-    "symbol": "ORCL",
+   "40763": {
+    "id": 40763,
+    "symbol": "EWY",
     "status": "active",
-    "date_added": "2026-08-04T07:32:01.000Z",
+    "date_added": "2026-08-04T07:31:57.000Z",
     "platform": {
      "id": "40670",
      "name": "Robinhood",
      "symbol": "-",
      "slug": "robinhood-placeholder",
-     "token_address": "0xb0992820E760d836549ba69BC7598b4af75dEE03"
+     "token_address": "0x7f0aBeF0C07280F82c6a08ead09dEd6BAE2C13Fc"
     }
    },
    "37193": {
@@ -5453,19 +5565,6 @@
      "symbol": "OKB",
      "slug": "okb",
      "token_address": "0x59801175a9b2248F9bf4Ba7f82E17045C4672ec8"
-    }
-   },
-   "37202": {
-    "id": 37202,
-    "symbol": "WINTCX",
-    "status": "active",
-    "date_added": "2025-07-06T08:33:12.000Z",
-    "platform": {
-     "id": "3897",
-     "name": "OKB",
-     "symbol": "OKB",
-     "slug": "okb",
-     "token_address": "0x33AA35B0271FFfE2048Cc093aB7fE60931786719"
     }
    },
    "40789": {
@@ -5533,30 +5632,17 @@
      "token_address": "0x166Fbe68274b6a47e025F4ba17388c539f1fa1d0"
     }
    },
-   "37216": {
-    "id": 37216,
-    "symbol": "WNFLXX",
-    "status": "inactive",
-    "date_added": "2025-07-06T11:24:51.000Z",
-    "platform": {
-     "id": "3897",
-     "name": "OKB",
-     "symbol": "OKB",
-     "slug": "okb",
-     "token_address": "0x7d87fD6A379714194a797c0bBB8B40c30D250856"
-    }
-   },
-   "37218": {
-    "id": 37218,
-    "symbol": "WORCLX",
+   "39781": {
+    "id": 39781,
+    "symbol": "EWYon",
     "status": "active",
-    "date_added": "2025-07-06T11:37:20.000Z",
+    "date_added": "2026-03-24T02:56:08.000Z",
     "platform": {
-     "id": "3897",
-     "name": "OKB",
-     "symbol": "OKB",
-     "slug": "okb",
-     "token_address": "0x1349456830Ddc3D8599E4d6A63698883Eca67ADa"
+     "id": "5426",
+     "name": "Solana",
+     "symbol": "SOL",
+     "slug": "solana",
+     "token_address": "C8pSaSgjkiTWixS3GM6Hxd6HKnKrgAbY9WDgfVeondo"
     }
    },
    "37227": {
@@ -5583,6 +5669,19 @@
      "symbol": "SOL",
      "slug": "solana",
      "token_address": "EJmUVvDqAdfH5zEohkdS4234bi3c6iunqEMobjmondo"
+    }
+   },
+   "39276": {
+    "id": 39276,
+    "symbol": "GLDon",
+    "status": "active",
+    "date_added": "2026-01-08T15:44:19.000Z",
+    "platform": {
+     "id": "1027",
+     "name": "Ethereum",
+     "symbol": "ETH",
+     "slug": "ethereum",
+     "token_address": "0x423d42e505e64f99b6e277eb7ed324cc5606f139"
     }
    },
    "40815": {
@@ -5702,6 +5801,19 @@
      "token_address": "0xa8ddb5Cd96b5222AFe198316E9A57CAA642850D5"
     }
    },
+   "41367": {
+    "id": 41367,
+    "symbol": "wGLDx",
+    "status": "inactive",
+    "date_added": "2026-08-11T16:23:03.000Z",
+    "platform": {
+     "id": "3897",
+     "name": "OKB",
+     "symbol": "OKB",
+     "slug": "okb",
+     "token_address": "0x735f1509Bff25e27Cd442B9bFb231324648eAD9B"
+    }
+   },
    "34212": {
     "id": 34212,
     "symbol": "XAUM",
@@ -5728,6 +5840,19 @@
      "token_address": "0x737B02a8226005125BD0a713A0c6c0707413E39c"
     }
    },
+   "41388": {
+    "id": 41388,
+    "symbol": "wEWYx",
+    "status": "inactive",
+    "date_added": "2026-08-11T16:23:15.000Z",
+    "platform": {
+     "id": "3897",
+     "name": "OKB",
+     "symbol": "OKB",
+     "slug": "okb",
+     "token_address": "0x021b40617982074748C81a19d22046CC2548C3bE"
+    }
+   },
    "39343": {
     "id": 39343,
     "symbol": "XAG",
@@ -5742,19 +5867,6 @@
     "date_added": "2026-01-12T05:52:10.000Z",
     "platform": null
    },
-   "40882": {
-    "id": 40882,
-    "symbol": "ORCLB",
-    "status": "active",
-    "date_added": "2026-07-20T08:19:17.000Z",
-    "platform": {
-     "id": "1839",
-     "name": "BNB",
-     "symbol": "BNB",
-     "slug": "bnb",
-     "token_address": "0x4684d9887fc1c71cba7bab8e88835cec217eb598"
-    }
-   },
    "28616": {
     "id": 28616,
     "symbol": "NVDA.D",
@@ -5766,19 +5878,6 @@
      "symbol": "ARB",
      "slug": "arbitrum",
      "token_address": "0x4DaFFfDDEa93DdF1e0e7B61E844331455053Ce5c"
-    }
-   },
-   "28617": {
-    "id": 28617,
-    "symbol": "NFLX.D",
-    "status": "inactive",
-    "date_added": "2023-12-07T10:57:04.000Z",
-    "platform": {
-     "id": "11841",
-     "name": "Arbitrum",
-     "symbol": "ARB",
-     "slug": "arbitrum",
-     "token_address": "0x3AD63B3C0eA6d7A093ff98fdE040baddc389EcDc"
     }
    },
    "28618": {
@@ -5937,6 +6036,13 @@
      "token_address": "0x1a4b499833a79a09ad7cf1d42d7dacf71e92eb00"
     }
    },
+   "41957": {
+    "id": 41957,
+    "symbol": "GLD",
+    "status": "active",
+    "date_added": "2026-02-25T10:53:01.000Z",
+    "platform": null
+   },
    "40936": {
     "id": 40936,
     "symbol": "AMATB",
@@ -5950,18 +6056,12 @@
      "token_address": "0xa304bd78e739c0f777202b3eb73ac3736d1df801"
     }
    },
-   "40704": {
-    "id": 40704,
+   "39928": {
+    "id": 39928,
     "symbol": "GME",
     "status": "active",
-    "date_added": "2026-08-04T07:31:32.000Z",
-    "platform": {
-     "id": "40670",
-     "name": "Robinhood",
-     "symbol": "-",
-     "slug": "robinhood-placeholder",
-     "token_address": "0x1b0E319c6A659F002271B69dB8A7df2F911c153E"
-    }
+    "date_added": "2026-05-04T03:46:31.000Z",
+    "platform": null
    },
    "37120": {
     "id": 37120,
@@ -5976,64 +6076,96 @@
      "token_address": "0x459D3ae62B86cC6125e06260DddFd3AFED24A877"
     }
    },
-   "39617": {
-    "id": 39617,
-    "symbol": "GLD",
+   "37059": {
+    "id": 37059,
+    "symbol": "ORCLX",
     "status": "active",
-    "date_added": "2026-02-25T10:53:01.000Z",
+    "date_added": "2025-07-01T18:35:09.000Z",
     "platform": {
-     "id": "32196",
-     "name": "Hyperliquid",
-     "symbol": "HYPE",
-     "slug": "hyperliquid",
-     "token_address": "0x35eeda03e55ff217a013892e9e2e37e792b264ea"
+     "id": "5426",
+     "name": "Solana",
+     "symbol": "SOL",
+     "slug": "solana",
+     "token_address": "XsjFwUPiLofddX5cWFHW35GCbXcSu1BCUGfxoQAQjeL"
     }
    },
-   "40708": {
-    "id": 40708,
-    "symbol": "CRCL",
+   "37060": {
+    "id": 37060,
+    "symbol": "NFLXX",
     "status": "active",
-    "date_added": "2026-08-04T07:31:34.000Z",
+    "date_added": "2025-07-01T18:40:23.000Z",
+    "platform": {
+     "id": "5426",
+     "name": "Solana",
+     "symbol": "SOL",
+     "slug": "solana",
+     "token_address": "XsEH7wWfJJu2ZT3UCFeVfALnVA6CP5ur7Ee11KmzVpL"
+    }
+   },
+   "40773": {
+    "id": 40773,
+    "symbol": "ORCL",
+    "status": "active",
+    "date_added": "2026-08-04T07:32:01.000Z",
     "platform": {
      "id": "40670",
      "name": "Robinhood",
      "symbol": "-",
      "slug": "robinhood-placeholder",
-     "token_address": "0xdF0992E440dD0be65BD8439b609d6D4366bf1CB5"
+     "token_address": "0xb0992820E760d836549ba69BC7598b4af75dEE03"
     }
    },
-   "40649": {
-    "id": 40649,
-    "symbol": "rQCOM",
+   "37062": {
+    "id": 37062,
+    "symbol": "PLTRX",
     "status": "active",
-    "date_added": "2026-07-02T07:39:22.000Z",
+    "date_added": "2025-07-01T18:35:10.000Z",
+    "platform": {
+     "id": "5426",
+     "name": "Solana",
+     "symbol": "SOL",
+     "slug": "solana",
+     "token_address": "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4"
+    }
+   },
+   "28617": {
+    "id": 28617,
+    "symbol": "NFLX.D",
+    "status": "inactive",
+    "date_added": "2023-12-07T10:57:04.000Z",
     "platform": {
      "id": "11841",
      "name": "Arbitrum",
      "symbol": "ARB",
      "slug": "arbitrum",
-     "token_address": "0x9382ed4f9024ee0dd3d48fbd474b2735b8e2dbba"
+     "token_address": "0x3AD63B3C0eA6d7A093ff98fdE040baddc389EcDc"
     }
    },
-   "41994": {
-    "id": 41994,
-    "symbol": "GLD",
+   "40970": {
+    "id": 40970,
+    "symbol": "IRENB",
     "status": "active",
-    "date_added": "2026-08-04T07:31:32.000Z",
+    "date_added": "2026-08-04T03:53:41.000Z",
     "platform": {
-     "id": "40670",
-     "name": "Robinhood",
-     "symbol": "-",
-     "slug": "robinhood-placeholder",
-     "token_address": "0xc9a981fee1f9dec688bb123ccdecc63d0debfc4e"
+     "id": "1839",
+     "name": "BNB",
+     "symbol": "BNB",
+     "slug": "bnb",
+     "token_address": "0xfdc2f2cab77b28f7ef6c819a404706cfa9bca33b"
     }
    },
-   "38154": {
-    "id": 38154,
-    "symbol": "CRCL",
+   "41291": {
+    "id": 41291,
+    "symbol": "wIRENx",
     "status": "active",
-    "date_added": "2025-08-21T03:50:46.000Z",
-    "platform": null
+    "date_added": "2026-08-11T16:22:17.000Z",
+    "platform": {
+     "id": "3897",
+     "name": "OKB",
+     "symbol": "OKB",
+     "slug": "okb",
+     "token_address": "0xb3a16DB475A9cb321fc8956aA2cB01385a022E75"
+    }
    },
    "37003": {
     "id": 37003,
@@ -6061,69 +6193,108 @@
      "token_address": "0xCabD955322dfbf94C084929ac5E9Eca3fEB5556F"
     }
    },
-   "37005": {
-    "id": 37005,
-    "symbol": "CRCLX",
+   "40973": {
+    "id": 40973,
+    "symbol": "NFLXB",
     "status": "active",
-    "date_added": "2025-07-01T12:51:56.000Z",
-    "platform": {
-     "id": "5426",
-     "name": "Solana",
-     "symbol": "SOL",
-     "slug": "solana",
-     "token_address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1"
-    }
-   },
-   "40213": {
-    "id": 40213,
-    "symbol": "CRCLB",
-    "status": "active",
-    "date_added": "2026-06-11T03:03:59.000Z",
+    "date_added": "2026-08-04T03:57:39.000Z",
     "platform": {
      "id": "1839",
      "name": "BNB",
      "symbol": "BNB",
      "slug": "bnb",
-     "token_address": "0x80f3d493ebce97e343c53d29a137942416b4ffc0"
+     "token_address": "0xd6829ea836b6fa224d099d40e54b31262f874631"
     }
    },
-   "41622": {
-    "id": 41622,
-    "symbol": "wQCOMx",
-    "status": "inactive",
-    "date_added": "2026-08-11T16:25:48.000Z",
-    "platform": {
-     "id": "3897",
-     "name": "OKB",
-     "symbol": "OKB",
-     "slug": "okb",
-     "token_address": "0x1C67a6C400CF3c8d207B43d709b88ce5a374dF2C"
-    }
-   },
-   "41367": {
-    "id": 41367,
-    "symbol": "wGLDx",
-    "status": "inactive",
-    "date_added": "2026-08-11T16:23:03.000Z",
-    "platform": {
-     "id": "3897",
-     "name": "OKB",
-     "symbol": "OKB",
-     "slug": "okb",
-     "token_address": "0x735f1509Bff25e27Cd442B9bFb231324648eAD9B"
-    }
-   },
-   "40792": {
-    "id": 40792,
-    "symbol": "QCOMB",
+   "40654": {
+    "id": 40654,
+    "symbol": "rORCL",
     "status": "active",
-    "date_added": "2026-07-06T06:10:05.000Z",
+    "date_added": "2026-07-02T07:39:24.000Z",
+    "platform": {
+     "id": "11841",
+     "name": "Arbitrum",
+     "symbol": "ARB",
+     "slug": "arbitrum",
+     "token_address": "0x6b45804a1996365f774e87da6fa2debf1eb026ab"
+    }
+   },
+   "40590": {
+    "id": 40590,
+    "symbol": "PLTRB",
+    "status": "active",
+    "date_added": "2026-07-02T07:38:49.000Z",
     "platform": {
      "id": "1839",
      "name": "BNB",
      "symbol": "BNB",
      "slug": "bnb",
-     "token_address": "0x5f7a56e877b9130608bf8be962621011182fefe1"
+     "token_address": "0x0ca5d51d0277bd006fd9607d3e560785ebad8222"
+    }
+   },
+   "40655": {
+    "id": 40655,
+    "symbol": "rPLTR",
+    "status": "active",
+    "date_added": "2026-07-02T07:39:24.000Z",
+    "platform": {
+     "id": "11841",
+     "name": "Arbitrum",
+     "symbol": "ARB",
+     "slug": "arbitrum",
+     "token_address": "0xdb1a79026ba57e67c0e769e8be8318fdcacbc909"
+    }
+   },
+   "38032": {
+    "id": 38032,
+    "symbol": "NFLXon",
+    "status": "active",
+    "date_added": "2025-09-03T10:55:23.000Z",
+    "platform": {
+     "id": "1027",
+     "name": "Ethereum",
+     "symbol": "ETH",
+     "slug": "ethereum",
+     "token_address": "0x032deC3372F25C41EA8054B4987a7c4832CDB338"
+    }
+   },
+   "37202": {
+    "id": 37202,
+    "symbol": "WINTCX",
+    "status": "active",
+    "date_added": "2025-07-06T08:33:12.000Z",
+    "platform": {
+     "id": "3897",
+     "name": "OKB",
+     "symbol": "OKB",
+     "slug": "okb",
+     "token_address": "0x33AA35B0271FFfE2048Cc093aB7fE60931786719"
+    }
+   },
+   "38035": {
+    "id": 38035,
+    "symbol": "INTCon",
+    "status": "active",
+    "date_added": "2025-09-03T10:55:20.000Z",
+    "platform": {
+     "id": "1027",
+     "name": "Ethereum",
+     "symbol": "ETH",
+     "slug": "ethereum",
+     "token_address": "0xFdA09936DbD717368De0835bA441d9E62069d36f"
+    }
+   },
+   "39254": {
+    "id": 39254,
+    "symbol": "IRENon",
+    "status": "active",
+    "date_added": "2026-01-08T15:44:25.000Z",
+    "platform": {
+     "id": "1027",
+     "name": "Ethereum",
+     "symbol": "ETH",
+     "slug": "ethereum",
+     "token_address": "0x0b59fdb1a233a7477ea14061004b9dd776e73cb3"
     }
    },
    "40536": {
@@ -6139,17 +6310,30 @@
      "token_address": "0xe87afb3076aeb0f9b14e368de8145ae6a2826a14"
     }
    },
-   "37081": {
-    "id": 37081,
-    "symbol": "GLD.D",
-    "status": "inactive",
-    "date_added": "2025-07-02T05:39:22.000Z",
+   "40731": {
+    "id": 40731,
+    "symbol": "IREN",
+    "status": "active",
+    "date_added": "2026-08-04T07:31:43.000Z",
     "platform": {
-     "id": "11841",
-     "name": "Arbitrum",
-     "symbol": "ARB",
-     "slug": "arbitrum",
-     "token_address": "0xbe8e3f4d5bd6ee0175359982cc91dafa3cf72502"
+     "id": "40670",
+     "name": "Robinhood",
+     "symbol": "-",
+     "slug": "robinhood-placeholder",
+     "token_address": "0xF0AB0c93bE6F41369d302e55db1A96b3c430212D"
+    }
+   },
+   "40540": {
+    "id": 40540,
+    "symbol": "INTCB",
+    "status": "active",
+    "date_added": "2026-06-21T05:25:59.000Z",
+    "platform": {
+     "id": "1839",
+     "name": "BNB",
+     "symbol": "BNB",
+     "slug": "bnb",
+     "token_address": "0xe614e2fc6c787035ff51f452e8e826bfd32d5283"
     }
    },
    "37215": {
@@ -6165,43 +6349,56 @@
      "token_address": "0x30987adF0B11dc698438a99BA04ec3a1AB2c7EaB"
     }
    },
-   "37023": {
-    "id": 37023,
-    "symbol": "GMEX",
+   "37216": {
+    "id": 37216,
+    "symbol": "WNFLXX",
+    "status": "inactive",
+    "date_added": "2025-07-06T11:24:51.000Z",
+    "platform": {
+     "id": "3897",
+     "name": "OKB",
+     "symbol": "OKB",
+     "slug": "okb",
+     "token_address": "0x7d87fD6A379714194a797c0bBB8B40c30D250856"
+    }
+   },
+   "40162": {
+    "id": 40162,
+    "symbol": "IRENx",
     "status": "active",
-    "date_added": "2025-07-01T15:49:25.000Z",
+    "date_added": "2026-06-10T06:33:47.000Z",
     "platform": {
      "id": "5426",
      "name": "Solana",
      "symbol": "SOL",
      "slug": "solana",
-     "token_address": "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc"
+     "token_address": "Xshh1dRsnxatP45yBfrzU9MrvrFCvxHQGTrWjgdA81E"
     }
    },
-   "37024": {
-    "id": 37024,
-    "symbol": "GLDX",
+   "37218": {
+    "id": 37218,
+    "symbol": "WORCLX",
     "status": "active",
-    "date_added": "2025-07-01T15:49:18.000Z",
+    "date_added": "2025-07-06T11:37:20.000Z",
+    "platform": {
+     "id": "3897",
+     "name": "OKB",
+     "symbol": "OKB",
+     "slug": "okb",
+     "token_address": "0x1349456830Ddc3D8599E4d6A63698883Eca67ADa"
+    }
+   },
+   "37028": {
+    "id": 37028,
+    "symbol": "INTCX",
+    "status": "active",
+    "date_added": "2025-07-01T15:48:56.000Z",
     "platform": {
      "id": "5426",
      "name": "Solana",
      "symbol": "SOL",
      "slug": "solana",
-     "token_address": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re"
-    }
-   },
-   "38048": {
-    "id": 38048,
-    "symbol": "QCOMon",
-    "status": "active",
-    "date_added": "2025-09-03T10:55:31.000Z",
-    "platform": {
-     "id": "1027",
-     "name": "Ethereum",
-     "symbol": "ETH",
-     "slug": "ethereum",
-     "token_address": "0xE3419710c1f77D44B4DaB02316d3f048818C4E59"
+     "token_address": "XshPgPdXFRWB8tP1j82rebb2Q9rPgGX37RuqzohmArM"
     }
    },
    "37220": {
@@ -6217,26 +6414,6 @@
      "token_address": "0x4A2df09536F62341C9f946427D16414C04e21342"
     }
    },
-   "41957": {
-    "id": 41957,
-    "symbol": "GLD",
-    "status": "active",
-    "date_added": "2026-02-25T10:53:01.000Z",
-    "platform": null
-   },
-   "38056": {
-    "id": 38056,
-    "symbol": "CRCLon",
-    "status": "active",
-    "date_added": "2025-09-03T10:55:40.000Z",
-    "platform": {
-     "id": "1027",
-     "name": "Ethereum",
-     "symbol": "ETH",
-     "slug": "ethereum",
-     "token_address": "0x3632DEa96A953C11dac2f00b4A05a32CD1063fAE"
-    }
-   },
    "40745": {
     "id": 40745,
     "symbol": "MSTR",
@@ -6250,43 +6427,50 @@
      "token_address": "0xec262a75e413fAfD0dF80480274532C79D42da09"
     }
    },
-   "39276": {
-    "id": 39276,
-    "symbol": "GLDon",
+   "40618": {
+    "id": 40618,
+    "symbol": "rINTC",
     "status": "active",
-    "date_added": "2026-01-08T15:44:19.000Z",
+    "date_added": "2026-07-02T07:39:09.000Z",
     "platform": {
-     "id": "1027",
-     "name": "Ethereum",
-     "symbol": "ETH",
-     "slug": "ethereum",
-     "token_address": "0x423d42e505e64f99b6e277eb7ed324cc5606f139"
+     "id": "11841",
+     "name": "Arbitrum",
+     "symbol": "ARB",
+     "slug": "arbitrum",
+     "token_address": "0xafa43b4badfd062f5f1891a398a0579c904da776"
     }
    },
-   "40749": {
-    "id": 40749,
-    "symbol": "QCOM",
+   "40623": {
+    "id": 40623,
+    "symbol": "rIREN",
     "status": "active",
-    "date_added": "2026-08-04T07:31:51.000Z",
+    "date_added": "2026-07-02T07:39:11.000Z",
+    "platform": {
+     "id": "11841",
+     "name": "Arbitrum",
+     "symbol": "ARB",
+     "slug": "arbitrum",
+     "token_address": "0x798b5967a0debe6ed3dc16aa36d5cecda1e19f93"
+    }
+   },
+   "39472": {
+    "id": 39472,
+    "symbol": "INTC",
+    "status": "active",
+    "date_added": "2026-01-29T01:41:12.000Z",
+    "platform": null
+   },
+   "40688": {
+    "id": 40688,
+    "symbol": "NFLX",
+    "status": "active",
+    "date_added": "2026-08-04T07:31:26.000Z",
     "platform": {
      "id": "40670",
      "name": "Robinhood",
      "symbol": "-",
      "slug": "robinhood-placeholder",
-     "token_address": "0x0f17206447090e464C277571124dD2688E48AEA9"
-    }
-   },
-   "37997": {
-    "id": 37997,
-    "symbol": "GMEon",
-    "status": "active",
-    "date_added": "2025-09-03T10:54:57.000Z",
-    "platform": {
-     "id": "1027",
-     "name": "Ethereum",
-     "symbol": "ETH",
-     "slug": "ethereum",
-     "token_address": "0x71d24Baeb0A033ec5F90FF65C4210545AF378D97"
+     "token_address": "0xE0444EF8BF4eD74f74FD73686e2ddF4C1c5591E8"
     }
    },
    "39473": {
@@ -6296,44 +6480,52 @@
     "date_added": "2026-01-29T01:43:58.000Z",
     "platform": null
    },
-   "41907": {
-    "id": 41907,
-    "symbol": "QCOMx",
+   "40689": {
+    "id": 40689,
+    "symbol": "PLTR",
     "status": "active",
-    "date_added": "2025-07-01T12:44:26.000Z",
+    "date_added": "2026-08-04T07:31:26.000Z",
+    "platform": {
+     "id": "40670",
+     "name": "Robinhood",
+     "symbol": "-",
+     "slug": "robinhood-placeholder",
+     "token_address": "0x894E1EC2D74FFE5AEF8Dc8A9e84686acCB964F2A"
+    }
+   },
+   "40882": {
+    "id": 40882,
+    "symbol": "ORCLB",
+    "status": "active",
+    "date_added": "2026-07-20T08:19:17.000Z",
     "platform": {
      "id": "1839",
      "name": "BNB",
      "symbol": "BNB",
      "slug": "bnb",
-     "token_address": "0x2D73ed3b4F20bd8f9Abe92786740bA79E9Fa0ef6"
+     "token_address": "0x4684d9887fc1c71cba7bab8e88835cec217eb598"
     }
    },
-   "41268": {
-    "id": 41268,
-    "symbol": "wCRCLx",
+   "39475": {
+    "id": 39475,
+    "symbol": "PLTR",
     "status": "active",
-    "date_added": "2026-08-11T16:22:02.000Z",
-    "platform": {
-     "id": "3897",
-     "name": "OKB",
-     "symbol": "OKB",
-     "slug": "okb",
-     "token_address": "0xb11134F14d5B94DB60d4599DfdC3bF1bbA2150e8"
-    }
+    "date_added": "2026-01-29T01:55:50.000Z",
+    "platform": null
    },
-   "41077": {
-    "id": 41077,
-    "symbol": "GMEB",
+   "40117": {
+    "id": 40117,
+    "symbol": "IREN",
     "status": "active",
-    "date_added": "2026-08-11T03:55:00.000Z",
-    "platform": {
-     "id": "1839",
-     "name": "BNB",
-     "symbol": "BNB",
-     "slug": "bnb",
-     "token_address": "0x46ceefda28dd7207059ed19b0acdc026955bb15c"
-    }
+    "date_added": "2026-06-03T08:03:02.000Z",
+    "platform": null
+   },
+   "39479": {
+    "id": 39479,
+    "symbol": "NFLX",
+    "status": "active",
+    "date_added": "2026-01-29T04:29:34.000Z",
+    "platform": null
    },
    "40632": {
     "id": 40632,
@@ -6348,45 +6540,51 @@
      "token_address": "0x10fe806857055d3b5ae00d2eabafd3e61f0e89aa"
     }
    },
-   "39928": {
-    "id": 39928,
-    "symbol": "GME",
+   "40697": {
+    "id": 40697,
+    "symbol": "INTC",
     "status": "active",
-    "date_added": "2026-05-04T03:46:31.000Z",
-    "platform": null
-   },
-   "40635": {
-    "id": 40635,
-    "symbol": "rCRCL",
-    "status": "active",
-    "date_added": "2026-07-02T07:39:16.000Z",
+    "date_added": "2026-08-04T07:31:29.000Z",
     "platform": {
-     "id": "11841",
-     "name": "Arbitrum",
-     "symbol": "ARB",
-     "slug": "arbitrum",
-     "token_address": "0x861a85a78c371bc0a02675bbe00a4cbc0826b421"
+     "id": "40670",
+     "name": "Robinhood",
+     "symbol": "-",
+     "slug": "robinhood-placeholder",
+     "token_address": "0xc72b96e0E48ecd4DC75E1e45396e26300BC39681"
     }
    },
-   "39932": {
-    "id": 39932,
-    "symbol": "QCOM",
+   "38009": {
+    "id": 38009,
+    "symbol": "ORCLon",
     "status": "active",
-    "date_added": "2026-05-04T07:44:44.000Z",
-    "platform": null
-   },
-   "37117": {
-    "id": 37117,
-    "symbol": "GME.D",
-    "status": "inactive",
-    "date_added": "2025-07-03T06:25:03.000Z",
+    "date_added": "2025-09-03T10:55:12.000Z",
     "platform": {
-     "id": "11841",
-     "name": "Arbitrum",
-     "symbol": "ARB",
-     "slug": "arbitrum",
-     "token_address": "0xb415998a7bb6f11dc589e0eb20adf586ba32f12a"
+     "id": "1027",
+     "name": "Ethereum",
+     "symbol": "ETH",
+     "slug": "ethereum",
+     "token_address": "0x8a23C6BaadB88512b30475C83Df6A63881e33e1E"
     }
+   },
+   "38073": {
+    "id": 38073,
+    "symbol": "PLTRon",
+    "status": "active",
+    "date_added": "2025-09-03T10:55:39.000Z",
+    "platform": {
+     "id": "1027",
+     "name": "Ethereum",
+     "symbol": "ETH",
+     "slug": "ethereum",
+     "token_address": "0x0c666485b02F7A87d21AdD7AEb9F5e64975AA490"
+    }
+   },
+   "39482": {
+    "id": 39482,
+    "symbol": "ORCL",
+    "status": "active",
+    "date_added": "2026-01-29T10:38:50.000Z",
+    "platform": null
    }
   }
  }

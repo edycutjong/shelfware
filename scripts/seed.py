@@ -58,7 +58,8 @@ def select_underlyings(doc, n=40):
     chosen = [s for s in NAMED if s in by_sym]
     if doc.get("hero"):
         chosen += [r["symbol"] for r in doc["hero"]["runners_up"] if r["symbol"] in by_sym]
-    rest = sorted(by_sym, key=lambda s: -len(by_sym[s]))
+    chosen = list(dict.fromkeys(chosen))  # GILD is both named and a runner-up: once
+    rest = sorted(by_sym, key=lambda s: (-len(by_sym[s]), s))
     for s in rest:
         if len(chosen) >= n:
             break

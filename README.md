@@ -119,8 +119,8 @@ the live API on 2026-09-18; one property test holds six invariants over 500 gene
 
 | Measurement | n | p50 | p95 |
 |---|---|---|---|
-| state leg, one keyless map call | 10 | 283 ms | 786 ms |
-| `shelfware TICKER`, no key | 10 | 566 ms | 1,040 ms |
+| state leg, one keyless map call | 9 | 282 ms | 546 ms |
+| `shelfware TICKER`, no key | 9 | 552 ms | 603 ms |
 | join + count over 1,435 wrappers | 200 | 1.9 ms | 2.2 ms |
 
 `make bench` reproduces it; `docs/proof/bench.json` is the committed run.

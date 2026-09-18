@@ -1,12 +1,12 @@
 {
  "_note": "A RECORDING with provenance, for offline tests and bench --replay. The judged path never reads it.",
- "captured_utc": "2026-09-18T22:24:24Z",
+ "captured_utc": "2026-09-18T22:54:49Z",
  "endpoint": "https://pro-api.coinmarketcap.com/v5/real-world-assets/issuers/list",
  "params": "limit=250",
  "http": 200,
  "keyed": true,
  "credit_count": 1,
- "sha256": "daa3b4095edea640",
+ "sha256": "81d289956efe211e",
  "issuers": [
   {
    "name": "Backed Assets",
