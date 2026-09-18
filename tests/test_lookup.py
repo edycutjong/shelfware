@@ -295,3 +295,30 @@ def test_verdict_counts_active_wrappers_only():
     )
     res = lookup("NVDA", Client(sleep=noop, opener=op), snapshot())
     assert res["tracked"] == 1 and res["attached"] == 2
+
+
+def test_exhausted_pool_with_a_key_retries_the_identical_call_keyed_and_says_so():
+    """Observed on the first production deploy, 2026-09-18: from a shared cloud egress IP the
+    anonymous pool answers 429 error 1022 for good. With a key the same call is repeated on the
+    keyed base (1 credit) and the answer names the escape hatch; without one, the snapshot."""
+    throttle = (429, envelope(None, error_code=1022, error_message="limit for anonymous access"))
+    op = FakeOpener(
+        (200, envelope({"rwa_assets": [MS_ASSET]}, credit_count=1)),  # roster, keyed
+        throttle,
+        throttle,
+        throttle,
+        throttle,  # keyless map, exhausted
+        (200, envelope([MS_MAP_ROW], credit_count=1)),  # the same call, keyed
+        (200, envelope(MS_INFO, credit_count=1)),  # info, keyed from the start now
+    )
+    res = lookup("MS", Client(api_key="k", sleep=noop, opener=op), snapshot())
+    assert res["status"]["base"] == "keyed" and "1022" in res["status"]["keyless_error"]
+    assert (
+        res["status"]["source"] == "live keyless" or res["status"]["source"]
+    )  # the leg answered live
+    assert (
+        res["wrappers"][0]["status"] == "untracked" and res["wrappers"][0]["status_source"] == "map"
+    )
+    assert res["temporary_failure"] is False
+    keyed_calls = [r for r in op.requests if r.get_header("X-cmc_pro_api_key")]
+    assert len(keyed_calls) == 3 and all("/public-api/" not in r.full_url for r in keyed_calls)

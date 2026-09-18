@@ -206,8 +206,10 @@ class Client:
         meta["rows"] = len(rows)
         return rows
 
-    def cmc_map(self, symbols=None):
-        """D — listing state per crypto_id. KEYLESS, always: this call never carries the key.
+    def cmc_map(self, symbols=None, keyed=False):
+        """D — listing state per crypto_id. KEYLESS by default: this call carries no key.
+        `keyed=True` is the escape hatch for an IP whose anonymous pool is exhausted — the
+        identical call on the keyed base, 1 credit — and it announces itself in the receipt.
 
         Full map (symbols=None): 8 pages of 5,000 across active,inactive,untracked, ~9 MB.
         Per ticker: symbol= filter. An unknown symbol rejects the WHOLE call with HTTP 400
@@ -226,7 +228,7 @@ class Client:
                 js, meta = self.get(
                     "/v1/cryptocurrency/map",
                     {"listing_status": ALL_STATUSES, "symbol": ",".join(wanted), "aux": MAP_AUX},
-                    keyed=False,
+                    keyed=keyed,
                     label=f"cmc/map symbol={','.join(wanted)}",
                 )
                 if meta["http"] == 400 and 'Invalid value for "symbol"' in (meta["error"] or ""):
@@ -266,7 +268,7 @@ class Client:
                 return rows, meta, dropped
             start += CMC_MAP_PAGE
 
-    def cmc_info(self, ids):
+    def cmc_info(self, ids, keyed=False):
         """E — /v2/cryptocurrency/info by id, KEYLESS: `status` (active|inactive — a coarser
         vocabulary than the map's) and `date_added`, the day CMC listed the coin. Untracked map
         rows carry no dates; this is where a shelf wrapper's listing date lives. An unknown id
@@ -282,7 +284,7 @@ class Client:
                 js, meta = self.get(
                     "/v2/cryptocurrency/info",
                     {"id": ",".join(map(str, batch)), "aux": INFO_AUX},
-                    keyed=False,
+                    keyed=keyed,
                     label=f"cmc/info batch {i // INFO_BATCH + 1} ({len(batch)} ids)",
                 )
                 metas.append(meta)

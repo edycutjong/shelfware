@@ -31,13 +31,16 @@ function cached(key, fn) {
   const hit = cache.get(key);
   if (hit && Date.now() - hit.at < TTL_MS) return Promise.resolve({ ...hit.value, cached: true });
   return fn().then((value) => {
-    cache.set(key, { at: Date.now(), value });
+    if (value && value.ok !== false && !value.failed) cache.set(key, { at: Date.now(), value });
     return value;
   });
 }
 
 /** One GET, backoff on 429/5xx (1 s, 2 s), the body passed through verbatim under `raw`.
- *  Returns {url, http, credit_count, bytes, sha256, elapsed_ms, raw, error}. Never throws. */
+ *  Returns {url, http, credit_count, bytes, sha256, elapsed_ms, raw, error}. Never throws.
+ *  A keyless 429 with error_code 1022 ("limit for anonymous access") is not retried: from a
+ *  shared cloud egress IP that pool is exhausted for good, and waiting only wastes the reader's
+ *  time (observed on the first production deploy, 2026-09-18). */
 async function get(url, key) {
   const headers = { Accept: "application/json", "User-Agent": "shelfware-proxy/0.1" };
   if (key) headers["X-CMC_PRO_API_KEY"] = key;
@@ -55,7 +58,8 @@ async function get(url, key) {
       text = String(e);
     }
     const status = res ? res.status : 0;
-    if ((status === 429 || status >= 500 || status === 0) && attempt < 3) {
+    const anonymousExhausted = !key && status === 429 && /"error_code":\s*1022/.test(text || "");
+    if ((status === 429 || status >= 500 || status === 0) && attempt < 3 && !anonymousExhausted) {
       await new Promise((r) => setTimeout(r, 1000 * attempt));
       continue;
     }
@@ -84,6 +88,17 @@ async function get(url, key) {
   };
 }
 
+/** The keyless surface first — live for anyone, 0 credits. If the anonymous pool refuses
+ *  (per-IP, and this host's egress IP is shared with every other tenant), the IDENTICAL call
+ *  on the keyed base, 1 credit, labelled `base: "keyed"` with the keyless error kept beside
+ *  it. The page prints which base answered; a judge's own machine stays keyless. */
+async function getKeylessFirst(pathAndQuery, key) {
+  const first = await get(`${KEYLESS}${pathAndQuery}`);
+  if (!first.error || first.http === 400 || !key) return { ...first, base: "keyless" };
+  const second = await get(`${KEYED}${pathAndQuery}`, key);
+  return { ...second, base: "keyed", keyless_error: first.error, keyless_http: first.http };
+}
+
 function send(res, status, body) {
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -95,4 +110,4 @@ function nowUtc() {
   return new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
 }
 
-module.exports = { KEYED, KEYLESS, SYMBOL, FILTERABLE, MAP_AUX, INFO_AUX, get, send, cached, snapshot, readData, nowUtc };
+module.exports = { KEYED, KEYLESS, SYMBOL, FILTERABLE, MAP_AUX, INFO_AUX, get, getKeylessFirst, send, cached, snapshot, readData, nowUtc };

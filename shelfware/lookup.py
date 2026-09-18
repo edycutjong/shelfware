@@ -150,8 +150,14 @@ def lookup(ticker, client, snapshot):
     for e in ((snapshot or {}).get("underlyings") or {}).values():
         for t in e["tokens"]:
             snap_state[t["crypto_id"]] = t
+    out["status"]["base"] = "keyless"
     if wrappers:
         rows, meta, dropped = client.cmc_map(symbols) if symbols else ({}, None, [])
+        if meta is not None and meta.get("throttled") and client.api_key:
+            # the escape hatch: the anonymous pool refused this IP; the identical call, keyed
+            out["status"]["keyless_error"] = meta["error"]
+            out["status"]["base"] = "keyed"
+            rows, meta, dropped = client.cmc_map(symbols, keyed=True)
         out["status"]["call"] = meta
         out["status"]["dropped_symbols"] = dropped
         if meta is not None and meta.get("error"):
@@ -162,14 +168,28 @@ def lookup(ticker, client, snapshot):
             for w in wrappers:
                 w["status_source"] = "snapshot"
         else:
-            out["status"]["source"] = "live keyless"
+            out["status"]["source"] = (
+                "live keyless"
+                if out["status"]["base"] == "keyless"
+                else "live keyed (escape hatch)"
+            )
             resolve(wrappers, rows)
             wanted = {w["crypto_id"] for w in wrappers}
             out["evidence"]["map_rows"] = [r for r in rows.values() if r.get("id") in wanted]
             for w in wrappers:
                 w["status_source"] = "map" if w["crypto_id"] in rows else None
         # the listing date, and the state of any wrapper whose symbol the map will not filter
-        info, metas, _ = client.cmc_info([w["crypto_id"] for w in wrappers])
+        info, metas, _ = client.cmc_info(
+            [w["crypto_id"] for w in wrappers], keyed=out["status"]["base"] == "keyed"
+        )
+        if (
+            metas
+            and metas[-1].get("throttled")
+            and client.api_key
+            and out["status"]["base"] == "keyless"
+        ):
+            out["status"]["keyless_error"] = metas[-1]["error"]
+            info, metas, _ = client.cmc_info([w["crypto_id"] for w in wrappers], keyed=True)
         out["status"]["info_calls"] = metas
         enrich_info(wrappers, info)
         out["evidence"]["info_rows"] = [

@@ -33,10 +33,14 @@
 
   // ── the ticker question ───────────────────────────────────────────────────
   function chip(status) { return '<span class="chip ' + esc(status) + '">' + esc(status.toUpperCase()) + "</span>"; }
+  function via(base, ep) {
+    if (base === "keyed") return "/" + ep + " · live · keyed via this site's proxy, 1 credit (CMC's anonymous pool refuses the host's shared IP; on your machine it is keyless)";
+    return "/public-api/" + ep + " · live · keyless · 0 credits";
+  }
   function sourceLine(w, asOf) {
-    if (w.status_source === "map") return "/public-api/v1/cryptocurrency/map · live · keyless · 0 credits";
-    if (w.status_source === "info") return "/public-api/v2/cryptocurrency/info · live · keyless (the map's symbol filter rejects this symbol)";
-    if (w.status_source === "info+snapshot") return "/public-api/v2/cryptocurrency/info says inactive · live · keyless; the map's finer state from the " + esc(asOf) + " snapshot (its symbol filter rejects \"" + esc(w.symbol) + "\")";
+    if (w.status_source === "map") return via(w.base, "v1/cryptocurrency/map");
+    if (w.status_source === "info") return via(w.base, "v2/cryptocurrency/info") + " (the map's symbol filter rejects this symbol)";
+    if (w.status_source === "info+snapshot") return via(w.base, "v2/cryptocurrency/info").replace(" · live", " says inactive · live") + "; the map's finer state from the " + esc(asOf) + " snapshot (its symbol filter rejects \"" + esc(w.symbol) + "\")";
     return "committed snapshot " + esc(asOf) + " — " + esc(w.fallback_reason || "the keyless pool did not answer");
   }
   function renderCard(res) {
@@ -74,8 +78,9 @@
     return html;
   }
 
-  function joinWrappers(tokens, mapRows, infoRows, snapTokens) {
+  function joinWrappers(tokens, mapRows, infoRows, snapTokens, bases) {
     var byId = {}, info = {}, snap = {};
+    bases = bases || {};
     (mapRows || []).forEach(function (r) { byId[r.id] = r; });
     Object.keys(infoRows || {}).forEach(function (k) { info[k] = infoRows[k]; });
     (snapTokens || []).forEach(function (t) { snap[t.crypto_id] = t; });
@@ -83,10 +88,10 @@
       var w = { crypto_id: t.crypto_id, symbol: t.symbol, name: t.name, issuer_id: t.issuer_id, issuer_name: t.issuer_name, price: t.price, market_cap: t.market_cap, volume_24h: t.volume_24h };
       var m = byId[t.crypto_id], i = info[String(t.crypto_id)], s = snap[t.crypto_id];
       w.date_added = i ? i.date_added : (s ? s.date_added : null);
-      if (m) { w.status = m.status; w.status_source = "map"; w.platform = m.platform; w.first_historical_data = m.first_historical_data; return w; }
+      if (m) { w.status = m.status; w.status_source = "map"; w.base = bases.map; w.platform = m.platform; w.first_historical_data = m.first_historical_data; return w; }
       if (mapRows === null) { w.status = s ? s.status : "unresolved"; w.status_source = "snapshot"; w.platform = s ? s.platform : null; w.first_historical_data = s ? s.first_historical_data : null; return w; }
-      if (i && i.status === "active") { w.status = "active"; w.status_source = "info"; w.platform = i.platform; return w; }
-      if (i && i.status === "inactive") { var fine = s ? s.status : null; w.status = (fine === "untracked" || fine === "inactive") ? fine : "inactive"; w.status_source = (fine === "untracked" || fine === "inactive") ? "info+snapshot" : "info"; w.platform = i.platform || (s ? s.platform : null); return w; }
+      if (i && i.status === "active") { w.status = "active"; w.status_source = "info"; w.base = bases.info; w.platform = i.platform; return w; }
+      if (i && i.status === "inactive") { var fine = s ? s.status : null; w.status = (fine === "untracked" || fine === "inactive") ? fine : "inactive"; w.status_source = (fine === "untracked" || fine === "inactive") ? "info+snapshot" : "info"; w.base = bases.info; w.platform = i.platform || (s ? s.platform : null); return w; }
       w.status = "unresolved"; w.status_source = "info"; w.platform = null; return w;
     });
   }
@@ -114,15 +119,16 @@
       var ids = tokens.map(function (t) { return t.crypto_id; }).filter(function (x) { return x != null; });
       card.innerHTML += '<p class="src">asking /api/status — keyless map for ' + esc(symbols.join(",")) + " and info for " + ids.length + " ids …</p>";
       return getJSON("/api/status?symbols=" + encodeURIComponent(symbols.join(",")) + "&ids=" + encodeURIComponent(ids.join(","))).then(function (s) {
-        var mapRows = null, infoRows = {};
-        if (s.map) { res.calls.push({ call: "/api/status → " + s.map.url, http: s.map.http, keyed: false, credit_count: s.map.credit_count, elapsed_ms: s.map.elapsed_ms, fetched_utc: s.fetched_utc, sha256: s.map.sha256 }); if (s.map.http === 200 && s.map.raw) mapRows = s.map.raw.data || []; }
-        if (s.info) { res.calls.push({ call: "/api/status → " + s.info.url, http: s.info.http, keyed: false, credit_count: s.info.credit_count, elapsed_ms: s.info.elapsed_ms, fetched_utc: s.fetched_utc, sha256: s.info.sha256 }); if (s.info.http === 200 && s.info.raw) infoRows = s.info.raw.data || {}; }
+        var mapRows = null, infoRows = {}, bases = { map: s.map && s.map.base, info: s.info && s.info.base };
+        var callOf = function (x) { return { call: "/api/status → " + x.url + (x.base === "keyed" ? "  [keyless refused: " + x.keyless_error + "]" : ""), http: x.http, keyed: x.base === "keyed", credit_count: x.credit_count, elapsed_ms: x.elapsed_ms, fetched_utc: s.fetched_utc, sha256: x.sha256 }; };
+        if (s.map) { res.calls.push(callOf(s.map)); if (s.map.http === 200 && s.map.raw) mapRows = s.map.raw.data || []; }
+        if (s.info) { res.calls.push(callOf(s.info)); if (s.info.http === 200 && s.info.raw) infoRows = s.info.raw.data || {}; }
         if (mapRows === null && symbols.length) { res.status.fallback_reason = (s.map && s.map.error) || s.error || "no answer from the keyless map"; }
         if (mapRows === null && !symbols.length) mapRows = [];
         var wanted = {}; ids.forEach(function (i) { wanted[i] = true; });
         res.evidence.map_rows = mapRows ? mapRows.filter(function (row) { return wanted[row.id]; }) : null;
         res.evidence.info_rows = Object.keys(infoRows).length ? infoRows : null;
-        res.wrappers = joinWrappers(tokens, mapRows, infoRows, snapTokens);
+        res.wrappers = joinWrappers(tokens, mapRows, infoRows, snapTokens, bases);
         res.wrappers.forEach(function (w) { if (w.status_source === "snapshot") w.fallback_reason = res.status.fallback_reason; });
         var tracked = res.wrappers.filter(function (w) { return w.status === "active"; }).length;
         res.verdict = tracked + " of " + res.wrappers.length + " wrapper(s) with a CMC-tracked market";
