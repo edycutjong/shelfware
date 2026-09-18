@@ -1,0 +1,371 @@
+{
+  "spike": "is 'untracked' the honest word?",
+  "run_utc": "2026-09-18T22:02:05Z",
+  "findings": {
+    "wrapper": "wMSx",
+    "crypto_id": 41513,
+    "map_status": "untracked",
+    "map_has_dates": false,
+    "map_platform": {
+      "id": 216,
+      "name": "X Layer",
+      "symbol": "OKB",
+      "slug": "okb",
+      "token_address": "0x2874A11805783324C54562eDB1A641C5d1d077a5"
+    },
+    "rwa_has_tokens": true,
+    "rwa_rank": 43,
+    "wrapper_price": null,
+    "wrapper_issuer": "Backed Assets",
+    "tradfi_markets": [
+      {
+        "exchange": {
+          "slug": "binance",
+          "name": "Binance",
+          "exchange_id": 270
+        },
+        "ticker": "MS",
+        "market_url": "https://www.binance.com/en/stocks/EQ_MS"
+      }
+    ],
+    "quotes_latest_http": 200,
+    "quotes_latest_price_usd": null,
+    "quotes_historical_http": 200,
+    "quotes_historical_points": 0,
+    "keyed_credits_this_spike": 2,
+    "first_snapshot": {
+      "file": "2026-09-18.json",
+      "generated_utc": "2026-09-18T21:36:35Z",
+      "status_then": "untracked",
+      "same_status_now": true
+    },
+    "verdict": "listed, no CMC-tracked market \u2014 and the asset trades on a TradFi venue CMC names, so 'never traded' would be false. The wording guard stands.",
+    "time_axis": "untracked map rows carry no first_/last_historical_data; the only time axis is the daily snapshot series this repository records"
+  },
+  "calls": {
+    "key_info_before": {
+      "meta": {
+        "url": "https://pro-api.coinmarketcap.com/v1/key/info",
+        "keyed": true,
+        "http": 200,
+        "bytes": 494,
+        "sha256": "4ecc112c6f57e09c",
+        "credit_count": 0,
+        "elapsed_ms": 413,
+        "utc": "2026-09-18T22:02:04Z"
+      },
+      "response": {
+        "data": {
+          "plan": {
+            "credit_limit_monthly": 450000,
+            "credit_limit_monthly_reset": "In 12 days, 1 hours, 57 minutes",
+            "credit_limit_monthly_reset_timestamp": "2026-10-01T00:00:00.000Z",
+            "rate_limit_minute": 600
+          },
+          "usage": {
+            "current_minute": {
+              "requests_made": 0,
+              "requests_left": 600
+            },
+            "current_day": {
+              "credits_used": 421
+            },
+            "current_month": {
+              "credits_used": 12012,
+              "credits_left": 437988
+            }
+          }
+        },
+        "status": {
+          "timestamp": "2026-09-18T22:02:04.158Z",
+          "error_code": 0,
+          "error_message": null,
+          "elapsed": 8,
+          "credit_count": 0,
+          "notice": null
+        }
+      }
+    },
+    "map_keyless": {
+      "meta": {
+        "url": "https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active%2Cinactive%2Cuntracked&symbol=wMSx&aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform",
+        "keyed": false,
+        "http": 200,
+        "bytes": 441,
+        "sha256": "522843f1a54d9d12",
+        "credit_count": 1,
+        "elapsed_ms": 302,
+        "utc": "2026-09-18T22:02:04Z"
+      },
+      "response": {
+        "data": [
+          {
+            "id": 41513,
+            "name": "Wrapped Morgan Stanley Tokenized Stock (xStock)",
+            "symbol": "wMSx",
+            "slug": "wrapped-morgan-stanley-tokenized-stock-xstock",
+            "rank": null,
+            "status": "untracked",
+            "platform": {
+              "id": 216,
+              "name": "X Layer",
+              "symbol": "OKB",
+              "slug": "okb",
+              "token_address": "0x2874A11805783324C54562eDB1A641C5d1d077a5"
+            }
+          }
+        ],
+        "status": {
+          "timestamp": "2026-09-18T22:02:04.464Z",
+          "error_code": 0,
+          "error_message": null,
+          "elapsed": 1,
+          "credit_count": 1,
+          "notice": null
+        }
+      }
+    },
+    "rwa_quotes_keyed": {
+      "meta": {
+        "url": "https://pro-api.coinmarketcap.com/v5/real-world-assets/quotes/latest?symbol=MS",
+        "keyed": true,
+        "http": 200,
+        "bytes": 949,
+        "sha256": "044ff921abec9874",
+        "credit_count": 1,
+        "elapsed_ms": 301,
+        "utc": "2026-09-18T22:02:04Z"
+      },
+      "response": {
+        "data": {
+          "rwa_assets": [
+            {
+              "name": "Morgan Stanley",
+              "symbol": "MS",
+              "slug": "morgan-stanley",
+              "quotes": [
+                {
+                  "symbol": "USD",
+                  "crypto_id": 2781,
+                  "average_tokenized_price": null,
+                  "tokenized_market_cap": null,
+                  "tokenized_volume_24h": null,
+                  "last_updated": "2026-09-18T22:01:00.000Z"
+                }
+              ],
+              "rwa_id": 35,
+              "asset_type": "stock",
+              "rwa_rank": 43,
+              "has_tokens": true,
+              "average_tokenized_price": null,
+              "tokenized_market_cap": null,
+              "tokenized_volume_24h": null,
+              "last_updated": "2026-09-18T21:59:40.688Z",
+              "tokens": [
+                {
+                  "symbol": "wMSx",
+                  "name": "Wrapped Morgan Stanley Tokenized Stock (xStock)",
+                  "price": null,
+                  "crypto_id": 41513,
+                  "issuer_id": "6878977dcbbf471de3366e85",
+                  "issuer_name": "Backed Assets",
+                  "market_cap": null,
+                  "volume_24h": null
+                }
+              ],
+              "tradfi_markets": [
+                {
+                  "exchange": {
+                    "slug": "binance",
+                    "name": "Binance",
+                    "exchange_id": 270
+                  },
+                  "ticker": "MS",
+                  "market_url": "https://www.binance.com/en/stocks/EQ_MS"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "timestamp": "2026-09-18T22:02:04.762Z",
+          "error_code": "0",
+          "error_message": "",
+          "elapsed": 4,
+          "credit_count": 1
+        }
+      }
+    },
+    "crypto_quotes_latest_keyed": {
+      "meta": {
+        "url": "https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=41513",
+        "keyed": true,
+        "http": 200,
+        "bytes": 1528,
+        "sha256": "c9df505d492d627b",
+        "credit_count": 1,
+        "elapsed_ms": 311,
+        "utc": "2026-09-18T22:02:04Z"
+      },
+      "response": {
+        "data": {
+          "41513": {
+            "tags": [
+              {
+                "slug": "defi",
+                "name": "DeFi",
+                "category": "CATEGORY"
+              },
+              {
+                "slug": "tokenized-stock",
+                "name": "Tokenized Stock",
+                "category": "CATEGORY"
+              },
+              {
+                "slug": "x-layer-ecosystem",
+                "name": "X Layer Ecosystem",
+                "category": "PLATFORM"
+              },
+              {
+                "slug": "tokenized-assets",
+                "name": "Tokenized Assets",
+                "category": "CATEGORY"
+              },
+              {
+                "slug": "xstocks-ecosystem",
+                "name": "xStocks Ecosystem",
+                "category": "CATEGORY"
+              }
+            ],
+            "id": 41513,
+            "name": "Wrapped Morgan Stanley Tokenized Stock (xStock)",
+            "symbol": "wMSx",
+            "slug": "wrapped-morgan-stanley-tokenized-stock-xstock",
+            "is_active": 0,
+            "infinite_supply": false,
+            "is_fiat": 0,
+            "circulating_supply": 0,
+            "total_supply": 0,
+            "max_supply": null,
+            "date_added": "2026-08-11T16:24:36.000Z",
+            "num_market_pairs": null,
+            "cmc_rank": null,
+            "last_updated": "2026-09-18T22:02:05.075Z",
+            "tvl_ratio": null,
+            "platform": {
+              "id": 3897,
+              "slug": "okb",
+              "name": "X Layer",
+              "symbol": "OKB",
+              "token_address": "0x2874A11805783324C54562eDB1A641C5d1d077a5"
+            },
+            "self_reported_circulating_supply": null,
+            "self_reported_market_cap": null,
+            "minted_market_cap": null,
+            "quote": {
+              "USD": {
+                "price": null,
+                "volume_24h": null,
+                "volume_change_24h": null,
+                "cex_volume_24h": null,
+                "dex_volume_24h": null,
+                "percent_change_1h": null,
+                "percent_change_24h": null,
+                "percent_change_7d": null,
+                "percent_change_30d": null,
+                "percent_change_60d": null,
+                "percent_change_90d": null,
+                "market_cap": null,
+                "market_cap_dominance": null,
+                "fully_diluted_market_cap": 0,
+                "tvl": null,
+                "last_updated": "2026-09-18T22:01:00.000Z"
+              }
+            }
+          }
+        },
+        "status": {
+          "timestamp": "2026-09-18T22:02:05.079Z",
+          "error_code": 0,
+          "error_message": null,
+          "elapsed": 9,
+          "credit_count": 1,
+          "notice": null
+        }
+      }
+    },
+    "crypto_quotes_historical_keyed": {
+      "meta": {
+        "url": "https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/historical?id=41513&count=30&interval=daily",
+        "keyed": true,
+        "http": 200,
+        "bytes": 261,
+        "sha256": "1ac49967e70dba21",
+        "credit_count": 0,
+        "elapsed_ms": 308,
+        "utc": "2026-09-18T22:02:05Z"
+      },
+      "response": {
+        "data": {
+          "id": 41513,
+          "name": "Wrapped Morgan Stanley Tokenized Stock (xStock)",
+          "symbol": "wMSx",
+          "is_active": 0,
+          "is_fiat": 0,
+          "quotes": []
+        },
+        "status": {
+          "timestamp": "2026-09-18T22:02:05.384Z",
+          "error_code": 0,
+          "error_message": null,
+          "elapsed": 8,
+          "credit_count": 0,
+          "notice": null
+        }
+      }
+    },
+    "key_info_after": {
+      "meta": {
+        "url": "https://pro-api.coinmarketcap.com/v1/key/info",
+        "keyed": true,
+        "http": 200,
+        "bytes": 494,
+        "sha256": "18d8f204f1f1d5f6",
+        "credit_count": 0,
+        "elapsed_ms": 312,
+        "utc": "2026-09-18T22:02:05Z"
+      },
+      "response": {
+        "data": {
+          "plan": {
+            "credit_limit_monthly": 450000,
+            "credit_limit_monthly_reset": "In 12 days, 1 hours, 57 minutes",
+            "credit_limit_monthly_reset_timestamp": "2026-10-01T00:00:00.000Z",
+            "rate_limit_minute": 600
+          },
+          "usage": {
+            "current_minute": {
+              "requests_made": 4,
+              "requests_left": 596
+            },
+            "current_day": {
+              "credits_used": 423
+            },
+            "current_month": {
+              "credits_used": 12014,
+              "credits_left": 437986
+            }
+          }
+        },
+        "status": {
+          "timestamp": "2026-09-18T22:02:05.699Z",
+          "error_code": 0,
+          "error_message": null,
+          "elapsed": 4,
+          "credit_count": 0,
+          "notice": null
+        }
+      }
+    }
+  }
+}
