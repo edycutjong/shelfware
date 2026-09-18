@@ -27,7 +27,7 @@ CMC-tracked market.</strong> 673 of 1,435 wrappers are on the shelf; Backed Asse
 ![CoinMarketCap](https://img.shields.io/badge/CoinMarketCap_RWA_API-3861FB?style=flat&logo=coinmarketcap&logoColor=white)
 ![No API key](https://img.shields.io/badge/API_key-optional-4C9AFF?style=flat)
 ![Zero dependencies](https://img.shields.io/badge/runtime_deps-zero-5E6C80?style=flat)
-![Tests](https://img.shields.io/badge/tests-99-3BD37D?style=flat)
+![Tests](https://img.shields.io/badge/tests-105-3BD37D?style=flat)
 [![License](https://img.shields.io/badge/License-MIT-FFB020?style=flat)](LICENSE)
 
 </div>
@@ -113,7 +113,7 @@ Re-derive by hand: `jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .sta
 
 ## 🧪 Tests and benchmarks
 
-**99 tests** — 85 offline Python (`make test`, ~1 s, no internet), 9 for the proxy functions
+**105 tests** — 91 offline Python (`make test`, ~1 s, no internet), 9 for the proxy functions
 (`make test-api`, stubbed fetch), 5 live against the real contract (`make test-live`, keyless). Nine regressions are named for the defect they pin, each seen against
 the live API on 2026-09-18; one property test holds six invariants over 500 generated ledgers.
 
