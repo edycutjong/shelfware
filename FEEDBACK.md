@@ -6,9 +6,21 @@ is speculative, and each finding carries the date it was observed and the eviden
 it. Raw responses for the first three are committed in [`docs/proof/spike.json`](docs/proof/spike.json)
 and [`docs/proof/live_run.json`](docs/proof/live_run.json).
 
-The headline: **the RWA surface is the richest thing in the catalogue, and its `tokens[]` array
-quietly carries the most useful rows in it — the wrappers with `price: null`.** Several items
-below are about making those rows, and the listing state that explains them, easier to reach.
+## What the API made possible
+
+One join that exists nowhere else. `/v5/real-world-assets/quotes/latest` returns, per underlying,
+every wrapper CoinMarketCap knows about — **including the ones priced `null`** — with the issuer
+that minted it; `/v1/cryptocurrency/map` returns, keyless, the listing state that explains the
+null; `/v2/cryptocurrency/info` returns, keyless, the day each was listed. Put together: a census
+of 1,435 wrappers across 791 tokenised assets and 25 issuers, graded by whether a market exists,
+for 5 keyed credits and 15 keyless calls in 41 seconds — reproducible by anyone with a free key,
+and the verdict for any single ticker reproducible with no key at all. The RWA family is weeks
+old and it already carries the two facts an allocator needs and every RWA page omits.
+
+The headline of the feedback: **the RWA surface is the richest thing in the catalogue, and its
+`tokens[]` array quietly carries the most useful rows in it — the wrappers with `price: null`.**
+Several items below are about making those rows, and the listing state that explains them,
+easier to reach.
 
 ---
 
