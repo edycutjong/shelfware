@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Render site/index.html from data/census.json (+ delta.json, docs/proof/ms.json).
+"""Render site/index.html and site/judge/index.html from data/census.json (+ delta.json,
+docs/proof/ms.json, JUDGE.md).
 
     python3 scripts/render_site.py            # write site/index.html and data/health.json
     python3 scripts/render_site.py --check    # exit 1 if what is on disk is not this render
@@ -18,6 +19,9 @@ from html import escape
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import md2html  # noqa: E402
+
 from shelfware.join import UNTRACKED_DEFINITION, type_underlyings  # noqa: E402
 from shelfware.verify import JQ_RECIPE  # noqa: E402
 
@@ -27,6 +31,8 @@ SITE = ROOT / "site"
 DATA = ROOT / "data"
 HEALTH_OUT = DATA / "health.json"
 PROOF = ROOT / "docs" / "proof"
+JUDGE_MD = ROOT / "JUDGE.md"
+JUDGE_OUT = SITE / "judge" / "index.html"
 REPO = "https://github.com/edycutjong/shelfware"
 SITE_URL = "https://shelfware-cmc.vercel.app"
 DOTTED = re.compile(r"^[A-Za-z0-9]+$")
@@ -306,10 +312,41 @@ def render():
     return html, json.dumps(health, indent=1)
 
 
+def render_judge():
+    """site/judge/index.html — JUDGE.md in the site's chrome, served at /judge with no auth,
+    no cookies and no redirect. The page a judge reads is the file a judge reads, rendered;
+    relative links point at the repository, and --check fails if the two ever diverge."""
+    doc = json.loads((DATA / "census.json").read_text())
+    c = doc["counts"]
+    share = round(100 * c["underlyings_zero_tracked"] / c["has_tokens"])
+    body = md2html.render_file(JUDGE_MD, REPO)
+    slots = {
+        "body": body,
+        "logo": LOGO,
+        "favicon": FAVICON,
+        "repo": REPO,
+        "site_url": SITE_URL,
+        "share_pct": str(share),
+        "generated_utc": doc["generated_utc"],
+        "description": (
+            f"The claim, the 30-second path and the receipt: {c['underlyings_zero_tracked']} of "
+            f"{c['has_tokens']} tokenised underlyings on CoinMarketCap have no wrapper with a "
+            "CMC-tracked market. No key, no login."
+        ),
+    }
+    html = (TEMPLATES / "judge.html").read_text()
+    for k, v in slots.items():
+        html = html.replace("{{" + k + "}}", v if k in ("body", "logo", "favicon") else escape(v))
+    left = re.findall(r"\{\{[a-z_]+\}\}", html)
+    if left:
+        sys.exit(f"unfilled slots on the judge page: {sorted(set(left))}")
+    return html
+
+
 def main():
     check = "--check" in sys.argv
     html, health = render()
-    targets = {SITE / "index.html": html, HEALTH_OUT: health}
+    targets = {SITE / "index.html": html, HEALTH_OUT: health, JUDGE_OUT: render_judge()}
     if check:
         stale = [p.name for p, want in targets.items() if not p.exists() or p.read_text() != want]
         if stale:
@@ -317,10 +354,11 @@ def main():
                 f"drift: {', '.join(stale)} is not what the census renders — run: python3 scripts/render_site.py"
             )
             return 1
-        print("site/index.html and data/health.json match the census")
+        print("site/index.html, site/judge/index.html and data/health.json match the census")
         return 0
     SITE.mkdir(exist_ok=True)
     for p, content in targets.items():
+        p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(content)
         print(f"wrote {p.name} ({len(content):,} bytes)")
     return 0

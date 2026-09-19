@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shelfware — for judges</title>
+<meta name="description" content="{{description}}">
+<meta name="author" content="Edy Cu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shelfware — for judges: the claim, the 30-second path, the receipt">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{site_url}}/judge">
+<meta property="og:site_name" content="Shelfware">
+<meta property="og:image" content="{{site_url}}/og-image.png?v=20260919">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Shelfware — {{share_pct}}% of the tokenised assets on CoinMarketCap have no wrapper with a CMC-tracked market">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{site_url}}/og-image.png?v=20260919">
+<link rel="canonical" href="{{site_url}}/judge">
+<link rel="icon" href="data:image/svg+xml,{{favicon}}">
+<style>
+:root{--bg:#0B0F14;--surface:#131A22;--border:#26313F;--text:#E8EEF4;--muted:#8A98A8;--lit:#3BD37D;--shelf:#3A4453;--flag:#FFB020;
+--sans:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{color-scheme:dark;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--text);text-decoration-color:var(--muted)}a:hover,a:focus-visible{color:var(--flag)}
+main{max-width:860px;margin:0 auto;padding:24px 20px 80px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 0 28px;border-bottom:1px solid var(--border);margin-bottom:36px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:15px;color:var(--text);text-decoration:none}
+.brand svg{width:34px;height:22px}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);text-decoration:none;font-size:15px;font-family:var(--mono);min-height:44px;transition:border-color .15s,transform .15s,background .15s}
+.btn:hover,.btn:focus-visible{border-color:var(--flag);color:var(--text);transform:translateY(-1px);outline:none}
+.btn.primary{background:var(--flag);color:#0B0F14;border-color:var(--flag);font-weight:600}
+.btn.primary:hover{background:#ffc247}
+article h1{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 18px}
+article h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:40px 0 14px}
+article p{margin:0 0 16px}
+article strong{color:var(--flag);font-weight:600}
+article code{font-family:var(--mono);font-size:.92em;background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:1px 5px}
+article pre{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;font-family:var(--mono);font-size:14px;line-height:1.45;overflow-x:auto;margin:8px 0 18px;color:#c9d4e0}
+article ol,article ul{padding-left:1.3em;margin:0 0 16px}
+article li{margin:0 0 8px}
+article table{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:15.5px;display:block;overflow-x:auto}
+article th,article td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+article th{color:var(--muted);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+article td:first-child{white-space:nowrap;color:var(--muted)}
+.stamp{color:var(--muted);font-size:14px;font-family:var(--mono);margin:0 0 28px}
+footer{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:14px;border-top:1px solid var(--border);padding-top:22px;margin-top:48px}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <a class="brand" href="/">{{logo}} Shelfware</a>
+  <nav>
+    <a class="btn primary" href="/#search">Type a ticker</a>
+    <a class="btn" href="{{repo}}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    <a class="btn" href="{{repo}}/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md ↗</a>
+  </nav>
+</header>
+<article>
+<p class="stamp">Rendered from <a href="{{repo}}/blob/main/JUDGE.md">JUDGE.md</a> · census {{generated_utc}} · no login, no key, no cookies — every link is public</p>
+{{body}}
+</article>
+<footer>
+  <span>Built on the CoinMarketCap API for <a href="https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail" target="_blank" rel="noopener noreferrer">Build with CMC</a> · Real World Assets</span>
+  <a href="{{repo}}" target="_blank" rel="noopener noreferrer">Repository</a>
+  <a href="{{repo}}/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">API feedback</a>
+  <a href="/api/health">/api/health</a>
+</footer>
+</main>
+</body>
+</html>

@@ -35,7 +35,9 @@ http
       }
       return;
     }
-    const file = path.join(ROOT, "site", url.pathname === "/" ? "index.html" : url.pathname);
+    let file = path.join(ROOT, "site", url.pathname === "/" ? "index.html" : url.pathname);
+    // a directory resolves to its index.html, as Vercel does: /judge -> site/judge/index.html
+    if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, "index.html");
     if (file.startsWith(path.join(ROOT, "site")) && fs.existsSync(file) && fs.statSync(file).isFile()) {
       res.setHeader("Content-Type", file.endsWith(".html") ? "text/html; charset=utf-8" : "application/octet-stream");
       fs.createReadStream(file).pipe(res);
