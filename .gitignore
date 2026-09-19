@@ -14,6 +14,14 @@ venv/
 .pytest_cache/
 .hypothesis/
 .ruff_cache/
+.mypy_cache/
+*.egg-info/
+/dist/
+/build/
+
+# gitleaks / pip-audit reports, if anyone writes one locally
+gitleaks-report.json
+pip-audit.json
 
 # node / vercel
 node_modules/
