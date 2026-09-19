@@ -35,7 +35,7 @@ def test_version_flag(capsys):
 
 
 def test_census_without_a_key_refuses_with_one_line_and_exit_1(monkeypatch, capsys):
-    """R5/R10: the census must never silently replay. With no key it says why, in one line,
+    """The census must never silently replay. With no key it says why, in one line,
     and points at the committed run."""
     for var in ("CMC_API_KEY", "COINMARKETCAP_API_KEY", "CMC_PRO_API_KEY"):
         monkeypatch.delenv(var, raising=False)

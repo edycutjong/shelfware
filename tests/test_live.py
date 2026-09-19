@@ -1,4 +1,4 @@
-"""Live tests — the external side effect, not a return value (LESSONS R11).
+"""Live tests — assert the external side effect, not a return value.
 
     pytest -q -m live
 
