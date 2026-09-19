@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: CoinMarketCap API feedback
+    url: https://github.com/edycutjong/shelfware/blob/main/FEEDBACK.md
+    about: Twelve dated findings about the API itself live in FEEDBACK.md — add to those rather than opening an issue here.
