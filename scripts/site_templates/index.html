@@ -552,7 +552,7 @@ footer .bottom .ver{color:var(--accent)}
   <div class="wrap">
     <div class="kicker reveal">The scorecard</div>
     <h2 class="reveal d1">One row per issuer. Grey is the shelf; green has a market.</h2>
-    <p class="lede reveal d2" style="margin-top:16px">The same pair, <b>{{backed_attached}}</b> times in Backed Assets' row. <b>Declared</b> is the registry's <span class="mono">num_tokens</span>; <b>attached</b> is what any underlying lists in <span class="mono">tokens[]</span>; <b>tracked</b> is <span class="mono">status == active</span> on the map; the shelf rate is untracked ÷ attached, beside the live market cap of what does trade. Sorted by shelf rate. Open an issuer for its two raw rows.</p>
+    <p class="lede reveal d2" style="margin-top:16px">The same pair, <b>{{backed_attached}}</b> times in Backed Assets' row. <b>Declared</b> is the registry's <span class="mono">num_tokens</span>; <b>attached</b> is what any underlying lists in <span class="mono">tokens[]</span>; <b>tracked</b> is <span class="mono">status == active</span> on the map; shelf rate is untracked ÷ attached, beside the live market cap of what trades. Open an issuer for its two raw rows.</p>
     <div class="tablewrap reveal" style="margin-top:28px">
       <table class="pools issuers" aria-label="Issuers by shelf rate">
         <thead><tr><th><span>issuer</span></th><th class="l"><span>wrappers</span></th><th><span>shelf</span></th><th class="hide-m"><span>declared</span></th><th><span>attached</span></th><th><span>tracked</span></th><th class="hide-m"><span>live market cap</span></th></tr></thead>
@@ -580,7 +580,7 @@ footer .bottom .ver{color:var(--accent)}
       <div class="stat"><span class="stat-v purple">{{unresolved}}</span><span class="stat-l">ids on no public CMC surface — shown, never counted</span></div>
       <div class="stat"><span class="stat-v green">{{exceptions}}</span><span class="stat-l">exceptions to price == null ⇔ untracked, {{resolved_fmt}} resolved wrappers</span></div>
     </div>
-    <p class="note reveal" style="margin-top:18px">The rule is the conservative one: an underlying counts only when <b>every</b> attached wrapper is <span class="mono">untracked</span>; the loose rule ("no active wrapper") gives {{zero_tracked_loose}} today and is never headlined. What trades is young — median <b>{{age_median}} d</b> since <span class="mono">first_historical_data</span> (p10 {{age_p10}} · p90 {{age_p90}} · n={{age_n}}) — and the shelf is younger still: median <b>{{shelf_median}} d</b> since <span class="mono">date_added</span> (p10 {{shelf_p10}} · p90 {{shelf_p90}} · n={{shelf_n}}), a listing day, not a market day.</p>
+    <p class="note reveal" style="margin-top:18px">The rule is the conservative one: an underlying counts only when <b>every</b> attached wrapper is <span class="mono">untracked</span>; the loose rule ("no active wrapper") gives {{loose_clause}} today and is never the rule behind the headline. What trades is young — median <b>{{age_median}} d</b> since <span class="mono">first_historical_data</span> (p10 {{age_p10}} · p90 {{age_p90}} · n={{age_n}}) — and the shelf is younger still: median <b>{{shelf_median}} d</b> since <span class="mono">date_added</span> (p10 {{shelf_p10}} · p90 {{shelf_p90}} · n={{shelf_n}}), a listing day, not a market day.</p>
   </div>
 </section>
 
@@ -623,12 +623,12 @@ footer .bottom .ver{color:var(--accent)}
       </div>
       <div class="card finding reveal d1">
         <div class="k">finding 2 · the anonymous tier</div>
-        <div class="v">p50 {{lookup_p50}} ms · {{bench_throttled}} of {{bench_iterations}}</div>
-        <p>Ten tickers keyless in a tight loop: nine answered in about half a second, the tenth got <b>429 error 1011</b> after ~20 calls in 15 s, with no <span class="mono">Retry-After</span>. A shared cloud egress IP is refused outright (error 1022). The proxy repeats a refused call keyed and labels the row; the CLI backs off and exits 75.</p>
+        <div class="v">p50&nbsp;{{lookup_p50}}&nbsp;ms · {{bench_throttled}}&nbsp;of&nbsp;{{bench_iterations}}</div>
+        <p>{{bench_iterations}} tickers keyless in a tight loop: {{lookup_n}} answered in about half a second, {{bench_rest}} got <b>429 error 1011</b> after ~20 calls in 15 s, no <span class="mono">Retry-After</span>. A shared egress IP is refused outright (error 1022). The proxy repeats a refused call keyed and labels the row; the CLI backs off and exits 75.</p>
       </div>
       <div class="card finding reveal d2">
         <div class="k">finding 3 · ids on no surface</div>
-        <div class="v purple">{{unresolved}} of {{wrappers_fmt}}</div>
+        <div class="v purple">{{unresolved}}&nbsp;of&nbsp;{{wrappers_fmt}}</div>
         <p><span class="mono">tokens[]</span> carries ids the map and the info endpoint both deny exist ({{unresolved_list}} — null symbols). Counting them as shelf would inflate the headline; <b>they sit in their own bucket and are counted nowhere</b>, and the property test holds that rule over {{property_cases}} generated ledgers.</p>
       </div>
     </div>
@@ -661,7 +661,7 @@ footer .bottom .ver{color:var(--accent)}
       </details>
       <details class="reveal">
         <summary>What does "untracked" mean?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="fold"><div class="fold-clip"><div class="body"><p>It is CoinMarketCap's listing state, quoted from its map documentation: <em>"{{definition}}"</em>. On this page it reads <b>listed, no CMC-tracked market</b>. It does not mean never traded anywhere: Dinari dShares trade on Dinari's own venue, and some wrappers may sit in pools CMC does not index. The number is about CoinMarketCap's coverage of what CoinMarketCap calls tokenised — which is exactly why it can be re-derived. The spike that settled the wording is <a href="{{repo}}/blob/main/docs/proof/spike.json" target="_blank" rel="noopener noreferrer">spike.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>.</p></div></div></div>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>It is CoinMarketCap's listing state, quoted from its map documentation: <em>"{{definition}}"</em>. On this page it reads <b>listed, no CMC-tracked market</b>. It does not mean never traded: Dinari dShares trade on Dinari's own venue, and some wrappers may sit in pools CMC does not index. The number is about CoinMarketCap's coverage of what CoinMarketCap calls tokenised — which is why it can be re-derived. The spike that settled the wording: <a href="{{repo}}/blob/main/docs/proof/spike.json" target="_blank" rel="noopener noreferrer">spike.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>.</p></div></div></div>
       </details>
       <details class="reveal">
         <summary>Why {{hero_symbol}}?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>

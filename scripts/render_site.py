@@ -751,6 +751,8 @@ def render():
     )
     runs, snaps = runs_html(doc)
     hero_doc = doc.get("hero") or {}
+    # tickers the anonymous tier refused — finding 2's headline and its prose share this count
+    throttled = len({e.split(":")[0] for e in bench.get("errors") or []})
     slots = {
         "title": title,
         "description": description,
@@ -765,6 +767,14 @@ def render():
         "lit_pct": 100 - share,
         "zero_tracked": c["underlyings_zero_tracked"],
         "zero_tracked_loose": c["underlyings_zero_tracked_loose"],
+        # the census note: when the loose rule ("no active wrapper") lands on the headline's own
+        # number the sentence must say so, or "never the rule behind the headline" reads as a
+        # contradiction beside a stat band that shows that very number
+        "loose_clause": (
+            f"the same {c['underlyings_zero_tracked_loose']}"
+            if c["underlyings_zero_tracked_loose"] == c["underlyings_zero_tracked"]
+            else str(c["underlyings_zero_tracked_loose"])
+        ),
         "has_tokens": c["has_tokens"],
         "with_tracked": with_tracked,
         "stock_zero": stock["zero_tracked"],
@@ -845,7 +855,9 @@ def render():
         "join_p95": f"{bench['recount_census']['p95']:.2f}",
         "join_n": bench["recount_census"]["n"],
         "bench_iterations": bench["iterations"],
-        "bench_throttled": len({e.split(":")[0] for e in bench.get("errors") or []}),
+        "bench_throttled": throttled,
+        # finding 2 names the throttled remainder in words, from the same count as its headline
+        "bench_rest": "the other" if throttled == 1 else "the others",
         "tests_total": sum(TESTS.values()),
         "tests_offline": TESTS["offline"],
         "tests_node": TESTS["node"],
