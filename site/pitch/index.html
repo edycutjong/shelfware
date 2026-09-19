@@ -5,6 +5,8 @@
   Print: Cmd/Ctrl+P → Save as PDF → landscape. One slide per page, chrome hidden.
   Every number on every slide is a template slot filled from the committed census (docs/proof/live_run.json is its receipt)
   or from docs/proof/bench.json — nothing is typed in by hand. Screenshots in shots/ are captures of the live site.
+  Fonts: the three variable woff2 files the landing ships in site/assets/fonts/, referenced relatively — no CDN, no
+  third-party request, and the deck sets in the same faces as shelfware-cmc.vercel.app.
   Version: v0.0.0-dev — `git describe --tags --abbrev=0` at render time; v0.0.0-dev means no release is tagged yet.
 -->
 <html lang="en">
@@ -12,17 +14,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shelfware — pitch deck</title>
-<meta name="description" content="Pitch deck for Shelfware: 476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Twelve slides, every number from a live run.">
+<meta name="description" content="Pitch deck for Shelfware: 476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Twelve slides, one live run.">
 <meta name="author" content="Edy Cu">
 <link rel="canonical" href="https://shelfware-cmc.vercel.app/pitch/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2034%2022%22%3E%3Crect%20width%3D%2234%22%20height%3D%2222%22%20fill%3D%22%230B0F14%22/%3E%3Crect%20x%3D%220%22%20y%3D%2217%22%20width%3D%2234%22%20height%3D%222%22%20rx%3D%221%22%20fill%3D%22%2326313F%22/%3E%3Crect%20x%3D%221%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233A4453%22/%3E%3Crect%20x%3D%228%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233A4453%22/%3E%3Crect%20x%3D%2215%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233A4453%22/%3E%3Crect%20x%3D%2222%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233BD37D%22/%3E%3Crect%20x%3D%2229%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233BD37D%22/%3E%3C/svg%3E">
-<meta name="theme-color" content="#0B0F14">
+<link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+<meta name="theme-color" content="#0B0E14">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Shelfware">
 <meta property="og:url" content="https://shelfware-cmc.vercel.app/pitch/">
 <meta property="og:title" content="Shelfware — pitch deck">
-<meta property="og:description" content="60% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market. Twelve slides, every number from a live run.">
-<meta property="og:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=20260919">
+<meta property="og:description" content="60% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market. Twelve slides, one live run.">
+<meta property="og:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=eb3e9283">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a CMC-tracked market: the number, the issuer scorecard, and a ticker search">
@@ -30,33 +32,44 @@
 <meta name="twitter:creator" content="@edycutjong">
 <meta name="twitter:title" content="Shelfware — pitch deck">
 <meta name="twitter:description" content="476 of 791 tokenised underlyings have no wrapper with a CMC-tracked market. Counted live, 5 keyed credits.">
-<meta name="twitter:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=20260919">
+<meta name="twitter:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=eb3e9283">
+<link rel="preload" href="../assets/fonts/inter-tight-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* Rebrand in 30 s: the five variables below. They are the landing page's own tokens, so the deck
-   and shelfware-cmc.vercel.app read as one system. System fonts only — the landing loads no
-   webfont either, and a deck that waits on a CDN is a deck that flickers on a projector. */
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:500 800;font-display:swap;src:url(../assets/fonts/inter-tight-latin-var.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(../assets/fonts/inter-latin-var.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(../assets/fonts/jetbrains-mono-latin-var.woff2) format('woff2')}
+@font-face{font-family:'Inter Fallback';src:local('Arial'),local('Helvetica');ascent-override:90.2%;descent-override:22.48%;line-gap-override:0%;size-adjust:107.4%}
+/* ── family tokens (LANDING_DESIGN.md §2): the neutrals, type, radii and timings are fixed
+      across the Build-with-CMC pages; the four hues on the second line are this project's ── */
 :root{
-  --color-bg:#0B0F14; --color-primary:#3BD37D; --color-accent:#FFB020;
-  --font-display:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI Variable","Segoe UI",system-ui,sans-serif;
-  --font-mono:"JetBrains Mono","SF Mono",Menlo,Consolas,"Liberation Mono",ui-monospace,monospace;
-  --bg:var(--color-bg); --surface:#131A22; --surface-2:#1A2230; --border:#26313F; --text:#E8EEF4; --muted:#8A98A8;
-  --lit:var(--color-primary); --shelf:#5E6C80; --shelf-dim:#3A4453; --flag:var(--color-accent); --unknown:#8B7CF6; --danger:#FF5C5C;
-  --num:'tnum' 1,'lnum' 1; --t-fast:160ms; --t-med:320ms; --ease:cubic-bezier(.16,.84,.44,1);
+  --bg:#0B0E14; --surface:#141A24; --surface-2:#1A2230; --border:#243044; --text:#E6EDF3; --muted:#8B98A9; --dim:#5E6C80;
+  --accent:#FFB020; --data:#4C9AFF; --verdict:#3DDC97; --flag:#FF5C5C;            /* ← per project, from §1 only */
+  --font-display:'Inter Tight','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',system-ui,sans-serif;
+  --font-body:'Inter','Inter Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono',Menlo,Consolas,'Liberation Mono',ui-monospace,monospace;
+  --num:'tnum' 1,'lnum' 1;
+  --r-sm:6px; --r-md:12px; --r-lg:20px;
+  --t-fast:160ms; --t-med:320ms; --ease:cubic-bezier(.16,.84,.44,1);
+  --maxw:1180px;
   color-scheme:dark;
+  /* the deck's own names for the hues, as on the landing: amber is the has_tokens flag, green is a tracked market, grey is the shelf */
+  --shelf:var(--dim); --shelf-dim:#3A4453; --lit:var(--verdict); --unknown:#8B7CF6; --danger:var(--flag);
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:var(--font-display);overflow:hidden}
 body{-webkit-print-color-adjust:exact;print-color-adjust:exact;-webkit-font-smoothing:antialiased}
 a{color:var(--text);text-decoration:none}
-a:hover{color:var(--flag)}
+a:hover{color:var(--accent)}
 .mono{font-family:var(--font-mono);font-feature-settings:var(--num)}
-.lit{color:var(--lit)}.flag{color:var(--flag)}.muted{color:var(--muted)}.shelf{color:var(--shelf)}
+.lit{color:var(--lit)}.flag{color:var(--accent)}.muted{color:var(--muted)}.shelf{color:var(--shelf)}
 h1,h2,h3{font-family:var(--font-display);letter-spacing:-.025em;line-height:1.02;margin:0}
 h1{font-size:112px;font-weight:800}
 h2{font-size:84px;font-weight:800}
 h3{font-size:34px;font-weight:700;letter-spacing:-.015em}
 p{margin:0}
-code{font-family:var(--font-mono);font-size:.92em;color:var(--flag)}
+code{font-family:var(--font-mono);font-size:.92em;color:var(--accent)}
 
 /* ── stage: fixed 1920×1080, scaled to the viewport, the browser is letterboxed, never the slide ── */
 #viewport{position:fixed;inset:0;display:block;background:var(--bg)}
@@ -67,45 +80,46 @@ code{font-family:var(--font-mono);font-size:.92em;color:var(--flag)}
   body.navigated .slide.active{animation:slidein .42s var(--ease)}
   @keyframes slidein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 }
-.slide::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1100px 600px at 84% -10%, rgba(255,176,32,.07), transparent 60%),radial-gradient(900px 520px at 4% 22%, rgba(59,211,125,.06), transparent 60%)}
+.slide::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1100px 600px at 84% -10%, rgba(255,176,32,.07), transparent 60%),radial-gradient(900px 520px at 4% 22%, rgba(61,220,151,.06), transparent 60%)}
 .slide > *{position:relative}
-.kicker{font-family:var(--font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--flag);margin-bottom:28px}
+.kicker{font-family:var(--font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
 .lede{font-size:30px;line-height:1.45;color:var(--muted);max-width:1320px;margin-top:28px}
 .lede b{color:var(--text);font-weight:600}
 
 /* chrome: brand, version, counter, progress — on every slide */
 #chrome{position:absolute;left:0;right:0;bottom:0;height:72px;padding:0 120px;z-index:5;display:flex;align-items:center;justify-content:space-between;font-family:var(--font-mono);font-size:18px;color:var(--muted);pointer-events:none}
 #chrome .l{display:flex;gap:22px;align-items:center}
-#chrome .ver{color:var(--flag)}
-#chrome .prog{position:absolute;left:0;bottom:0;height:3px;background:var(--flag);transition:width var(--t-med) var(--ease)}
+#chrome .ver{color:var(--accent)}
+#chrome .prog{position:absolute;left:0;bottom:0;height:3px;background:var(--accent)}
+@media (prefers-reduced-motion:no-preference){#chrome .prog{transition:width var(--t-med) var(--ease)}#hint{transition:opacity .6s}}
 .brandmark{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:700;color:var(--text);font-size:20px}
-.brandmark svg{width:34px;height:22px}
+.brandmark img{width:26px;height:26px;border-radius:6px}
 
 /* components */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:36px 40px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .chip{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border-radius:999px;font-family:var(--font-mono);font-size:18px;border:1px solid var(--border);color:var(--muted)}
-.chip.flag{border-color:rgba(255,176,32,.6);color:var(--flag)}
-.chip.lit{border-color:rgba(59,211,125,.6);color:var(--lit)}
+.chip.flag{border-color:rgba(255,176,32,.6);color:var(--accent)}
+.chip.lit{border-color:rgba(61,220,151,.6);color:var(--lit)}
 .stat{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1;font-feature-settings:var(--num)}
 table{border-collapse:collapse;width:100%}
 th,td{text-align:left;padding:14px 14px;border-bottom:1px solid var(--border);font-size:23px;vertical-align:top}
 th{font-family:var(--font-mono);font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
 td.num,th.num{text-align:right;font-feature-settings:var(--num);font-family:var(--font-mono)}
-pre{margin:0;font-family:var(--font-mono);font-size:21px;line-height:1.55;background:#0B0F14;border:1px solid var(--border);border-radius:18px;padding:28px 32px;color:#B9C4D2;overflow:hidden}
-pre .c{color:#7E8CA0}pre .k{color:#FFD27A}pre .s{color:#8ec0ff}pre .g{color:#8CE99A}pre .r{color:#FF8A8A}pre .key{color:#8A98A8}
+pre{margin:0;font-family:var(--font-mono);font-size:21px;line-height:1.55;background:#0B0E14;border:1px solid var(--border);border-radius:18px;padding:28px 32px;color:#B9C4D2;overflow:hidden}
+pre .c{color:#7E8CA0}pre .k{color:#FFD27A}pre .s{color:#8ec0ff}pre .g{color:#8CE99A}pre .r{color:#FF8A8A}pre .key{color:#8B98A9}
 pre mark{background:rgba(255,176,32,.16);color:#FFD27A;border-radius:4px;padding:0 4px;outline:1px solid rgba(255,176,32,.35)}
-.term{background:#0B0F14;border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.term{background:#0B0E14;border:1px solid var(--border);border-radius:20px;overflow:hidden}
 .term .bar{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--border);background:var(--surface)}
 .term .bar i{width:13px;height:13px;border-radius:50%;background:#2c3646;display:inline-block}
 .term .bar span{margin-left:10px;font-family:var(--font-mono);font-size:16px;color:var(--muted)}
 .term pre{border:0;border-radius:0}
-.term .p{color:#7E8CA0}.term .cmd{color:#E8EEF4}.term .hi{color:#FFD27A}.term .ok{color:#8CE99A}.term .dim{color:#7E8CA0}.term .grey{color:#8A98A8}
+.term .p{color:#7E8CA0}.term .cmd{color:#E6EDF3}.term .hi{color:#FFD27A}.term .ok{color:#8CE99A}.term .dim{color:#7E8CA0}.term .grey{color:#8B98A9}
 /* browser frame for the live-site captures */
-.browser{background:#0B0F14;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.browser{background:#0B0E14;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55)}
 .browser .bar{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--border);background:var(--surface)}
 .browser .bar i{width:13px;height:13px;border-radius:50%;background:#2c3646;display:inline-block}
-.browser .bar .url{margin-left:14px;flex:1;font-family:var(--font-mono);font-size:16px;color:var(--muted);background:#0B0F14;border:1px solid var(--border);border-radius:8px;padding:6px 14px}
+.browser .bar .url{margin-left:14px;flex:1;font-family:var(--font-mono);font-size:16px;color:var(--muted);background:#0B0E14;border:1px solid var(--border);border-radius:8px;padding:6px 14px}
 .browser img{display:block;width:100%;height:auto}
 
 /* cover */
@@ -116,20 +130,20 @@ pre mark{background:rgba(255,176,32,.16);color:#FFD27A;border-radius:4px;padding
 .cover .badges{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap}
 .cover .shelfart{width:100%;height:auto}
 /* the one animation: the join sweeps a shelf of amber boxes; those with a market turn green, the rest grey. Plays once, then rests. */
-.shelfart .box{fill:var(--flag)}
+.shelfart .box{fill:var(--accent)}
 @media (prefers-reduced-motion:no-preference){
   .slide.active .shelfart .box{animation:settle .6s var(--ease) both}
   .slide.active .shelfart .box.g{animation-name:settle-lit}
   .slide.active .shelfart .sweep{animation:sweep 3.2s var(--ease) .4s both}
   .slide.active .shelfart .box:nth-child(1){animation-delay:0.7s}.slide.active .shelfart .box:nth-child(2){animation-delay:1.35s}.slide.active .shelfart .box:nth-child(3){animation-delay:2.0s}.slide.active .shelfart .box:nth-child(4){animation-delay:2.6s}.slide.active .shelfart .box:nth-child(5){animation-delay:3.25s}.slide.active .shelfart .box:nth-child(6){animation-delay:0.7s}.slide.active .shelfart .box:nth-child(7){animation-delay:1.35s}.slide.active .shelfart .box:nth-child(8){animation-delay:2.0s}.slide.active .shelfart .box:nth-child(9){animation-delay:2.6s}.slide.active .shelfart .box:nth-child(10){animation-delay:3.25s}
   @keyframes settle{from{fill:#FFB020}to{fill:#3A4453}}
-  @keyframes settle-lit{from{fill:#FFB020}to{fill:#3BD37D}}
+  @keyframes settle-lit{from{fill:#FFB020}to{fill:#3DDC97}}
   @keyframes sweep{0%{transform:translateX(0);opacity:.9}92%{opacity:.9}100%{transform:translateX(670px);opacity:0}}
 }
-@media (prefers-reduced-motion:reduce){.shelfart .box{fill:#3A4453}.shelfart .box.g{fill:#3BD37D}.shelfart .sweep{display:none}}
+@media (prefers-reduced-motion:reduce){.shelfart .box{fill:#3A4453}.shelfart .box.g{fill:#3DDC97}.shelfart .sweep{display:none}}
 
 /* hook */
-.hook .big{font-size:400px;color:var(--flag);margin-top:-20px}
+.hook .big{font-size:400px;color:var(--accent);margin-top:-20px}
 .hook .cap{font-family:var(--font-mono);font-size:24px;color:var(--muted);margin-top:-6px}
 .hook .then{font-size:60px;font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-top:44px;max-width:1560px}
 .hook .then b{color:var(--text)}
@@ -139,26 +153,26 @@ pre mark{background:rgba(255,176,32,.16);color:#FFD27A;border-radius:4px;padding
 .two{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:36px;align-items:stretch}
 .two .tag{font-family:var(--font-mono);font-size:17px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
 .two pre{font-size:23px;line-height:1.6;height:100%}
-.vs{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:22px;color:var(--flag);background:var(--bg);border:1px solid rgba(255,176,32,.5);border-radius:999px;padding:8px 18px}
+.vs{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:22px;color:var(--accent);background:var(--bg);border:1px solid rgba(255,176,32,.5);border-radius:999px;padding:8px 18px}
 
 /* solution */
-.sol{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start;margin-top:32px}
-.sol .term pre{font-size:17px;line-height:1.5;padding:22px 26px}
+.sol{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start;margin-top:32px}
+.sol .term pre{font-size:15.5px;line-height:1.5;padding:22px 26px;white-space:pre-wrap;overflow-wrap:anywhere}
 .sol .term .box{display:inline-block;width:14px;height:14px;border-radius:3px;background:#3A4453;vertical-align:-1px;margin-right:6px}
 
 /* how it works */
 svg.flow{width:100%;height:auto;font-family:var(--font-mono)}
-svg.flow .node{fill:#131A22;stroke:#26313F;stroke-width:1.5;rx:16}
+svg.flow .node{fill:#141A24;stroke:#243044;stroke-width:1.5;rx:16}
 svg.flow .node.key{stroke:rgba(255,176,32,.55)}
-svg.flow .node.free{stroke:rgba(59,211,125,.55)}
+svg.flow .node.free{stroke:rgba(61,220,151,.55)}
 svg.flow .node.join{fill:#1A2230;stroke:#FFB020;stroke-width:2}
-svg.flow .t{fill:#E8EEF4;font-size:19px;font-weight:600;font-family:var(--font-display)}
-svg.flow .m{fill:#8A98A8;font-size:13px}
+svg.flow .t{fill:#E6EDF3;font-size:19px;font-weight:600;font-family:var(--font-display)}
+svg.flow .m{fill:#8B98A9;font-size:13px}
 svg.flow .path{fill:#8ec0ff;font-size:15px}
 svg.flow .edge{stroke:#5E6C80;stroke-width:2;fill:none;marker-end:url(#arr)}
 svg.flow .edge.hot{stroke:#FFB020}
 svg.flow .lbl{fill:#FFB020;font-size:14px}
-svg.flow .out{fill:#3BD37D;font-size:15px}
+svg.flow .out{fill:#3DDC97;font-size:15px}
 svg.flow{margin-top:14px}
 
 /* the number — frozen slide */
@@ -166,7 +180,7 @@ svg.flow{margin-top:14px}
 .number .v{font-family:var(--font-display);font-weight:800;font-size:250px;letter-spacing:-.05em;line-height:.9;font-feature-settings:var(--num)}
 .number .v small{font-size:96px;color:var(--muted);letter-spacing:-.03em;font-weight:700}
 .number .s{font-family:var(--font-mono);font-size:26px;color:var(--text);margin-top:28px;line-height:1.5}
-.number .s b{color:var(--flag);font-weight:600}
+.number .s b{color:var(--accent);font-weight:600}
 .bar{display:flex;height:44px;border-radius:12px;overflow:hidden;background:var(--surface);border:1px solid var(--border);margin-top:36px}
 .bar span{display:block;height:100%}
 .bar .dim{background:repeating-linear-gradient(90deg,#3A4453 0 14px,#2A3240 14px 16px)}
@@ -180,34 +194,34 @@ svg.flow{margin-top:14px}
 .legend i{width:16px;height:11px;border-radius:2px;display:inline-block;vertical-align:-1px;margin-right:8px;background:#3A4453}
 .legend i.lit{background:var(--lit)}
 .recipe{margin-top:26px;font-family:var(--font-mono);font-size:19px;padding:20px 24px;border:1px dashed rgba(255,176,32,.5);border-radius:16px;background:rgba(255,176,32,.05);line-height:1.6;color:#B9C4D2}
-.recipe b{color:var(--flag);font-weight:600}
+.recipe b{color:var(--accent);font-weight:600}
 .types{display:grid;gap:14px;margin-top:8px}
 .type{display:grid;grid-template-columns:150px 1fr 120px;gap:18px;align-items:center;font-family:var(--font-mono);font-size:22px}
 .type .bar{margin:0;height:28px}
 .type .r{text-align:right;color:var(--text);font-weight:600}
 
 /* live demo */
-.demo{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:24px;align-items:start}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;margin-top:24px;align-items:start}
 .shot{position:relative}
 .browser.crop{overflow:hidden}
 .pin{position:absolute;pointer-events:none}
-.pin i,.callouts i{width:44px;height:44px;border-radius:50%;background:var(--flag);color:#0B0F14;font-family:var(--font-mono);font-style:normal;font-weight:700;font-size:22px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(255,176,32,.25);flex:none}
+.pin i,.callouts i{width:44px;height:44px;border-radius:50%;background:var(--accent);color:#0B0E14;font-family:var(--font-mono);font-style:normal;font-weight:700;font-size:22px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(255,176,32,.25);flex:none}
 .callouts{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
 .callouts li{display:flex;align-items:center;gap:16px;font-family:var(--font-mono);font-size:21px;color:var(--text)}
-.demo .term pre{font-size:15px;line-height:1.5;padding:18px 22px}
+.demo .term pre{font-size:15px;line-height:1.5;padding:18px 22px;white-space:pre-wrap;overflow-wrap:anywhere}
 .demo .note{margin-top:22px;font-family:var(--font-mono);font-size:18px;color:var(--muted);line-height:1.5}
-.demo .note b{color:var(--flag);font-weight:600}
+.demo .note b{color:var(--accent);font-weight:600}
 
 /* api */
 table.api td{font-size:21px;padding:12px 12px}
 table.api td code{font-size:20px;color:#8ec0ff}
 table.api tr.hot td{background:linear-gradient(90deg,rgba(255,176,32,.08),transparent)}
-table.api td .k{color:var(--flag)}table.api td .f{color:var(--lit)}table.api td .x{color:var(--danger)}
+table.api td .k{color:var(--accent)}table.api td .f{color:var(--lit)}table.api td .x{color:var(--danger)}
 .api-foot{margin-top:22px;font-family:var(--font-mono);font-size:19px;color:var(--muted)}
 
 /* it runs */
 .runs{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:start;margin-top:28px}
-.runs .term pre{font-size:20px;line-height:1.55;padding:26px 30px}
+.runs .term pre{font-size:19px;line-height:1.55;padding:26px 30px}
 .metrics{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .metric{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:26px 28px}
 .metric .v{font-family:var(--font-display);font-weight:800;font-size:60px;letter-spacing:-.03em;line-height:1;font-feature-settings:var(--num)}
@@ -222,7 +236,7 @@ table.api td .k{color:var(--flag)}table.api td .f{color:var(--lit)}table.api td 
 .rival .d{font-size:21px;color:var(--muted);line-height:1.4}
 .rival .d b{color:var(--text);font-weight:600}
 .field-foot{margin-top:24px;font-family:var(--font-display);font-weight:700;font-size:36px;letter-spacing:-.02em}
-.field-foot b{color:var(--flag)}
+.field-foot b{color:var(--accent)}
 
 /* limits */
 .limits{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:20px}
@@ -237,19 +251,19 @@ table.api td .k{color:var(--flag)}table.api td .f{color:var(--lit)}table.api td 
 .ask h2{font-size:100px}
 .ask .links{display:grid;gap:14px;margin-top:40px}
 .ask .links a{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;border:1px solid var(--border);border-radius:18px;background:var(--surface);color:var(--text);font-size:26px;font-family:var(--font-display);font-weight:600;transition:border-color var(--t-fast),transform var(--t-fast) var(--ease)}
-.ask .links a:hover{border-color:var(--flag);transform:translateY(-2px)}
+.ask .links a:hover{border-color:var(--accent);transform:translateY(-2px)}
 .ask .links a span{font-family:var(--font-mono);font-weight:400;font-size:19px;color:var(--muted)}
 .ask .qr{display:grid;justify-items:center;gap:18px}
 .ask .qr svg{width:420px;height:420px;border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
 .ask .qr .u{font-family:var(--font-mono);font-size:22px;color:var(--muted)}
 .ask .closer{font-family:var(--font-display);font-weight:800;font-size:56px;letter-spacing:-.03em;line-height:1.05;color:var(--muted);margin-top:36px}
-.ask .closer b{color:var(--flag)}
+.ask .closer b{color:var(--accent)}
 
 /* speaker notes / presenter */
 .speaker-notes{display:none}
 body.presenter #notes{display:block}
-#notes{display:none;position:fixed;left:0;right:0;bottom:0;height:22vh;background:rgba(11,15,20,.96);border-top:1px solid var(--flag);color:var(--text);padding:18px 32px;font-size:clamp(14px,1.6vw,22px);line-height:1.5;overflow:auto;z-index:50}
-#notes .h{font-family:var(--font-mono);font-size:.8em;color:var(--flag);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+#notes{display:none;position:fixed;left:0;right:0;bottom:0;height:22vh;background:rgba(11,14,20,.96);border-top:1px solid var(--accent);color:var(--text);padding:18px 32px;font-size:clamp(14px,1.6vw,22px);line-height:1.5;overflow:auto;z-index:50}
+#notes .h{font-family:var(--font-mono);font-size:.8em;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
 body.presenter #chrome{opacity:.35}
 body.idle{cursor:none}
 
@@ -258,20 +272,20 @@ body.overview #viewport{display:none}
 #overview{display:none;position:fixed;inset:0;overflow:auto;padding:32px;background:var(--bg);z-index:40}
 body.overview #overview{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-content:start}
 #overview .thumb{position:relative;aspect-ratio:16/9;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface);cursor:pointer;transition:border-color var(--t-fast),transform var(--t-fast) var(--ease)}
-#overview .thumb:hover,#overview .thumb:focus-visible{border-color:var(--flag);transform:translateY(-2px);outline:none}
-#overview .thumb.cur{border-color:var(--flag)}
-#overview .thumb .n{position:absolute;left:10px;top:8px;font-family:var(--font-mono);font-size:12px;color:var(--flag)}
+#overview .thumb:hover,#overview .thumb:focus-visible{border-color:var(--accent);transform:translateY(-2px)}
+#overview .thumb.cur{border-color:var(--accent)}
+#overview .thumb .n{position:absolute;left:10px;top:8px;font-family:var(--font-mono);font-size:12px;color:var(--accent)}
 #overview .thumb .t{position:absolute;left:12px;right:12px;bottom:10px;font-family:var(--font-display);font-weight:700;font-size:clamp(12px,1.3vw,18px);letter-spacing:-.01em}
 
 /* keyboard hint (first slide only, fades) */
-#hint{position:fixed;right:24px;top:20px;font-family:var(--font-mono);font-size:13px;color:var(--muted);background:rgba(19,26,34,.9);border:1px solid var(--border);border-radius:999px;padding:8px 14px;z-index:30;transition:opacity .6s}
+#hint{position:fixed;right:24px;top:20px;font-family:var(--font-mono);font-size:13px;color:var(--muted);background:rgba(20,26,36,.9);border:1px solid var(--border);border-radius:999px;padding:8px 14px;z-index:30}
 #hint.gone{opacity:0;pointer-events:none}
 #hint kbd{color:var(--text)}
 
 /* Press C to toggle contrast debug mode */
 body.debug-contrast .contrast-check,body.debug-contrast p,body.debug-contrast h1,body.debug-contrast h2,body.debug-contrast h3,body.debug-contrast td,body.debug-contrast li{outline:1px solid rgba(255,92,92,.7)}
 
-a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--flag);outline-offset:3px}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* ── print ── */
@@ -282,7 +296,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
   #stage{position:static;transform:none!important;width:1920px;height:auto}
   .slide{display:block!important;position:relative;width:1920px;height:1080px;page-break-after:always;break-after:page;page-break-inside:avoid;break-inside:avoid;animation:none!important}
   .shelfart .box,.shelfart .sweep,.hook .then,.bar span{animation:none!important}
-  .shelfart .box{fill:#3A4453}.shelfart .box.g{fill:#3BD37D}.shelfart .sweep{display:none}
+  .shelfart .box{fill:#3A4453}.shelfart .box.g{fill:#3DDC97}.shelfart .sweep{display:none}
   #chrome,#notes,#overview,#hint{display:none!important}
   html,body,.slide{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
@@ -308,8 +322,8 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       </div>
     </div>
     <svg class="shelfart" viewBox="0 0 720 420" role="img" aria-label="A shelf of ten tokenised boxes: the join sweeps across, six turn grey (no CMC-tracked market), four turn green (tracked)">
-      <rect x="20" y="360" width="680" height="10" rx="5" fill="#26313F"/>
-      <rect x="20" y="200" width="680" height="10" rx="5" fill="#26313F"/>
+      <rect x="20" y="360" width="680" height="10" rx="5" fill="#243044"/>
+      <rect x="20" y="200" width="680" height="10" rx="5" fill="#243044"/>
       <g>
         <rect class="box" x="40" y="70" width="110" height="120" rx="14"/>
         <rect class="box g" x="170" y="70" width="110" height="120" rx="14"/>
@@ -322,8 +336,8 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
         <rect class="box" x="430" y="230" width="110" height="120" rx="14"/>
         <rect class="box g" x="560" y="230" width="110" height="120" rx="14"/>
       </g>
-      <rect class="sweep" x="30" y="40" width="4" height="340" rx="2" fill="#E8EEF4" opacity=".9"/>
-      <text x="40" y="405" font-family="JetBrains Mono, SF Mono, Menlo, monospace" font-size="17" fill="#8A98A8">has_tokens: true  →  status: untracked | active</text>
+      <rect class="sweep" x="30" y="40" width="4" height="340" rx="2" fill="#E6EDF3" opacity=".9"/>
+      <text x="40" y="405" font-family="JetBrains Mono, SF Mono, Menlo, monospace" font-size="17" fill="#8B98A9">has_tokens: true  →  status: untracked | active</text>
     </svg>
   </div>
   <aside class="speaker-notes">CoinMarketCap says an asset is tokenised with one boolean. Shelfware asks the next question: does any wrapper of it have a market, and whose. The boxes you see settling are the product's whole idea — amber is the claim, grey is the shelf, green is a market.</aside>
@@ -378,7 +392,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     <div class="browser">
       <div class="bar"><i></i><i></i><i></i><span class="url">shelfware-cmc.vercel.app/?t=MS</span></div>
       <!-- SWAP: assets/ui/shots/03-search-ms-live.png — a capture of the live site, not a mockup -->
-      <img src="shots/ms.png" width="1080" height="602" alt="The live site answering MS: Morgan Stanley, has_tokens: true; one wrapper wMSx by Backed Assets on X Layer, price null, status UNTRACKED from /public-api/v1/cryptocurrency/map live keyless 0 credits, listed 2026-08-11, 38 days on the shelf; verdict 0 of 1 wrapper(s) with a CMC-tracked market">
+      <img src="shots/ms.png" width="1080" height="602" loading="lazy" decoding="async" alt="The live site answering MS: Morgan Stanley, has_tokens: true; one wrapper wMSx by Backed Assets on X Layer, price null, status UNTRACKED from /public-api/v1/cryptocurrency/map live keyless 0 credits, listed 2026-08-11, 38 days on the shelf; verdict 0 of 1 wrapper(s) with a CMC-tracked market">
     </div>
     <div class="term">
       <div class="bar"><i></i><i></i><i></i><span>no key · no install · stdlib</span></div>
@@ -498,11 +512,11 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <div class="browser crop" style="height:660px">
         <div class="bar"><i></i><i></i><i></i><span class="url">shelfware-cmc.vercel.app — issuers, by shelf rate</span></div>
         <!-- SWAP: assets/ui/shots/07-issuer-table.png — a capture of the live site -->
-        <img src="shots/scorecard.png" width="1080" height="916" alt="The issuer scorecard on the live site: Dinari Assets 100% shelf, 27 of 27 untracked, $0 live; Backed Assets 82%, 632 of 772, $669M live; Robinhood 8%; Ondo Assets 2%, $891M; bStocks 0%, 77 of 77 tracked, $797M">
+        <img src="shots/scorecard.png" width="1080" height="916" loading="lazy" decoding="async" alt="The issuer scorecard on the live site: Dinari Assets 100% shelf, 27 of 27 untracked, $0 live; Backed Assets 82%, 632 of 772, $669M live; Robinhood 8%; Ondo Assets 2%, $891M; bStocks 0%, 77 of 77 tracked, $797M">
       </div>
-      <div class="pin" style="left:-22px;top:148px"><i>1</i></div>
-      <div class="pin" style="left:-22px;top:203px"><i>2</i></div>
-      <div class="pin" style="left:-22px;top:462px"><i>3</i></div>
+      <div class="pin" style="left:-22px;top:158px"><i>1</i></div>
+      <div class="pin" style="left:-22px;top:216px"><i>2</i></div>
+      <div class="pin" style="left:-22px;top:499px"><i>3</i></div>
     </div>
     <div>
       <div class="shot">
@@ -511,7 +525,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <pre><span class="ok">7 of 8 wrapper(s) with a CMC-tracked market</span>
 <span class="hi">▾ evidence — the raw rows, endpoint, HTTP status, credit_count</span>
 <span class="dim">/api/status → /public-api/v1/cryptocurrency/map?listing_status=active,inactive,untracked
-  &amp;symbol=NVDAX,WNVDAX,NVDAon,NVDA,NVDAB,rNVDA,NVDA → HTTP 200 · keyless · 0 credits · 748 ms</span>
+  &amp;symbol=NVDAX,WNVDAX,NVDAon,NVDA,NVDAB,rNVDA,NVDA → HTTP 200 · keyless · 0 credits</span>
 <span class="dim">tokens[] entries — /v5/real-world-assets/quotes/latest</span>
 { <span class="key">"crypto_id"</span>: 28616, <span class="key">"symbol"</span>: <span class="s">"NVDA.D"</span>, <span class="key">"issuer_name"</span>: <span class="s">"Dinari Assets"</span>,
   <span class="key">"price"</span>: <span class="r">null</span>, <span class="key">"market_cap"</span>: <span class="r">null</span>, <mark>"status": "untracked"</mark> }</pre>
@@ -546,7 +560,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <tr><td><code>/v5/real-world-assets/market-pairs/list</code></td><td>—</td><td><span class="x">403 error 1006 on Startup</span></td><td>documented as Basic; tried, plan-gated, recorded in FEEDBACK.md §3 — not built on</td></tr>
     </tbody>
   </table>
-  <p class="api-foot">Delete CoinMarketCap and both ledgers vanish: no other source lists the wrapper roster with its nulls, or the listing state that explains them. Twelve dated findings for the CMC team are in FEEDBACK.md.</p>
+  <p class="api-foot">Delete CoinMarketCap and both ledgers vanish: no other source lists the wrapper roster with its nulls, or the listing state that explains them. 12 dated findings for the CMC team are in FEEDBACK.md.</p>
   <aside class="speaker-notes">The two highlighted rows are the product. The roster's null-price entries are the rows every other RWA tool filters out; the cryptocurrency map is the one ledger the RWA family does not carry, and joining the two on crypto id is the whole trick. Everything runs on a free Basic key except the state leg, which needs no key at all.</aside>
 </section>
 
@@ -577,7 +591,7 @@ what trades is young      median 80 d · p90 380 (n=757)
       <div class="metric"><div class="v">500</div><div class="k">generated ledgers, 0 failing · six invariants</div></div>
     </div>
   </div>
-  <aside class="speaker-notes">The receipt is committed: fifty-four calls with URL, status, credit count, bytes and hash, and the key-info reading before and after that ties the five credits out. The product's own work is a millisecond; everything a judge waits for is CoinMarketCap's network. One hundred fourteen tests, and a property test that generated five hundred ledgers without breaking an invariant.</aside>
+  <aside class="speaker-notes">The receipt is committed: fifty-four calls with URL, status, credit count, bytes and hash, and the key-info reading before and after that ties the five credits out. The product's own work is a millisecond; everything a judge waits for is CoinMarketCap's network. 121 tests, and a property test that generated 500 ledgers without breaking an invariant.</aside>
 </section>
 
 <!-- 10 THE FIELD -->
@@ -616,10 +630,10 @@ what trades is young      median 80 d · p90 380 (n=757)
       <div class="kicker">The ask — 30 seconds, no key</div>
       <h2>Clone it.<br>Type a ticker.</h2>
       <div class="links">
-        <a href="https://shelfware-cmc.vercel.app/judge" target="_blank" rel="noopener noreferrer">For judges — claim, path, receipt<span>shelfware-cmc.vercel.app/judge ↗</span></a>
-        <a href="https://shelfware-cmc.vercel.app" target="_blank" rel="noopener noreferrer">The one screen, live<span>shelfware-cmc.vercel.app ↗</span></a>
-        <a href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">Repository — MIT, stdlib, 121 tests<span>github.com/edycutjong/shelfware ↗</span></a>
-        <a href="https://github.com/edycutjong/shelfware/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md — both live runs with receipts<span>@edycutjong · #BuildwithCMC</span></a>
+        <a href="https://shelfware-cmc.vercel.app/judge" target="_blank" rel="noopener noreferrer">For judges — claim, path, receipt<span>shelfware-cmc.vercel.app/judge ↗<span class="sr-only"> (opens in a new tab)</span></span></a>
+        <a href="https://shelfware-cmc.vercel.app" target="_blank" rel="noopener noreferrer">The one screen, live<span>shelfware-cmc.vercel.app ↗<span class="sr-only"> (opens in a new tab)</span></span></a>
+        <a href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">Repository — MIT, stdlib, 121 tests<span>github.com/edycutjong/shelfware ↗<span class="sr-only"> (opens in a new tab)</span></span></a>
+        <a href="https://github.com/edycutjong/shelfware/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md — both live runs with receipts<span>blob/main/DEMO.md ↗<span class="sr-only"> (opens in a new tab)</span></span></a>
       </div>
       <p class="closer">A boolean says tokenised.<br><b>The join says whether it trades.</b></p>
     </div>
@@ -632,7 +646,7 @@ what trades is young      median 80 d · p90 380 (n=757)
 </section>
 
 <div id="chrome">
-  <div class="l"><span class="brandmark"><svg viewBox="0 0 34 22" aria-hidden="true"><rect x="0" y="17" width="34" height="2" rx="1" fill="#26313F"/><rect x="1" y="4" width="5" height="12" rx="1.5" fill="#3A4453"/><rect x="8" y="4" width="5" height="12" rx="1.5" fill="#3A4453"/><rect x="15" y="4" width="5" height="12" rx="1.5" fill="#3A4453"/><rect x="22" y="4" width="5" height="12" rx="1.5" fill="#3BD37D"/><rect x="29" y="4" width="5" height="12" rx="1.5" fill="#3BD37D"/></svg> Shelfware</span><span class="ver">v0.0.0-dev</span><span>MIT</span><span>counted 2026-09-18 22:16 UTC</span></div>
+  <div class="l"><span class="brandmark"><img src="../assets/icon.svg" alt="" width="26" height="26">Shelfware</span><span class="ver">v0.0.0-dev</span><span>MIT</span><span>counted 2026-09-18 22:16 UTC</span></div>
   <div class="r"><span id="counter">01 / 12</span></div>
   <div class="prog" id="prog"></div>
 </div>
@@ -698,6 +712,11 @@ what trades is young      median 80 d · p90 380 (n=757)
   });
   // idle cursor in presenter mode
   var idleT; document.addEventListener('mousemove', function(){ document.body.classList.remove('idle'); clearTimeout(idleT); if (document.body.classList.contains('presenter')) idleT = setTimeout(function(){ document.body.classList.add('idle'); }, 2000); });
+  // The screenshots on slides 4 and 7 are loading="lazy" so the cover's h1 paints before ~200 KB of
+  // captures compete with the fonts for the wire; once the page is idle they are warmed so a slide
+  // change never waits on a fetch (the sibling decks do the same).
+  function warm(){ Array.prototype.forEach.call(document.querySelectorAll('img[loading="lazy"]'), function(i){ i.loading = 'eager'; }); }
+  if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 3000 }); else setTimeout(warm, 1500);
   window.addEventListener('resize', fit);
   buildOverview(); fit();
   var h = parseInt((location.hash || '#1').slice(1), 10); show(isNaN(h) ? 0 : h - 1, true);
