@@ -1,0 +1,16 @@
+name: gitleaks
+# Secrets over the FULL history (fetch-depth: 0) — the mechanical form of the rule "scan
+# history before any private -> public flip". Config: .gitleaks.toml at the repo root, which
+# adds a CoinMarketCap-key rule and allowlists the census's public contract addresses by field.
+on: [push, pull_request, workflow_dispatch]
+permissions: { contents: read }
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with: { fetch-depth: 0 }
+      - uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          GITLEAKS_CONFIG: .gitleaks.toml

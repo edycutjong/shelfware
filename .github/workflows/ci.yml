@@ -1,0 +1,130 @@
+name: CI
+on:
+  push: { branches: [main] }
+  pull_request:
+  workflow_dispatch:
+permissions: { contents: read }
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: "Stage 1 · Lint + typecheck"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: '3.11' }
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check --output-format=github .
+      - run: ruff format --check .
+      - run: mypy . --ignore-missing-imports
+
+  test:
+    name: "Stage 1 · Tests"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ${{ github.event_name == 'push' && fromJSON('["3.11","3.12","3.13"]') || fromJSON('["3.11"]') }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: '${{ matrix.python-version }}' }
+      - run: pip install -r requirements-dev.txt
+      # Offline only. The live tests run in the live-api job below, where a CMC rate limit is
+      # diagnosed as a rate limit rather than reported as a test failure. The engine
+      # (shelfware/) is gated at 90% coverage; scripts/ are proof and rendering tooling whose
+      # network legs (spike, snapshot, the live bench) are exercised by the live job instead.
+      - run: >-
+          pytest -q -m "not live" --cov=shelfware --cov-report=term-missing
+          --cov-report=xml --cov-fail-under=90
+      - uses: actions/upload-artifact@v7
+        if: matrix.python-version == '3.11'
+        with: { name: coverage, path: coverage.xml, retention-days: 7 }
+
+  api:
+    name: "Stage 1 · Proxy functions (node)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: '22' }
+      # api/*.js are dependency-free Vercel functions; the test stubs fetch and runs them
+      # in-process, so there is nothing to install.
+      - run: node --test tests/api.test.mjs
+
+  audit:
+    name: "Stage 2 · Dependency audit"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: '3.11' }
+      - run: pip install pip-audit && pip-audit -r requirements.txt
+
+  readiness:
+    name: "Stage 2 · No placeholders, no drift"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: '3.11' }
+      # A TODO, a template token, a fake video link, a key-shaped string or a census older
+      # than three days on any judge-facing file fails here, not in front of a judge.
+      - run: python3 scripts/check_submission_readiness.py
+      # The page and data/health.json are rendered from the committed census. If what is
+      # committed is not what the renderer produces, a number was typed in by hand — fail.
+      - run: python3 scripts/render_site.py --check
+      # Every headline on README, DEMO, JUDGE and the page is recounted from data/census.json.
+      - run: python3 scripts/verify.py
+
+  bench:
+    name: "Stage 3 · Deterministic benchmark"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: '3.11' }
+      # The join alone, over the committed rows: no network, so this number is comparable
+      # across runs. It is labelled a replay everywhere it appears and is NOT the product;
+      # the live number comes from the job below.
+      - run: python3 scripts/bench.py --replay --iterations 200
+
+  live-api:
+    name: "Stage 4 · The judged capability, for real"
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: '3.11' }
+      - run: pip install -r requirements-dev.txt
+      # No secret is configured for this job, deliberately: the state leg of the judged path
+      # is keyless (/public-api/v1/cryptocurrency/map, 0 credits to any key), so this runs on
+      # forks and PRs too. If CMC changes the contract, it breaks here rather than in front
+      # of a judge.
+      #
+      # Exit 75 is EX_TEMPFAIL: CMC's anonymous tier throttled this runner. The keyless
+      # surface is rate-limited per IP and GitHub's runners share theirs with everyone else
+      # on the platform, so a red badge there would report someone else's traffic as our
+      # breakage. The CLI answers from the labelled snapshot and exits 75 in that case; every
+      # other non-zero exit still fails the job, which is the point of running this live.
+      - name: Ask the ticker question with no credentials
+        env:
+          CMC_API_KEY: ""
+          COINMARKETCAP_API_KEY: ""
+          CMC_PRO_API_KEY: ""
+        run: |
+          set +e
+          python3 -m shelfware MS
+          code=$?
+          set -e
+          if [ "$code" -eq 75 ]; then
+            echo "::warning title=CMC throttled this runner::Anonymous tier rate-limited the shared runner IP (EX_TEMPFAIL). Not a product failure — re-run to confirm."
+            exit 0
+          fi
+          exit "$code"
+      - name: Live contract tests (skip, not fail, on a throttled IP)
+        run: pytest -q -m live -rs
