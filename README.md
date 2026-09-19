@@ -445,7 +445,8 @@ shelfware/
 | **For judges** | **[shelfware-cmc.vercel.app/judge](https://shelfware-cmc.vercel.app/judge)** — the 30-second path; source in [JUDGE.md](JUDGE.md) |
 | **The receipt** | **[DEMO.md](DEMO.md)** — both live runs transcribed, with [`docs/proof/live_run.json`](docs/proof/live_run.json) and [`ms.json`](docs/proof/ms.json) behind them |
 | **Health** | [shelfware-cmc.vercel.app/api/health](https://shelfware-cmc.vercel.app/api/health) — census date, snapshot days, the counts, the deployed commit; a boolean about the key, never the key |
-| **The field** | [docs/COMPARISON.md](docs/COMPARISON.md) — what the other RWA entries count, and what they filter out |
+| **Screenshots** | [docs/screenshots/](docs/screenshots/) — eight captures of live execution: the MS card, the NVDA answer with its evidence drawer, the issuer scorecard, the census receipt, the delta panel, the type bars, the limits card, the whole page |
+| **The field** | [docs/COMPARISON.md](docs/COMPARISON.md) — the six closest entries by name, what each counts, and what each filters out |
 
 ---
 
