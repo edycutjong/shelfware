@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import md2html  # noqa: E402
 import render_site  # noqa: E402
 
-CLAIM_WORDS = ("has no wrapper", "CMC-tracked market", "has_tokens")
+CLAIM_WORDS = ("no wrapper with a CMC-tracked market", "has_tokens: true", "60%")
 
 
 def test_the_judge_page_carries_the_claim_and_states_the_pair_the_rows_produce():
