@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/readme-hero-animated.svg" alt="Shelfware — counts the shelf: the join sweeps a shelf of amber ‘tokenised’ boxes: those with a market turn green, the rest turn grey" width="100%">
+<img src="docs/assets/readme-hero-animated.svg" alt="Shelfware — counts the shelf. The join sweeps a shelf of amber ‘tokenised’ boxes: those with a market turn green, the rest turn grey." width="100%">
 
 <h1>Shelfware</h1>
 
