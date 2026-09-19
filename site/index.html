@@ -1,166 +1,827 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market</title>
-<meta name="description" content="476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Type a ticker: every wrapper, issuer, chain, listing state.">
+<title>Shelfware — 60% of CoinMarketCap&#x27;s tokenised assets have no tracked wrapper</title>
+<meta name="description" content="Counts the shelf: 476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Type a ticker: every wrapper, its listing state.">
 <meta name="author" content="Edy Cu">
+<link rel="canonical" href="https://shelfware-cmc.vercel.app/">
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<meta name="theme-color" content="#0B0E14">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market">
-<meta property="og:description" content="476 of 791 underlyings, counted 2026-09-18 22:16 UTC from the CoinMarketCap API. Type a ticker and see the raw rows.">
-<meta property="og:url" content="https://shelfware-cmc.vercel.app">
 <meta property="og:site_name" content="Shelfware">
-<meta property="og:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=20260919">
+<meta property="og:url" content="https://shelfware-cmc.vercel.app/">
+<meta property="og:title" content="Shelfware — 60% of CoinMarketCap&#x27;s tokenised assets have no tracked wrapper">
+<meta property="og:description" content="476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Counted 2026-09-18, 5 credits.">
+<meta property="og:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=eb3e9283">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a CMC-tracked market: the number, the issuer scorecard, and a ticker search">
+<meta property="og:image:alt" content="Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a CMC-tracked market: a shelf of boxes, 476 grey and 315 green.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=20260919">
+<meta name="twitter:site" content="@edycutjong">
 <meta name="twitter:creator" content="@edycutjong">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2034%2022%22%3E%3Crect%20width%3D%2234%22%20height%3D%2222%22%20fill%3D%22%230B0F14%22/%3E%3Crect%20x%3D%220%22%20y%3D%2217%22%20width%3D%2234%22%20height%3D%222%22%20rx%3D%221%22%20fill%3D%22%2326313F%22/%3E%3Crect%20x%3D%221%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233A4453%22/%3E%3Crect%20x%3D%228%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233A4453%22/%3E%3Crect%20x%3D%2215%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233A4453%22/%3E%3Crect%20x%3D%2222%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233BD37D%22/%3E%3Crect%20x%3D%2229%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%233BD37D%22/%3E%3C/svg%3E">
+<meta name="twitter:title" content="Shelfware — 60% of CoinMarketCap&#x27;s tokenised assets have no tracked wrapper">
+<meta name="twitter:description" content="476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Counted 2026-09-18, 5 credits.">
+<meta name="twitter:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=eb3e9283">
+<link rel="preload" href="assets/fonts/inter-tight-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{--bg:#0B0F14;--surface:#131A22;--border:#26313F;--text:#E8EEF4;--muted:#8A98A8;--lit:#3BD37D;--shelf:#3A4453;--flag:#FFB020;--unknown:#8B7CF6;--danger:#FF5C5C;
---sans:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* Fonts are self-hosted latin subsets (SIL OFL 1.1) — the page loads no third-party resource. */
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:500 800;font-display:swap;src:url(assets/fonts/inter-tight-latin-var.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/inter-latin-var.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/jetbrains-mono-latin-var.woff2) format('woff2')}
+/* metric-matched fallback so the swap to Inter moves no line (CLS); metrics are Inter's, as next/font ships them */
+@font-face{font-family:'Inter Fallback';src:local('Arial'),local('Helvetica');ascent-override:90.2%;descent-override:22.48%;line-gap-override:0%;size-adjust:107.4%}
+
+/* ── family tokens (LANDING_DESIGN.md §2): the neutrals, type, radii and timings are fixed
+      across the Build-with-CMC pages; the four hues on the second line are this project's ── */
+:root{
+  --bg:#0B0E14; --surface:#141A24; --surface-2:#1A2230; --border:#243044; --text:#E6EDF3; --muted:#8B98A9; --dim:#5E6C80;
+  --accent:#FFB020; --data:#4C9AFF; --verdict:#3DDC97; --flag:#FF5C5C;
+  --shelf:var(--dim); --lit:var(--verdict); --unknown:#8B7CF6; --danger:var(--flag);
+  --font-display:'Inter Tight','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',system-ui,sans-serif;
+  --font-body:'Inter','Inter Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono',Menlo,Consolas,'Liberation Mono',ui-monospace,monospace;
+  --num:'tnum' 1,'lnum' 1;
+  --r-sm:6px; --r-md:12px; --r-lg:20px;
+  --t-fast:160ms; --t-med:320ms; --ease:cubic-bezier(.16,.84,.44,1);
+  --maxw:1180px;
+  color-scheme:dark;
+}
 *{box-sizing:border-box}
-html{color-scheme:dark;background:var(--bg)}
-:focus-visible{outline:2px solid var(--flag);outline-offset:3px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
-a{color:var(--text)}a:hover,a:focus-visible{color:var(--flag)}
-main{max-width:1120px;margin:0 auto;padding:24px 20px 80px}
-header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 0 28px;border-bottom:1px solid var(--border);margin-bottom:36px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:15px}
-.brand svg{width:34px;height:22px}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);text-decoration:none;font-size:15px;font-family:var(--mono);min-height:44px;transition:border-color .15s,transform .15s,background .15s}
-.btn:hover,.btn:focus-visible{border-color:var(--flag);color:var(--text);transform:translateY(-1px)}
-.btn:active{transform:translateY(0)}
-.btn.primary{background:var(--flag);color:#0B0F14;border-color:var(--flag);font-weight:600}
-.btn.primary:hover{background:#ffc247}
-section{margin:0 0 44px}
-h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 14px}
-.headline{display:grid;grid-template-columns:auto 1fr;gap:8px 28px;align-items:end}
-.big{font-size:clamp(3.4rem,10vw,7.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--flag)}
-.claim{font-size:clamp(1.35rem,3vw,2rem);font-weight:600;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
-.sub{color:var(--muted);margin:0;font-size:16px}
-.sub b{color:var(--text);font-weight:600}
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.bar{position:relative;display:flex;height:22px;width:100%;border-radius:6px;overflow:hidden;background:var(--surface);border:1px solid var(--border);margin:14px 0 8px}
-.bar>span{display:block;height:100%;transition:width .9s cubic-bezier(.2,.8,.2,1)}
-.bar .dim{background:repeating-linear-gradient(90deg,var(--shelf) 0 7px,transparent 7px 9px)}
-.bar .lit{background:repeating-linear-gradient(90deg,var(--lit) 0 7px,transparent 7px 9px)}
-.bar .unk{background:repeating-linear-gradient(90deg,var(--unknown) 0 7px,transparent 7px 9px)}
-.bar.small{height:14px;margin:0}
-.legend{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font-size:15px}
-.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
-.sw.dim{background:var(--shelf)}.sw.lit{background:var(--lit)}.sw.unk{background:var(--unknown)}
-.recipe{font-family:var(--mono);font-size:14px;color:var(--muted);margin-top:10px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;overflow-x:auto}
-.search form{display:flex;gap:10px;flex-wrap:wrap}
-.search input{flex:1 1 220px;min-height:52px;font-size:22px;font-family:var(--mono);padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);text-transform:uppercase;transition:border-color .15s}
-.search input:focus{border-color:var(--flag);box-shadow:0 0 0 3px rgba(255,176,32,.35)}
-.search button{min-width:120px}
-.hint{color:var(--muted);font-size:15px;margin:10px 0 0}
-.hint code{font-family:var(--mono)}
-.tcard{margin-top:18px}
-.uline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:20px;font-weight:600}
-.pill{font-family:var(--mono);font-size:13px;padding:3px 9px;border-radius:999px;border:1px solid var(--flag);color:var(--flag);font-weight:500}
-.pill.off{border-color:var(--muted);color:var(--muted)}
-.src{font-size:14px;color:var(--muted);margin:4px 0 10px}
-.src b{color:var(--text);font-weight:600}
-.wrow{display:grid;grid-template-columns:18px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--border)}
-.box{width:16px;height:16px;border-radius:4px;margin-top:5px;background:var(--shelf)}
-.box.lit{background:var(--lit)}.box.unk{background:var(--unknown)}
-.wsym{font-family:var(--mono);font-size:18px;font-weight:600}
-.wmeta{color:var(--muted);font-size:15px;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin-top:4px}
-.wmeta span:nth-child(odd){color:var(--muted)}
-.wmeta span:nth-child(even){color:var(--text);font-family:var(--mono);font-size:14px;overflow-wrap:anywhere}
-.chip{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;padding:2px 8px;border-radius:6px;font-weight:700;margin-left:8px;vertical-align:2px}
-.chip.untracked{background:var(--shelf);color:var(--text)}.chip.active{background:var(--lit);color:#0B0F14}.chip.unresolved,.chip.inactive{background:var(--unknown);color:#0B0F14}
-.verdict{font-size:22px;font-weight:700;margin:14px 0 6px}
-details{margin-top:10px}
-summary{cursor:pointer;color:var(--muted);font-size:15px;list-style:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;transition:color .15s}
-summary::before{content:"▸";display:inline-block;transition:transform .15s}
-details[open] summary::before{transform:rotate(90deg)}
-summary:hover,summary:focus-visible{color:var(--flag)}
-pre{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-family:var(--mono);font-size:13px;line-height:1.45;overflow-x:auto;margin:8px 0;color:#c9d4e0;max-height:420px}
-.ev{font-size:14px;color:var(--muted);font-family:var(--mono);margin:6px 0}
-table{width:100%;border-collapse:collapse;font-size:16px}
-th{text-align:left;color:var(--muted);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:0 10px 10px 0;white-space:nowrap}
-td{padding:10px 10px 10px 0;border-top:1px solid var(--border);vertical-align:middle}
-td.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
-th.n{text-align:right}
-td.barcell{width:34%;min-width:140px}
-.rate{font-family:var(--mono);font-weight:700}
-.rate.full{color:var(--danger)}
-tr.issuer{transition:background .15s}
-tr.issuer:hover{background:rgba(255,255,255,.025)}
-.issuer-name{font-weight:600}
-.smaller{margin-top:8px}
-.types{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.types .card{padding:16px 18px}
-.types .t{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
-.types .t b{font-size:22px;font-family:var(--mono)}
-.stat{display:flex;gap:28px;flex-wrap:wrap}
-.stat div{min-width:160px}
-.stat .v{font-size:28px;font-weight:700;font-family:var(--mono);line-height:1.1}
-.stat .l{color:var(--muted);font-size:14px}
-.limits li{margin:6px 0}
-.receipt td,.receipt th{font-size:14px}
-footer{border-top:1px solid var(--border);padding-top:20px;color:var(--muted);font-size:14px;display:flex;gap:18px;flex-wrap:wrap}
-.status-ok{color:var(--lit)}.status-bad{color:var(--danger)}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-@media (max-width:720px){.headline{grid-template-columns:1fr}.big{font-size:clamp(3.4rem,18vw,5.5rem)}td.hide-m,th.hide-m{display:none}body{font-size:16px}}
-@media (prefers-reduced-motion:reduce){.bar>span,.btn,summary::before{transition:none}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:17px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(900px 480px at 78% -8%,rgba(255,176,32,.09),transparent 60%),radial-gradient(700px 420px at 12% 18%,rgba(76,154,255,.07),transparent 60%)}
+a{color:var(--data);text-decoration:none}
+a:hover{color:#8ec0ff}
+/* a link inside running text is told apart by an underline, not by hue alone (WCAG 1.4.1) */
+p a,li a,td a,.viz-foot a,.cap a,.receipt a,.note a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em;text-decoration-color:rgba(76,154,255,.55);transition:text-decoration-color var(--t-fast)}
+p a:hover,li a:hover,td a:hover,.viz-foot a:hover,.cap a:hover,.receipt a:hover,.note a:hover{text-decoration-color:currentColor}
+.viz-foot a{text-decoration-color:rgba(139,152,169,.6)}
+::selection{background:rgba(255,176,32,.35)}
+img,svg{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.02em;line-height:1.08;margin:0}
+h1{font-size:clamp(2.35rem,5.6vw,4.6rem);font-weight:800}
+h2{font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0 0 1rem}
+.mono{font-family:var(--font-mono);font-feature-settings:var(--num)}
+.num{font-feature-settings:var(--num);text-align:right}
+.muted{color:var(--muted)}
+.orange{color:var(--accent)}.blue{color:var(--data)}.green{color:var(--verdict)}.red{color:var(--flag)}.purple{color:var(--unknown)}.grey{color:var(--dim)}
+.wrap{width:min(var(--maxw),calc(100% - 40px));margin:0 auto;position:relative;z-index:1}
+section{padding:clamp(56px,8vw,104px) 0;scroll-margin-top:84px}
+.rows,.paste,#hero,#receipt-grid,#issuers{scroll-margin-top:84px}
+.eyebrow{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.eyebrow .cmc-wrap{display:inline-flex;align-items:center;gap:5px}
+.eyebrow .cmc{width:13px;height:13px;flex:none;opacity:.9}
+.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--dim);display:inline-block}
+.kicker{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.lede{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.lede b{color:var(--text);font-weight:600}
+.note{color:var(--muted);font-size:.95rem}
+.note b{color:var(--text);font-weight:600}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ── interaction utilities ───────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:-.01em;border:1px solid var(--border);color:var(--text);background:var(--surface);cursor:pointer;transition:transform var(--t-fast) var(--ease),box-shadow var(--t-fast) var(--ease),background var(--t-fast),border-color var(--t-fast),color var(--t-fast);will-change:transform}
+.btn:hover{transform:translateY(-2px);border-color:#3a4a63;background:var(--surface-2);color:var(--text)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-primary{background:var(--accent);color:#0B0E14;border-color:var(--accent)}
+.btn-primary:hover{background:#ffc04a;border-color:#ffc04a;color:#0B0E14;box-shadow:0 10px 34px -8px rgba(255,176,32,.55)}
+.btn-primary[disabled]{opacity:.6;cursor:progress;transform:none;box-shadow:none}
+.btn .arrow{transition:transform var(--t-fast) var(--ease)}
+.btn:hover .arrow{transform:translateX(3px)}
+.btn:hover .arrow-down{transform:translateY(3px)}
+.btn:hover .arrow-ext{transform:translate(2px,-2px)}
+.btn .gh-mark{width:.9em;height:.9em;flex:none}
+.arrow-ext{display:inline-block}
+a:not(.btn) .arrow-ext{font-size:.85em;margin-left:.3em;opacity:.8;transition:transform var(--t-fast) var(--ease),opacity var(--t-fast)}
+a:not(.btn):hover .arrow-ext{transform:translate(1px,-1px);opacity:1}
+.btn-judge{border-color:rgba(255,176,32,.55);color:var(--accent)}
+.btn-judge:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 10px 34px -12px rgba(255,176,32,.45)}
+.btn-judge .sub{font-family:var(--font-mono);font-weight:400;font-size:.78rem;color:var(--muted);letter-spacing:0}
+.link-quiet{color:var(--muted);transition:color var(--t-fast)}
+.link-quiet:hover{color:var(--text)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;transition:transform var(--t-med) var(--ease),border-color var(--t-med),box-shadow var(--t-med)}
+.card:hover{transform:translateY(-3px);border-color:#34435b;box-shadow:0 18px 50px -24px rgba(0,0,0,.8)}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;font-family:var(--font-mono);font-size:.8rem;border:1px solid var(--border);color:var(--muted);background:rgba(20,26,36,.7);white-space:nowrap;transition:border-color var(--t-fast),color var(--t-fast)}
+.chip.ok{border-color:rgba(61,220,151,.55);color:var(--verdict)}
+.chip.err{border-color:rgba(255,92,92,.55);color:var(--flag)}
+.chip.busy{border-color:rgba(76,154,255,.55);color:var(--data)}
+
+/* ── reveal on scroll (motion only when allowed; nothing above the fold carries it) ── */
+.reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+  .reveal.now{transition:none}
+}
+
+/* ── header ──────────────────────────────────────────────────────────────────── */
+header.top{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(11,14,20,.72);border-bottom:1px solid transparent;transition:border-color var(--t-med),background var(--t-med)}
+header.top.scrolled{border-bottom-color:var(--border);background:rgba(11,14,20,.86)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text);font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+.brand svg{width:30px;height:30px;border-radius:7px;flex:none}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{padding:8px 12px;border-radius:999px;color:var(--muted);font-size:.92rem;font-weight:500;transition:color var(--t-fast),background var(--t-fast),border-color var(--t-fast)}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.nav-links a.judge{font-family:var(--font-mono);font-size:.86rem;letter-spacing:-.01em;color:var(--text);border:1px solid var(--border)}
+.nav-links a.judge:hover{border-color:var(--accent);color:var(--accent);background:var(--surface)}
+.gh{display:inline-flex;width:38px;height:38px;border-radius:50%;align-items:center;justify-content:center;color:var(--muted);transition:color var(--t-fast),background var(--t-fast)}
+.gh:hover{color:var(--text);background:var(--surface)}
+.gh svg{width:20px;height:20px}
+
+/* ── lead: the claim, the count-up, the shelf ────────────────────────────────── */
+.lead{padding:clamp(48px,7vw,96px) 0 clamp(32px,5vw,64px)}
+.lead h1{margin-top:18px}
+.lead h1 .line1{display:block;color:var(--muted);font-weight:700}
+.lead h1 .line2{display:block}
+.lead h1 .big{color:var(--accent);font-feature-settings:var(--num);display:inline-block;min-width:3.12ch;text-align:left}
+.lead .lede{margin:22px 0 30px;max-width:52ch}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hero-viz{margin-top:clamp(36px,5vw,64px);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(16px,2.6vw,32px);position:relative;overflow:hidden}
+.hero-viz::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,176,32,.5),transparent)}
+svg.block{width:100%;height:auto}
+svg.block.phone{display:none}
+svg.block .rail{stroke:var(--border);stroke-width:2}
+svg.block pattern rect.s{fill:var(--dim)}
+svg.block pattern rect.t{fill:var(--verdict)}
+svg.block pattern rect.a{fill:var(--accent)}
+svg.block rect.pre{opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  /* the mechanism, once: every box is amber because the RWA map says has_tokens: true — then the
+     join sweeps the shelf row by row and each box takes its listing state: grey has no
+     CMC-tracked market, green has one */
+  svg.block:not(.go) rect.pre{opacity:1}
+  svg.block rect.pre{transition:opacity .5s var(--ease);transition-delay:calc(var(--i,0)*70ms)}
+}
+.viz-key{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;margin-top:16px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted);line-height:1.6}
+.viz-key>span{display:flex;align-items:flex-start;gap:9px;min-width:0}
+.viz-key>span>span{display:block;min-width:0;overflow-wrap:anywhere}
+.viz-key i{width:14px;height:10px;border-radius:2px;display:inline-block;background:var(--data);flex:none;margin-top:6px}
+.viz-key i.amber{background:var(--accent)}
+.viz-key i.shelf{background:var(--dim)}
+.viz-key i.lit{background:var(--verdict)}
+.viz-key b{color:var(--text);font-weight:600}
+.viz-key .orange{color:var(--accent)}
+.viz-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+/* the rail: every judge-facing surface, one row, right under the fold */
+.rail{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.rail a{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--muted);font-size:.9rem;font-weight:500;transition:color var(--t-fast),border-color var(--t-fast),transform var(--t-fast) var(--ease)}
+.rail a:hover{color:var(--text);border-color:var(--accent);transform:translateY(-1px)}
+.rail a .arrow{transition:transform var(--t-fast) var(--ease)}
+.rail a:hover .arrow{transform:translateX(2px)}
+
+/* ── the product: the ticker box, the headline, the wrapper table, the verdict, the rows ── */
+.context{margin:22px 0 4px;color:var(--muted);font-size:.95rem;font-family:var(--font-mono);overflow-wrap:anywhere}
+.context b{color:var(--text);font-weight:600}
+.hero{margin:6px 0 24px}
+.hero .share{font-family:var(--font-display);font-weight:800;font-size:clamp(2.6rem,7vw,5.4rem);line-height:1;letter-spacing:-.025em;color:var(--accent);font-feature-settings:var(--num)}
+.hero .claim{font-family:var(--font-display);font-weight:600;font-size:clamp(1.25rem,2.6vw,1.9rem);line-height:1.25;margin:10px 0 8px;max-width:26ch;letter-spacing:-.01em}
+.hero .claim em{font-style:normal;color:var(--accent)}
+.hero .support{color:var(--muted);font-size:1.02rem;max-width:70ch;margin:0}
+.hero .support b{color:var(--data);font-weight:600}
+.hero.lit .share{color:var(--verdict)}
+.hero.lit .claim em{color:var(--verdict)}
+.hero.none .share{color:var(--muted)}
+.hero.none .claim em{color:var(--muted)}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface)}
+table.pools{width:100%;border-collapse:collapse;font-size:.95rem}
+table.pools th,table.pools td{padding:11px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--border)}
+table.pools th{font-family:var(--font-mono);color:var(--muted);font-weight:500;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+table.pools th:first-child,table.pools td:first-child{text-align:left}
+table.pools tbody tr{transition:background var(--t-fast)}
+table.pools tbody tr:hover{background:var(--surface-2)}
+table.pools tbody tr:last-child td{border-bottom:0}
+td.pool{font-weight:600}
+td.pool small{color:var(--muted);font-weight:400;margin-left:6px;font-family:var(--font-mono);font-size:.78rem}
+table.pools#pools td.pool{white-space:normal;min-width:14ch}
+table.pools#pools td.pool small{display:block;margin:2px 0 0;white-space:normal;max-width:30ch;line-height:1.35}
+table.pools td.addr{white-space:normal;overflow-wrap:anywhere;max-width:30ch;font-size:.82rem}
+tr.lit td.pool{box-shadow:inset 4px 0 0 var(--verdict)}
+tr.shelf td.pool{box-shadow:inset 4px 0 0 var(--accent)}
+tr.unknown td.pool{box-shadow:inset 4px 0 0 var(--unknown)}
+table.pools td.l,table.pools th.l{text-align:left}
+table.pools td.src{color:var(--muted);font-size:.8rem;white-space:normal;min-width:14ch;max-width:24ch}
+.state{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:2px 8px;border-radius:999px;border:1px solid var(--dim);color:var(--muted);text-transform:uppercase;line-height:1.5}
+.state.active{color:var(--verdict);border-color:rgba(61,220,151,.55)}
+.state.unresolved,.state.inactive{color:var(--unknown);border-color:rgba(139,124,246,.55)}
+.route{margin:16px 0 24px;padding:16px 20px;border:1px solid rgba(61,220,151,.55);border-radius:var(--r-md);background:rgba(61,220,151,.06)}
+.route .line{font-family:var(--font-display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.6rem);color:var(--verdict);letter-spacing:-.01em}
+.route .rule{color:var(--muted);font-size:.95rem;margin-top:4px;font-family:var(--font-mono)}
+.route.shelf{border-color:rgba(255,176,32,.55);background:rgba(255,176,32,.06)}
+.route.shelf .line{color:var(--accent)}
+.route.none{border-color:var(--border);background:var(--surface)}
+.route.none .line{color:var(--muted)}
+.rows{margin:0 0 24px;padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg)}
+.rows h3{margin:0 0 4px}
+.rows .cap{color:var(--muted);font-size:.9rem;margin-bottom:12px;font-family:var(--font-mono);overflow-wrap:anywhere}
+.rowlist{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.rowlist table{width:100%;border-collapse:collapse;font-size:.88rem}
+.rowlist th,.rowlist td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap}
+.rowlist th{font-family:var(--font-mono);font-weight:500;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rowlist th:nth-child(-n+3),.rowlist td:nth-child(-n+3){text-align:left}
+.rowlist tr.leg td{color:var(--accent);font-weight:600}
+.rowlist tr.leg td:first-child::before{content:"◀ ";color:var(--accent)}
+.rowlist tr.lit td{color:var(--verdict)}
+.rowlist tr.unknown td{color:var(--unknown)}
+.rowlist td.mono{font-family:var(--font-mono);font-feature-settings:var(--num)}
+@media (prefers-reduced-motion:no-preference){
+  .rowlist tr.leg{animation:light 700ms var(--t-fast) both}
+  .rowlist tr.leg:nth-of-type(n+2){animation-delay:600ms}
+  @keyframes light{from{background:transparent}50%{background:rgba(255,176,32,.18)}to{background:transparent}}
+}
+.arith{margin:14px 0 0;padding:14px 16px;list-style:none;font:.86rem/1.6 var(--font-mono);color:var(--text);border:1px dashed rgba(255,176,32,.5);border-radius:var(--r-md);background:rgba(255,176,32,.05)}
+.arith li{padding:2px 0;word-break:break-all}
+.arith li:last-child{color:var(--accent);font-weight:600}
+details{border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);margin-top:14px}
+details summary{cursor:pointer;list-style:none;padding:14px 18px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:color var(--t-fast),background var(--t-fast);border-radius:var(--r-md)}
+details summary::-webkit-details-marker{display:none}
+details summary:hover{color:var(--accent);background:var(--surface-2)}
+details summary .chev{transition:transform var(--t-med) var(--ease);flex:none}
+details[open] summary .chev{transform:rotate(180deg)}
+details .body{padding:4px 18px 18px;color:var(--muted);font-size:.98rem}
+details .body p:last-child{margin-bottom:0}
+details .fold{display:grid;grid-template-rows:0fr}
+details[open] .fold{grid-template-rows:1fr}
+details .fold>.fold-clip{overflow:hidden;min-height:0}
+@media (prefers-reduced-motion:no-preference){
+  details .fold{transition:grid-template-rows 200ms var(--ease)}
+  details.fx[open]:not(.is-open) .fold{grid-template-rows:0fr}
+}
+details.raw{background:var(--bg)}
+details.raw summary{font-family:var(--font-mono);font-weight:500;font-size:.82rem;color:var(--muted)}
+pre.json{margin:0 14px 14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:14px;font-family:var(--font-mono);font-size:.76rem;line-height:1.55;max-height:420px;overflow:auto;color:#B9C4D2}
+.paste{margin-top:32px}
+.paste h3{margin-bottom:6px}
+.paste .note{margin:0 0 14px}
+.paste-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.paste input{flex:1 1 220px;min-width:0;font:.95rem var(--font-mono);color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:12px 14px;text-transform:uppercase;transition:border-color var(--t-fast)}
+.paste input:focus{border-color:var(--data)}
+.paste .btn{padding:12px 20px}
+#status{flex:1 1 100%;font-size:.92rem;color:var(--muted);min-height:1.4em;margin-top:8px}
+#status .cmd{display:block;margin-top:8px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);font:.82rem var(--font-mono);color:var(--text);user-select:all;word-break:break-all}
+
+/* ── the shelf primitive, in the issuer table and the type cards ─────────────── */
+.barcell .bar,.types .bar{position:relative;display:flex;height:14px;width:100%;border-radius:4px;overflow:hidden;background:var(--bg);border:1px solid var(--border)}
+.barcell .bar>span,.types .bar>span{display:block;height:100%}
+.barcell .bar .dim,.types .bar .dim{background:repeating-linear-gradient(90deg,var(--dim) 0 6px,transparent 6px 8px)}
+.barcell .bar .lit,.types .bar .lit{background:repeating-linear-gradient(90deg,var(--verdict) 0 6px,transparent 6px 8px)}
+.barcell .bar .unk,.types .bar .unk{background:repeating-linear-gradient(90deg,var(--unknown) 0 6px,transparent 6px 8px)}
+table.issuers td.barcell{width:30%;min-width:140px}
+table.issuers td.n{font-family:var(--font-mono);font-feature-settings:var(--num)}
+table.issuers .rate{font-family:var(--font-mono);font-weight:700;font-feature-settings:var(--num)}
+table.issuers .rate.full{color:var(--flag)}
+table.issuers details{border:0;background:transparent;margin:0;display:inline-block;max-width:100%}
+table.issuers summary{padding:0;font-weight:600;display:inline-flex;gap:6px;color:var(--text);border-radius:var(--r-sm)}
+table.issuers summary::after{content:"▾";color:var(--muted);font-size:.85em}
+table.issuers details[open] summary::after{content:"▴"}
+table.issuers details[open]{display:block}
+table.issuers .ev{font:.72rem var(--font-mono);color:var(--muted);margin:8px 0 2px;white-space:normal}
+table.issuers pre{margin:0 0 6px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px;font:.72rem/1.5 var(--font-mono);color:#B9C4D2;max-height:260px;max-width:min(520px,80vw);overflow:auto;white-space:pre}
+.smaller{margin:14px 0 0}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.types>*{min-width:0}
+.types .stat{text-align:left}
+.types .bar{margin:12px 0 10px}
+.types .stat-l b{color:var(--text);font-weight:600}
+
+/* ── stat band, proof grid, receipt ──────────────────────────────────────────── */
+.statband{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:32px}
+.stat{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--border);border-radius:var(--r-md);padding:20px 14px;text-align:center;min-width:0}
+.stat-v{display:block;font-family:var(--font-display);font-size:2.15rem;font-weight:800;letter-spacing:-.02em;line-height:1;color:var(--text);font-feature-settings:var(--num)}
+.stat-l{display:block;color:var(--muted);font-size:.86rem;margin-top:8px;line-height:1.35}
+.stat-v.orange{color:var(--accent)}.stat-v.blue{color:var(--data)}.stat-v.green{color:var(--verdict)}.stat-v.red{color:var(--flag)}.stat-v.purple{color:var(--unknown)}
+.receipt{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 22px;margin-top:32px;font-size:.92rem}
+.receipt .k{font-family:var(--font-mono);color:var(--muted);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.receipt .v{margin-top:3px;overflow-wrap:anywhere}
+.calls .rowlist{padding:0 14px 14px}
+.calls .rowlist td{white-space:normal;overflow-wrap:anywhere}
+.calls .rowlist td.mono{white-space:nowrap}
+.calls summary{font-family:var(--font-mono);font-weight:500;font-size:.86rem}
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.proof>*{min-width:0}
+.proof a{display:block;position:relative;padding:14px 16px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);color:var(--text);transition:border-color var(--t-fast),transform var(--t-fast) var(--ease)}
+.proof a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proof .f{font-family:var(--font-mono);font-size:.8rem;color:var(--data);overflow-wrap:anywhere}
+.proof .m{font-size:.82rem;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}
+.proof .arrow-ext{position:absolute;top:10px;right:12px;margin:0;color:var(--muted)}
+
+/* ── api table + findings ────────────────────────────────────────────────────── */
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.api{width:100%;border-collapse:collapse;font-size:.95rem}
+table.api th,table.api td{padding:12px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+table.api tr:last-child td{border-bottom:0}
+table.api th{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+table.api code{font-family:var(--font-mono);font-size:.82rem;color:var(--data);white-space:nowrap}
+table.api td.n{font-family:var(--font-mono);color:var(--muted);text-align:right;white-space:nowrap}
+table.api tr.engine td{background:linear-gradient(90deg,rgba(255,176,32,.08),transparent)}
+table.api tr.engine code{color:var(--accent)}
+table.api tr.unused code{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(255,92,92,.6)}
+table.api td.key{font-family:var(--font-mono);font-size:.82rem;white-space:nowrap}
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.findings>*{min-width:0}
+.finding .k{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.finding .v{font-family:var(--font-display);font-weight:800;font-size:2rem;letter-spacing:-.02em;line-height:1;margin-bottom:10px;font-feature-settings:var(--num)}
+.finding p{color:var(--muted);font-size:.95rem;margin:0}
+.finding p b{color:var(--text);font-weight:600}
+
+/* ── run: the terminal and the two days ──────────────────────────────────────── */
+.term{background:#0B0E14;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:32px}
+.term .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--surface)}
+.term .bar i{width:11px;height:11px;border-radius:50%;background:#2c3646;display:inline-block}
+.term .bar span{margin-left:8px;font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
+.term .bar button{margin-left:auto}
+.term pre{margin:0;padding:18px 20px;font-family:var(--font-mono);font-size:.84rem;line-height:1.6;overflow:auto;color:#B9C4D2}
+.term .p{color:#7E8CA0}.term .cmd{color:var(--text)}.term .hi{color:var(--accent)}.term .ok{color:var(--verdict)}.term .dim{color:#7E8CA0}.term .bl{color:var(--data)}
+.copy{font-family:var(--font-mono);font-size:.75rem;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:color var(--t-fast),border-color var(--t-fast),background var(--t-fast)}
+.copy:hover{color:var(--text);border-color:#3a4a63;background:var(--surface-2)}
+.copy.done{color:var(--accent);border-color:var(--accent)}
+.runs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.runs>*{min-width:0}
+.run{padding:16px 18px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);position:relative}
+.run .t{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.run .v{font-family:var(--font-display);font-weight:800;font-size:2rem;letter-spacing:-.02em;line-height:1;margin:8px 0 6px;color:var(--accent);font-feature-settings:var(--num)}
+.run .v.quiet{color:var(--verdict)}
+.run .m{font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
+.run .m a{font-family:var(--font-mono);font-size:.78rem}
+
+/* ── faq / limits ────────────────────────────────────────────────────────────── */
+.faq{margin-top:24px;max-width:860px}
+.faq details{margin-top:10px}
+
+/* ── final cta ───────────────────────────────────────────────────────────────── */
+.final{position:relative;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(255,176,32,.06),rgba(11,14,20,0) 70%)}
+.final h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+.final .cta-row{margin-top:28px}
+.final .btn-primary{padding:18px 28px;font-size:1.1rem}
+
+/* ── footer ──────────────────────────────────────────────────────────────────── */
+footer{padding:44px 0 60px;color:var(--muted);font-size:.9rem}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+footer h3{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:500;line-height:1.6}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin:6px 0}
+footer .brand{color:var(--text)}
+footer .brand img{width:30px;height:30px;border-radius:7px}
+footer .bottom{margin-top:32px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--font-mono);font-size:.78rem}
+footer .bottom .ver{color:var(--accent)}
+
+/* ── breakpoints: condense, do not just stack ────────────────────────────────── */
+@media (max-width:960px){.statband{grid-template-columns:repeat(3,1fr)}.findings{grid-template-columns:1fr}.proof,.runs{grid-template-columns:repeat(2,1fr)}.types{grid-template-columns:1fr}}
+@media (max-width:820px){footer .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){
+  /* hide the columns a phone reader does not decide on; keep the state and the price */
+  table.pools th:nth-child(4),table.pools td:nth-child(4),table.pools th:nth-child(7),table.pools td:nth-child(7),table.pools th:nth-child(8),table.pools td:nth-child(8){display:none}
+  table.issuers th.hide-m,table.issuers td.hide-m{display:none}
+  .hero .claim{max-width:none}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding:36px 0;scroll-margin-top:70px}
+  .lede{font-size:1.02rem}
+  h2{font-size:1.55rem}
+  .lead{padding:32px 0 20px}
+  .lead .lede{margin:14px 0 20px}
+  .hero-viz{margin-top:24px;padding:14px}
+  svg.block.desk{display:none}svg.block.phone{display:block}
+  .viz-key{grid-template-columns:1fr;gap:8px;font-size:.74rem}
+  .rail{gap:6px;margin-top:20px}
+  .rail a{padding:7px 12px;font-size:.84rem}
+  .card{padding:18px}
+  .rows{padding:16px}
+  .statband{grid-template-columns:repeat(2,1fr);gap:8px}
+  .stat{padding:14px 10px}
+  .stat-v{font-size:1.7rem}
+  .finding .v{font-size:1.7rem}
+  .term pre{font-size:.76rem;padding:14px}
+  .runs{grid-template-columns:1fr 1fr;gap:8px}
+  .run .v{font-size:1.6rem}
+  .proof{grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+  .proof a{padding:10px 12px}
+  .proof .f{font-size:.72rem}
+  .proof .arrow-ext{top:auto;bottom:10px;right:12px}
+  details summary{padding:12px 14px;font-size:.95rem}
+  details .body{padding:2px 14px 14px}
+  pre.json{font-size:.7rem;max-height:260px;padding:12px;margin:0 10px 10px}
+  table.issuers pre{max-width:min(420px,72vw)}
+  /* the api table becomes one block per endpoint — its columns cannot share 375px */
+  table.api,table.api thead,table.api tbody,table.api tr,table.api td{display:block}
+  table.api thead{display:none}
+  table.api tr{padding:12px 0;border-bottom:1px solid var(--border)}
+  table.api tr:last-child{border-bottom:0}
+  table.api td{padding:2px 0;border:0}
+  table.api td.n{text-align:left;font-size:.8rem}
+  table.api td.n::before{content:"calls on this page · "}
+  table.api code{white-space:normal;word-break:break-all}
+  .final .cta-row{gap:8px}
+  .final .btn{padding:14px 18px}
+  .final .btn-primary{font-size:1rem}
+  .btn-judge .sub{display:none}
+  footer{padding:32px 0 40px;font-size:.85rem}
+  footer .cols{grid-template-columns:1fr 1fr;gap:18px}
+  footer .cols>div:first-child{grid-column:1/-1}
+}
+@media (max-width:480px){
+  .statband{grid-template-columns:1fr 1fr}footer .cols{grid-template-columns:1fr}
+  .brand{font-size:.95rem;white-space:nowrap}.nav-links a.judge{font-size:.8rem;white-space:nowrap}.nav{gap:8px}
+}
+@media (max-width:360px){.brand{font-size:.84rem}.brand svg{width:22px;height:22px}.nav-links a.judge{font-size:.72rem;padding:7px 9px}.gh{width:32px;height:32px}}
 </style>
 </head>
 <body>
-<main>
-<header>
-  <div class="brand"><svg viewBox="0 0 34 22" aria-hidden="true"><rect x="0" y="17" width="34" height="2" rx="1" fill="#26313F"/><rect x="1" y="4" width="5" height="12" rx="1.5" fill="#3A4453"/><rect x="8" y="4" width="5" height="12" rx="1.5" fill="#3A4453"/><rect x="15" y="4" width="5" height="12" rx="1.5" fill="#3A4453"/><rect x="22" y="4" width="5" height="12" rx="1.5" fill="#3BD37D"/><rect x="29" y="4" width="5" height="12" rx="1.5" fill="#3BD37D"/></svg> Shelfware</div>
-  <nav>
-    <a class="btn primary" href="#search">Type a ticker</a>
-    <a class="btn" href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-    <a class="btn" href="https://github.com/edycutjong/shelfware/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md ↗</a>
-    <a class="btn" href="/pitch/">Pitch deck</a>
-    <a class="btn" href="/judge">For judges</a>
-  </nav>
+
+<header class="top" id="top">
+  <div class="wrap nav">
+    <div class="brand">
+      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false"><rect width="512" height="512" rx="112" fill="#0B0E14"/><rect x="8" y="8" width="496" height="496" rx="105" fill="none" stroke="#5E6C80" stroke-width="6"/><g fill="#5E6C80"><rect x="58" y="212" width="68" height="132" rx="8"/><rect x="140" y="188" width="68" height="156" rx="8"/><rect x="222" y="200" width="68" height="144" rx="8"/></g><g fill="#3DDC97"><rect x="304" y="168" width="68" height="176" rx="8"/><rect x="386" y="144" width="68" height="200" rx="8"/></g><rect x="44" y="344" width="424" height="20" rx="10" fill="#8B98A9"/></svg>
+      Shelfware
+    </div>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="judge" href="/judge" title="For judges — the claim, the 30-second path, the receipt">For judges</a>
+      <a class="gh" href="https://github.com/edycutjong/shelfware" aria-label="Source on GitHub (opens in a new tab)" title="Source on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+    </nav>
+  </div>
 </header>
 
-<section class="headline-wrap" aria-labelledby="claim">
-  <div class="headline">
-    <div class="big mono" id="bignum" data-target="60">60%</div>
-    <div>
-      <p class="claim" id="claim">of the tokenised assets CoinMarketCap lists have <b>no wrapper with a tracked market</b>.</p>
-      <p class="sub"><b class="mono" id="zt">476</b> of <b class="mono">791</b> underlyings flagged <span class="pill">has_tokens: true</span> · stocks alone <b class="mono">437 of 689</b> (63%) · counted <b class="mono">2026-09-18 22:16 UTC</b> · <b class="mono">5</b> keyed credits</p>
+<main>
+
+<section class="lead" id="lead">
+  <div class="wrap">
+    <div class="eyebrow">
+      <span class="cmc-wrap"><svg class="cmc" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.738 14.341c-.419.265-.912.298-1.286.087-.476-.27-.738-.898-.738-1.774v-2.618c0-1.264-.5-2.164-1.336-2.407-1.416-.413-2.482 1.32-2.882 1.972l-2.498 4.05v-4.95c-.028-1.14-.398-1.821-1.1-2.027-.466-.135-1.161-.081-1.837.953l-5.597 8.987A9.875 9.875 0 0 1 2.326 12c0-5.414 4.339-9.818 9.672-9.818 5.332 0 9.67 4.404 9.67 9.818.004.018.002.034.003.053.05 1.049-.29 1.883-.933 2.29zm3.08-2.34-.001-.055C23.787 5.353 18.497 0 11.997 0 5.48 0 .177 5.383.177 12c0 6.616 5.303 12 11.82 12 2.991 0 5.846-1.137 8.037-3.2.435-.41.46-1.1.057-1.541a1.064 1.064 0 0 0-1.519-.059 9.56 9.56 0 0 1-6.574 2.618c-2.856 0-5.425-1.263-7.197-3.268l5.048-8.105v3.737c0 1.794.696 2.374 1.28 2.544.584.17 1.476.054 2.413-1.468.998-1.614 2.025-3.297 3.023-4.88v2.276c0 1.678.672 3.02 1.843 3.68 1.056.597 2.384.543 3.465-.14 1.312-.828 2.018-2.354 1.944-4.193z"/></svg>CoinMarketCap API</span><span class="dot"></span><span>keyed</span><span class="dot"></span><span>5 credits</span><span class="dot"></span><span>2026-09-18</span>
     </div>
+    <h1>
+      <span class="line1">CoinMarketCap flags 791 assets as tokenised.</span>
+      <span class="line2"><span class="big" data-count="60">60%</span> of them have no wrapper with a tracked market.</span>
+    </h1>
+    <p class="lede">Six in ten tokenised stocks on CoinMarketCap have no wrapper with a tracked market.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#ask">Type a ticker <span class="arrow arrow-down" aria-hidden="true">↓</span></a>
+    </div>
+
+    <div class="hero-viz" id="viz">
+      <svg class="block desk" viewBox="0 0 1200 348" role="img" aria-label="791 tokenised underlyings on CoinMarketCap as boxes on a shelf: 476 grey — no wrapper with a CMC-tracked market — and 315 green with at least one." xmlns="http://www.w3.org/2000/svg">
+<title>791 tokenised underlyings on CoinMarketCap as boxes on a shelf: 476 grey — no wrapper with a CMC-tracked market — and 315 green with at least one.</title>
+<defs><pattern id="ps-desk" width="20" height="24" patternUnits="userSpaceOnUse"><rect y="6" width="16" height="16" rx="3" class="s"/></pattern><pattern id="pt-desk" width="20" height="24" patternUnits="userSpaceOnUse"><rect y="6" width="16" height="16" rx="3" class="t"/></pattern><pattern id="pa-desk" width="20" height="24" patternUnits="userSpaceOnUse"><rect y="6" width="16" height="16" rx="3" class="a"/></pattern></defs>
+<g class="u" style="--i:0">
+<rect x="0" y="6" width="1196" height="16" fill="url(#ps-desk)"/>
+<rect class="pre" x="0" y="6" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="25" x2="1196" y2="25"/>
+<g class="u" style="--i:1">
+<rect x="0" y="30" width="1196" height="16" fill="url(#ps-desk)"/>
+<rect class="pre" x="0" y="30" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="49" x2="1196" y2="49"/>
+<g class="u" style="--i:2">
+<rect x="0" y="54" width="1196" height="16" fill="url(#ps-desk)"/>
+<rect class="pre" x="0" y="54" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="73" x2="1196" y2="73"/>
+<g class="u" style="--i:3">
+<rect x="0" y="78" width="1196" height="16" fill="url(#ps-desk)"/>
+<rect class="pre" x="0" y="78" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="97" x2="1196" y2="97"/>
+<g class="u" style="--i:4">
+<rect x="0" y="102" width="1196" height="16" fill="url(#ps-desk)"/>
+<rect class="pre" x="0" y="102" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="121" x2="1196" y2="121"/>
+<g class="u" style="--i:5">
+<rect x="0" y="126" width="1196" height="16" fill="url(#ps-desk)"/>
+<rect class="pre" x="0" y="126" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="145" x2="1196" y2="145"/>
+<g class="u" style="--i:6">
+<rect x="0" y="150" width="1196" height="16" fill="url(#ps-desk)"/>
+<rect class="pre" x="0" y="150" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="169" x2="1196" y2="169"/>
+<g class="u" style="--i:7">
+<rect x="0" y="174" width="1116" height="16" fill="url(#ps-desk)"/>
+<rect x="1120" y="174" width="76" height="16" fill="url(#pt-desk)"/>
+<rect class="pre" x="0" y="174" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="193" x2="1196" y2="193"/>
+<g class="u" style="--i:8">
+<rect x="0" y="198" width="1196" height="16" fill="url(#pt-desk)"/>
+<rect class="pre" x="0" y="198" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="217" x2="1196" y2="217"/>
+<g class="u" style="--i:9">
+<rect x="0" y="222" width="1196" height="16" fill="url(#pt-desk)"/>
+<rect class="pre" x="0" y="222" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="241" x2="1196" y2="241"/>
+<g class="u" style="--i:10">
+<rect x="0" y="246" width="1196" height="16" fill="url(#pt-desk)"/>
+<rect class="pre" x="0" y="246" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="265" x2="1196" y2="265"/>
+<g class="u" style="--i:11">
+<rect x="0" y="270" width="1196" height="16" fill="url(#pt-desk)"/>
+<rect class="pre" x="0" y="270" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="289" x2="1196" y2="289"/>
+<g class="u" style="--i:12">
+<rect x="0" y="294" width="1196" height="16" fill="url(#pt-desk)"/>
+<rect class="pre" x="0" y="294" width="1196" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="313" x2="1196" y2="313"/>
+<g class="u" style="--i:13">
+<rect x="0" y="318" width="216" height="16" fill="url(#pt-desk)"/>
+<rect class="pre" x="0" y="318" width="216" height="16" fill="url(#pa-desk)"/>
+</g>
+<line class="rail" x1="0" y1="337" x2="216" y2="337"/>
+</svg>
+<svg class="block phone" viewBox="0 0 1200 1200" role="img" aria-label="791 tokenised underlyings on CoinMarketCap as boxes on a shelf: 476 grey — no wrapper with a CMC-tracked market — and 315 green with at least one." xmlns="http://www.w3.org/2000/svg">
+<title>791 tokenised underlyings on CoinMarketCap as boxes on a shelf: 476 grey — no wrapper with a CMC-tracked market — and 315 green with at least one.</title>
+<defs><pattern id="ps-phone" width="40" height="44" patternUnits="userSpaceOnUse"><rect y="6" width="36" height="36" rx="3" class="s"/></pattern><pattern id="pt-phone" width="40" height="44" patternUnits="userSpaceOnUse"><rect y="6" width="36" height="36" rx="3" class="t"/></pattern><pattern id="pa-phone" width="40" height="44" patternUnits="userSpaceOnUse"><rect y="6" width="36" height="36" rx="3" class="a"/></pattern></defs>
+<g class="u" style="--i:0">
+<rect x="0" y="6" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="6" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="45" x2="1196" y2="45"/>
+<g class="u" style="--i:1">
+<rect x="0" y="50" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="50" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="89" x2="1196" y2="89"/>
+<g class="u" style="--i:2">
+<rect x="0" y="94" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="94" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="133" x2="1196" y2="133"/>
+<g class="u" style="--i:3">
+<rect x="0" y="138" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="138" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="177" x2="1196" y2="177"/>
+<g class="u" style="--i:4">
+<rect x="0" y="182" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="182" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="221" x2="1196" y2="221"/>
+<g class="u" style="--i:5">
+<rect x="0" y="226" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="226" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="265" x2="1196" y2="265"/>
+<g class="u" style="--i:6">
+<rect x="0" y="270" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="270" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="309" x2="1196" y2="309"/>
+<g class="u" style="--i:7">
+<rect x="0" y="314" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="314" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="353" x2="1196" y2="353"/>
+<g class="u" style="--i:8">
+<rect x="0" y="358" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="358" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="397" x2="1196" y2="397"/>
+<g class="u" style="--i:9">
+<rect x="0" y="402" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="402" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="441" x2="1196" y2="441"/>
+<g class="u" style="--i:10">
+<rect x="0" y="446" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="446" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="485" x2="1196" y2="485"/>
+<g class="u" style="--i:11">
+<rect x="0" y="490" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="490" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="529" x2="1196" y2="529"/>
+<g class="u" style="--i:12">
+<rect x="0" y="534" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="534" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="573" x2="1196" y2="573"/>
+<g class="u" style="--i:13">
+<rect x="0" y="578" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="578" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="617" x2="1196" y2="617"/>
+<g class="u" style="--i:14">
+<rect x="0" y="622" width="1196" height="36" fill="url(#ps-phone)"/>
+<rect class="pre" x="0" y="622" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="661" x2="1196" y2="661"/>
+<g class="u" style="--i:15">
+<rect x="0" y="666" width="1036" height="36" fill="url(#ps-phone)"/>
+<rect x="1040" y="666" width="156" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="666" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="705" x2="1196" y2="705"/>
+<g class="u" style="--i:16">
+<rect x="0" y="710" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="710" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="749" x2="1196" y2="749"/>
+<g class="u" style="--i:17">
+<rect x="0" y="754" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="754" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="793" x2="1196" y2="793"/>
+<g class="u" style="--i:18">
+<rect x="0" y="798" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="798" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="837" x2="1196" y2="837"/>
+<g class="u" style="--i:19">
+<rect x="0" y="842" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="842" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="881" x2="1196" y2="881"/>
+<g class="u" style="--i:20">
+<rect x="0" y="886" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="886" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="925" x2="1196" y2="925"/>
+<g class="u" style="--i:21">
+<rect x="0" y="930" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="930" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="969" x2="1196" y2="969"/>
+<g class="u" style="--i:22">
+<rect x="0" y="974" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="974" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="1013" x2="1196" y2="1013"/>
+<g class="u" style="--i:23">
+<rect x="0" y="1018" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="1018" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="1057" x2="1196" y2="1057"/>
+<g class="u" style="--i:24">
+<rect x="0" y="1062" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="1062" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="1101" x2="1196" y2="1101"/>
+<g class="u" style="--i:25">
+<rect x="0" y="1106" width="1196" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="1106" width="1196" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="1145" x2="1196" y2="1145"/>
+<g class="u" style="--i:26">
+<rect x="0" y="1150" width="436" height="36" fill="url(#pt-phone)"/>
+<rect class="pre" x="0" y="1150" width="436" height="36" fill="url(#pa-phone)"/>
+</g>
+<line class="rail" x1="0" y1="1189" x2="436" y2="1189"/>
+</svg>
+      <div class="viz-key" aria-label="Colour key"><span><i class="amber"></i><span>before the join: every box is an underlying the RWA map flags <b>has_tokens: true</b> — 791 of them, one box each, shelf first</span></span><span><i class="shelf"></i><span><b id="zt">476</b> of <b>791</b> underlyings: <b>no wrapper with a CMC-tracked market</b> — listed, no CMC-tracked market</span></span><span><i class="lit"></i><span><b>315</b> with at least one wrapper whose map status is <b>active</b></span></span><span><i class="shelf"></i><span>join: tokens[] (price: null rows kept) → status on /v1/cryptocurrency/map → count underlyings whose every wrapper is untracked</span></span></div>
+      <div class="viz-foot">
+        <span>791 underlyings · 1,435 wrappers · 54 calls · 5 credits · 40.9 s</span>
+        <span>captured 2026-09-18 22:16:17 UTC · <a class="link-quiet" href="#run">reproduce ↓</a></span>
+      </div>
+    </div>
+
+    <nav class="rail" aria-label="Where to look">
+      <a href="/judge">For judges <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="/pitch/">Pitch deck <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">GitHub<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+      <a href="https://github.com/edycutjong/shelfware/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+    </nav>
   </div>
-  <div class="bar" role="img" aria-label="476 of 791 underlyings have no tracked wrapper">
-    <span class="dim" id="bar-dim" style="width:60%"></span><span class="lit" id="bar-lit" style="width:40%"></span>
-  </div>
-  <div class="legend"><span><i class="sw dim"></i>476 no tracked wrapper — <b>listed, no CMC-tracked market</b></span><span><i class="sw lit"></i>315 at least one tracked wrapper</span></div>
-  <p class="recipe">recipe: wrappers = /v5/real-world-assets/quotes/latest tokens[] (price:null rows kept) · state = /public-api/v1/cryptocurrency/map status · count underlyings whose every wrapper is untracked · strict: an unresolved id never counts</p>
 </section>
 
-<section class="search" id="search" aria-labelledby="search-h">
-  <h2 id="search-h">Does this ticker have a wrapper that trades, and whose?</h2>
-  <div class="card">
-    <form id="f" autocomplete="off">
-      <label class="sr-only" for="t">Ticker</label>
-      <input id="t" name="t" placeholder="MS" value="MS" maxlength="16" spellcheck="false" aria-label="Ticker symbol">
-      <button class="btn primary" type="submit" id="go">Ask CMC</button>
+<section id="ask">
+  <div class="wrap">
+    <div class="kicker reveal">The product</div>
+    <h2 class="reveal d1">Type a ticker. Every wrapper, its issuer, its chain, its listing state.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The roster from <span class="mono">/v5/real-world-assets/quotes/latest</span> — <span class="mono">tokens[]</span>, the <span class="mono">price: null</span> rows kept — joined to each wrapper's <span class="mono">status</span> on <span class="mono">/public-api/v1/cryptocurrency/map</span>. Then one line: how many of its wrappers have a CMC-tracked market, and whose. The answer below is a committed run; type any ticker to ask live.</p>
+
+    <form class="paste card" id="paste" autocomplete="off" aria-labelledby="paste-h">
+      <h3 id="paste-h">Does this ticker have a wrapper that trades, and whose?</h3>
+      <p class="note">Roster via this site's proxy (<span class="mono">/api/roster</span> → <span class="mono">/v5/real-world-assets/quotes/latest</span>, keyed, 1 credit; the committed snapshot if the key is unavailable, labelled). State via <span class="mono">/api/status</span> → <span class="mono">/public-api/v1/cryptocurrency/map</span> and <span class="mono">/v2/cryptocurrency/info</span> — keyless, 0 credits. The proxy shares one IP across every visitor, so a 429 is shown as a 429, with the command to run instead.</p>
+      <div class="paste-row">
+        <label class="sr-only" for="t">Ticker symbol</label>
+        <input id="t" name="t" placeholder="MS" value="MS" maxlength="16" spellcheck="false">
+        <button type="submit" id="go" class="btn btn-primary">Ask CMC <span class="arrow" aria-hidden="true">→</span></button>
+        <span class="chip ok" id="mode">committed run</span>
+      </div>
+      <div id="status" role="status" aria-live="polite"></div>
     </form>
-    <p class="hint">Roster from <code>/v5/real-world-assets/quotes/latest</code> (keyed, 1 credit — via this site's proxy; the committed snapshot if the key is unavailable, labelled). State from <code>/public-api/v1/cryptocurrency/map</code> and <code>/v2/cryptocurrency/info</code> — <b>live, keyless, 0 credits</b>. Same thing on your machine: <code>python3 -m shelfware MS</code>.</p>
-    <div class="tcard" id="tcard"><noscript><p class="src">Enable JavaScript to ask, or run <code>python3 -m shelfware MS</code>.</p></noscript></div>
+
+    <p class="context" id="context"><b>MS</b> · Morgan Stanley · stock · rwa_rank 43 · has_tokens: <b>true</b> · asked 2026-09-18 22:43:39 UTC · roster: snapshot 2026-09-18 (the RWA endpoints need a key) · state: live · keyless · 0 credits · chosen by rule: the most prominent tokenised underlying on CoinMarketCap (lowest rwa_rank) whose every wrapper is untracked</p>
+
+    <div class="hero shelf" id="hero" aria-label="The answer">
+      <div class="share mono" id="share" data-target="0">0 of 1</div>
+      <p class="claim" id="claim">wrapper of <em>MS</em> has a CMC-tracked market.</p>
+      <p class="support" id="support"><b>0</b> active · <b>1</b> untracked · 0 unresolved or inactive — issuer: Backed Assets. The RWA map says <b>has_tokens: true</b>; the cryptocurrency map says <b>untracked</b> for every wrapper — listed, no CMC-tracked market.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table class="pools" id="pools" aria-label="Wrappers of the underlying">
+        <thead><tr>
+          <th><span>wrapper</span></th>
+          <th class="l"><span>issuer</span></th>
+          <th class="l"><span>chain</span></th>
+          <th class="l"><span>token address</span></th>
+          <th><span>price</span></th>
+          <th><span>listing state</span></th>
+          <th class="l"><span>state from</span></th>
+          <th><span>listed</span></th>
+        </tr></thead>
+        <tbody id="tbody"><tr class="shelf"><td class="pool">wMSx<small>Wrapped Morgan Stanley Tokenized Stock (xStock)</small></td><td class="l">Backed Assets</td><td class="l">X Layer</td><td class="l mono addr">0x2874A11805783324C54562eDB1A641C5d1d077a5</td><td class="mono">null</td><td><span class="state untracked">untracked</span></td><td class="l src">/v1/cryptocurrency/map · live · keyless</td><td class="mono">2026-08-11</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="route shelf" id="route" aria-label="The verdict">
+      <div class="line" id="routeline">▶ 0 of 1 wrapper with a CMC-tracked market — on the shelf</div>
+      <div class="rule" id="routerule">rule: strict — an underlying counts only when every attached wrapper is untracked · an unresolved id never counts · MS is one of the 476 of 791</div>
+    </div>
+
+    <div class="rows" id="rows" aria-label="Raw rows">
+      <h3 id="rowstitle">wMSx — raw rows (1 wrapper, three sources)</h3>
+      <div class="cap" id="rowscap">rwa_id 35 · crypto_id 41513 · tokens[] from <span class="mono">/v5/real-world-assets/quotes/latest</span> (snapshot 2026-09-18) · state from <span class="mono">/public-api/v1/cryptocurrency/map</span> · listing date from <span class="mono">/public-api/v2/cryptocurrency/info</span> · <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/ms.json" target="_blank" rel="noopener noreferrer">docs/proof/ms.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div>
+      <div class="rowlist" id="rowlist"><table><thead><tr><th>source</th><th>endpoint</th><th>id</th><th>symbol</th><th>price / status</th><th>issuer / rank</th><th>platform</th><th>date</th></tr></thead><tbody><tr><td>tokens[]</td><td>/v5/real-world-assets/quotes/latest</td><td class="mono">41513</td><td class="mono">wMSx</td><td class="mono">null</td><td>Backed Assets</td><td>X Layer</td><td class="mono">—</td></tr><tr class="leg"><td>map row</td><td>/public-api/v1/cryptocurrency/map</td><td class="mono">41513</td><td class="mono">wMSx</td><td class="mono">status untracked</td><td>rank null</td><td>X Layer</td><td class="mono">—</td></tr><tr><td>info row</td><td>/public-api/v2/cryptocurrency/info</td><td class="mono">41513</td><td class="mono">wMSx</td><td class="mono">status inactive</td><td>—</td><td>OKB</td><td class="mono">2026-08-11</td></tr></tbody></table></div>
+      <ul class="arith" id="arith"><li>tokens[] on /v5/real-world-assets/quotes/latest → 1 wrapper attached to MS (rwa_id 35)</li><li>/public-api/v1/cryptocurrency/map → status per crypto_id: 1 untracked · 0 active · 0 unresolved or inactive</li><li>tracked = wrappers with status == active = 0 · attached = 1</li><li>0 of 1 → every wrapper untracked → MS has no wrapper with a CMC-tracked market</li></ul>
+      <details class="raw" id="rawjson">
+        <summary>raw JSON of these rows, verbatim from the API<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><pre id="rawpre" class="json" tabindex="0" aria-label="Raw rows, verbatim from the API">{
+ &quot;tokens&quot;: [
+  {
+   &quot;crypto_id&quot;: 41513,
+   &quot;symbol&quot;: &quot;wMSx&quot;,
+   &quot;name&quot;: &quot;Wrapped Morgan Stanley Tokenized Stock (xStock)&quot;,
+   &quot;issuer_id&quot;: &quot;6878977dcbbf471de3366e85&quot;,
+   &quot;issuer_name&quot;: &quot;Backed Assets&quot;,
+   &quot;price&quot;: null,
+   &quot;market_cap&quot;: null,
+   &quot;volume_24h&quot;: null,
+   &quot;status&quot;: &quot;untracked&quot;,
+   &quot;first_historical_data&quot;: null,
+   &quot;date_added&quot;: &quot;2026-08-11T16:24:36.000Z&quot;,
+   &quot;platform&quot;: {
+    &quot;name&quot;: &quot;X Layer&quot;,
+    &quot;token_address&quot;: &quot;0x2874A11805783324C54562eDB1A641C5d1d077a5&quot;
+   }
+  }
+ ],
+ &quot;map_rows&quot;: [
+  {
+   &quot;id&quot;: 41513,
+   &quot;name&quot;: &quot;Wrapped Morgan Stanley Tokenized Stock (xStock)&quot;,
+   &quot;symbol&quot;: &quot;wMSx&quot;,
+   &quot;slug&quot;: &quot;wrapped-morgan-stanley-tokenized-stock-xstock&quot;,
+   &quot;rank&quot;: null,
+   &quot;status&quot;: &quot;untracked&quot;,
+   &quot;platform&quot;: {
+    &quot;id&quot;: 216,
+    &quot;name&quot;: &quot;X Layer&quot;,
+    &quot;symbol&quot;: &quot;OKB&quot;,
+    &quot;slug&quot;: &quot;okb&quot;,
+    &quot;token_address&quot;: &quot;0x2874A11805783324C54562eDB1A641C5d1d077a5&quot;
+   }
+  }
+ ],
+ &quot;info_rows&quot;: [
+  {
+   &quot;id&quot;: 41513,
+   &quot;symbol&quot;: &quot;wMSx&quot;,
+   &quot;platform&quot;: {
+    &quot;id&quot;: &quot;3897&quot;,
+    &quot;name&quot;: &quot;OKB&quot;,
+    &quot;symbol&quot;: &quot;OKB&quot;,
+    &quot;slug&quot;: &quot;okb&quot;,
+    &quot;token_address&quot;: &quot;0x2874A11805783324C54562eDB1A641C5d1d077a5&quot;
+   },
+   &quot;date_added&quot;: &quot;2026-08-11T16:24:36.000Z&quot;,
+   &quot;status&quot;: &quot;inactive&quot;
+  }
+ ]
+}</pre></div></div>
+      </details>
+    </div>
+    <noscript><p class="note">The box above needs JavaScript to ask live; the answer shown is the committed run. The same question on your machine, live and keyless: <span class="mono">python3 -m shelfware MS</span>.</p></noscript>
   </div>
 </section>
 
-<section aria-labelledby="iss-h">
-  <h2 id="iss-h">Issuers, by shelf rate — declared is the registry's <span class="mono">num_tokens</span>, attached is what any underlying lists</h2>
-  <div class="card">
-    <table class="issuers">
-      <thead><tr><th>Issuer</th><th>Wrappers</th><th class="n">Shelf</th><th class="n hide-m">Declared</th><th class="n">Attached</th><th class="n">Tracked</th><th class="n hide-m">Live market cap</th></tr></thead>
-      <tbody><tr class="issuer"><td class="issuer-name"><details><summary>Dinari Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+<section id="issuers">
+  <div class="wrap">
+    <div class="kicker reveal">The scorecard</div>
+    <h2 class="reveal d1">One row per issuer. Grey is the shelf; green has a market.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The same pair, <b>772</b> times in Backed Assets' row. <b>Declared</b> is the registry's <span class="mono">num_tokens</span>; <b>attached</b> is what any underlying lists in <span class="mono">tokens[]</span>; <b>tracked</b> is <span class="mono">status == active</span> on the map; the shelf rate is untracked ÷ attached, beside the live market cap of what does trade. Sorted by shelf rate. Open an issuer for its two raw rows.</p>
+    <div class="tablewrap reveal" style="margin-top:28px">
+      <table class="pools issuers" aria-label="Issuers by shelf rate">
+        <thead><tr><th><span>issuer</span></th><th class="l"><span>wrappers</span></th><th><span>shelf</span></th><th class="hide-m"><span>declared</span></th><th><span>attached</span></th><th><span>tracked</span></th><th class="hide-m"><span>live market cap</span></th></tr></thead>
+        <tbody><tr class="issuer"><td class="issuer-name"><details><summary>Dinari Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
  &quot;name&quot;: &quot;Dinari Assets&quot;,
  &quot;website&quot;: &quot;https://dinari.com/&quot;,
  &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/5a59aaed_253f_4771_8e52_4ecc50ef127c_medium.jpg&quot;,
@@ -194,7 +855,7 @@ footer{border-top:1px solid var(--border);padding-top:20px;color:var(--muted);fo
  &quot;unresolved&quot;: 0,
  &quot;live_market_cap_usd&quot;: 669101579.01,
  &quot;shelf_rate&quot;: 0.8187
-}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Backed Assets: 140 tracked, 632 untracked, 0 other of 772"><span class="dim" style="width:81.9%"></span><span class="lit" style="width:18.1%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">82%</span></td><td class="n hide-m">1176</td><td class="n">772</td><td class="n">140</td><td class="n hide-m">$669M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>(no issuer)</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>null</pre><p class="ev">joined row</p><pre>{
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Backed Assets: 140 tracked, 632 untracked, 0 other of 772"><span class="dim" style="width:81.9%"></span><span class="lit" style="width:18.1%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">82%</span></td><td class="n hide-m">1,176</td><td class="n">772</td><td class="n">140</td><td class="n hide-m">$669M</td></tr><tr class="issuer"><td class="issuer-name"><details><summary>(no issuer)</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>null</pre><p class="ev">joined row</p><pre>{
  &quot;issuer_id&quot;: null,
  &quot;issuer_name&quot;: &quot;(no issuer)&quot;,
  &quot;declared&quot;: null,
@@ -325,9 +986,11 @@ footer{border-top:1px solid var(--border);padding-top:20px;color:var(--muted);fo
  &quot;live_market_cap_usd&quot;: 17404738.82,
  &quot;shelf_rate&quot;: 0.0
 }</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Backpack: 5 tracked, 0 untracked, 0 other of 5"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:100.0%"></span><span class="unk" style="width:0.0%"></span></div></td><td class="n"><span class="rate">0%</span></td><td class="n hide-m">7</td><td class="n">5</td><td class="n">5</td><td class="n hide-m">$17M</td></tr></tbody>
-    </table>
-    <details class="smaller"><summary>smaller issuers (16), fewer than 5 attached wrappers</summary>
-      <table class="issuers"><tbody><tr class="issuer"><td class="issuer-name"><details><summary>Superstate Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
+      </table>
+    </div>
+    <details class="smaller reveal">
+      <summary>smaller issuers (16) — fewer than 5 attached wrappers<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="fold"><div class="fold-clip"><div class="tablewrap" style="border:0;border-radius:0"><table class="pools issuers" aria-label="Smaller issuers"><tbody><tr class="issuer"><td class="issuer-name"><details><summary>Superstate Assets</summary><p class="ev">/v5/real-world-assets/issuers/list row</p><pre>{
  &quot;name&quot;: &quot;Superstate Assets&quot;,
  &quot;website&quot;: &quot;https://superstate.com/&quot;,
  &quot;logo&quot;: &quot;https://s2.coinmarketcap.com/static/img/issuer/Adobe_Express___file.png&quot;,
@@ -599,71 +1262,212 @@ footer{border-top:1px solid var(--border);padding-top:20px;color:var(--muted);fo
  &quot;unresolved&quot;: 0,
  &quot;live_market_cap_usd&quot;: 0.0,
  &quot;shelf_rate&quot;: null
-}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Swarm Assets: 0 tracked, 0 untracked, 0 other of 0"></div></td><td class="n"><span class="rate">—</span></td><td class="n hide-m">0</td><td class="n">0</td><td class="n">0</td><td class="n hide-m">$0</td></tr></tbody></table>
+}</pre></details></td><td class="barcell"><div class="bar small" role="img" aria-label="Swarm Assets: 0 tracked, 0 untracked, 0 other of 0"></div></td><td class="n"><span class="rate">—</span></td><td class="n hide-m">0</td><td class="n">0</td><td class="n">0</td><td class="n hide-m">$0</td></tr></tbody></table></div></div></div>
     </details>
+    <div class="types reveal d1"><div class="stat"><span class="stat-v">49%</span><span class="stat-l">stock — <b>606</b> of 1,244 wrappers on the shelf</span><div class="bar small" role="img" aria-label="stock: 606 of 1244 wrappers untracked"><span class="dim" style="width:48.7%"></span><span class="lit" style="width:51.1%"></span><span class="unk" style="width:0.2%"></span></div><span class="stat-l"><b>437</b> of 689 stock underlyings with no tracked wrapper (63%)</span></div><div class="stat"><span class="stat-v">38%</span><span class="stat-l">etf — <b>67</b> of 177 wrappers on the shelf</span><div class="bar small" role="img" aria-label="etf: 67 of 177 wrappers untracked"><span class="dim" style="width:37.9%"></span><span class="lit" style="width:61.6%"></span><span class="unk" style="width:0.6%"></span></div><span class="stat-l"><b>39</b> of 98 etf underlyings with no tracked wrapper (40%)</span></div><div class="stat"><span class="stat-v">0%</span><span class="stat-l">commodity — <b>0</b> of 14 wrappers on the shelf</span><div class="bar small" role="img" aria-label="commodity: 0 of 14 wrappers untracked"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:92.9%"></span><span class="unk" style="width:7.1%"></span></div><span class="stat-l"><b>0</b> of 4 commodity underlyings with no tracked wrapper (0%)</span></div></div>
+    <p class="note reveal" style="margin-top:18px">Stocks alone: <b>437 of 689</b> underlyings (63%) have no wrapper with a CMC-tracked market. <b>603</b> of the 673 shelf wrappers sit on X Layer — Arbitrum 27, Solana 18, Ethereum 16, Robinhood Chain 8. A 100 % shelf rate is printed in red because it is the one an allocator most needs to see; it is still a listing state, not a verdict on the issuer.</p>
   </div>
 </section>
 
-<section aria-labelledby="type-h">
-  <h2 id="type-h">By asset type — wrappers on the shelf, and underlyings with no tracked wrapper</h2>
-  <div class="types"><div class="card"><div class="t"><span>stock</span><b>49% shelf</b></div><div class="bar small" role="img" aria-label="stock: 606 of 1244 wrappers untracked"><span class="dim" style="width:48.7%"></span><span class="lit" style="width:51.1%"></span><span class="unk" style="width:0.2%"></span></div><p class="sub" style="margin-top:8px"><b class="mono">606</b> of 1244 wrappers untracked · <b class="mono">437</b> of 689 underlyings with no tracked wrapper (63%)</p></div><div class="card"><div class="t"><span>etf</span><b>38% shelf</b></div><div class="bar small" role="img" aria-label="etf: 67 of 177 wrappers untracked"><span class="dim" style="width:37.9%"></span><span class="lit" style="width:61.6%"></span><span class="unk" style="width:0.6%"></span></div><p class="sub" style="margin-top:8px"><b class="mono">67</b> of 177 wrappers untracked · <b class="mono">39</b> of 98 underlyings with no tracked wrapper (40%)</p></div><div class="card"><div class="t"><span>commodity</span><b>0% shelf</b></div><div class="bar small" role="img" aria-label="commodity: 0 of 14 wrappers untracked"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:92.9%"></span><span class="unk" style="width:7.1%"></span></div><p class="sub" style="margin-top:8px"><b class="mono">0</b> of 14 wrappers untracked · <b class="mono">0</b> of 4 underlyings with no tracked wrapper (0%)</p></div></div>
-</section>
-
-<section aria-labelledby="delta-h">
-  <h2 id="delta-h">Since the previous snapshot</h2>
-  <div class="card"><div class="stat"><div><div class="v">+0</div><div class="l">newly tracked (untracked → active)</div></div><div><div class="v">+0</div><div class="l">newly shelved (active → untracked)</div></div><div><div class="v">+0</div><div class="l">new wrappers · 0 gone · 0 other flips</div></div></div><p class="sub" style="margin-top:10px"><span class="mono">2026-09-18T22:16:17Z</span> → <span class="mono">2026-09-19T01:15:23Z</span> · wrappers 1435 → 1435 · untracked 673 → 673</p></div>
-</section>
-
-<section aria-labelledby="age-h">
-  <h2 id="age-h">Ages</h2>
-  <div class="card stat">
-    <div><div class="v">80 d</div><div class="l">median age of what trades (p10 24 · p90 380 · n=757 tracked wrappers, from <span class="mono">first_historical_data</span>)</div></div>
-    <div><div class="v">38 d</div><div class="l">median time on the shelf (p10 38 · p90 100 · n=673 untracked wrappers, since <span class="mono">date_added</span> — the listing day, not a market day)</div></div>
-    <div><div class="v">603</div><div class="l">of 673 shelf wrappers sit on X Layer — Arbitrum 27, Solana 18, Ethereum 16, Robinhood Chain 8</div></div>
+<section id="census">
+  <div class="wrap">
+    <div class="kicker reveal">The census</div>
+    <h2 class="reveal d1">7,811 underlyings, 1,435 wrappers, one join, 5 credits.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">Every underlying in the RWA map, the full wrapper roster of the 791 flagged <span class="mono">has_tokens: true</span> — null-price rows included — and each wrapper joined on <span class="mono">crypto_id</span> to its row on the cryptocurrency map across <span class="mono">active, inactive, untracked</span>. Live 2026-09-18, 54 calls, 40.9 s.</p>
+    <div class="statband reveal">
+      <div class="stat"><span class="stat-v">791</span><span class="stat-l">underlyings flagged has_tokens: true</span></div>
+      <div class="stat"><span class="stat-v orange">476</span><span class="stat-l">of them with no wrapper with a CMC-tracked market</span></div>
+      <div class="stat"><span class="stat-v">673</span><span class="stat-l">of 1,435 wrappers on the shelf — 47 %</span></div>
+      <div class="stat"><span class="stat-v purple">4</span><span class="stat-l">ids on no public CMC surface — shown, never counted</span></div>
+      <div class="stat"><span class="stat-v green">0</span><span class="stat-l">exceptions to price == null ⇔ untracked, 1,431 resolved wrappers</span></div>
+    </div>
+    <p class="note reveal" style="margin-top:18px">The rule is the conservative one: an underlying counts only when <b>every</b> attached wrapper is <span class="mono">untracked</span>; the loose rule ("no active wrapper") gives 476 today and is never headlined. What trades is young — median <b>80 d</b> since <span class="mono">first_historical_data</span> (p10 24 · p90 380 · n=757) — and the shelf is younger still: median <b>38 d</b> since <span class="mono">date_added</span> (p10 38 · p90 100 · n=673), a listing day, not a market day.</p>
   </div>
 </section>
 
-<section aria-labelledby="lim-h">
-  <h2 id="lim-h">Limits — read before quoting</h2>
-  <div class="card"><ul class="limits">
-    <li><b>"untracked" is CoinMarketCap's listing state</b>, quoted from its map documentation: <em>"registered cryptocurrency projects that are listed but do not yet meet methodology requirements to have tracked markets"</em>. It means <b>listed, no CMC-tracked market</b>. It does not mean never traded anywhere: Dinari dShares trade on Dinari's own venue, and some wrappers may sit in pools CMC does not index. The number is about CoinMarketCap's coverage of what CoinMarketCap calls tokenised — which is exactly why it can be re-derived.</li>
-    <li><b>4 wrapper ids do not resolve</b> on any public CMC surface (39318 SILVER, 39002 HOOD, 39839 QQQ, 42326 APLD). They are shown in their own bucket and excluded from every count.</li>
-    <li><b>The RWA endpoints need a key</b> (keyless → 403 error 1005). The roster leg on this page is live through the site's proxy while its key has credits, otherwise the committed snapshot of 2026-09-18 22:16 UTC, labelled. The state leg is keyless and live for anyone.</li>
-    <li><b>The map's symbol filter rejects CMC's own dotted symbols</b> (NVDA.D, AI.FRx — 38 wrappers). Those take their live state from <span class="mono">/v2/cryptocurrency/info</span> (active / inactive) and the map's finer word from the committed snapshot; each row says which.</li>
-    <li><b>The census is a daily series, not a history.</b> Untracked map rows carry no dates; the series started 2026-09-18 and the delta panel shows what moved between the two latest days.</li>
-    <li><b><span class="mono">num_tokens</span> is undocumented.</b> It is shown as "declared by the registry" and never substituted for attached wrappers (Backed declares 1176, 772 are attached).</li>
-  </ul></div>
-</section>
-
-<section class="receipt" aria-labelledby="rec-h">
-  <h2 id="rec-h">Receipt — the committed census, 2026-09-18T22:16:17Z</h2>
-  <div class="card">
-    <table><thead><tr><th>Endpoint</th><th class="n">Calls</th><th class="n">HTTP</th><th class="n">Keyed credits</th><th class="n hide-m">Bytes</th><th class="hide-m">First sha256</th></tr></thead>
-    <tbody><tr><td class="mono">/v1/key/info</td><td class="n">2</td><td class="n">200</td><td class="n">0</td><td class="n hide-m">988</td><td class="mono hide-m">ff8e91d04a06e7c2</td></tr><tr><td class="mono">/v5/real-world-assets/map</td><td class="n">32</td><td class="n">200</td><td class="n">0</td><td class="n hide-m">2,035,346</td><td class="mono hide-m">ea6b30df3278bd8b</td></tr><tr><td class="mono">/v5/real-world-assets/quotes/latest</td><td class="n">4</td><td class="n">200</td><td class="n">4</td><td class="n hide-m">823,434</td><td class="mono hide-m">400d85ed20bf2d20</td></tr><tr><td class="mono">/v5/real-world-assets/issuers/list</td><td class="n">1</td><td class="n">200</td><td class="n">1</td><td class="n hide-m">4,321</td><td class="mono hide-m">a39a35f4301375f5</td></tr><tr><td class="mono">/public-api/v1/cryptocurrency/map <span class="pill off">keyless</span></td><td class="n">9</td><td class="n">200</td><td class="n">0 to any key</td><td class="n hide-m">9,497,023</td><td class="mono hide-m">88aa8cae65749490</td></tr><tr><td class="mono">/public-api/v2/cryptocurrency/info <span class="pill off">keyless</span></td><td class="n">6</td><td class="n">200,400</td><td class="n">0 to any key</td><td class="n hide-m">579,404</td><td class="mono hide-m">e541f37029dbf103</td></tr></tbody></table>
-    <p class="ev">40.9 s wall clock · 39 keyed calls = 5 credits · 15 keyless calls = 0 credits to any key · key usage before/after from /v1/key/info: 12020 → 12025 · every call: <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/live_run.json">docs/proof/live_run.json</a></p>
-    <details><summary>re-derive the headline by hand</summary><pre>jq '[.wrappers[] | select(.status=="untracked")] | length' data/census.json   # wrappers on the shelf -> untracked
-jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .status=="untracked"))) | length' data/census.json   # underlyings with zero tracked wrapper -> underlyings_zero_tracked</pre></details>
+<section id="receipt">
+  <div class="wrap">
+    <div class="kicker reveal">The receipt</div>
+    <h2 class="reveal d1">Every number on this page came from a call you can replay.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The census's 54 calls — URL, HTTP status, <span class="mono">credit_count</span>, bytes, sha256, UTC — are in <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/live_run.json" target="_blank" rel="noopener noreferrer">live_run.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>; the ticker answer's are in <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/ms.json" target="_blank" rel="noopener noreferrer">ms.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>. The grid below follows the answer: type a ticker and it updates.</p>
+    <div class="receipt" id="receipt-grid"><div><div class="k">endpoint</div><div class="v"><span class="mono">/public-api/v1/cryptocurrency/map</span> · <span class="mono">/public-api/v2/cryptocurrency/info</span></div></div><div><div class="k">calls</div><div class="v">2 · HTTP 200 · 2 keyless</div></div><div><div class="k">credits used</div><div class="v"><span class="mono">0</span> — none — the state leg is CoinMarketCap's keyless /public-api surface; the roster from the committed snapshot of 2026-09-18</div></div><div><div class="k">captured</div><div class="v"><span class="mono">2026-09-18T22:43:39Z</span> · 1.25 s across the calls</div></div><div><div class="k">first call sha256</div><div class="v"><span class="mono">d7e1ecdef293e6c8</span></div></div><div><div class="k">first request</div><div class="v"><a class="mono" href="https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active%2Cinactive%2Cuntracked&amp;symbol=wMSx&amp;aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform" target="_blank" rel="noopener noreferrer">https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active%2Cinactive%2Cuntracked&amp;symbol=wMSx&amp;aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></div><div><div class="k">re-derive</div><div class="v"><span class="mono">python3 -m shelfware MS</span> · <a href="https://github.com/edycutjong/shelfware/tree/main/docs/proof" target="_blank" rel="noopener noreferrer">docs/proof/<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a> · <a href="#calls">every call ↓</a></div></div></div>
+    <details class="calls" id="calls">
+      <summary>every call behind this answer<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="fold"><div class="fold-clip"><div class="rowlist" id="calls-list"><table><thead><tr><th>call</th><th>http</th><th>key</th><th>credits</th><th>ms</th><th>sha256</th><th>utc</th></tr></thead><tbody><tr><td>cmc/map symbol=wMSx</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">491</td><td class="mono">d7e1ecdef293e6c8</td><td class="mono">2026-09-18T22:43:39Z</td></tr><tr><td>cmc/info batch 1 (1 ids)</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">762</td><td class="mono">1559b2c185ccabe8</td><td class="mono">2026-09-18T22:43:39Z</td></tr></tbody></table></div></div></div>
+    </details>
+    <details class="calls reveal">
+      <summary>every call of the census — 54, 2026-09-18 22:16:17 UTC<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="fold"><div class="fold-clip"><div class="rowlist"><table><thead><tr><th>#</th><th>call</th><th>http</th><th>key</th><th>credit_count</th><th>bytes</th><th>sha256</th><th>utc</th></tr></thead><tbody><tr><td class="mono">1</td><td>key/info</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">494</td><td class="mono">ff8e91d04a06e7c2</td><td class="mono">2026-09-18T22:15:36Z</td></tr><tr><td class="mono">2</td><td>rwa/map start=1</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">58,873</td><td class="mono">ea6b30df3278bd8b</td><td class="mono">2026-09-18T22:15:37Z</td></tr><tr><td class="mono">3</td><td>rwa/map start=251</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">61,602</td><td class="mono">e2ac73580932293c</td><td class="mono">2026-09-18T22:15:37Z</td></tr><tr><td class="mono">4</td><td>rwa/map start=501</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">61,084</td><td class="mono">242d2df8a8e18b50</td><td class="mono">2026-09-18T22:15:37Z</td></tr><tr><td class="mono">5</td><td>rwa/map start=751</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">60,232</td><td class="mono">1d329f32aa931983</td><td class="mono">2026-09-18T22:15:38Z</td></tr><tr><td class="mono">6</td><td>rwa/map start=1001</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">58,276</td><td class="mono">1370ac72c88890dd</td><td class="mono">2026-09-18T22:15:38Z</td></tr><tr><td class="mono">7</td><td>rwa/map start=1251</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">58,289</td><td class="mono">9a22cb87fbf90778</td><td class="mono">2026-09-18T22:15:38Z</td></tr><tr><td class="mono">8</td><td>rwa/map start=1501</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">57,770</td><td class="mono">bffb4b938bf83083</td><td class="mono">2026-09-18T22:15:39Z</td></tr><tr><td class="mono">9</td><td>rwa/map start=1751</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">58,167</td><td class="mono">8c1390e65e7eecac</td><td class="mono">2026-09-18T22:15:40Z</td></tr><tr><td class="mono">10</td><td>rwa/map start=2001</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">62,204</td><td class="mono">298db3230caf93db</td><td class="mono">2026-09-18T22:15:40Z</td></tr><tr><td class="mono">11</td><td>rwa/map start=2251</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">63,653</td><td class="mono">eff09bf374709181</td><td class="mono">2026-09-18T22:15:40Z</td></tr><tr><td class="mono">12</td><td>rwa/map start=2501</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">63,718</td><td class="mono">d3704bde2e0b40ac</td><td class="mono">2026-09-18T22:15:40Z</td></tr><tr><td class="mono">13</td><td>rwa/map start=2751</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">63,733</td><td class="mono">24a35966b02460d9</td><td class="mono">2026-09-18T22:15:41Z</td></tr><tr><td class="mono">14</td><td>rwa/map start=3001</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">63,235</td><td class="mono">ea63c464f641b4ca</td><td class="mono">2026-09-18T22:15:41Z</td></tr><tr><td class="mono">15</td><td>rwa/map start=3251</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">63,653</td><td class="mono">86861d76fdf0666c</td><td class="mono">2026-09-18T22:15:41Z</td></tr><tr><td class="mono">16</td><td>rwa/map start=3501</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">63,557</td><td class="mono">a95f02567a42c322</td><td class="mono">2026-09-18T22:15:42Z</td></tr><tr><td class="mono">17</td><td>rwa/map start=3751</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">63,519</td><td class="mono">773cd0747a9f061c</td><td class="mono">2026-09-18T22:15:42Z</td></tr><tr><td class="mono">18</td><td>rwa/map start=4001</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">63,431</td><td class="mono">8c03da9abed0dbb9</td><td class="mono">2026-09-18T22:15:42Z</td></tr><tr><td class="mono">19</td><td>rwa/map start=4251</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">67,730</td><td class="mono">9e4bf4f0452bd75e</td><td class="mono">2026-09-18T22:15:42Z</td></tr><tr><td class="mono">20</td><td>rwa/map start=4501</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">68,039</td><td class="mono">fb299071ad38cef4</td><td class="mono">2026-09-18T22:15:43Z</td></tr><tr><td class="mono">21</td><td>rwa/map start=4751</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">67,215</td><td class="mono">cbdf6867e28f4def</td><td class="mono">2026-09-18T22:15:43Z</td></tr><tr><td class="mono">22</td><td>rwa/map start=5001</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">69,907</td><td class="mono">a184aad800f87a2e</td><td class="mono">2026-09-18T22:15:43Z</td></tr><tr><td class="mono">23</td><td>rwa/map start=5251</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">73,318</td><td class="mono">c7ba35d0dff10f67</td><td class="mono">2026-09-18T22:15:44Z</td></tr><tr><td class="mono">24</td><td>rwa/map start=5501</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">72,280</td><td class="mono">84d6c5993e9c80ee</td><td class="mono">2026-09-18T22:15:44Z</td></tr><tr><td class="mono">25</td><td>rwa/map start=5751</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">69,339</td><td class="mono">705f96d425cacfb4</td><td class="mono">2026-09-18T22:15:44Z</td></tr><tr><td class="mono">26</td><td>rwa/map start=6001</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">63,308</td><td class="mono">d45f956d1cd6f49e</td><td class="mono">2026-09-18T22:15:44Z</td></tr><tr><td class="mono">27</td><td>rwa/map start=6251</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">69,704</td><td class="mono">9089eeb89ba4b354</td><td class="mono">2026-09-18T22:15:45Z</td></tr><tr><td class="mono">28</td><td>rwa/map start=6501</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">66,082</td><td class="mono">abcef8575f91a4eb</td><td class="mono">2026-09-18T22:15:45Z</td></tr><tr><td class="mono">29</td><td>rwa/map start=6751</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">67,406</td><td class="mono">9278c208953cc36d</td><td class="mono">2026-09-18T22:15:45Z</td></tr><tr><td class="mono">30</td><td>rwa/map start=7001</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">72,207</td><td class="mono">3ba530e9fe787e15</td><td class="mono">2026-09-18T22:15:45Z</td></tr><tr><td class="mono">31</td><td>rwa/map start=7251</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">73,054</td><td class="mono">d1d6b3f6c00dd444</td><td class="mono">2026-09-18T22:15:46Z</td></tr><tr><td class="mono">32</td><td>rwa/map start=7501</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">72,611</td><td class="mono">673c55e6de73cae2</td><td class="mono">2026-09-18T22:15:46Z</td></tr><tr><td class="mono">33</td><td>rwa/map start=7751</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">18,150</td><td class="mono">355ab2435b3d4e6c</td><td class="mono">2026-09-18T22:15:47Z</td></tr><tr><td class="mono">34</td><td>rwa/quotes batch 1 (200 ids)</td><td class="mono">200</td><td>keyed</td><td class="mono">1</td><td class="mono">287,907</td><td class="mono">400d85ed20bf2d20</td><td class="mono">2026-09-18T22:15:47Z</td></tr><tr><td class="mono">35</td><td>rwa/quotes batch 2 (200 ids)</td><td class="mono">200</td><td>keyed</td><td class="mono">1</td><td class="mono">185,927</td><td class="mono">dd7861e6c00965b5</td><td class="mono">2026-09-18T22:15:48Z</td></tr><tr><td class="mono">36</td><td>rwa/quotes batch 3 (200 ids)</td><td class="mono">200</td><td>keyed</td><td class="mono">1</td><td class="mono">170,735</td><td class="mono">21d53742a721d156</td><td class="mono">2026-09-18T22:15:48Z</td></tr><tr><td class="mono">37</td><td>rwa/quotes batch 4 (191 ids)</td><td class="mono">200</td><td>keyed</td><td class="mono">1</td><td class="mono">178,865</td><td class="mono">f0729c077531d12f</td><td class="mono">2026-09-18T22:15:48Z</td></tr><tr><td class="mono">38</td><td>rwa/issuers/list</td><td class="mono">200</td><td>keyed</td><td class="mono">1</td><td class="mono">4,321</td><td class="mono">a39a35f4301375f5</td><td class="mono">2026-09-18T22:15:49Z</td></tr><tr><td class="mono">39</td><td>cmc/map start=1</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">882,615</td><td class="mono">88aa8cae65749490</td><td class="mono">2026-09-18T22:15:49Z</td></tr><tr><td class="mono">40</td><td>cmc/map start=5001</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">1,144,847</td><td class="mono">5c4d0d28ef3eff3c</td><td class="mono">2026-09-18T22:16:06Z</td></tr><tr><td class="mono">41</td><td>cmc/map start=10001</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">1,235,492</td><td class="mono">d63e2f26f5a01419</td><td class="mono">2026-09-18T22:16:08Z</td></tr><tr><td class="mono">42</td><td>cmc/map start=15001</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">1,205,945</td><td class="mono">263ecf818f31a6a7</td><td class="mono">2026-09-18T22:16:10Z</td></tr><tr><td class="mono">43</td><td>cmc/map start=20001</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">1,214,243</td><td class="mono">8d4875d6aabcbeec</td><td class="mono">2026-09-18T22:16:12Z</td></tr><tr><td class="mono">44</td><td>cmc/map start=25001</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">1,292,231</td><td class="mono">5cc675d253d7e1f7</td><td class="mono">2026-09-18T22:16:13Z</td></tr><tr><td class="mono">45</td><td>cmc/map start=30001</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">1,369,366</td><td class="mono">3ad7704121b014ca</td><td class="mono">2026-09-18T22:16:14Z</td></tr><tr><td class="mono">46</td><td>cmc/map start=35001</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">1,151,288</td><td class="mono">1d07ff0fc0d6e00f</td><td class="mono">2026-09-18T22:16:14Z</td></tr><tr><td class="mono">47</td><td>cmc/map symbol=VVV</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">996</td><td class="mono">bca7d761d3025adb</td><td class="mono">2026-09-18T22:16:15Z</td></tr><tr><td class="mono">48</td><td>cmc/info batch 1 (200 ids)</td><td class="mono">400</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">174</td><td class="mono">e541f37029dbf103</td><td class="mono">2026-09-18T22:16:15Z</td></tr><tr><td class="mono">49</td><td>cmc/info batch 1 (197 ids)</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">169,802</td><td class="mono">9b328e074316828d</td><td class="mono">2026-09-18T22:16:16Z</td></tr><tr><td class="mono">50</td><td>cmc/info batch 2 (200 ids)</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">157,395</td><td class="mono">be2b46ff6606a4bd</td><td class="mono">2026-09-18T22:16:16Z</td></tr><tr><td class="mono">51</td><td>cmc/info batch 3 (200 ids)</td><td class="mono">400</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">162</td><td class="mono">7dd8467eb3688a95</td><td class="mono">2026-09-18T22:16:16Z</td></tr><tr><td class="mono">52</td><td>cmc/info batch 3 (199 ids)</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">156,467</td><td class="mono">37f18d28ba2263ac</td><td class="mono">2026-09-18T22:16:16Z</td></tr><tr><td class="mono">53</td><td>cmc/info batch 4 (77 ids)</td><td class="mono">200</td><td>keyless</td><td class="mono">0 to any key</td><td class="mono">95,404</td><td class="mono">95031f98a23bb671</td><td class="mono">2026-09-18T22:16:17Z</td></tr><tr><td class="mono">54</td><td>key/info</td><td class="mono">200</td><td>keyed</td><td class="mono">0</td><td class="mono">494</td><td class="mono">e693f1d0c7dd72bf</td><td class="mono">2026-09-18T22:16:17Z</td></tr></tbody></table></div><p class="note" style="margin:0 14px 14px">39 keyed calls = 5 credits, read off <span class="mono">/v1/key/info</span> before and after: 12020 → 12025 credits used this month. 15 keyless calls, charged to no key. Re-derive both headline numbers by hand:</p><pre class="json" style="max-height:none">jq &#x27;[.wrappers[] | select(.status==&quot;untracked&quot;)] | length&#x27; data/census.json   # wrappers on the shelf -&gt; untracked
+jq &#x27;.wrappers | group_by(.rwa_id) | map(select(all(.[]; .status==&quot;untracked&quot;))) | length&#x27; data/census.json   # underlyings with zero tracked wrapper -&gt; underlyings_zero_tracked</pre></div></div>
+    </details>
+    <div class="proof reveal"><a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/ms.json" target="_blank" rel="noopener noreferrer"><div class="f">docs/proof/ms.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></div><div class="m">MS · the keyless run · 0 of 1 wrapper(s) with a CMC-tracked market · 2026-09-18 22:43:39 UTC</div></a><a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/live_run.json" target="_blank" rel="noopener noreferrer"><div class="f">docs/proof/live_run.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></div><div class="m">the census · 54 calls · 5 credits · 40.9 s · 2026-09-18 22:16:17 UTC</div></a><a href="https://github.com/edycutjong/shelfware/blob/main/data/census.json" target="_blank" rel="noopener noreferrer"><div class="f">data/census.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></div><div class="m">every wrapper with its underlying, issuer, price, state, chain, listing date · 1,435 rows · the jq filters run here</div></a><a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/bench.json" target="_blank" rel="noopener noreferrer"><div class="f">docs/proof/bench.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></div><div class="m">p50 552 ms · p95 603 ms keyless (n=9) · the join 1.94 ms · 2026-09-18 22:55:13 UTC</div></a></div>
   </div>
 </section>
+
+<section id="api">
+  <div class="wrap">
+    <div class="kicker reveal">The API</div>
+    <h2 class="reveal d1">Six endpoints. Two of them are the whole join.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The wrapper roster with its null-price rows exists in one place: <span class="mono">tokens[]</span> on <span class="mono">/v5/real-world-assets/quotes/latest</span>. The listing state that explains the nulls exists in one place: <span class="mono">status</span> on <span class="mono">/v1/cryptocurrency/map</span>. Delete CoinMarketCap and both ledgers vanish — no single endpoint says a wrapper has no market; only the join does.</p>
+    <div class="card reveal" style="margin-top:32px;padding:0 24px">
+      <div class="scroll-x">
+      <table class="api">
+        <thead><tr><th>endpoint</th><th>used for</th><th>key</th><th class="n">calls behind this page</th></tr></thead>
+        <tbody><tr class=""><td><code>/v5/real-world-assets/map</code></td><td>the universe — every underlying, has_tokens, rwa_rank, asset_type</td><td class="key">keyed · 0 credits</td><td class="n">32</td></tr><tr class="engine"><td><code>/v5/real-world-assets/quotes/latest</code></td><td>tokens[] — the wrapper roster including the price: null rows the RWA pages hide; issuer_id and crypto_id per wrapper</td><td class="key">keyed · 1 credit / 250 assets</td><td class="n">4</td></tr><tr class=""><td><code>/v5/real-world-assets/issuers/list</code></td><td>the issuer registry with its declared num_tokens</td><td class="key">keyed · 1 credit</td><td class="n">1</td></tr><tr class="engine"><td><code>/public-api/v1/cryptocurrency/map</code></td><td>listing state per wrapper across active, inactive, untracked; platform and address — the join&#x27;s other half</td><td class="key">none</td><td class="n">10</td></tr><tr class=""><td><code>/public-api/v2/cryptocurrency/info</code></td><td>date_added — the day a shelf wrapper was listed; state for the dotted symbols the map filter rejects</td><td class="key">none</td><td class="n">7</td></tr><tr class=""><td><code>/v1/key/info</code></td><td>the credit ledger before and after a census, so the receipt&#x27;s credit count is CoinMarketCap&#x27;s, not ours</td><td class="key">keyed · 0 credits</td><td class="n">2</td></tr><tr class="unused"><td><code>/v5/real-world-assets/market-pairs/list</code></td><td>not used — documented as Basic, answered 403 error 1006 on the Startup plan; tried, recorded in FEEDBACK.md §3, not built on</td><td class="key">plan-gated</td><td class="n">0 — refused</td></tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="findings">
+      <div class="card finding reveal">
+        <div class="k">finding 1 · the symbol filter</div>
+        <div class="v orange">38 wrappers</div>
+        <p>The map's <span class="mono">symbol=</span> filter rejects symbols CoinMarketCap itself assigns — <span class="mono">NVDA.D</span>, <span class="mono">AI.FRx</span> — with <b>HTTP 400 for the whole call</b>, and the map has no <span class="mono">id=</span> filter to fall back to. Those rows take their live state from <span class="mono">/v2/cryptocurrency/info?id=</span>, whose vocabulary is coarser; each row names both sources.</p>
+      </div>
+      <div class="card finding reveal d1">
+        <div class="k">finding 2 · the anonymous tier</div>
+        <div class="v">p50 552 ms · 1 of 10</div>
+        <p>Ten tickers keyless in a tight loop: nine answered in about half a second, the tenth got <b>429 error 1011</b> after ~20 calls in 15 s, with no <span class="mono">Retry-After</span>. A shared cloud egress IP is refused outright (error 1022). The proxy repeats a refused call keyed and labels the row; the CLI backs off and exits 75.</p>
+      </div>
+      <div class="card finding reveal d2">
+        <div class="k">finding 3 · ids on no surface</div>
+        <div class="v purple">4 of 1,435</div>
+        <p><span class="mono">tokens[]</span> carries ids the map and the info endpoint both deny exist (39318 SILVER, 39002 HOOD, 39839 QQQ, 42326 APLD — null symbols). Counting them as shelf would inflate the headline; <b>they sit in their own bucket and are counted nowhere</b>, and the property test holds that rule over 500 generated ledgers.</p>
+      </div>
+    </div>
+    <p class="note reveal" style="margin-top:18px">12 dated, evidenced findings for the CoinMarketCap team — and what is worth protecting — in <a href="https://github.com/edycutjong/shelfware/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">FEEDBACK.md<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>. Every endpoint the client calls is named above; <span class="mono">tests/test_render_site.py</span> holds this page to the six, and a seventh that was tried and refused is listed rather than hidden.</p>
+  </div>
+</section>
+
+<section id="run">
+  <div class="wrap">
+    <div class="kicker reveal">Run it before you score it</div>
+    <h2 class="reveal d1">No key. No install. About half a second.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The judged capability is a stdlib-only module against the keyless surface: <span class="mono">python3 -m shelfware MS</span> prints every wrapper, its issuer, chain and listing state, then the receipt line. The transcript is the command's own output, rendered from the receipt that run wrote — <span class="mono">docs/proof/ms.json</span>, 2026-09-18 22:43:39 UTC. Your timings will differ.</p>
+    <div class="term reveal">
+      <div class="bar"><i></i><i></i><i></i><span>shelfware — keyless</span><button class="copy" id="copy-cmd" type="button" data-copy="git clone https://github.com/edycutjong/shelfware.git && cd shelfware && python3 -m shelfware MS" aria-label="Copy the command">copy</button></div>
+      <pre id="cmd"><span class="p">$</span> <span class="cmd">git clone https://github.com/edycutjong/shelfware.git &amp;&amp; cd shelfware</span>
+<span class="p">$</span> <span class="cmd">python3 -m shelfware MS</span>
+<span class="bl">shelfware MS — does it have a wrapper that trades, and whose?</span>
+
+  MS  Morgan Stanley · stock · rwa_rank 43 · has_tokens: true
+      roster: snapshot 2026-09-18T22:16:17Z (the RWA endpoints need a key; export CMC_API_KEY to go live)
+      ▒ wMSx  Wrapped Morgan Stanley Tokenized Stock (xStock)
+          issuer   Backed Assets  6878977dcbbf471de3366e85
+          chain    X Layer  0x2874A11805783324C54562eDB1A641C5d1d077a5
+          price    null · market_cap null · volume_24h null
+          status   <span class="hi">UNTRACKED</span>      ← /public-api/v1/cryptocurrency/map, live, keyless, 0 credits
+                   &quot;listed, no CMC-tracked market&quot; — CMC: registered cryptocurrency projects that are listed but do not yet meet methodology requirements to have tracked markets
+                   listed 2026-08-11 (date_added) · 38 days on the shelf
+
+<span class="hi">  0 of 1 wrapper(s) with a CMC-tracked market</span>
+
+<span class="dim">receipt: cmc/map symbol=wMSx → <span class="ok">HTTP 200</span> · keyless · 0 credits to any key · 491 ms · sha256 d7e1ecdef293e6c8  |  cmc/info batch 1 (1 ids) → <span class="ok">HTTP 200</span> · keyless · 0 credits to any key · 762 ms · sha256 1559b2c185ccabe8</span></pre>
+    </div>
+    <div class="runs reveal d1"><div class="run"><div class="t">2026-09-18 22:16 UTC</div><div class="v">476</div><div class="m">of 791 underlyings with no tracked wrapper · 673 of 1,435 wrappers on the shelf · 5 credits · 40.9 s · <a href="https://github.com/edycutjong/shelfware/blob/main/data/snapshots/2026-09-18.json" target="_blank" rel="noopener noreferrer">2026-09-18.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></div><div class="run"><div class="t">2026-09-19 01:15 UTC</div><div class="v">476</div><div class="m">of 791 underlyings with no tracked wrapper · 673 of 1,435 wrappers on the shelf · 5 credits · 22.6 s · since the day before: +0 tracked · +0 shelved · +0 new · 0 gone · <a href="https://github.com/edycutjong/shelfware/blob/main/data/snapshots/2026-09-19.json" target="_blank" rel="noopener noreferrer">2026-09-19.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></div></div>
+    <p class="note reveal" style="margin-top:18px">2 daily snapshots so far, taken by <span class="mono">scripts/snapshot.py</span>; the delta between the two latest days is a real zero, printed as one. Also in the repository: <b>121 tests</b> (104 offline, 11 for the proxy functions, 6 live), a property test over <b>500 generated ledgers</b> with 0 violations of the counting rules, and a join that recounts the 1,435 committed wrappers in <b>1.94 ms</b> (p95 2.22 ms, n=200). The whole keyless question, MS to receipt: p50 <b>552 ms</b>, p95 603 ms (n=9, <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/bench.json" target="_blank" rel="noopener noreferrer">bench.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>).</p>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap">
+    <div class="kicker reveal">Questions a judge will ask</div>
+    <h2 class="reveal d1">Honest limits.</h2>
+    <div class="faq">
+      <details class="reveal">
+        <summary>Is this page live?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>The census and the MS answer are committed runs — 2026-09-18 22:16:17 UTC and 2026-09-18 22:43:39 UTC — and say so on every number. The ticker box is live through two proxy functions: the roster leg keyed on the site's key (or the committed snapshot, labelled), the state leg keyless. The proxy shares one IP against a per-IP anonymous limit, so a 429 is shown as a 429 with the command to run instead; the CLI is the primary live path, and every reader has their own quota there.</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>What does "untracked" mean?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>It is CoinMarketCap's listing state, quoted from its map documentation: <em>"registered cryptocurrency projects that are listed but do not yet meet methodology requirements to have tracked markets"</em>. On this page it reads <b>listed, no CMC-tracked market</b>. It does not mean never traded anywhere: Dinari dShares trade on Dinari's own venue, and some wrappers may sit in pools CMC does not index. The number is about CoinMarketCap's coverage of what CoinMarketCap calls tokenised — which is exactly why it can be re-derived. The spike that settled the wording is <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/spike.json" target="_blank" rel="noopener noreferrer">spike.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>.</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>Why MS?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>A rule, not a pick: the most prominent tokenised underlying on CoinMarketCap (lowest rwa_rank) whose every wrapper is untracked — MS, rank 43, the only all-shelf underlying inside CMC's top 50. Next in line: APH (80), GILD (83), WELL (94), UNP (95). If tomorrow's census promotes its wrapper to <span class="mono">active</span>, the rule moves on and the delta panel shows the flip — a shelf wrapper coming alive is the strongest proof the census is live.</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>Which rows are not counted?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>4 wrapper ids resolve on no public CMC surface (39318 SILVER, 39002 HOOD, 39839 QQQ, 42326 APLD); they are shown in their own bucket and excluded from every count. 38 wrappers carry a dotted symbol the map filter rejects; their live state comes from <span class="mono">/v2/cryptocurrency/info</span> and the map's finer word from the committed snapshot, and each row says which. <span class="mono">num_tokens</span> on the issuer registry is undocumented, so it is shown as "declared" and never substituted for attached (Backed declares 1176, 772 are attached).</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>How old is the series?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>A daily series, not a history: 2026-09-18, 2026-09-19. Untracked map rows carry no dates of their own, so the only time axis is the snapshot series this repository records; <span class="mono">date_added</span> from the info endpoint is a listing day, not a market day. The roster leg needs a key (the RWA family answers keyless calls with 403 error 1005); without one it is a dated snapshot, labelled on the row, and the state leg is live regardless.</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>What is not built?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>No price charts, no wrapper-versus-underlying spread, no portfolio, no alerts, no watchlists, no model, no chain, no wallet, no LLM. The product counts the shelf and answers a ticker beside its raw rows; that verb is the whole scope, and the rule that produces the number is printed, never widened.</p></div></div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="go-final">
+  <div class="wrap">
+    <div class="kicker reveal">The boolean is not the market</div>
+    <h2 class="reveal d1">Type a ticker you hold.</h2>
+    <div class="cta-row reveal d2">
+      <a class="btn btn-primary" href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer"><svg class="gh-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Open the repository <span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="btn btn-judge" href="/judge">For judges <span class="sub">· the 30-second path</span><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn" href="/pitch/">The deck <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+</main>
 
 <footer>
-  <span>Built on the CoinMarketCap API for <a href="https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail" target="_blank" rel="noopener noreferrer">Build with CMC</a> · Real World Assets</span>
-  <a href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">Repository</a>
-  <a href="https://github.com/edycutjong/shelfware/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">API feedback</a>
-  <a href="https://github.com/edycutjong/shelfware/blob/main/docs/METHOD.md" target="_blank" rel="noopener noreferrer">Method</a>
-  <a href="/pitch/">Pitch deck</a>
-  <a href="https://shelfware-cmc.vercel.app/api/health">/api/health</a>
-  <span id="health"></span>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand"><img src="assets/icon.svg" alt="" width="30" height="30">Shelfware</div>
+        <p style="margin-top:12px;max-width:40ch">Counts the shelf. Built on the CoinMarketCap API for the <a href="https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail" target="_blank" rel="noopener noreferrer">Build with CMC: API Hackathon<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>, Real World Assets track. MIT licensed.</p>
+      </div>
+      <div>
+        <h3>Repository</h3>
+        <ul>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">Source<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware/blob/main/JUDGE.md" target="_blank" rel="noopener noreferrer">JUDGE.md<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">Demo transcripts<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware/blob/main/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Architecture<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Evidence</h3>
+        <ul>
+          <li><a class="link-quiet" href="/judge">For judges — /judge</a></li>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware/tree/main/docs/proof" target="_blank" rel="noopener noreferrer">Receipts<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware/blob/main/docs/METHOD.md" target="_blank" rel="noopener noreferrer">Method — the rules and invariants<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">API feedback for CMC<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://shelfware-cmc.vercel.app/api/health">/api/health</a></li>
+          <li><a class="link-quiet" href="/pitch/">Pitch deck</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Data</h3>
+        <ul>
+          <li><a class="link-quiet" href="https://coinmarketcap.com/api/documentation/v1/" target="_blank" rel="noopener noreferrer">CoinMarketCap API<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail" target="_blank" rel="noopener noreferrer">The hackathon<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://x.com/edycutjong" target="_blank" rel="noopener noreferrer">@edycutjong<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>captured 2026-09-18 22:16:17 UTC · 5 keyed credits · the ticker question keyless · rendered from <span class="mono">docs/proof/*.json</span></span>
+      <span><a class="link-quiet" href="https://github.com/edycutjong/shelfware/releases/latest" target="_blank" rel="noopener noreferrer"><span class="ver">v0.0.0-dev</span> · latest release<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></span>
+    </div>
+  </div>
 </footer>
-</main>
+
 <script>
-window.SHELF = {"definition":"registered cryptocurrency projects that are listed but do not yet meet methodology requirements to have tracked markets","generated_utc":"2026-09-18T22:16:17Z","api_base":"https://shelfware-cmc.vercel.app","hero_run":{"ticker":"MS","asked_utc":"2026-09-18T22:43:39Z","roster":{"source":"snapshot","as_of":"2026-09-18T22:16:17Z","call":null,"fallback_reason":null},"status":{"source":"live keyless","call":{"call":"cmc/map symbol=wMSx","url":"https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active%2Cinactive%2Cuntracked&symbol=wMSx&aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform","keyed":false,"http":200,"bytes":441,"sha256":"d7e1ecdef293e6c8","credit_count":1,"rows":1,"elapsed_ms":491,"utc":"2026-09-18T22:43:39Z","error":null,"throttled":false,"attempts":1},"dropped_symbols":[],"fallback_reason":null,"base":"keyless","info_calls":[{"call":"cmc/info batch 1 (1 ids)","url":"https://pro-api.coinmarketcap.com/public-api/v2/cryptocurrency/info?id=41513&aux=status%2Cdate_added%2Cplatform","keyed":false,"http":200,"bytes":925,"sha256":"1559b2c185ccabe8","credit_count":1,"rows":1,"elapsed_ms":762,"utc":"2026-09-18T22:43:39Z","error":null,"throttled":false,"attempts":1}]},"underlyings":[{"rwa_id":35,"symbol":"MS","name":"Morgan Stanley","asset_type":"stock","rwa_rank":43,"has_tokens":true,"tokens_listed":1}],"wrappers":[{"crypto_id":41513,"symbol":"wMSx","name":"Wrapped Morgan Stanley Tokenized Stock (xStock)","rwa_id":35,"underlying":"MS","underlying_name":"Morgan Stanley","asset_type":"stock","rwa_rank":43,"issuer_id":"6878977dcbbf471de3366e85","issuer_name":"Backed Assets","price":null,"market_cap":null,"volume_24h":null,"status":"untracked","first_historical_data":null,"last_historical_data":null,"platform":{"name":"X Layer","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"},"status_source":"map","date_added":"2026-08-11T16:24:36.000Z","info_status":"inactive"}],"verdict":"0 of 1 wrapper(s) with a CMC-tracked market","evidence":{"tokens":[{"crypto_id":41513,"symbol":"wMSx","name":"Wrapped Morgan Stanley Tokenized Stock (xStock)","issuer_id":"6878977dcbbf471de3366e85","issuer_name":"Backed Assets","price":null,"market_cap":null,"volume_24h":null,"status":"untracked","first_historical_data":null,"date_added":"2026-08-11T16:24:36.000Z","platform":{"name":"X Layer","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"}}],"map_rows":[{"id":41513,"name":"Wrapped Morgan Stanley Tokenized Stock (xStock)","symbol":"wMSx","slug":"wrapped-morgan-stanley-tokenized-stock-xstock","rank":null,"status":"untracked","platform":{"id":216,"name":"X Layer","symbol":"OKB","slug":"okb","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"}}],"info_rows":[{"id":41513,"symbol":"wMSx","platform":{"id":"3897","name":"OKB","symbol":"OKB","slug":"okb","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"},"date_added":"2026-08-11T16:24:36.000Z","status":"inactive"}]},"calls":[{"call":"cmc/map symbol=wMSx","http":200,"keyed":false,"credit_count":1,"elapsed_ms":491,"sha256":"d7e1ecdef293e6c8","fetched_utc":"2026-09-18T22:43:39Z"},{"call":"cmc/info batch 1 (1 ids)","http":200,"keyed":false,"credit_count":1,"elapsed_ms":762,"sha256":"1559b2c185ccabe8","fetched_utc":"2026-09-18T22:43:39Z"}]}};
+window.SHELF = {"definition":"registered cryptocurrency projects that are listed but do not yet meet methodology requirements to have tracked markets","generated_utc":"2026-09-18T22:16:17Z","api_base":"https://shelfware-cmc.vercel.app","repo":"https://github.com/edycutjong/shelfware","pair":{"zero_tracked":476,"has_tokens":791},"hero_symbol":"MS","hero_run":{"ticker":"MS","asked_utc":"2026-09-18T22:43:39Z","roster":{"source":"snapshot","as_of":"2026-09-18T22:16:17Z","call":null,"fallback_reason":null},"status":{"source":"live keyless","call":{"call":"cmc/map symbol=wMSx","url":"https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active%2Cinactive%2Cuntracked&symbol=wMSx&aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform","keyed":false,"http":200,"bytes":441,"sha256":"d7e1ecdef293e6c8","credit_count":1,"rows":1,"elapsed_ms":491,"utc":"2026-09-18T22:43:39Z","error":null,"throttled":false,"attempts":1},"dropped_symbols":[],"fallback_reason":null,"base":"keyless","info_calls":[{"call":"cmc/info batch 1 (1 ids)","url":"https://pro-api.coinmarketcap.com/public-api/v2/cryptocurrency/info?id=41513&aux=status%2Cdate_added%2Cplatform","keyed":false,"http":200,"bytes":925,"sha256":"1559b2c185ccabe8","credit_count":1,"rows":1,"elapsed_ms":762,"utc":"2026-09-18T22:43:39Z","error":null,"throttled":false,"attempts":1}]},"underlyings":[{"rwa_id":35,"symbol":"MS","name":"Morgan Stanley","asset_type":"stock","rwa_rank":43,"has_tokens":true,"tokens_listed":1}],"wrappers":[{"crypto_id":41513,"symbol":"wMSx","name":"Wrapped Morgan Stanley Tokenized Stock (xStock)","rwa_id":35,"underlying":"MS","underlying_name":"Morgan Stanley","asset_type":"stock","rwa_rank":43,"issuer_id":"6878977dcbbf471de3366e85","issuer_name":"Backed Assets","price":null,"market_cap":null,"volume_24h":null,"status":"untracked","first_historical_data":null,"last_historical_data":null,"platform":{"name":"X Layer","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"},"status_source":"map","date_added":"2026-08-11T16:24:36.000Z","info_status":"inactive"}],"verdict":"0 of 1 wrapper(s) with a CMC-tracked market","evidence":{"tokens":[{"crypto_id":41513,"symbol":"wMSx","name":"Wrapped Morgan Stanley Tokenized Stock (xStock)","issuer_id":"6878977dcbbf471de3366e85","issuer_name":"Backed Assets","price":null,"market_cap":null,"volume_24h":null,"status":"untracked","first_historical_data":null,"date_added":"2026-08-11T16:24:36.000Z","platform":{"name":"X Layer","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"}}],"map_rows":[{"id":41513,"name":"Wrapped Morgan Stanley Tokenized Stock (xStock)","symbol":"wMSx","slug":"wrapped-morgan-stanley-tokenized-stock-xstock","rank":null,"status":"untracked","platform":{"id":216,"name":"X Layer","symbol":"OKB","slug":"okb","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"}}],"info_rows":[{"id":41513,"symbol":"wMSx","platform":{"id":"3897","name":"OKB","symbol":"OKB","slug":"okb","token_address":"0x2874A11805783324C54562eDB1A641C5d1d077a5"},"date_added":"2026-08-11T16:24:36.000Z","status":"inactive"}]},"calls":[{"call":"cmc/map symbol=wMSx","url":"https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active%2Cinactive%2Cuntracked&symbol=wMSx&aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform","http":200,"keyed":false,"credit_count":1,"elapsed_ms":491,"sha256":"d7e1ecdef293e6c8","fetched_utc":"2026-09-18T22:43:39Z"},{"call":"cmc/info batch 1 (1 ids)","url":"https://pro-api.coinmarketcap.com/public-api/v2/cryptocurrency/info?id=41513&aux=status%2Cdate_added%2Cplatform","http":200,"keyed":false,"credit_count":1,"elapsed_ms":762,"sha256":"1559b2c185ccabe8","fetched_utc":"2026-09-18T22:43:39Z"}],"committed":true}};
 </script>
 <script>
-/* Shelfware — the one screen. Nothing here computes the census; it renders window.SHELF
-   (inlined at build time from data/census.json) and asks the site's proxy the ticker question:
-   /api/roster (keyed, via the proxy; snapshot fallback labelled) then /api/status (keyless map +
-   info, live for anyone). The join per wrapper mirrors shelfware/lookup.py. */
+/* Shelfware — the one screen. Nothing here computes the census; the page is complete as
+   rendered (every number a slot from the committed census and docs/proof/ms.json). This script
+   asks the site's proxy the ticker question live — /api/roster (keyed via the proxy; snapshot
+   fallback labelled) then /api/status (keyless map + info, live for anyone) — and re-renders the
+   product section in the same shapes scripts/render_site.py rendered the committed run into.
+   The join per wrapper mirrors shelfware/lookup.py. The motion layer at the end is the family's
+   (LANDING_DESIGN.md §7). */
 (function () {
   "use strict";
   var S = window.SHELF;
@@ -675,73 +1479,100 @@ window.SHELF = {"definition":"registered cryptocurrency projects that are listed
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
   var FILTERABLE = /^[A-Za-z0-9]+$/;
   var fmt = function (x, dp) { return x == null ? "null" : Number(x).toLocaleString("en-US", { maximumFractionDigits: dp == null ? 0 : dp, minimumFractionDigits: dp == null ? 0 : dp }); };
-  var days = function (iso) { return Math.floor((Date.now() - Date.parse(iso)) / 86400000); };
+  var ext = function (href, text) { return '<a href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' + text + '<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>'; };
+  var isShelf = function (w) { return w.status === "untracked"; };
+  var kindOf = function (w) { return w.status === "active" ? "lit" : isShelf(w) ? "shelf" : "unknown"; };
+  var utcShort = function (ts) { return String(ts || "").replace("T", " ").replace("Z", "").slice(0, 19); };
 
-  // ── the one animation: the headline counts up while the shelf bar fills ──
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var big = $("bignum");
-  if (big && !reduce) {
-    var target = parseInt(big.getAttribute("data-target"), 10), zt = $("zt"), ztTarget = parseInt(zt.textContent, 10);
-    var dim = $("bar-dim"), lit = $("bar-lit"), dimW = dim.style.width, litW = lit.style.width;
-    dim.style.transition = "none"; lit.style.transition = "none"; dim.style.width = "0%"; lit.style.width = "0%";
-    var t0 = null;
-    var step = function (ts) {
-      if (!t0) t0 = ts;
-      var p = Math.min(1, (ts - t0) / 1500), e = 1 - Math.pow(1 - p, 3);
-      big.textContent = Math.round(target * e) + "%";
-      zt.textContent = Math.round(ztTarget * e);
-      dim.style.width = (parseFloat(dimW) * e) + "%";
-      if (p >= 0.75) lit.style.width = (parseFloat(litW) * Math.min(1, (p - 0.75) / 0.25)) + "%";
-      if (p < 1) requestAnimationFrame(step); else { big.textContent = target + "%"; zt.textContent = ztTarget; dim.style.width = dimW; lit.style.width = litW; }
-    };
-    requestAnimationFrame(step);
+  function stateFrom(w, asOf) {
+    var src = w.status_source, base = w.base === "keyed" ? " · keyed via the proxy (the anonymous pool refused the host's IP)" : " · keyless";
+    if (src === "map") return "/v1/cryptocurrency/map · live" + base;
+    if (src === "info") return "/v2/cryptocurrency/info · live" + base + " (the map's symbol filter rejects this symbol)";
+    if (src === "info+snapshot") return "/v2/cryptocurrency/info says inactive · live; the map's finer state from the " + esc(asOf) + " snapshot";
+    return "committed snapshot " + esc(asOf) + (w.fallback_reason ? " — " + esc(w.fallback_reason) : "");
   }
 
-  // ── the ticker question ───────────────────────────────────────────────────
-  function chip(status) { return '<span class="chip ' + esc(status) + '">' + esc(status.toUpperCase()) + "</span>"; }
-  function via(base, ep) {
-    if (base === "keyed") return "/" + ep + " · live · keyed via this site's proxy, 1 credit (CMC's anonymous pool refuses the host's shared IP; on your machine it is keyless)";
-    return "/public-api/" + ep + " · live · keyless · 0 credits";
-  }
-  function sourceLine(w, asOf) {
-    if (w.status_source === "map") return via(w.base, "v1/cryptocurrency/map");
-    if (w.status_source === "info") return via(w.base, "v2/cryptocurrency/info") + " (the map's symbol filter rejects this symbol)";
-    if (w.status_source === "info+snapshot") return via(w.base, "v2/cryptocurrency/info").replace(" · live", " says inactive · live") + "; the map's finer state from the " + esc(asOf) + " snapshot (its symbol filter rejects \"" + esc(w.symbol) + "\")";
-    return "committed snapshot " + esc(asOf) + " — " + esc(w.fallback_reason || "the keyless pool did not answer");
-  }
-  function renderCard(res) {
-    var html = "";
-    var r = res.roster, asOf = (r.as_of || "").slice(0, 10);
-    if (!res.underlyings.length) {
-      html += '<p class="verdict">' + esc(res.verdict) + "</p>";
-      html += '<p class="src">roster: ' + (r.source === "live" ? "<b>live</b> — the RWA map has no such symbol" : "snapshot " + esc(asOf)) + "</p>";
+  // ── the answer, in the shapes the render script used for the committed run ──
+  function renderAnswer(res) {
+    var r = res.roster || {}, s = res.status || {}, asOf = (r.as_of || "").slice(0, 10);
+    var ws = res.wrappers || [], u = (res.underlyings || [])[0];
+    var sym = esc(res.ticker);
+    var tracked = ws.filter(function (w) { return w.status === "active"; }).length;
+    var untracked = ws.filter(isShelf).length, other = ws.length - tracked - untracked;
+    var pair = S.pair.zero_tracked + " of " + S.pair.has_tokens;
+    var asked = utcShort(res.asked_utc);
+    var rosterSrc = r.source === "live" ? "live via /api/roster · keyed · " + esc(r.credit_count == null ? 1 : r.credit_count) + " credit" : "snapshot " + esc(asOf) + (r.fallback_reason ? " — " + esc(r.fallback_reason) : " (the RWA endpoints need a key)");
+    var stateSrc = res.live ? "live · keyless · 0 credits" : esc(s.source || "");
+    $("context").innerHTML = u
+      ? "<b>" + esc(u.symbol) + "</b> · " + esc(u.name || "") + " · " + esc(u.asset_type || "") + " · rwa_rank " + esc(u.rwa_rank) + " · has_tokens: <b>" + (u.has_tokens ? "true" : "false") + "</b> · asked " + esc(asked) + " UTC · roster: " + rosterSrc + " · state: " + stateSrc
+      : "<b>" + sym + "</b> · not in CoinMarketCap's RWA map · asked " + esc(asked) + " UTC · roster: " + rosterSrc;
+    var kind, shareText, claim, support;
+    if (!ws.length) {
+      kind = "none"; shareText = "0 of 0";
+      claim = u ? "wrappers listed for <em>" + sym + "</em>." : "<em>" + sym + "</em> is not in CoinMarketCap's RWA map.";
+      support = esc(res.verdict || "");
+    } else {
+      kind = tracked ? "lit" : "shelf"; shareText = tracked + " of " + ws.length;
+      claim = "wrapper" + (ws.length !== 1 ? "s" : "") + " of <em>" + sym + "</em> " + (ws.length !== 1 ? "have" : "has") + " a CMC-tracked market.";
+      var issuers = []; ws.forEach(function (w) { var n = w.issuer_name || "(no issuer)"; if (issuers.indexOf(n) < 0) issuers.push(n); }); issuers.sort();
+      support = "<b>" + tracked + "</b> active · <b>" + untracked + "</b> untracked · " + other + " unresolved or inactive — issuer" + (issuers.length !== 1 ? "s" : "") + ": " + esc(issuers.join(", ")) + ". "
+        + (kind === "shelf" ? "The RWA map says <b>has_tokens: true</b>; the cryptocurrency map says <b>untracked</b> for every wrapper — listed, no CMC-tracked market." : "Tracked means <b>status == active</b> on the cryptocurrency map; a wrapper with price: null is untracked, with 0 exceptions on the committed census.");
     }
-    res.underlyings.forEach(function (u) {
-      html += '<div class="uline"><span class="mono">' + esc(u.symbol) + "</span><span>" + esc(u.name || "") + "</span><span class=\"src\">" + esc(u.asset_type || "") + " · rwa_rank " + esc(u.rwa_rank) + '</span><span class="pill' + (u.has_tokens ? "" : " off") + '">has_tokens: ' + (u.has_tokens ? "true" : "false") + "</span></div>";
-    });
-    html += '<p class="src">roster: ' + (r.source === "live" ? "<b>live</b> via /api/roster → /v5/real-world-assets/quotes/latest · keyed · " + esc(r.credit_count == null ? 1 : r.credit_count) + " credit" : "<b>snapshot " + esc(asOf) + "</b>" + (r.fallback_reason ? " — " + esc(r.fallback_reason) : " (the RWA endpoints need a key)")) + "</p>";
-    res.wrappers.forEach(function (w) {
+    $("hero").className = "hero " + kind;
+    $("share").textContent = shareText; $("share").setAttribute("data-target", String(tracked));
+    $("claim").innerHTML = claim; $("support").innerHTML = support;
+    $("tbody").innerHTML = ws.length ? ws.map(function (w) {
       var p = w.platform || {};
-      html += '<div class="wrow"><div class="box ' + (w.status === "active" ? "lit" : (w.status === "untracked" ? "" : "unk")) + '"></div><div>';
-      html += '<div><span class="wsym">' + esc(w.symbol) + "</span> <span>" + esc(w.name || "") + "</span>" + chip(w.status) + "</div>";
-      html += '<div class="wmeta"><span>issuer</span><span>' + esc(w.issuer_name || "(no issuer)") + (w.issuer_id ? " · " + esc(w.issuer_id) : "") + "</span>";
-      html += "<span>chain</span><span>" + esc(p.name || "—") + (p.token_address ? " · " + esc(p.token_address) : "") + "</span>";
-      html += "<span>price</span><span>" + (w.price == null ? "null" : fmt(w.price, 4)) + " · market_cap " + fmt(w.market_cap) + " · volume_24h " + fmt(w.volume_24h) + "</span>";
-      html += "<span>state</span><span>" + sourceLine(w, asOf) + "</span>";
-      if (w.status === "untracked") html += "<span>meaning</span><span>listed, no CMC-tracked market — CMC: " + esc(S.definition) + (w.date_added ? " · listed " + esc(w.date_added.slice(0, 10)) + " (date_added) · " + days(w.date_added) + " days on the shelf" : "") + "</span>";
-      else if (w.status === "active") html += "<span>tracked since</span><span>" + esc((w.first_historical_data || "?").slice(0, 10)) + "</span>";
-      else if (w.status === "unresolved") html += "<span>meaning</span><span>this id is in tokens[] but on no public CMC surface — not counted as shelf</span>";
-      html += "</div></div></div>";
+      return '<tr class="' + kindOf(w) + '"><td class="pool">' + esc(w.symbol || "—") + "<small>" + esc(w.name || "") + '</small></td><td class="l">' + esc(w.issuer_name || "(no issuer)") + '</td><td class="l">' + esc(p.name || "—") + '</td><td class="l mono addr">' + esc(p.token_address || "—") + '</td><td class="mono">' + (w.price == null ? "null" : fmt(w.price, 4)) + '</td><td><span class="state ' + esc(w.status || "unresolved") + '">' + esc(w.status || "unresolved") + '</span></td><td class="l src">' + stateFrom(w, asOf) + '</td><td class="mono">' + esc(((w.date_added || w.first_historical_data || "—")).slice(0, 10)) + "</td></tr>";
+    }).join("") : '<tr><td class="pool" colspan="8">' + esc(res.verdict || "no wrappers") + "</td></tr>";
+    var route = $("route"), n = ws.length, plural = n !== 1 ? "s" : "";
+    if (kind === "shelf") { route.className = "route shelf"; $("routeline").textContent = "▶ " + tracked + " of " + n + " wrapper" + plural + " with a CMC-tracked market — on the shelf"; $("routerule").textContent = "rule: strict — an underlying counts only when every attached wrapper is untracked · an unresolved id never counts · " + res.ticker + " is one of the " + pair + (res.live ? " as of the committed census" : ""); }
+    else if (kind === "lit") { route.className = "route lit"; $("routeline").textContent = "▶ " + tracked + " of " + n + " wrapper" + plural + " with a CMC-tracked market"; $("routerule").textContent = "rule: tracked = status == active on /v1/cryptocurrency/map · price == null ⇔ untracked, 0 exceptions on the committed census · " + res.ticker + " is not one of the " + pair; }
+    else { route.className = "route none"; $("routeline").textContent = "▶ " + (res.verdict || "no wrapper listed"); $("routerule").textContent = "rule: a wrapper must be in tokens[] on /v5/real-world-assets/quotes/latest to be counted at all"; }
+    // raw rows: one line per (wrapper × source) — tokens[] entry, map row, info row
+    var ev = res.evidence || {}, mapById = {}; (ev.map_rows || []).forEach(function (m) { mapById[m.id] = m; });
+    var info = ev.info_rows || {};
+    var ids = ws.map(function (w) { return w.crypto_id; }).join(", ") || "—";
+    $("rowstitle").textContent = (ws.map(function (w) { return w.symbol || "?"; }).join(", ") || res.ticker) + " — raw rows (" + n + " wrapper" + plural + ", three sources)";
+    $("rowscap").innerHTML = "rwa_id " + (u ? esc(u.rwa_id) : "—") + " · crypto_id " + esc(ids) + ' · tokens[] from <span class="mono">/v5/real-world-assets/quotes/latest</span> (' + (r.source === "live" ? "live" : "snapshot " + esc(asOf)) + ') · state from <span class="mono">/public-api/v1/cryptocurrency/map</span> · listing date from <span class="mono">/public-api/v2/cryptocurrency/info</span>' + (res.committed ? " · " + ext(S.repo + "/blob/main/docs/proof/ms.json", "docs/proof/ms.json") : " · live, not committed");
+    var trs = [];
+    (ev.tokens || []).forEach(function (t) {
+      trs.push("<tr><td>tokens[]</td><td>/v5/real-world-assets/quotes/latest</td><td class=\"mono\">" + esc(t.crypto_id) + '</td><td class="mono">' + esc(t.symbol || "null") + '</td><td class="mono">' + (t.price == null ? "null" : fmt(t.price, 4)) + "</td><td>" + esc(t.issuer_name || "(no issuer)") + "</td><td>" + esc((t.platform || {}).name || "—") + '</td><td class="mono">—</td></tr>');
+      var m = mapById[t.crypto_id];
+      if (m) trs.push('<tr class="' + (m.status === "untracked" ? "leg" : m.status === "active" ? "lit" : "unknown") + '"><td>map row</td><td>/public-api/v1/cryptocurrency/map</td><td class="mono">' + esc(m.id) + '</td><td class="mono">' + esc(m.symbol || "") + '</td><td class="mono">status ' + esc(m.status || "") + "</td><td>rank " + (m.rank == null ? "null" : esc(m.rank)) + "</td><td>" + esc((m.platform || {}).name || "—") + '</td><td class="mono">' + esc((m.first_historical_data || "—").slice(0, 10)) + "</td></tr>");
+      var i = info[String(t.crypto_id)];
+      if (i) trs.push("<tr><td>info row</td><td>/public-api/v2/cryptocurrency/info</td><td class=\"mono\">" + esc(i.id) + '</td><td class="mono">' + esc(i.symbol || "") + '</td><td class="mono">status ' + esc(i.status || "") + "</td><td>—</td><td>" + esc((i.platform || {}).name || "—") + '</td><td class="mono">' + esc((i.date_added || "—").slice(0, 10)) + "</td></tr>");
     });
-    if (res.wrappers.length) html += '<p class="verdict">' + esc(res.verdict) + "</p>";
-    var ev = res.evidence || {};
-    html += "<details><summary>evidence — the raw rows, endpoint, HTTP status, credit_count</summary>";
-    (res.calls || []).forEach(function (c) { html += '<p class="ev">' + esc(c.call) + " → HTTP " + esc(c.http) + " · " + (c.keyed ? "keyed · " + esc(c.credit_count) + " credit" : "keyless · 0 credits to any key") + (c.elapsed_ms != null ? " · " + esc(c.elapsed_ms) + " ms" : "") + (c.sha256 ? " · sha256 " + esc(c.sha256) : "") + (c.fetched_utc ? " · " + esc(c.fetched_utc) : "") + "</p>"; });
-    if (ev.tokens) html += '<p class="ev">tokens[] entries — /v5/real-world-assets/quotes/latest</p><pre>' + esc(JSON.stringify(ev.tokens, null, 1)) + "</pre>";
-    if (ev.map_rows) html += '<p class="ev">map rows — /public-api/v1/cryptocurrency/map</p><pre>' + esc(JSON.stringify(ev.map_rows, null, 1)) + "</pre>";
-    if (ev.info_rows) html += '<p class="ev">info rows — /public-api/v2/cryptocurrency/info</p><pre>' + esc(JSON.stringify(ev.info_rows, null, 1)) + "</pre>";
-    html += "</details>";
-    return html;
+    $("rowlist").innerHTML = "<table><thead><tr><th>source</th><th>endpoint</th><th>id</th><th>symbol</th><th>price / status</th><th>issuer / rank</th><th>platform</th><th>date</th></tr></thead><tbody>" + trs.join("") + "</tbody></table>";
+    var arith = ws.length ? [
+      "tokens[] on /v5/real-world-assets/quotes/latest → " + n + " wrapper" + plural + " attached to " + res.ticker + (u ? " (rwa_id " + u.rwa_id + ")" : ""),
+      "/public-api/v1/cryptocurrency/map → status per crypto_id: " + untracked + " untracked · " + tracked + " active · " + other + " unresolved or inactive",
+      "tracked = wrappers with status == active = " + tracked + " · attached = " + n,
+      tracked + " of " + n + " → " + (kind === "shelf" ? "every wrapper untracked → " + res.ticker + " has no wrapper with a CMC-tracked market" : res.ticker + " has a wrapper with a CMC-tracked market")
+    ] : [res.verdict || ""];
+    $("arith").innerHTML = arith.map(function (a) { return "<li>" + esc(a) + "</li>"; }).join("");
+    $("rawpre").textContent = JSON.stringify(ev, null, 1);
+    // the receipt grid and the call list follow the answer
+    var calls = res.calls || [], first = calls.filter(function (m) { return m.sha256; })[0] || calls[0] || {};
+    var endpoints = [];
+    calls.forEach(function (m) { ["/public-api/v1/cryptocurrency/map", "/public-api/v2/cryptocurrency/info", "/v5/real-world-assets/quotes/latest"].forEach(function (ep) { var key = ep.replace("/public-api", ""); if ((String(m.call || "").indexOf(key) >= 0 || String(m.url || "").indexOf(ep) >= 0) && endpoints.indexOf(ep) < 0) endpoints.push(ep); }); });
+    var http = []; calls.forEach(function (m) { if (http.indexOf(String(m.http)) < 0) http.push(String(m.http)); }); http.sort();
+    var keyedN = calls.filter(function (m) { return m.keyed; }).length;
+    var creditsN = 0; calls.forEach(function (m) { if (m.keyed) creditsN += Number(m.credit_count || 0); });
+    var elapsed = 0; calls.forEach(function (m) { elapsed += Number(m.elapsed_ms || 0); });
+    var firstUrl = (calls.filter(function (m) { return m.url; })[0] || {}).url || (s.call && s.call.url) || "";
+    $("receipt-grid").innerHTML = [
+      '<div><div class="k">endpoint</div><div class="v">' + endpoints.map(function (e) { return '<span class="mono">' + esc(e) + "</span>"; }).join(" · ") + "</div></div>",
+      '<div><div class="k">calls</div><div class="v">' + calls.length + " · HTTP " + esc(http.join(",") || "—") + " · " + (calls.length - keyedN) + " keyless" + (keyedN ? " · " + keyedN + " keyed" : "") + "</div></div>",
+      '<div><div class="k">credits used</div><div class="v"><span class="mono">' + creditsN + "</span> — " + (creditsN ? "keyed roster leg via the site's proxy" + (res.live ? "; the state leg keyless" : "") : "none — the state leg is CoinMarketCap's keyless /public-api surface; the roster from the committed snapshot of " + esc(asOf)) + "</div></div>",
+      '<div><div class="k">captured</div><div class="v"><span class="mono">' + esc(res.asked_utc) + "</span> · " + (elapsed / 1000).toFixed(2) + " s across the calls</div></div>",
+      '<div><div class="k">first call sha256</div><div class="v"><span class="mono">' + esc(first.sha256 || "—") + "</span></div></div>",
+      '<div><div class="k">first request</div><div class="v">' + (firstUrl ? ext(firstUrl, '<span class="mono">' + esc(firstUrl) + "</span>") : "—") + "</div></div>",
+      '<div><div class="k">re-derive</div><div class="v"><span class="mono">python3 -m shelfware ' + sym + "</span> · " + ext(S.repo + "/tree/main/docs/proof", "docs/proof/") + ' · <a href="#calls">every call ↓</a></div></div>'
+    ].join("");
+    $("calls-list").innerHTML = "<table><thead><tr><th>call</th><th>http</th><th>key</th><th>credits</th><th>ms</th><th>sha256</th><th>utc</th></tr></thead><tbody>" + calls.map(function (m) {
+      return "<tr><td>" + esc(m.call || "") + '</td><td class="mono">' + esc(m.http) + "</td><td>" + (m.keyed ? "keyed" : "keyless") + '</td><td class="mono">' + (m.keyed ? esc(m.credit_count) : "0 to any key") + '</td><td class="mono">' + (m.elapsed_ms != null ? esc(m.elapsed_ms) : "—") + '</td><td class="mono">' + esc(m.sha256 || "—") + '</td><td class="mono">' + esc(m.fetched_utc || "") + "</td></tr>";
+    }).join("") + "</tbody></table>";
   }
 
   function joinWrappers(tokens, mapRows, infoRows, snapTokens, bases) {
@@ -764,32 +1595,37 @@ window.SHELF = {"definition":"registered cryptocurrency projects that are listed
 
   function getJSON(url) { return fetch(API + url, { headers: { Accept: "application/json" } }).then(function (r) { return r.json().then(function (j) { j.__http = r.status; return j; }); }); }
 
+  var cmdFor = function (sym) { return "git clone " + S.repo + ".git && cd shelfware && python3 -m shelfware " + sym; };
+  function setMode(text, cls) { var m = $("mode"); m.textContent = text; m.className = "chip " + cls; }
+
   function ask(ticker) {
-    var sym = ticker.trim().toUpperCase(), card = $("tcard"), btn = $("go");
-    if (!sym) return;
-    btn.disabled = true; btn.textContent = "asking…";
-    card.innerHTML = '<p class="src">asking /api/roster?symbol=' + esc(sym) + " …</p>";
+    var sym = ticker.trim().toUpperCase(), btn = $("go"), status = $("status");
+    if (!sym || !/^[A-Z0-9.\-]{1,16}$/.test(sym)) { status.textContent = "a ticker is letters and digits — try MS, NVDA, GILD, GOLD"; return; }
+    btn.disabled = true; setMode("fetching", "busy");
+    status.textContent = "asking /api/roster?symbol=" + sym + " …";
     history.replaceState(null, "", "?t=" + encodeURIComponent(sym));
-    var res = { ticker: sym, underlyings: [], wrappers: [], calls: [], evidence: {}, roster: {}, status: {} };
+    var res = { ticker: sym, asked_utc: new Date().toISOString().replace(/\.\d+Z$/, "Z"), underlyings: [], wrappers: [], calls: [], evidence: {}, roster: {}, status: {}, live: true };
     getJSON("/api/roster?symbol=" + encodeURIComponent(sym)).then(function (r) {
+      if (r.__http === 429) throw { status: 429, message: r.error || "HTTP 429 from /api/roster" };
       res.roster = { source: r.source, as_of: r.as_of, credit_count: r.credit_count, fallback_reason: r.fallback_reason };
-      res.calls.push({ call: "/api/roster → " + (r.source === "live" ? "/v5/real-world-assets/quotes/latest?symbol=" + sym : "data/roster_snapshot.json"), http: r.upstream_http || r.__http, keyed: r.source === "live", credit_count: r.credit_count, fetched_utc: r.fetched_utc, sha256: r.sha256 });
+      res.calls.push({ call: "/api/roster → " + (r.source === "live" ? "/v5/real-world-assets/quotes/latest?symbol=" + sym : "data/roster_snapshot.json"), url: r.source === "live" ? "https://pro-api.coinmarketcap.com/v5/real-world-assets/quotes/latest?symbol=" + sym : "", http: r.upstream_http || r.__http, keyed: r.source === "live", credit_count: r.credit_count, elapsed_ms: r.elapsed_ms, fetched_utc: r.fetched_utc, sha256: r.sha256 });
       var assets = r.assets || [];
       res.underlyings = assets.map(function (a) { return { rwa_id: a.rwa_id, symbol: a.symbol, name: a.name, asset_type: a.asset_type, rwa_rank: a.rwa_rank, has_tokens: a.has_tokens }; });
       var tokens = []; assets.forEach(function (a) { (a.tokens || []).forEach(function (t) { tokens.push(t); }); });
       res.evidence.tokens = tokens;
       var snapTokens = r.snapshot_tokens || [];
-      if (!assets.length) { res.verdict = "CoinMarketCap's RWA map has no underlying " + sym; return res; }
-      if (!tokens.length) { res.verdict = sym + " is in the RWA map with has_tokens: false — 0 wrappers listed"; return res; }
+      if (!assets.length) { res.verdict = "CoinMarketCap's RWA map has no underlying " + sym; res.status = { source: "—" }; return res; }
+      if (!tokens.length) { res.verdict = sym + " is in the RWA map with has_tokens: false — 0 wrappers listed"; res.status = { source: "—" }; return res; }
       var symbols = tokens.map(function (t) { return t.symbol; }).filter(function (x) { return x && FILTERABLE.test(x); });
       var ids = tokens.map(function (t) { return t.crypto_id; }).filter(function (x) { return x != null; });
-      card.innerHTML += '<p class="src">asking /api/status — keyless map for ' + esc(symbols.join(",")) + " and info for " + ids.length + " ids …</p>";
+      status.textContent = "asking /api/status — keyless map for " + symbols.join(",") + " and info for " + ids.length + " ids …";
       return getJSON("/api/status?symbols=" + encodeURIComponent(symbols.join(",")) + "&ids=" + encodeURIComponent(ids.join(","))).then(function (s) {
         var mapRows = null, infoRows = {}, bases = { map: s.map && s.map.base, info: s.info && s.info.base };
-        var callOf = function (x) { return { call: "/api/status → " + x.url + (x.base === "keyed" ? "  [keyless refused: " + x.keyless_error + "]" : ""), http: x.http, keyed: x.base === "keyed", credit_count: x.credit_count, elapsed_ms: x.elapsed_ms, fetched_utc: s.fetched_utc, sha256: x.sha256 }; };
-        if (s.map) { res.calls.push(callOf(s.map)); if (s.map.http === 200 && s.map.raw) mapRows = s.map.raw.data || []; }
-        if (s.info) { res.calls.push(callOf(s.info)); if (s.info.http === 200 && s.info.raw) infoRows = s.info.raw.data || {}; }
-        if (mapRows === null && symbols.length) { res.status.fallback_reason = (s.map && s.map.error) || s.error || "no answer from the keyless map"; }
+        var callOf = function (x, label) { return { call: "/api/status → " + label + (x.base === "keyed" ? "  [keyless refused: " + x.keyless_error + "]" : ""), url: x.url, http: x.http, keyed: x.base === "keyed", credit_count: x.credit_count, elapsed_ms: x.elapsed_ms, fetched_utc: s.fetched_utc, sha256: x.sha256 }; };
+        if (s.map) { res.calls.push(callOf(s.map, "/v1/cryptocurrency/map?symbol=" + symbols.join(","))); if (s.map.http === 200 && s.map.raw) mapRows = s.map.raw.data || []; }
+        if (s.info) { res.calls.push(callOf(s.info, "/v2/cryptocurrency/info?id=" + ids.join(","))); if (s.info.http === 200 && s.info.raw) infoRows = s.info.raw.data || {}; }
+        res.status = { source: "live keyless", call: s.map ? { url: s.map.url } : null, fallback_reason: null };
+        if (mapRows === null && symbols.length) { res.status.fallback_reason = (s.map && s.map.error) || s.error || "no answer from the keyless map"; res.status.source = "snapshot"; }
         if (mapRows === null && !symbols.length) mapRows = [];
         var wanted = {}; ids.forEach(function (i) { wanted[i] = true; });
         res.evidence.map_rows = mapRows ? mapRows.filter(function (row) { return wanted[row.id]; }) : null;
@@ -798,31 +1634,68 @@ window.SHELF = {"definition":"registered cryptocurrency projects that are listed
         res.wrappers.forEach(function (w) { if (w.status_source === "snapshot") w.fallback_reason = res.status.fallback_reason; });
         var tracked = res.wrappers.filter(function (w) { return w.status === "active"; }).length;
         res.verdict = tracked + " of " + res.wrappers.length + " wrapper(s) with a CMC-tracked market";
+        if (mapRows === null) res.throttled = res.status.fallback_reason;
         return res;
       }, function (e) {
         res.wrappers = joinWrappers(tokens, null, {}, snapTokens);
         res.wrappers.forEach(function (w) { w.fallback_reason = "/api/status unreachable: " + e; });
+        res.status = { source: "snapshot", fallback_reason: "/api/status unreachable: " + e };
         var tracked = res.wrappers.filter(function (w) { return w.status === "active"; }).length;
         res.verdict = tracked + " of " + res.wrappers.length + " wrapper(s) with a CMC-tracked market (snapshot)";
+        res.throttled = String(e);
         return res;
       });
-    }).then(function (r) { card.innerHTML = renderCard(r); }, function (e) {
-      card.innerHTML = '<p class="verdict">The search needs this site\'s proxy (/api/roster), which did not answer: ' + esc(e) + '</p><p class="src">Ask the same question on your machine, live and keyless: <code>python3 -m shelfware ' + esc(sym) + "</code></p>";
-    }).then(function () { btn.disabled = false; btn.textContent = "Ask CMC"; });
+    }).then(function (r) {
+      renderAnswer(r);
+      if (r.throttled) { setMode("state: snapshot", "err"); status.innerHTML = "The keyless state leg did not answer (" + esc(r.throttled) + ") — the rows above carry the committed snapshot's state and say so. Run the same question from your own IP, keyless:<span class=\"cmd\">" + esc(cmdFor(sym)) + "</span>"; }
+      else { setMode("live · keyless", "ok"); status.textContent = "live answer for " + sym + " — the receipt grid and the call list below follow it"; }
+    }, function (e) {
+      var is429 = e && e.status === 429;
+      setMode(is429 ? "HTTP 429" : "proxy down", "err");
+      status.innerHTML = (is429 ? "HTTP 429 — CoinMarketCap's anonymous tier is rate-limited per IP, and every visitor of this page shares the proxy's. " : "The search needs this site's proxy (/api/roster), which did not answer: " + esc(e && e.message ? e.message : e) + ". ") + "Ask the same question on your machine, live and keyless:<span class=\"cmd\">" + esc(cmdFor(sym)) + "</span>";
+    }).then(function () { btn.disabled = false; });
   }
 
-  $("f").addEventListener("submit", function (e) { e.preventDefault(); ask($("t").value); });
+  $("paste").addEventListener("submit", function (e) { e.preventDefault(); ask($("t").value); });
   var q = new URLSearchParams(location.search).get("t");
   if (q) { $("t").value = q.toUpperCase(); ask(q); }
-  else if (S.hero_run) {
-    // the committed run of the hero ticker (docs/proof/ms.json), so the answer is on screen
-    // before anything is typed; Ask CMC re-runs it live
-    $("tcard").innerHTML = '<p class="src">committed run <b class="mono">' + esc(S.hero_run.asked_utc) + '</b> of <code>python3 -m shelfware ' + esc(S.hero_run.ticker) + '</code>, no key — press <b>Ask CMC</b> to re-run it live now</p>' + renderCard(S.hero_run);
-  }
 
   getJSON("/api/health").then(function (h) {
-    $("health").innerHTML = h.ok ? '<span class="status-ok">● proxy up</span> · roster key ' + (h.roster_key_configured ? "configured" : "not configured (snapshot roster)") + " · " + esc(h.snapshots) + " daily snapshot(s)" : '<span class="status-bad">● proxy not answering</span>';
-  }, function () { $("health").innerHTML = '<span class="status-bad">● no proxy on this host — the search falls back to the CLI</span>'; });
+    if (!h.ok) { setMode("proxy not answering", "err"); }
+  }, function () {
+    setMode("no proxy on this host", "err");
+    $("status").innerHTML = "No proxy on this host, so the box cannot ask live; the answer shown is the committed run. On your machine, keyless:<span class=\"cmd\">" + esc(cmdFor(S.hero_symbol)) + "</span>";
+  });
+
+  // ── the family's motion layer (LANDING_DESIGN.md §7) ─────────────────────────
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const top = $('top');
+  if (top) { const onScroll = () => top.classList.toggle('scrolled', window.scrollY > 8); window.addEventListener('scroll', onScroll, { passive: true }); requestAnimationFrame(onScroll); }
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }) : null;
+  document.querySelectorAll('.reveal').forEach((el) => { if (io) io.observe(el); else el.classList.add('in'); });
+  const blocks = [...document.querySelectorAll('svg.block')], block = blocks.find((b) => b.getClientRects().length) || blocks[0];
+  const release = () => blocks.forEach((b) => b.classList.add('go'));
+  setTimeout(() => { document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in', 'now')); if (block) release(); }, 2500);
+  if (block) { if (reduce || !('IntersectionObserver' in window)) release(); else { const bo = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { release(); bo.disconnect(); } }); }, { threshold: 0.35 }); bo.observe(block); } }
+  const big = document.querySelector('h1 [data-count]');
+  if (big && !reduce && 'IntersectionObserver' in window) {
+    const target = parseFloat(big.dataset.count), suffix = big.textContent.replace(/^[0-9.]+/, ''), dec = (big.dataset.count.split('.')[1] || '').length;
+    let t0 = null; const dur = 1100;
+    const tick = (ts) => { if (!t0) t0 = ts; let p = Math.min(1, (ts - t0) / dur); p = 1 - Math.pow(1 - p, 3); big.textContent = (target * p).toFixed(dec) + suffix; if (p < 1) requestAnimationFrame(tick); else big.textContent = big.dataset.count + suffix; };
+    const co = new IntersectionObserver((es) => { if (es[0].isIntersecting) { requestAnimationFrame(tick); co.disconnect(); } }, { threshold: 0.5 }); co.observe(big);
+  }
+  if (!reduce) document.querySelectorAll('details').forEach((d) => {
+    const sum = d.querySelector(':scope > summary'), fold = d.querySelector(':scope > .fold'); if (!sum || !fold) return;
+    d.classList.add('fx'); let closing = null;
+    const settle = () => { if (closing) { clearTimeout(closing); closing = null; d.open = false; } };
+    fold.addEventListener('transitionend', (e) => { if (e.target === fold && !d.classList.contains('is-open')) settle(); });
+    sum.addEventListener('click', (e) => { e.preventDefault(); if (d.open && !closing) { d.classList.remove('is-open'); closing = setTimeout(settle, 320); } else if (!d.open) { d.open = true; void fold.offsetHeight; d.classList.add('is-open'); } });
+    d.addEventListener('toggle', () => { if (d.open && !d.classList.contains('is-open') && !closing) { void fold.offsetHeight; d.classList.add('is-open'); } if (!d.open) d.classList.remove('is-open'); });
+  });
+  document.querySelectorAll('button.copy[data-copy]').forEach((btn) => btn.addEventListener('click', () => {
+    const done = () => { btn.textContent = 'copied'; btn.classList.add('done'); setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(btn.dataset.copy).then(done, done); else done();
+  }));
 })();
 </script>
 </body>

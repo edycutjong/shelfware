@@ -1,224 +1,743 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shelfware — {{share_pct}}% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market</title>
-<meta name="description" content="{{zero_tracked}} of {{has_tokens}} tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Type a ticker: every wrapper, issuer, chain, listing state.">
-<meta name="author" content="Edy Cu">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta name="author" content="{{author}}">
+<link rel="canonical" href="{{site_url}}/">
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<meta name="theme-color" content="#0B0E14">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Shelfware — {{share_pct}}% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market">
-<meta property="og:description" content="{{zero_tracked}} of {{has_tokens}} underlyings, counted {{generated_short}} UTC from the CoinMarketCap API. Type a ticker and see the raw rows.">
-<meta property="og:url" content="{{site_url}}">
 <meta property="og:site_name" content="Shelfware">
-<meta property="og:image" content="{{site_url}}/og-image.png?v=20260919">
+<meta property="og:url" content="{{site_url}}/">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{og_description}}">
+<meta property="og:image" content="{{site_url}}/og-image.png?v={{og_v}}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Shelfware — {{share_pct}}% of the tokenised assets on CoinMarketCap have no wrapper with a CMC-tracked market: the number, the issuer scorecard, and a ticker search">
+<meta property="og:image:alt" content="{{og_alt}}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{{site_url}}/og-image.png?v=20260919">
-<meta name="twitter:creator" content="@edycutjong">
-<link rel="icon" href="data:image/svg+xml,{{favicon}}">
+<meta name="twitter:site" content="{{x_handle}}">
+<meta name="twitter:creator" content="{{x_handle}}">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{og_description}}">
+<meta name="twitter:image" content="{{site_url}}/og-image.png?v={{og_v}}">
+<link rel="preload" href="assets/fonts/inter-tight-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{--bg:#0B0F14;--surface:#131A22;--border:#26313F;--text:#E8EEF4;--muted:#8A98A8;--lit:#3BD37D;--shelf:#3A4453;--flag:#FFB020;--unknown:#8B7CF6;--danger:#FF5C5C;
---sans:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* Fonts are self-hosted latin subsets (SIL OFL 1.1) — the page loads no third-party resource. */
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:500 800;font-display:swap;src:url(assets/fonts/inter-tight-latin-var.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/inter-latin-var.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/jetbrains-mono-latin-var.woff2) format('woff2')}
+/* metric-matched fallback so the swap to Inter moves no line (CLS); metrics are Inter's, as next/font ships them */
+@font-face{font-family:'Inter Fallback';src:local('Arial'),local('Helvetica');ascent-override:90.2%;descent-override:22.48%;line-gap-override:0%;size-adjust:107.4%}
+
+/* ── family tokens (LANDING_DESIGN.md §2): the neutrals, type, radii and timings are fixed
+      across the Build-with-CMC pages; the four hues on the second line are this project's ── */
+:root{
+  --bg:#0B0E14; --surface:#141A24; --surface-2:#1A2230; --border:#243044; --text:#E6EDF3; --muted:#8B98A9; --dim:#5E6C80;
+  --accent:#FFB020; --data:#4C9AFF; --verdict:#3DDC97; --flag:#FF5C5C;
+  --shelf:var(--dim); --lit:var(--verdict); --unknown:#8B7CF6; --danger:var(--flag);
+  --font-display:'Inter Tight','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',system-ui,sans-serif;
+  --font-body:'Inter','Inter Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono',Menlo,Consolas,'Liberation Mono',ui-monospace,monospace;
+  --num:'tnum' 1,'lnum' 1;
+  --r-sm:6px; --r-md:12px; --r-lg:20px;
+  --t-fast:160ms; --t-med:320ms; --ease:cubic-bezier(.16,.84,.44,1);
+  --maxw:1180px;
+  color-scheme:dark;
+}
 *{box-sizing:border-box}
-html{color-scheme:dark;background:var(--bg)}
-:focus-visible{outline:2px solid var(--flag);outline-offset:3px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
-a{color:var(--text)}a:hover,a:focus-visible{color:var(--flag)}
-main{max-width:1120px;margin:0 auto;padding:24px 20px 80px}
-header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 0 28px;border-bottom:1px solid var(--border);margin-bottom:36px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:15px}
-.brand svg{width:34px;height:22px}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);text-decoration:none;font-size:15px;font-family:var(--mono);min-height:44px;transition:border-color .15s,transform .15s,background .15s}
-.btn:hover,.btn:focus-visible{border-color:var(--flag);color:var(--text);transform:translateY(-1px)}
-.btn:active{transform:translateY(0)}
-.btn.primary{background:var(--flag);color:#0B0F14;border-color:var(--flag);font-weight:600}
-.btn.primary:hover{background:#ffc247}
-section{margin:0 0 44px}
-h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 14px}
-.headline{display:grid;grid-template-columns:auto 1fr;gap:8px 28px;align-items:end}
-.big{font-size:clamp(3.4rem,10vw,7.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--flag)}
-.claim{font-size:clamp(1.35rem,3vw,2rem);font-weight:600;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
-.sub{color:var(--muted);margin:0;font-size:16px}
-.sub b{color:var(--text);font-weight:600}
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.bar{position:relative;display:flex;height:22px;width:100%;border-radius:6px;overflow:hidden;background:var(--surface);border:1px solid var(--border);margin:14px 0 8px}
-.bar>span{display:block;height:100%;transition:width .9s cubic-bezier(.2,.8,.2,1)}
-.bar .dim{background:repeating-linear-gradient(90deg,var(--shelf) 0 7px,transparent 7px 9px)}
-.bar .lit{background:repeating-linear-gradient(90deg,var(--lit) 0 7px,transparent 7px 9px)}
-.bar .unk{background:repeating-linear-gradient(90deg,var(--unknown) 0 7px,transparent 7px 9px)}
-.bar.small{height:14px;margin:0}
-.legend{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font-size:15px}
-.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
-.sw.dim{background:var(--shelf)}.sw.lit{background:var(--lit)}.sw.unk{background:var(--unknown)}
-.recipe{font-family:var(--mono);font-size:14px;color:var(--muted);margin-top:10px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;overflow-x:auto}
-.search form{display:flex;gap:10px;flex-wrap:wrap}
-.search input{flex:1 1 220px;min-height:52px;font-size:22px;font-family:var(--mono);padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);text-transform:uppercase;transition:border-color .15s}
-.search input:focus{border-color:var(--flag);box-shadow:0 0 0 3px rgba(255,176,32,.35)}
-.search button{min-width:120px}
-.hint{color:var(--muted);font-size:15px;margin:10px 0 0}
-.hint code{font-family:var(--mono)}
-.tcard{margin-top:18px}
-.uline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:20px;font-weight:600}
-.pill{font-family:var(--mono);font-size:13px;padding:3px 9px;border-radius:999px;border:1px solid var(--flag);color:var(--flag);font-weight:500}
-.pill.off{border-color:var(--muted);color:var(--muted)}
-.src{font-size:14px;color:var(--muted);margin:4px 0 10px}
-.src b{color:var(--text);font-weight:600}
-.wrow{display:grid;grid-template-columns:18px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--border)}
-.box{width:16px;height:16px;border-radius:4px;margin-top:5px;background:var(--shelf)}
-.box.lit{background:var(--lit)}.box.unk{background:var(--unknown)}
-.wsym{font-family:var(--mono);font-size:18px;font-weight:600}
-.wmeta{color:var(--muted);font-size:15px;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin-top:4px}
-.wmeta span:nth-child(odd){color:var(--muted)}
-.wmeta span:nth-child(even){color:var(--text);font-family:var(--mono);font-size:14px;overflow-wrap:anywhere}
-.chip{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;padding:2px 8px;border-radius:6px;font-weight:700;margin-left:8px;vertical-align:2px}
-.chip.untracked{background:var(--shelf);color:var(--text)}.chip.active{background:var(--lit);color:#0B0F14}.chip.unresolved,.chip.inactive{background:var(--unknown);color:#0B0F14}
-.verdict{font-size:22px;font-weight:700;margin:14px 0 6px}
-details{margin-top:10px}
-summary{cursor:pointer;color:var(--muted);font-size:15px;list-style:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;transition:color .15s}
-summary::before{content:"▸";display:inline-block;transition:transform .15s}
-details[open] summary::before{transform:rotate(90deg)}
-summary:hover,summary:focus-visible{color:var(--flag)}
-pre{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-family:var(--mono);font-size:13px;line-height:1.45;overflow-x:auto;margin:8px 0;color:#c9d4e0;max-height:420px}
-.ev{font-size:14px;color:var(--muted);font-family:var(--mono);margin:6px 0}
-table{width:100%;border-collapse:collapse;font-size:16px}
-th{text-align:left;color:var(--muted);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:0 10px 10px 0;white-space:nowrap}
-td{padding:10px 10px 10px 0;border-top:1px solid var(--border);vertical-align:middle}
-td.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
-th.n{text-align:right}
-td.barcell{width:34%;min-width:140px}
-.rate{font-family:var(--mono);font-weight:700}
-.rate.full{color:var(--danger)}
-tr.issuer{transition:background .15s}
-tr.issuer:hover{background:rgba(255,255,255,.025)}
-.issuer-name{font-weight:600}
-.smaller{margin-top:8px}
-.types{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.types .card{padding:16px 18px}
-.types .t{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
-.types .t b{font-size:22px;font-family:var(--mono)}
-.stat{display:flex;gap:28px;flex-wrap:wrap}
-.stat div{min-width:160px}
-.stat .v{font-size:28px;font-weight:700;font-family:var(--mono);line-height:1.1}
-.stat .l{color:var(--muted);font-size:14px}
-.limits li{margin:6px 0}
-.receipt td,.receipt th{font-size:14px}
-footer{border-top:1px solid var(--border);padding-top:20px;color:var(--muted);font-size:14px;display:flex;gap:18px;flex-wrap:wrap}
-.status-ok{color:var(--lit)}.status-bad{color:var(--danger)}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-@media (max-width:720px){.headline{grid-template-columns:1fr}.big{font-size:clamp(3.4rem,18vw,5.5rem)}td.hide-m,th.hide-m{display:none}body{font-size:16px}}
-@media (prefers-reduced-motion:reduce){.bar>span,.btn,summary::before{transition:none}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:17px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(900px 480px at 78% -8%,rgba(255,176,32,.09),transparent 60%),radial-gradient(700px 420px at 12% 18%,rgba(76,154,255,.07),transparent 60%)}
+a{color:var(--data);text-decoration:none}
+a:hover{color:#8ec0ff}
+/* a link inside running text is told apart by an underline, not by hue alone (WCAG 1.4.1) */
+p a,li a,td a,.viz-foot a,.cap a,.receipt a,.note a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em;text-decoration-color:rgba(76,154,255,.55);transition:text-decoration-color var(--t-fast)}
+p a:hover,li a:hover,td a:hover,.viz-foot a:hover,.cap a:hover,.receipt a:hover,.note a:hover{text-decoration-color:currentColor}
+.viz-foot a{text-decoration-color:rgba(139,152,169,.6)}
+::selection{background:rgba(255,176,32,.35)}
+img,svg{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.02em;line-height:1.08;margin:0}
+h1{font-size:clamp(2.35rem,5.6vw,4.6rem);font-weight:800}
+h2{font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0 0 1rem}
+.mono{font-family:var(--font-mono);font-feature-settings:var(--num)}
+.num{font-feature-settings:var(--num);text-align:right}
+.muted{color:var(--muted)}
+.orange{color:var(--accent)}.blue{color:var(--data)}.green{color:var(--verdict)}.red{color:var(--flag)}.purple{color:var(--unknown)}.grey{color:var(--dim)}
+.wrap{width:min(var(--maxw),calc(100% - 40px));margin:0 auto;position:relative;z-index:1}
+section{padding:clamp(56px,8vw,104px) 0;scroll-margin-top:84px}
+.rows,.paste,#hero,#receipt-grid,#issuers{scroll-margin-top:84px}
+.eyebrow{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.eyebrow .cmc-wrap{display:inline-flex;align-items:center;gap:5px}
+.eyebrow .cmc{width:13px;height:13px;flex:none;opacity:.9}
+.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--dim);display:inline-block}
+.kicker{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.lede{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.lede b{color:var(--text);font-weight:600}
+.note{color:var(--muted);font-size:.95rem}
+.note b{color:var(--text);font-weight:600}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ── interaction utilities ───────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:-.01em;border:1px solid var(--border);color:var(--text);background:var(--surface);cursor:pointer;transition:transform var(--t-fast) var(--ease),box-shadow var(--t-fast) var(--ease),background var(--t-fast),border-color var(--t-fast),color var(--t-fast);will-change:transform}
+.btn:hover{transform:translateY(-2px);border-color:#3a4a63;background:var(--surface-2);color:var(--text)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-primary{background:var(--accent);color:#0B0E14;border-color:var(--accent)}
+.btn-primary:hover{background:#ffc04a;border-color:#ffc04a;color:#0B0E14;box-shadow:0 10px 34px -8px rgba(255,176,32,.55)}
+.btn-primary[disabled]{opacity:.6;cursor:progress;transform:none;box-shadow:none}
+.btn .arrow{transition:transform var(--t-fast) var(--ease)}
+.btn:hover .arrow{transform:translateX(3px)}
+.btn:hover .arrow-down{transform:translateY(3px)}
+.btn:hover .arrow-ext{transform:translate(2px,-2px)}
+.btn .gh-mark{width:.9em;height:.9em;flex:none}
+.arrow-ext{display:inline-block}
+a:not(.btn) .arrow-ext{font-size:.85em;margin-left:.3em;opacity:.8;transition:transform var(--t-fast) var(--ease),opacity var(--t-fast)}
+a:not(.btn):hover .arrow-ext{transform:translate(1px,-1px);opacity:1}
+.btn-judge{border-color:rgba(255,176,32,.55);color:var(--accent)}
+.btn-judge:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 10px 34px -12px rgba(255,176,32,.45)}
+.btn-judge .sub{font-family:var(--font-mono);font-weight:400;font-size:.78rem;color:var(--muted);letter-spacing:0}
+.link-quiet{color:var(--muted);transition:color var(--t-fast)}
+.link-quiet:hover{color:var(--text)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;transition:transform var(--t-med) var(--ease),border-color var(--t-med),box-shadow var(--t-med)}
+.card:hover{transform:translateY(-3px);border-color:#34435b;box-shadow:0 18px 50px -24px rgba(0,0,0,.8)}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;font-family:var(--font-mono);font-size:.8rem;border:1px solid var(--border);color:var(--muted);background:rgba(20,26,36,.7);white-space:nowrap;transition:border-color var(--t-fast),color var(--t-fast)}
+.chip.ok{border-color:rgba(61,220,151,.55);color:var(--verdict)}
+.chip.err{border-color:rgba(255,92,92,.55);color:var(--flag)}
+.chip.busy{border-color:rgba(76,154,255,.55);color:var(--data)}
+
+/* ── reveal on scroll (motion only when allowed; nothing above the fold carries it) ── */
+.reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+  .reveal.now{transition:none}
+}
+
+/* ── header ──────────────────────────────────────────────────────────────────── */
+header.top{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(11,14,20,.72);border-bottom:1px solid transparent;transition:border-color var(--t-med),background var(--t-med)}
+header.top.scrolled{border-bottom-color:var(--border);background:rgba(11,14,20,.86)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text);font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+.brand svg{width:30px;height:30px;border-radius:7px;flex:none}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{padding:8px 12px;border-radius:999px;color:var(--muted);font-size:.92rem;font-weight:500;transition:color var(--t-fast),background var(--t-fast),border-color var(--t-fast)}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.nav-links a.judge{font-family:var(--font-mono);font-size:.86rem;letter-spacing:-.01em;color:var(--text);border:1px solid var(--border)}
+.nav-links a.judge:hover{border-color:var(--accent);color:var(--accent);background:var(--surface)}
+.gh{display:inline-flex;width:38px;height:38px;border-radius:50%;align-items:center;justify-content:center;color:var(--muted);transition:color var(--t-fast),background var(--t-fast)}
+.gh:hover{color:var(--text);background:var(--surface)}
+.gh svg{width:20px;height:20px}
+
+/* ── lead: the claim, the count-up, the shelf ────────────────────────────────── */
+.lead{padding:clamp(48px,7vw,96px) 0 clamp(32px,5vw,64px)}
+.lead h1{margin-top:18px}
+.lead h1 .line1{display:block;color:var(--muted);font-weight:700}
+.lead h1 .line2{display:block}
+.lead h1 .big{color:var(--accent);font-feature-settings:var(--num);display:inline-block;min-width:3.12ch;text-align:left}
+.lead .lede{margin:22px 0 30px;max-width:52ch}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hero-viz{margin-top:clamp(36px,5vw,64px);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(16px,2.6vw,32px);position:relative;overflow:hidden}
+.hero-viz::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,176,32,.5),transparent)}
+svg.block{width:100%;height:auto}
+svg.block.phone{display:none}
+svg.block .rail{stroke:var(--border);stroke-width:2}
+svg.block pattern rect.s{fill:var(--dim)}
+svg.block pattern rect.t{fill:var(--verdict)}
+svg.block pattern rect.a{fill:var(--accent)}
+svg.block rect.pre{opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  /* the mechanism, once: every box is amber because the RWA map says has_tokens: true — then the
+     join sweeps the shelf row by row and each box takes its listing state: grey has no
+     CMC-tracked market, green has one */
+  svg.block:not(.go) rect.pre{opacity:1}
+  svg.block rect.pre{transition:opacity .5s var(--ease);transition-delay:calc(var(--i,0)*70ms)}
+}
+.viz-key{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;margin-top:16px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted);line-height:1.6}
+.viz-key>span{display:flex;align-items:flex-start;gap:9px;min-width:0}
+.viz-key>span>span{display:block;min-width:0;overflow-wrap:anywhere}
+.viz-key i{width:14px;height:10px;border-radius:2px;display:inline-block;background:var(--data);flex:none;margin-top:6px}
+.viz-key i.amber{background:var(--accent)}
+.viz-key i.shelf{background:var(--dim)}
+.viz-key i.lit{background:var(--verdict)}
+.viz-key b{color:var(--text);font-weight:600}
+.viz-key .orange{color:var(--accent)}
+.viz-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+/* the rail: every judge-facing surface, one row, right under the fold */
+.rail{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.rail a{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--muted);font-size:.9rem;font-weight:500;transition:color var(--t-fast),border-color var(--t-fast),transform var(--t-fast) var(--ease)}
+.rail a:hover{color:var(--text);border-color:var(--accent);transform:translateY(-1px)}
+.rail a .arrow{transition:transform var(--t-fast) var(--ease)}
+.rail a:hover .arrow{transform:translateX(2px)}
+
+/* ── the product: the ticker box, the headline, the wrapper table, the verdict, the rows ── */
+.context{margin:22px 0 4px;color:var(--muted);font-size:.95rem;font-family:var(--font-mono);overflow-wrap:anywhere}
+.context b{color:var(--text);font-weight:600}
+.hero{margin:6px 0 24px}
+.hero .share{font-family:var(--font-display);font-weight:800;font-size:clamp(2.6rem,7vw,5.4rem);line-height:1;letter-spacing:-.025em;color:var(--accent);font-feature-settings:var(--num)}
+.hero .claim{font-family:var(--font-display);font-weight:600;font-size:clamp(1.25rem,2.6vw,1.9rem);line-height:1.25;margin:10px 0 8px;max-width:26ch;letter-spacing:-.01em}
+.hero .claim em{font-style:normal;color:var(--accent)}
+.hero .support{color:var(--muted);font-size:1.02rem;max-width:70ch;margin:0}
+.hero .support b{color:var(--data);font-weight:600}
+.hero.lit .share{color:var(--verdict)}
+.hero.lit .claim em{color:var(--verdict)}
+.hero.none .share{color:var(--muted)}
+.hero.none .claim em{color:var(--muted)}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface)}
+table.pools{width:100%;border-collapse:collapse;font-size:.95rem}
+table.pools th,table.pools td{padding:11px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--border)}
+table.pools th{font-family:var(--font-mono);color:var(--muted);font-weight:500;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+table.pools th:first-child,table.pools td:first-child{text-align:left}
+table.pools tbody tr{transition:background var(--t-fast)}
+table.pools tbody tr:hover{background:var(--surface-2)}
+table.pools tbody tr:last-child td{border-bottom:0}
+td.pool{font-weight:600}
+td.pool small{color:var(--muted);font-weight:400;margin-left:6px;font-family:var(--font-mono);font-size:.78rem}
+table.pools#pools td.pool{white-space:normal;min-width:14ch}
+table.pools#pools td.pool small{display:block;margin:2px 0 0;white-space:normal;max-width:30ch;line-height:1.35}
+table.pools td.addr{white-space:normal;overflow-wrap:anywhere;max-width:30ch;font-size:.82rem}
+tr.lit td.pool{box-shadow:inset 4px 0 0 var(--verdict)}
+tr.shelf td.pool{box-shadow:inset 4px 0 0 var(--accent)}
+tr.unknown td.pool{box-shadow:inset 4px 0 0 var(--unknown)}
+table.pools td.l,table.pools th.l{text-align:left}
+table.pools td.src{color:var(--muted);font-size:.8rem;white-space:normal;min-width:14ch;max-width:24ch}
+.state{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:2px 8px;border-radius:999px;border:1px solid var(--dim);color:var(--muted);text-transform:uppercase;line-height:1.5}
+.state.active{color:var(--verdict);border-color:rgba(61,220,151,.55)}
+.state.unresolved,.state.inactive{color:var(--unknown);border-color:rgba(139,124,246,.55)}
+.route{margin:16px 0 24px;padding:16px 20px;border:1px solid rgba(61,220,151,.55);border-radius:var(--r-md);background:rgba(61,220,151,.06)}
+.route .line{font-family:var(--font-display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.6rem);color:var(--verdict);letter-spacing:-.01em}
+.route .rule{color:var(--muted);font-size:.95rem;margin-top:4px;font-family:var(--font-mono)}
+.route.shelf{border-color:rgba(255,176,32,.55);background:rgba(255,176,32,.06)}
+.route.shelf .line{color:var(--accent)}
+.route.none{border-color:var(--border);background:var(--surface)}
+.route.none .line{color:var(--muted)}
+.rows{margin:0 0 24px;padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg)}
+.rows h3{margin:0 0 4px}
+.rows .cap{color:var(--muted);font-size:.9rem;margin-bottom:12px;font-family:var(--font-mono);overflow-wrap:anywhere}
+.rowlist{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.rowlist table{width:100%;border-collapse:collapse;font-size:.88rem}
+.rowlist th,.rowlist td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap}
+.rowlist th{font-family:var(--font-mono);font-weight:500;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rowlist th:nth-child(-n+3),.rowlist td:nth-child(-n+3){text-align:left}
+.rowlist tr.leg td{color:var(--accent);font-weight:600}
+.rowlist tr.leg td:first-child::before{content:"◀ ";color:var(--accent)}
+.rowlist tr.lit td{color:var(--verdict)}
+.rowlist tr.unknown td{color:var(--unknown)}
+.rowlist td.mono{font-family:var(--font-mono);font-feature-settings:var(--num)}
+@media (prefers-reduced-motion:no-preference){
+  .rowlist tr.leg{animation:light 700ms var(--t-fast) both}
+  .rowlist tr.leg:nth-of-type(n+2){animation-delay:600ms}
+  @keyframes light{from{background:transparent}50%{background:rgba(255,176,32,.18)}to{background:transparent}}
+}
+.arith{margin:14px 0 0;padding:14px 16px;list-style:none;font:.86rem/1.6 var(--font-mono);color:var(--text);border:1px dashed rgba(255,176,32,.5);border-radius:var(--r-md);background:rgba(255,176,32,.05)}
+.arith li{padding:2px 0;word-break:break-all}
+.arith li:last-child{color:var(--accent);font-weight:600}
+details{border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);margin-top:14px}
+details summary{cursor:pointer;list-style:none;padding:14px 18px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:color var(--t-fast),background var(--t-fast);border-radius:var(--r-md)}
+details summary::-webkit-details-marker{display:none}
+details summary:hover{color:var(--accent);background:var(--surface-2)}
+details summary .chev{transition:transform var(--t-med) var(--ease);flex:none}
+details[open] summary .chev{transform:rotate(180deg)}
+details .body{padding:4px 18px 18px;color:var(--muted);font-size:.98rem}
+details .body p:last-child{margin-bottom:0}
+details .fold{display:grid;grid-template-rows:0fr}
+details[open] .fold{grid-template-rows:1fr}
+details .fold>.fold-clip{overflow:hidden;min-height:0}
+@media (prefers-reduced-motion:no-preference){
+  details .fold{transition:grid-template-rows 200ms var(--ease)}
+  details.fx[open]:not(.is-open) .fold{grid-template-rows:0fr}
+}
+details.raw{background:var(--bg)}
+details.raw summary{font-family:var(--font-mono);font-weight:500;font-size:.82rem;color:var(--muted)}
+pre.json{margin:0 14px 14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:14px;font-family:var(--font-mono);font-size:.76rem;line-height:1.55;max-height:420px;overflow:auto;color:#B9C4D2}
+.paste{margin-top:32px}
+.paste h3{margin-bottom:6px}
+.paste .note{margin:0 0 14px}
+.paste-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.paste input{flex:1 1 220px;min-width:0;font:.95rem var(--font-mono);color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:12px 14px;text-transform:uppercase;transition:border-color var(--t-fast)}
+.paste input:focus{border-color:var(--data)}
+.paste .btn{padding:12px 20px}
+#status{flex:1 1 100%;font-size:.92rem;color:var(--muted);min-height:1.4em;margin-top:8px}
+#status .cmd{display:block;margin-top:8px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);font:.82rem var(--font-mono);color:var(--text);user-select:all;word-break:break-all}
+
+/* ── the shelf primitive, in the issuer table and the type cards ─────────────── */
+.barcell .bar,.types .bar{position:relative;display:flex;height:14px;width:100%;border-radius:4px;overflow:hidden;background:var(--bg);border:1px solid var(--border)}
+.barcell .bar>span,.types .bar>span{display:block;height:100%}
+.barcell .bar .dim,.types .bar .dim{background:repeating-linear-gradient(90deg,var(--dim) 0 6px,transparent 6px 8px)}
+.barcell .bar .lit,.types .bar .lit{background:repeating-linear-gradient(90deg,var(--verdict) 0 6px,transparent 6px 8px)}
+.barcell .bar .unk,.types .bar .unk{background:repeating-linear-gradient(90deg,var(--unknown) 0 6px,transparent 6px 8px)}
+table.issuers td.barcell{width:30%;min-width:140px}
+table.issuers td.n{font-family:var(--font-mono);font-feature-settings:var(--num)}
+table.issuers .rate{font-family:var(--font-mono);font-weight:700;font-feature-settings:var(--num)}
+table.issuers .rate.full{color:var(--flag)}
+table.issuers details{border:0;background:transparent;margin:0;display:inline-block;max-width:100%}
+table.issuers summary{padding:0;font-weight:600;display:inline-flex;gap:6px;color:var(--text);border-radius:var(--r-sm)}
+table.issuers summary::after{content:"▾";color:var(--muted);font-size:.85em}
+table.issuers details[open] summary::after{content:"▴"}
+table.issuers details[open]{display:block}
+table.issuers .ev{font:.72rem var(--font-mono);color:var(--muted);margin:8px 0 2px;white-space:normal}
+table.issuers pre{margin:0 0 6px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px;font:.72rem/1.5 var(--font-mono);color:#B9C4D2;max-height:260px;max-width:min(520px,80vw);overflow:auto;white-space:pre}
+.smaller{margin:14px 0 0}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.types>*{min-width:0}
+.types .stat{text-align:left}
+.types .bar{margin:12px 0 10px}
+.types .stat-l b{color:var(--text);font-weight:600}
+
+/* ── stat band, proof grid, receipt ──────────────────────────────────────────── */
+.statband{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:32px}
+.stat{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--border);border-radius:var(--r-md);padding:20px 14px;text-align:center;min-width:0}
+.stat-v{display:block;font-family:var(--font-display);font-size:2.15rem;font-weight:800;letter-spacing:-.02em;line-height:1;color:var(--text);font-feature-settings:var(--num)}
+.stat-l{display:block;color:var(--muted);font-size:.86rem;margin-top:8px;line-height:1.35}
+.stat-v.orange{color:var(--accent)}.stat-v.blue{color:var(--data)}.stat-v.green{color:var(--verdict)}.stat-v.red{color:var(--flag)}.stat-v.purple{color:var(--unknown)}
+.receipt{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 22px;margin-top:32px;font-size:.92rem}
+.receipt .k{font-family:var(--font-mono);color:var(--muted);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.receipt .v{margin-top:3px;overflow-wrap:anywhere}
+.calls .rowlist{padding:0 14px 14px}
+.calls .rowlist td{white-space:normal;overflow-wrap:anywhere}
+.calls .rowlist td.mono{white-space:nowrap}
+.calls summary{font-family:var(--font-mono);font-weight:500;font-size:.86rem}
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.proof>*{min-width:0}
+.proof a{display:block;position:relative;padding:14px 16px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);color:var(--text);transition:border-color var(--t-fast),transform var(--t-fast) var(--ease)}
+.proof a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proof .f{font-family:var(--font-mono);font-size:.8rem;color:var(--data);overflow-wrap:anywhere}
+.proof .m{font-size:.82rem;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}
+.proof .arrow-ext{position:absolute;top:10px;right:12px;margin:0;color:var(--muted)}
+
+/* ── api table + findings ────────────────────────────────────────────────────── */
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.api{width:100%;border-collapse:collapse;font-size:.95rem}
+table.api th,table.api td{padding:12px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+table.api tr:last-child td{border-bottom:0}
+table.api th{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+table.api code{font-family:var(--font-mono);font-size:.82rem;color:var(--data);white-space:nowrap}
+table.api td.n{font-family:var(--font-mono);color:var(--muted);text-align:right;white-space:nowrap}
+table.api tr.engine td{background:linear-gradient(90deg,rgba(255,176,32,.08),transparent)}
+table.api tr.engine code{color:var(--accent)}
+table.api tr.unused code{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(255,92,92,.6)}
+table.api td.key{font-family:var(--font-mono);font-size:.82rem;white-space:nowrap}
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.findings>*{min-width:0}
+.finding .k{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.finding .v{font-family:var(--font-display);font-weight:800;font-size:2rem;letter-spacing:-.02em;line-height:1;margin-bottom:10px;font-feature-settings:var(--num)}
+.finding p{color:var(--muted);font-size:.95rem;margin:0}
+.finding p b{color:var(--text);font-weight:600}
+
+/* ── run: the terminal and the two days ──────────────────────────────────────── */
+.term{background:#0B0E14;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:32px}
+.term .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--surface)}
+.term .bar i{width:11px;height:11px;border-radius:50%;background:#2c3646;display:inline-block}
+.term .bar span{margin-left:8px;font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
+.term .bar button{margin-left:auto}
+.term pre{margin:0;padding:18px 20px;font-family:var(--font-mono);font-size:.84rem;line-height:1.6;overflow:auto;color:#B9C4D2}
+.term .p{color:#7E8CA0}.term .cmd{color:var(--text)}.term .hi{color:var(--accent)}.term .ok{color:var(--verdict)}.term .dim{color:#7E8CA0}.term .bl{color:var(--data)}
+.copy{font-family:var(--font-mono);font-size:.75rem;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:color var(--t-fast),border-color var(--t-fast),background var(--t-fast)}
+.copy:hover{color:var(--text);border-color:#3a4a63;background:var(--surface-2)}
+.copy.done{color:var(--accent);border-color:var(--accent)}
+.runs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.runs>*{min-width:0}
+.run{padding:16px 18px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);position:relative}
+.run .t{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.run .v{font-family:var(--font-display);font-weight:800;font-size:2rem;letter-spacing:-.02em;line-height:1;margin:8px 0 6px;color:var(--accent);font-feature-settings:var(--num)}
+.run .v.quiet{color:var(--verdict)}
+.run .m{font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
+.run .m a{font-family:var(--font-mono);font-size:.78rem}
+
+/* ── faq / limits ────────────────────────────────────────────────────────────── */
+.faq{margin-top:24px;max-width:860px}
+.faq details{margin-top:10px}
+
+/* ── final cta ───────────────────────────────────────────────────────────────── */
+.final{position:relative;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(255,176,32,.06),rgba(11,14,20,0) 70%)}
+.final h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+.final .cta-row{margin-top:28px}
+.final .btn-primary{padding:18px 28px;font-size:1.1rem}
+
+/* ── footer ──────────────────────────────────────────────────────────────────── */
+footer{padding:44px 0 60px;color:var(--muted);font-size:.9rem}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+footer h3{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:500;line-height:1.6}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin:6px 0}
+footer .brand{color:var(--text)}
+footer .brand img{width:30px;height:30px;border-radius:7px}
+footer .bottom{margin-top:32px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--font-mono);font-size:.78rem}
+footer .bottom .ver{color:var(--accent)}
+
+/* ── breakpoints: condense, do not just stack ────────────────────────────────── */
+@media (max-width:960px){.statband{grid-template-columns:repeat(3,1fr)}.findings{grid-template-columns:1fr}.proof,.runs{grid-template-columns:repeat(2,1fr)}.types{grid-template-columns:1fr}}
+@media (max-width:820px){footer .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){
+  /* hide the columns a phone reader does not decide on; keep the state and the price */
+  table.pools th:nth-child(4),table.pools td:nth-child(4),table.pools th:nth-child(7),table.pools td:nth-child(7),table.pools th:nth-child(8),table.pools td:nth-child(8){display:none}
+  table.issuers th.hide-m,table.issuers td.hide-m{display:none}
+  .hero .claim{max-width:none}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding:36px 0;scroll-margin-top:70px}
+  .lede{font-size:1.02rem}
+  h2{font-size:1.55rem}
+  .lead{padding:32px 0 20px}
+  .lead .lede{margin:14px 0 20px}
+  .hero-viz{margin-top:24px;padding:14px}
+  svg.block.desk{display:none}svg.block.phone{display:block}
+  .viz-key{grid-template-columns:1fr;gap:8px;font-size:.74rem}
+  .rail{gap:6px;margin-top:20px}
+  .rail a{padding:7px 12px;font-size:.84rem}
+  .card{padding:18px}
+  .rows{padding:16px}
+  .statband{grid-template-columns:repeat(2,1fr);gap:8px}
+  .stat{padding:14px 10px}
+  .stat-v{font-size:1.7rem}
+  .finding .v{font-size:1.7rem}
+  .term pre{font-size:.76rem;padding:14px}
+  .runs{grid-template-columns:1fr 1fr;gap:8px}
+  .run .v{font-size:1.6rem}
+  .proof{grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+  .proof a{padding:10px 12px}
+  .proof .f{font-size:.72rem}
+  .proof .arrow-ext{top:auto;bottom:10px;right:12px}
+  details summary{padding:12px 14px;font-size:.95rem}
+  details .body{padding:2px 14px 14px}
+  pre.json{font-size:.7rem;max-height:260px;padding:12px;margin:0 10px 10px}
+  table.issuers pre{max-width:min(420px,72vw)}
+  /* the api table becomes one block per endpoint — its columns cannot share 375px */
+  table.api,table.api thead,table.api tbody,table.api tr,table.api td{display:block}
+  table.api thead{display:none}
+  table.api tr{padding:12px 0;border-bottom:1px solid var(--border)}
+  table.api tr:last-child{border-bottom:0}
+  table.api td{padding:2px 0;border:0}
+  table.api td.n{text-align:left;font-size:.8rem}
+  table.api td.n::before{content:"calls on this page · "}
+  table.api code{white-space:normal;word-break:break-all}
+  .final .cta-row{gap:8px}
+  .final .btn{padding:14px 18px}
+  .final .btn-primary{font-size:1rem}
+  .btn-judge .sub{display:none}
+  footer{padding:32px 0 40px;font-size:.85rem}
+  footer .cols{grid-template-columns:1fr 1fr;gap:18px}
+  footer .cols>div:first-child{grid-column:1/-1}
+}
+@media (max-width:480px){
+  .statband{grid-template-columns:1fr 1fr}footer .cols{grid-template-columns:1fr}
+  .brand{font-size:.95rem;white-space:nowrap}.nav-links a.judge{font-size:.8rem;white-space:nowrap}.nav{gap:8px}
+}
+@media (max-width:360px){.brand{font-size:.84rem}.brand svg{width:22px;height:22px}.nav-links a.judge{font-size:.72rem;padding:7px 9px}.gh{width:32px;height:32px}}
 </style>
 </head>
 <body>
-<main>
-<header>
-  <div class="brand">{{logo}} Shelfware</div>
-  <nav>
-    <a class="btn primary" href="#search">Type a ticker</a>
-    <a class="btn" href="{{repo}}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-    <a class="btn" href="{{repo}}/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md ↗</a>
-    <a class="btn" href="/pitch/">Pitch deck</a>
-    <a class="btn" href="/judge">For judges</a>
-  </nav>
+
+<header class="top" id="top">
+  <div class="wrap nav">
+    <div class="brand">
+      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false"><rect width="512" height="512" rx="112" fill="#0B0E14"/><rect x="8" y="8" width="496" height="496" rx="105" fill="none" stroke="#5E6C80" stroke-width="6"/><g fill="#5E6C80"><rect x="58" y="212" width="68" height="132" rx="8"/><rect x="140" y="188" width="68" height="156" rx="8"/><rect x="222" y="200" width="68" height="144" rx="8"/></g><g fill="#3DDC97"><rect x="304" y="168" width="68" height="176" rx="8"/><rect x="386" y="144" width="68" height="200" rx="8"/></g><rect x="44" y="344" width="424" height="20" rx="10" fill="#8B98A9"/></svg>
+      Shelfware
+    </div>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="judge" href="/judge" title="For judges — the claim, the 30-second path, the receipt">For judges</a>
+      <a class="gh" href="{{repo}}" aria-label="Source on GitHub (opens in a new tab)" title="Source on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+    </nav>
+  </div>
 </header>
 
-<section class="headline-wrap" aria-labelledby="claim">
-  <div class="headline">
-    <div class="big mono" id="bignum" data-target="{{share_pct}}">{{share_pct}}%</div>
-    <div>
-      <p class="claim" id="claim">of the tokenised assets CoinMarketCap lists have <b>no wrapper with a tracked market</b>.</p>
-      <p class="sub"><b class="mono" id="zt">{{zero_tracked}}</b> of <b class="mono">{{has_tokens}}</b> underlyings flagged <span class="pill">has_tokens: true</span> · stocks alone <b class="mono">{{stock_zero}} of {{stock_under}}</b> ({{stock_pct}}%) · counted <b class="mono">{{generated_short}} UTC</b> · <b class="mono">{{credits}}</b> keyed credits</p>
+<main>
+
+<section class="lead" id="lead">
+  <div class="wrap">
+    <div class="eyebrow">
+      <span class="cmc-wrap"><svg class="cmc" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.738 14.341c-.419.265-.912.298-1.286.087-.476-.27-.738-.898-.738-1.774v-2.618c0-1.264-.5-2.164-1.336-2.407-1.416-.413-2.482 1.32-2.882 1.972l-2.498 4.05v-4.95c-.028-1.14-.398-1.821-1.1-2.027-.466-.135-1.161-.081-1.837.953l-5.597 8.987A9.875 9.875 0 0 1 2.326 12c0-5.414 4.339-9.818 9.672-9.818 5.332 0 9.67 4.404 9.67 9.818.004.018.002.034.003.053.05 1.049-.29 1.883-.933 2.29zm3.08-2.34-.001-.055C23.787 5.353 18.497 0 11.997 0 5.48 0 .177 5.383.177 12c0 6.616 5.303 12 11.82 12 2.991 0 5.846-1.137 8.037-3.2.435-.41.46-1.1.057-1.541a1.064 1.064 0 0 0-1.519-.059 9.56 9.56 0 0 1-6.574 2.618c-2.856 0-5.425-1.263-7.197-3.268l5.048-8.105v3.737c0 1.794.696 2.374 1.28 2.544.584.17 1.476.054 2.413-1.468.998-1.614 2.025-3.297 3.023-4.88v2.276c0 1.678.672 3.02 1.843 3.68 1.056.597 2.384.543 3.465-.14 1.312-.828 2.018-2.354 1.944-4.193z"/></svg>CoinMarketCap API</span><span class="dot"></span><span>keyed</span><span class="dot"></span><span>{{credits}} credits</span><span class="dot"></span><span>{{generated_date}}</span>
+    </div>
+    <h1>
+      <span class="line1">CoinMarketCap flags {{has_tokens}} assets as tokenised.</span>
+      <span class="line2"><span class="big" data-count="{{share_pct}}">{{share_pct}}%</span> of them have no wrapper with a tracked market.</span>
+    </h1>
+    <p class="lede">{{tagline}}</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#ask">Type a ticker <span class="arrow arrow-down" aria-hidden="true">↓</span></a>
+    </div>
+
+    <div class="hero-viz" id="viz">
+      {{hero_viz}}
+      <div class="viz-key" aria-label="Colour key">{{viz_key}}</div>
+      <div class="viz-foot">
+        <span>{{viz_foot}}</span>
+        <span>captured {{generated_short}} UTC · <a class="link-quiet" href="#run">reproduce ↓</a></span>
+      </div>
+    </div>
+
+    <nav class="rail" aria-label="Where to look">
+      <a href="/judge">For judges <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="/pitch/">Pitch deck <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="{{repo}}" target="_blank" rel="noopener noreferrer">GitHub<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+      <a href="{{repo}}/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+    </nav>
+  </div>
+</section>
+
+<section id="ask">
+  <div class="wrap">
+    <div class="kicker reveal">The product</div>
+    <h2 class="reveal d1">Type a ticker. Every wrapper, its issuer, its chain, its listing state.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The roster from <span class="mono">/v5/real-world-assets/quotes/latest</span> — <span class="mono">tokens[]</span>, the <span class="mono">price: null</span> rows kept — joined to each wrapper's <span class="mono">status</span> on <span class="mono">/public-api/v1/cryptocurrency/map</span>. Then one line: how many of its wrappers have a CMC-tracked market, and whose. The answer below is a committed run; type any ticker to ask live.</p>
+
+    <form class="paste card" id="paste" autocomplete="off" aria-labelledby="paste-h">
+      <h3 id="paste-h">Does this ticker have a wrapper that trades, and whose?</h3>
+      <p class="note">Roster via this site's proxy (<span class="mono">/api/roster</span> → <span class="mono">/v5/real-world-assets/quotes/latest</span>, keyed, 1 credit; the committed snapshot if the key is unavailable, labelled). State via <span class="mono">/api/status</span> → <span class="mono">/public-api/v1/cryptocurrency/map</span> and <span class="mono">/v2/cryptocurrency/info</span> — keyless, 0 credits. The proxy shares one IP across every visitor, so a 429 is shown as a 429, with the command to run instead.</p>
+      <div class="paste-row">
+        <label class="sr-only" for="t">Ticker symbol</label>
+        <input id="t" name="t" placeholder="MS" value="{{hero_symbol}}" maxlength="16" spellcheck="false">
+        <button type="submit" id="go" class="btn btn-primary">Ask CMC <span class="arrow" aria-hidden="true">→</span></button>
+        <span class="chip ok" id="mode">committed run</span>
+      </div>
+      <div id="status" role="status" aria-live="polite"></div>
+    </form>
+
+    <p class="context" id="context">{{context}}</p>
+
+    <div class="hero {{hero_kind}}" id="hero" aria-label="The answer">
+      <div class="share mono" id="share" data-target="{{hero_share_num}}">{{hero_share_text}}</div>
+      <p class="claim" id="claim">{{hero_claim}}</p>
+      <p class="support" id="support">{{hero_support}}</p>
+    </div>
+
+    <div class="tablewrap">
+      <table class="pools" id="pools" aria-label="Wrappers of the underlying">
+        <thead><tr>
+          <th><span>wrapper</span></th>
+          <th class="l"><span>issuer</span></th>
+          <th class="l"><span>chain</span></th>
+          <th class="l"><span>token address</span></th>
+          <th><span>price</span></th>
+          <th><span>listing state</span></th>
+          <th class="l"><span>state from</span></th>
+          <th><span>listed</span></th>
+        </tr></thead>
+        <tbody id="tbody">{{table_rows}}</tbody>
+      </table>
+    </div>
+
+    <div class="route {{route_kind}}" id="route" aria-label="The verdict">
+      <div class="line" id="routeline">{{route_line}}</div>
+      <div class="rule" id="routerule">{{route_rule}}</div>
+    </div>
+
+    <div class="rows" id="rows" aria-label="Raw rows">
+      <h3 id="rowstitle">{{rows_title}}</h3>
+      <div class="cap" id="rowscap">{{rows_cap}}</div>
+      <div class="rowlist" id="rowlist">{{rows_table}}</div>
+      <ul class="arith" id="arith">{{rows_arith}}</ul>
+      <details class="raw" id="rawjson">
+        <summary>raw JSON of these rows, verbatim from the API<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><pre id="rawpre" class="json" tabindex="0" aria-label="Raw rows, verbatim from the API">{{rows_json}}</pre></div></div>
+      </details>
+    </div>
+    <noscript><p class="note">The box above needs JavaScript to ask live; the answer shown is the committed run. The same question on your machine, live and keyless: <span class="mono">python3 -m shelfware {{hero_symbol}}</span>.</p></noscript>
+  </div>
+</section>
+
+<section id="issuers">
+  <div class="wrap">
+    <div class="kicker reveal">The scorecard</div>
+    <h2 class="reveal d1">One row per issuer. Grey is the shelf; green has a market.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The same pair, <b>{{backed_attached}}</b> times in Backed Assets' row. <b>Declared</b> is the registry's <span class="mono">num_tokens</span>; <b>attached</b> is what any underlying lists in <span class="mono">tokens[]</span>; <b>tracked</b> is <span class="mono">status == active</span> on the map; the shelf rate is untracked ÷ attached, beside the live market cap of what does trade. Sorted by shelf rate. Open an issuer for its two raw rows.</p>
+    <div class="tablewrap reveal" style="margin-top:28px">
+      <table class="pools issuers" aria-label="Issuers by shelf rate">
+        <thead><tr><th><span>issuer</span></th><th class="l"><span>wrappers</span></th><th><span>shelf</span></th><th class="hide-m"><span>declared</span></th><th><span>attached</span></th><th><span>tracked</span></th><th class="hide-m"><span>live market cap</span></th></tr></thead>
+        <tbody>{{issuer_rows}}</tbody>
+      </table>
+    </div>
+    <details class="smaller reveal">
+      <summary>smaller issuers ({{n_smaller}}) — fewer than 5 attached wrappers<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="fold"><div class="fold-clip"><div class="tablewrap" style="border:0;border-radius:0"><table class="pools issuers" aria-label="Smaller issuers"><tbody>{{issuer_rows_small}}</tbody></table></div></div></div>
+    </details>
+    <div class="types reveal d1">{{type_cards}}</div>
+    <p class="note reveal" style="margin-top:18px">Stocks alone: <b>{{stock_zero}} of {{stock_under}}</b> underlyings ({{stock_pct}}%) have no wrapper with a CMC-tracked market. <b>{{top_chain_n}}</b> of the {{untracked}} shelf wrappers sit on {{top_chain}} — {{chains_rest}}. A 100 % shelf rate is printed in red because it is the one an allocator most needs to see; it is still a listing state, not a verdict on the issuer.</p>
+  </div>
+</section>
+
+<section id="census">
+  <div class="wrap">
+    <div class="kicker reveal">The census</div>
+    <h2 class="reveal d1">{{underlyings_fmt}} underlyings, {{wrappers_fmt}} wrappers, one join, {{credits}} credits.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">Every underlying in the RWA map, the full wrapper roster of the {{has_tokens}} flagged <span class="mono">has_tokens: true</span> — null-price rows included — and each wrapper joined on <span class="mono">crypto_id</span> to its row on the cryptocurrency map across <span class="mono">active, inactive, untracked</span>. Live {{generated_date}}, {{calls_total}} calls, {{wall_clock}} s.</p>
+    <div class="statband reveal">
+      <div class="stat"><span class="stat-v">{{has_tokens}}</span><span class="stat-l">underlyings flagged has_tokens: true</span></div>
+      <div class="stat"><span class="stat-v orange">{{zero_tracked}}</span><span class="stat-l">of them with no wrapper with a CMC-tracked market</span></div>
+      <div class="stat"><span class="stat-v">{{untracked}}</span><span class="stat-l">of {{wrappers_fmt}} wrappers on the shelf — {{untracked_pct}} %</span></div>
+      <div class="stat"><span class="stat-v purple">{{unresolved}}</span><span class="stat-l">ids on no public CMC surface — shown, never counted</span></div>
+      <div class="stat"><span class="stat-v green">{{exceptions}}</span><span class="stat-l">exceptions to price == null ⇔ untracked, {{resolved_fmt}} resolved wrappers</span></div>
+    </div>
+    <p class="note reveal" style="margin-top:18px">The rule is the conservative one: an underlying counts only when <b>every</b> attached wrapper is <span class="mono">untracked</span>; the loose rule ("no active wrapper") gives {{zero_tracked_loose}} today and is never headlined. What trades is young — median <b>{{age_median}} d</b> since <span class="mono">first_historical_data</span> (p10 {{age_p10}} · p90 {{age_p90}} · n={{age_n}}) — and the shelf is younger still: median <b>{{shelf_median}} d</b> since <span class="mono">date_added</span> (p10 {{shelf_p10}} · p90 {{shelf_p90}} · n={{shelf_n}}), a listing day, not a market day.</p>
+  </div>
+</section>
+
+<section id="receipt">
+  <div class="wrap">
+    <div class="kicker reveal">The receipt</div>
+    <h2 class="reveal d1">Every number on this page came from a call you can replay.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The census's {{calls_total}} calls — URL, HTTP status, <span class="mono">credit_count</span>, bytes, sha256, UTC — are in <a href="{{repo}}/blob/main/docs/proof/live_run.json" target="_blank" rel="noopener noreferrer">live_run.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>; the ticker answer's are in <a href="{{repo}}/blob/main/docs/proof/ms.json" target="_blank" rel="noopener noreferrer">ms.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>. The grid below follows the answer: type a ticker and it updates.</p>
+    <div class="receipt" id="receipt-grid">{{receipt}}</div>
+    <details class="calls" id="calls">
+      <summary>every call behind this answer<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="fold"><div class="fold-clip"><div class="rowlist" id="calls-list">{{calls_rows}}</div></div></div>
+    </details>
+    <details class="calls reveal">
+      <summary>every call of the census — {{calls_total}}, {{generated_short}} UTC<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="fold"><div class="fold-clip"><div class="rowlist">{{census_calls}}</div><p class="note" style="margin:0 14px 14px">{{keyed_calls}} keyed calls = {{credits}} credits, read off <span class="mono">/v1/key/info</span> before and after: {{usage_before}} → {{usage_after}} credits used this month. {{keyless_calls}} keyless calls, charged to no key. Re-derive both headline numbers by hand:</p><pre class="json" style="max-height:none">{{jq}}</pre></div></div>
+    </details>
+    <div class="proof reveal">{{proof_links}}</div>
+  </div>
+</section>
+
+<section id="api">
+  <div class="wrap">
+    <div class="kicker reveal">The API</div>
+    <h2 class="reveal d1">Six endpoints. Two of them are the whole join.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The wrapper roster with its null-price rows exists in one place: <span class="mono">tokens[]</span> on <span class="mono">/v5/real-world-assets/quotes/latest</span>. The listing state that explains the nulls exists in one place: <span class="mono">status</span> on <span class="mono">/v1/cryptocurrency/map</span>. Delete CoinMarketCap and both ledgers vanish — no single endpoint says a wrapper has no market; only the join does.</p>
+    <div class="card reveal" style="margin-top:32px;padding:0 24px">
+      <div class="scroll-x">
+      <table class="api">
+        <thead><tr><th>endpoint</th><th>used for</th><th>key</th><th class="n">calls behind this page</th></tr></thead>
+        <tbody>{{api_rows}}</tbody>
+      </table>
+      </div>
+    </div>
+    <div class="findings">
+      <div class="card finding reveal">
+        <div class="k">finding 1 · the symbol filter</div>
+        <div class="v orange">{{dotted}} wrappers</div>
+        <p>The map's <span class="mono">symbol=</span> filter rejects symbols CoinMarketCap itself assigns — <span class="mono">NVDA.D</span>, <span class="mono">AI.FRx</span> — with <b>HTTP 400 for the whole call</b>, and the map has no <span class="mono">id=</span> filter to fall back to. Those rows take their live state from <span class="mono">/v2/cryptocurrency/info?id=</span>, whose vocabulary is coarser; each row names both sources.</p>
+      </div>
+      <div class="card finding reveal d1">
+        <div class="k">finding 2 · the anonymous tier</div>
+        <div class="v">p50 {{lookup_p50}} ms · {{bench_throttled}} of {{bench_iterations}}</div>
+        <p>Ten tickers keyless in a tight loop: nine answered in about half a second, the tenth got <b>429 error 1011</b> after ~20 calls in 15 s, with no <span class="mono">Retry-After</span>. A shared cloud egress IP is refused outright (error 1022). The proxy repeats a refused call keyed and labels the row; the CLI backs off and exits 75.</p>
+      </div>
+      <div class="card finding reveal d2">
+        <div class="k">finding 3 · ids on no surface</div>
+        <div class="v purple">{{unresolved}} of {{wrappers_fmt}}</div>
+        <p><span class="mono">tokens[]</span> carries ids the map and the info endpoint both deny exist ({{unresolved_list}} — null symbols). Counting them as shelf would inflate the headline; <b>they sit in their own bucket and are counted nowhere</b>, and the property test holds that rule over {{property_cases}} generated ledgers.</p>
+      </div>
+    </div>
+    <p class="note reveal" style="margin-top:18px">{{feedback_n}} dated, evidenced findings for the CoinMarketCap team — and what is worth protecting — in <a href="{{repo}}/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">FEEDBACK.md<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>. Every endpoint the client calls is named above; <span class="mono">tests/test_render_site.py</span> holds this page to the six, and a seventh that was tried and refused is listed rather than hidden.</p>
+  </div>
+</section>
+
+<section id="run">
+  <div class="wrap">
+    <div class="kicker reveal">Run it before you score it</div>
+    <h2 class="reveal d1">No key. No install. About half a second.</h2>
+    <p class="lede reveal d2" style="margin-top:16px">The judged capability is a stdlib-only module against the keyless surface: <span class="mono">python3 -m shelfware {{hero_symbol}}</span> prints every wrapper, its issuer, chain and listing state, then the receipt line. The transcript is the command's own output, rendered from the receipt that run wrote — <span class="mono">docs/proof/ms.json</span>, {{hero_asked}} UTC. Your timings will differ.</p>
+    <div class="term reveal">
+      <div class="bar"><i></i><i></i><i></i><span>shelfware — keyless</span><button class="copy" id="copy-cmd" type="button" data-copy="{{cmd}}" aria-label="Copy the command">copy</button></div>
+      <pre id="cmd">{{term}}</pre>
+    </div>
+    <div class="runs reveal d1">{{runs}}</div>
+    <p class="note reveal" style="margin-top:18px">{{snapshots_n}} daily snapshots so far, taken by <span class="mono">scripts/snapshot.py</span>; the delta between the two latest days is a real zero, printed as one. Also in the repository: <b>{{tests_total}} tests</b> ({{tests_offline}} offline, {{tests_node}} for the proxy functions, {{tests_live}} live), a property test over <b>{{property_cases}} generated ledgers</b> with 0 violations of the counting rules, and a join that recounts the {{wrappers_fmt}} committed wrappers in <b>{{join_p50}} ms</b> (p95 {{join_p95}} ms, n={{join_n}}). The whole keyless question, {{hero_symbol}} to receipt: p50 <b>{{lookup_p50}} ms</b>, p95 {{lookup_p95}} ms (n={{lookup_n}}, <a href="{{repo}}/blob/main/docs/proof/bench.json" target="_blank" rel="noopener noreferrer">bench.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>).</p>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap">
+    <div class="kicker reveal">Questions a judge will ask</div>
+    <h2 class="reveal d1">Honest limits.</h2>
+    <div class="faq">
+      <details class="reveal">
+        <summary>Is this page live?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>The census and the {{hero_symbol}} answer are committed runs — {{generated_short}} UTC and {{hero_asked}} UTC — and say so on every number. The ticker box is live through two proxy functions: the roster leg keyed on the site's key (or the committed snapshot, labelled), the state leg keyless. The proxy shares one IP against a per-IP anonymous limit, so a 429 is shown as a 429 with the command to run instead; the CLI is the primary live path, and every reader has their own quota there.</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>What does "untracked" mean?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>It is CoinMarketCap's listing state, quoted from its map documentation: <em>"{{definition}}"</em>. On this page it reads <b>listed, no CMC-tracked market</b>. It does not mean never traded anywhere: Dinari dShares trade on Dinari's own venue, and some wrappers may sit in pools CMC does not index. The number is about CoinMarketCap's coverage of what CoinMarketCap calls tokenised — which is exactly why it can be re-derived. The spike that settled the wording is <a href="{{repo}}/blob/main/docs/proof/spike.json" target="_blank" rel="noopener noreferrer">spike.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>.</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>Why {{hero_symbol}}?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>A rule, not a pick: {{hero_rule}} — {{hero_symbol}}, rank {{hero_rank}}, the only all-shelf underlying inside CMC's top 50. Next in line: {{runners_up}}. If tomorrow's census promotes its wrapper to <span class="mono">active</span>, the rule moves on and the delta panel shows the flip — a shelf wrapper coming alive is the strongest proof the census is live.</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>Which rows are not counted?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>{{unresolved}} wrapper ids resolve on no public CMC surface ({{unresolved_list}}); they are shown in their own bucket and excluded from every count. {{dotted}} wrappers carry a dotted symbol the map filter rejects; their live state comes from <span class="mono">/v2/cryptocurrency/info</span> and the map's finer word from the committed snapshot, and each row says which. <span class="mono">num_tokens</span> on the issuer registry is undocumented, so it is shown as "declared" and never substituted for attached (Backed declares {{backed_declared}}, {{backed_attached}} are attached).</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>How old is the series?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>A daily series, not a history: {{snapshots_list}}. Untracked map rows carry no dates of their own, so the only time axis is the snapshot series this repository records; <span class="mono">date_added</span> from the info endpoint is a listing day, not a market day. The roster leg needs a key (the RWA family answers keyless calls with 403 error 1005); without one it is a dated snapshot, labelled on the row, and the state leg is live regardless.</p></div></div></div>
+      </details>
+      <details class="reveal">
+        <summary>What is not built?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="fold"><div class="fold-clip"><div class="body"><p>No price charts, no wrapper-versus-underlying spread, no portfolio, no alerts, no watchlists, no model, no chain, no wallet, no LLM. The product counts the shelf and answers a ticker beside its raw rows; that verb is the whole scope, and the rule that produces the number is printed, never widened.</p></div></div></div>
+      </details>
     </div>
   </div>
-  <div class="bar" role="img" aria-label="{{zero_tracked}} of {{has_tokens}} underlyings have no tracked wrapper">
-    <span class="dim" id="bar-dim" style="width:{{share_pct}}%"></span><span class="lit" id="bar-lit" style="width:{{lit_pct}}%"></span>
-  </div>
-  <div class="legend"><span><i class="sw dim"></i>{{zero_tracked}} no tracked wrapper — <b>listed, no CMC-tracked market</b></span><span><i class="sw lit"></i>{{with_tracked}} at least one tracked wrapper</span></div>
-  <p class="recipe">recipe: wrappers = /v5/real-world-assets/quotes/latest tokens[] (price:null rows kept) · state = /public-api/v1/cryptocurrency/map status · count underlyings whose every wrapper is untracked · strict: an unresolved id never counts</p>
 </section>
 
-<section class="search" id="search" aria-labelledby="search-h">
-  <h2 id="search-h">Does this ticker have a wrapper that trades, and whose?</h2>
-  <div class="card">
-    <form id="f" autocomplete="off">
-      <label class="sr-only" for="t">Ticker</label>
-      <input id="t" name="t" placeholder="MS" value="{{hero_symbol}}" maxlength="16" spellcheck="false" aria-label="Ticker symbol">
-      <button class="btn primary" type="submit" id="go">Ask CMC</button>
-    </form>
-    <p class="hint">Roster from <code>/v5/real-world-assets/quotes/latest</code> (keyed, 1 credit — via this site's proxy; the committed snapshot if the key is unavailable, labelled). State from <code>/public-api/v1/cryptocurrency/map</code> and <code>/v2/cryptocurrency/info</code> — <b>live, keyless, 0 credits</b>. Same thing on your machine: <code>python3 -m shelfware {{hero_symbol}}</code>.</p>
-    <div class="tcard" id="tcard">{{hero_card}}</div>
+<section class="final" id="go-final">
+  <div class="wrap">
+    <div class="kicker reveal">The boolean is not the market</div>
+    <h2 class="reveal d1">Type a ticker you hold.</h2>
+    <div class="cta-row reveal d2">
+      <a class="btn btn-primary" href="{{repo}}" target="_blank" rel="noopener noreferrer"><svg class="gh-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Open the repository <span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="btn btn-judge" href="/judge">For judges <span class="sub">· the 30-second path</span><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn" href="/pitch/">The deck <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
   </div>
 </section>
-
-<section aria-labelledby="iss-h">
-  <h2 id="iss-h">Issuers, by shelf rate — declared is the registry's <span class="mono">num_tokens</span>, attached is what any underlying lists</h2>
-  <div class="card">
-    <table class="issuers">
-      <thead><tr><th>Issuer</th><th>Wrappers</th><th class="n">Shelf</th><th class="n hide-m">Declared</th><th class="n">Attached</th><th class="n">Tracked</th><th class="n hide-m">Live market cap</th></tr></thead>
-      <tbody>{{issuer_rows}}</tbody>
-    </table>
-    <details class="smaller"><summary>smaller issuers ({{n_smaller}}), fewer than 5 attached wrappers</summary>
-      <table class="issuers"><tbody>{{issuer_rows_small}}</tbody></table>
-    </details>
-  </div>
-</section>
-
-<section aria-labelledby="type-h">
-  <h2 id="type-h">By asset type — wrappers on the shelf, and underlyings with no tracked wrapper</h2>
-  <div class="types">{{type_cards}}</div>
-</section>
-
-<section aria-labelledby="delta-h">
-  <h2 id="delta-h">Since the previous snapshot</h2>
-  <div class="card">{{delta_html}}</div>
-</section>
-
-<section aria-labelledby="age-h">
-  <h2 id="age-h">Ages</h2>
-  <div class="card stat">
-    <div><div class="v">{{age_median}} d</div><div class="l">median age of what trades (p10 {{age_p10}} · p90 {{age_p90}} · n={{age_n}} tracked wrappers, from <span class="mono">first_historical_data</span>)</div></div>
-    <div><div class="v">{{shelf_median}} d</div><div class="l">median time on the shelf (p10 {{shelf_p10}} · p90 {{shelf_p90}} · n={{shelf_n}} untracked wrappers, since <span class="mono">date_added</span> — the listing day, not a market day)</div></div>
-    <div><div class="v">{{top_chain_n}}</div><div class="l">of {{untracked}} shelf wrappers sit on {{top_chain}} — {{chains_rest}}</div></div>
-  </div>
-</section>
-
-<section aria-labelledby="lim-h">
-  <h2 id="lim-h">Limits — read before quoting</h2>
-  <div class="card"><ul class="limits">
-    <li><b>"untracked" is CoinMarketCap's listing state</b>, quoted from its map documentation: <em>"{{definition}}"</em>. It means <b>listed, no CMC-tracked market</b>. It does not mean never traded anywhere: Dinari dShares trade on Dinari's own venue, and some wrappers may sit in pools CMC does not index. The number is about CoinMarketCap's coverage of what CoinMarketCap calls tokenised — which is exactly why it can be re-derived.</li>
-    <li><b>{{unresolved}} wrapper ids do not resolve</b> on any public CMC surface ({{unresolved_list}}). They are shown in their own bucket and excluded from every count.</li>
-    <li><b>The RWA endpoints need a key</b> (keyless → 403 error 1005). The roster leg on this page is live through the site's proxy while its key has credits, otherwise the committed snapshot of {{generated_short}} UTC, labelled. The state leg is keyless and live for anyone.</li>
-    <li><b>The map's symbol filter rejects CMC's own dotted symbols</b> (NVDA.D, AI.FRx — {{dotted}} wrappers). Those take their live state from <span class="mono">/v2/cryptocurrency/info</span> (active / inactive) and the map's finer word from the committed snapshot; each row says which.</li>
-    <li><b>The census is a daily series, not a history.</b> Untracked map rows carry no dates; the series started 2026-09-18 and the delta panel shows what moved between the two latest days.</li>
-    <li><b><span class="mono">num_tokens</span> is undocumented.</b> It is shown as "declared by the registry" and never substituted for attached wrappers (Backed declares {{backed_declared}}, {{backed_attached}} are attached).</li>
-  </ul></div>
-</section>
-
-<section class="receipt" aria-labelledby="rec-h">
-  <h2 id="rec-h">Receipt — the committed census, {{generated_utc}}</h2>
-  <div class="card">
-    <table><thead><tr><th>Endpoint</th><th class="n">Calls</th><th class="n">HTTP</th><th class="n">Keyed credits</th><th class="n hide-m">Bytes</th><th class="hide-m">First sha256</th></tr></thead>
-    <tbody>{{receipt_rows}}</tbody></table>
-    <p class="ev">{{wall_clock}} s wall clock · {{keyed_calls}} keyed calls = {{credits}} credits · {{keyless_calls}} keyless calls = 0 credits to any key · key usage before/after from /v1/key/info: {{usage_before}} → {{usage_after}} · every call: <a href="{{repo}}/blob/main/docs/proof/live_run.json">docs/proof/live_run.json</a></p>
-    <details><summary>re-derive the headline by hand</summary><pre>{{jq}}</pre></details>
-  </div>
-</section>
+</main>
 
 <footer>
-  <span>Built on the CoinMarketCap API for <a href="https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail" target="_blank" rel="noopener noreferrer">Build with CMC</a> · Real World Assets</span>
-  <a href="{{repo}}" target="_blank" rel="noopener noreferrer">Repository</a>
-  <a href="{{repo}}/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">API feedback</a>
-  <a href="{{repo}}/blob/main/docs/METHOD.md" target="_blank" rel="noopener noreferrer">Method</a>
-  <a href="/pitch/">Pitch deck</a>
-  <a href="{{api_url}}/api/health">/api/health</a>
-  <span id="health"></span>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand"><img src="assets/icon.svg" alt="" width="30" height="30">Shelfware</div>
+        <p style="margin-top:12px;max-width:40ch">Counts the shelf. Built on the CoinMarketCap API for the <a href="{{event}}" target="_blank" rel="noopener noreferrer">Build with CMC: API Hackathon<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>, Real World Assets track. MIT licensed.</p>
+      </div>
+      <div>
+        <h3>Repository</h3>
+        <ul>
+          <li><a class="link-quiet" href="{{repo}}" target="_blank" rel="noopener noreferrer">Source<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="{{repo}}/blob/main/JUDGE.md" target="_blank" rel="noopener noreferrer">JUDGE.md<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="{{repo}}/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">Demo transcripts<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="{{repo}}/blob/main/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Architecture<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Evidence</h3>
+        <ul>
+          <li><a class="link-quiet" href="/judge">For judges — /judge</a></li>
+          <li><a class="link-quiet" href="{{repo}}/tree/main/docs/proof" target="_blank" rel="noopener noreferrer">Receipts<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="{{repo}}/blob/main/docs/METHOD.md" target="_blank" rel="noopener noreferrer">Method — the rules and invariants<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="{{repo}}/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">API feedback for CMC<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="{{api_url}}/api/health">/api/health</a></li>
+          <li><a class="link-quiet" href="/pitch/">Pitch deck</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Data</h3>
+        <ul>
+          <li><a class="link-quiet" href="https://coinmarketcap.com/api/documentation/v1/" target="_blank" rel="noopener noreferrer">CoinMarketCap API<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="{{event}}" target="_blank" rel="noopener noreferrer">The hackathon<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://x.com/edycutjong" target="_blank" rel="noopener noreferrer">{{x_handle}}<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>captured {{generated_short}} UTC · {{credits}} keyed credits · the ticker question keyless · rendered from <span class="mono">docs/proof/*.json</span></span>
+      <span><a class="link-quiet" href="{{repo}}/releases/latest" target="_blank" rel="noopener noreferrer"><span class="ver">{{version}}</span> · latest release<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></span>
+    </div>
+  </div>
 </footer>
-</main>
+
 <script>
 window.SHELF = {{inline_json}};
 </script>

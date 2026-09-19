@@ -85,12 +85,16 @@ def compact(doc):
 # ── TICKER ─────────────────────────────────────────────────────────────────────
 
 
-def cmd_ticker(ticker, json_out=None, out=None):
-    out = out or sys.stdout
-    client = Client(api_key=api_key())
-    res = lookup(ticker, client, _load_roster_snapshot())
-    p = lambda s="": print(s, file=out)  # noqa: E731
-    p(f"shelfware {res['ticker']} — does it have a wrapper that trades, and whose?\n")
+def answer_lines(res, now=None):
+    """The ticker answer as the CLI prints it — a pure function of the lookup result, so the
+    same text can be rendered again from the receipt a run wrote (docs/proof/ms.json → the
+    landing page's terminal). `now` fixes the "days on the shelf" arithmetic; the CLI passes the
+    wall clock, a render passes the run's own asked_utc so the page never drifts by a day."""
+    now = now or datetime.now(UTC)
+    lines = []
+    p = lines.append
+    p(f"shelfware {res['ticker']} — does it have a wrapper that trades, and whose?")
+    p("")
     r, s = res["roster"], res["status"]
     roster_src = (
         "live (1 credit)"
@@ -136,7 +140,7 @@ def cmd_ticker(ticker, json_out=None, out=None):
             p(f'                   "listed, no CMC-tracked market" — CMC: {UNTRACKED_DEFINITION}')
             if w.get("date_added"):
                 born = datetime.fromisoformat(w["date_added"].replace("Z", "+00:00"))
-                days = (datetime.now(UTC) - born).days
+                days = (now - born).days
                 p(
                     f"                   listed {w['date_added'][:10]} (date_added) · {days} days on the shelf"
                 )
@@ -144,11 +148,13 @@ def cmd_ticker(ticker, json_out=None, out=None):
             p(f"                   tracked since {(w.get('first_historical_data') or '?')[:10]}")
         elif w["status"] == "unresolved":
             p("                   this id is in tokens[] but not in the map — not counted as shelf")
-    p(f"\n  {res['verdict']}")
+    p("")
+    p(f"  {res['verdict']}")
     calls = [m for m in (r["call"], s["call"], *(s.get("info_calls") or [])) if m]
     if calls:
+        p("")
         p(
-            "\nreceipt: "
+            "receipt: "
             + "  |  ".join(
                 f"{m['call']} → HTTP {m['http']} · "
                 f"{'keyed · ' + str(m.get('credit_count') or 0) + ' credit' if m['keyed'] else 'keyless · 0 credits to any key'} · "
@@ -156,6 +162,16 @@ def cmd_ticker(ticker, json_out=None, out=None):
                 for m in calls
             )
         )
+    return lines
+
+
+def cmd_ticker(ticker, json_out=None, out=None):
+    out = out or sys.stdout
+    client = Client(api_key=api_key())
+    res = lookup(ticker, client, _load_roster_snapshot())
+    p = lambda s="": print(s, file=out)  # noqa: E731
+    for line in answer_lines(res):
+        p(line)
     if json_out:
         Path(json_out).parent.mkdir(parents=True, exist_ok=True)
         Path(json_out).write_text(json.dumps(res, indent=2))
