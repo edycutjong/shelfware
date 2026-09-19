@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"
+     role="img" aria-label="Shelfware — counts the shelf. The join sweeps a shelf of amber ‘tokenised’ boxes: those with a market turn green, the rest turn grey. Three of five boxes stay grey.">
+  <title>Shelfware — counting the shelf</title>
+  <!--
+  STORYBOARD — master dur 6s. Every keyTime below is a fraction of that one dur.
+    beat 1   0-10%   0.00s-0.60s  POSTER: the counted shelf — grey boxes left, green right — identical to icon.svg. Frame 0 is a usable still.
+    beat 2  10-18%   0.60s-1.08s  reset: the states DISSOLVE into the claim (opacity only, uniform — a scene cut, not the
+                                   mechanism in reverse). Every box becomes hollow amber: has_tokens: true.
+    beat 3  18-35%   1.08s-2.10s  the claim as the RWA page reads it: one boolean, repeated, nothing behind it yet.
+    beat 4  35-60%   2.10s-3.60s  SIGNATURE — The join sweeps a shelf of amber ‘tokenised’ boxes: those with a market turn green, the rest turn grey.
+                                   The beam crosses left to right; each box resolves as it passes. Green fires only where the join lands.
+    beat 5  60-100%  3.60s-6.00s  hold: the counted shelf. Seam: frame 6s == frame 0s and the ±0.2s around it are all hold,
+                                   so the loop closes at zero velocity. Exactly one dissolve and one resolution per loop.
+  -->
+  <style>
+    /* prefers-reduced-motion: SMIL ignores CSS animation:none, so the guard swaps the animated story
+       layer for a static duplicate of the poster frame. The still layer is hidden by a display="none"
+       ATTRIBUTE (GitHub may drop this style block; the attribute survives), and this rule outranks
+       the attribute when it does run. */
+    @media (prefers-reduced-motion: reduce) { .anim { display: none; } .still { display: inline; } }
+  </style>
+  <defs>
+    <filter id="ib" x="-200%" y="-10%" width="500%" height="120%"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+  <!-- plate: opaque, so the mark holds on GitHub light AND dark -->
+  <rect width="512" height="512" rx="112" fill="#0B0F14"/>
+  <rect x="8" y="8" width="496" height="496" rx="105" fill="none" stroke="#5E6C80" stroke-width="6"/>
+
+  <!-- animated story layer -->
+  <g class="anim">
+    <rect x="58" y="212" width="68" height="132" rx="8" fill="#5E6C80">
+      <animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.1;0.18;0.378;0.413;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="60.5" y="214.5" width="63" height="127" rx="5.5" fill="#FFB020" fill-opacity=".16" stroke="#FFB020" stroke-width="5" opacity="0" data-story="beat-3">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1;0.18;0.378;0.413;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="140" y="188" width="68" height="156" rx="8" fill="#5E6C80">
+      <animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.1;0.18;0.427;0.462;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="142.5" y="190.5" width="63" height="151" rx="5.5" fill="#FFB020" fill-opacity=".16" stroke="#FFB020" stroke-width="5" opacity="0" data-story="beat-3">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1;0.18;0.427;0.462;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="222" y="200" width="68" height="144" rx="8" fill="#5E6C80">
+      <animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.1;0.18;0.475;0.51;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="224.5" y="202.5" width="63" height="139" rx="5.5" fill="#FFB020" fill-opacity=".16" stroke="#FFB020" stroke-width="5" opacity="0" data-story="beat-3">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1;0.18;0.475;0.51;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="304" y="168" width="68" height="176" rx="8" fill="#3BD37D">
+      <animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.1;0.18;0.523;0.558;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="306.5" y="170.5" width="63" height="171" rx="5.5" fill="#FFB020" fill-opacity=".16" stroke="#FFB020" stroke-width="5" opacity="0" data-story="beat-3">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1;0.18;0.523;0.558;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="386" y="144" width="68" height="200" rx="8" fill="#3BD37D">
+      <animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.1;0.18;0.572;0.607;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="388.5" y="146.5" width="63" height="195" rx="5.5" fill="#FFB020" fill-opacity=".16" stroke="#FFB020" stroke-width="5" opacity="0" data-story="beat-3">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1;0.18;0.572;0.607;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="44" y="120" width="10" height="236" rx="5" fill="#FFB020" opacity="0" data-story="beat-4" filter="url(#ib)">
+      <animate attributeName="x" values="44;44;458;458" keyTimes="0;0.35;0.6;1" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;0.85;0.85;0;0" keyTimes="0;0.34;0.35;0.6;0.61;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="44" y="120" width="3" height="236" rx="1.5" fill="#FFD27A" opacity="0" data-story="beat-4" transform="translate(3.5,0)">
+      <animate attributeName="x" values="44;44;458;458" keyTimes="0;0.35;0.6;1" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.34;0.35;0.6;0.61;1" dur="6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <!-- reduced-motion still: the poster frame, no SMIL -->
+  <g class="still" display="none">
+    <rect x="58" y="212" width="68" height="132" rx="8" fill="#5E6C80"/>
+    <rect x="140" y="188" width="68" height="156" rx="8" fill="#5E6C80"/>
+    <rect x="222" y="200" width="68" height="144" rx="8" fill="#5E6C80"/>
+    <rect x="304" y="168" width="68" height="176" rx="8" fill="#3BD37D"/>
+    <rect x="386" y="144" width="68" height="200" rx="8" fill="#3BD37D"/>
+  </g>
+
+  <!-- the shelf they sit on: always present, always full -->
+  <rect x="44" y="344" width="424" height="20" rx="10" fill="#8A98A8"/>
+</svg>

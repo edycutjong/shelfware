@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"
+     role="img" aria-label="Shelfware — counts the shelf: five wrapper boxes on a shelf, three grey with no CMC-tracked market, two green with one">
+  <title>Shelfware</title>
+
+  <!-- Mechanism: "counts the shelf".
+       Three shapes only, so the mark survives a 16px favicon:
+         1. the plate + shelf line = where the wrappers sit
+         2. three grey boxes       = untracked: listed, no CMC-tracked market (the counted state)
+         3. two green boxes        = tracked: a CMC-tracked market
+       Three of five on the shelf = 60% = the headline number as a silhouette.
+       Dim left, lit right — the product's own bar primitive at glyph scale.
+       Carries its own plate so it holds on GitHub light (#ffffff) AND dark (#0d1117).
+       Colours use the CSS-variable-with-hex-fallback pattern: the hex wins when rasterised standalone, the variable wins inside an app that loads the token file. -->
+
+  <!-- self-plate: keeps contrast on both GitHub themes -->
+  <rect width="512" height="512" rx="112" fill="var(--bg-base, #0B0F14)"/>
+  <rect x="8" y="8" width="496" height="496" rx="105" fill="none"
+        stroke="var(--shelf, #5E6C80)" stroke-width="6"/>
+
+  <!-- 2. on the shelf: three grey boxes, left -->
+  <g fill="var(--shelf, #5E6C80)">
+    <rect x="58"  y="212" width="68" height="132" rx="8"/>
+    <rect x="140" y="188" width="68" height="156" rx="8"/>
+    <rect x="222" y="200" width="68" height="144" rx="8"/>
+  </g>
+
+  <!-- 3. tracked: two green boxes, right -->
+  <g fill="var(--lit, #3BD37D)">
+    <rect x="304" y="168" width="68" height="176" rx="8"/>
+    <rect x="386" y="144" width="68" height="200" rx="8"/>
+  </g>
+
+  <!-- 1. the shelf they sit on -->
+  <rect x="44" y="344" width="424" height="20" rx="10" fill="var(--text-mid, #8A98A8)"/>
+</svg>
