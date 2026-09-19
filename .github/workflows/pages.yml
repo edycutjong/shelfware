@@ -1,0 +1,44 @@
+name: pages
+
+# Deploys site/ (the landing page at /, the judge page at /judge/ and the deck at /pitch/) to
+# GitHub Pages at shelfware.edycu.dev (site/CNAME). Static only: the page carries the committed
+# census with its receipt; the ticker search calls the two proxy functions on Vercel
+# cross-origin (they answer with Access-Control-Allow-Origin: *), because CoinMarketCap sends no
+# CORS header and a browser cannot fetch it directly.
+#
+# GitHub Pages does not build for a private repository on the free plan, so this workflow
+# first runs at the public flip. Enable Pages once (build_type=workflow), then dispatch it.
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "site/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Serialised, not cancel-in-progress: a queued deploy costs one extra run and keeps the Actions
+# history free of "cancelled" entries that read like a broken pipeline.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./site
+      - id: deployment
+        uses: actions/deploy-pages@v5
