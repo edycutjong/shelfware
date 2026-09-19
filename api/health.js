@@ -1,9 +1,10 @@
 // /api/health — is the deploy alive, which census does it carry, is the roster key configured.
 // The boolean is the only thing ever said about the key.
 "use strict";
-const { send, readData, nowUtc } = require("./_lib.js");
+const { send, preflight, readData, nowUtc } = require("./_lib.js");
 
 module.exports = async (req, res) => {
+  if (preflight(req, res)) return;
   const h = readData("health.json") || {};
   send(res, 200, {
     ok: true,

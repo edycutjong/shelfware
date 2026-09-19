@@ -6,7 +6,7 @@
 // tokens (with their committed state) ride along on every answer so the page can label the
 // wrappers whose symbol the map will not filter on. 60 s cache per symbol per instance.
 "use strict";
-const { KEYED, SYMBOL, get, send, cached, snapshot, nowUtc } = require("./_lib.js");
+const { KEYED, SYMBOL, get, send, preflight, cached, snapshot, nowUtc } = require("./_lib.js");
 
 function fromSnapshot(sym) {
   const snap = snapshot() || { underlyings: {}, no_tokens: {}, as_of: null };
@@ -32,6 +32,7 @@ function fromSnapshot(sym) {
 }
 
 module.exports = async (req, res) => {
+  if (preflight(req, res)) return;
   const sym = String((req.query || {}).symbol || "")
     .trim()
     .toUpperCase();

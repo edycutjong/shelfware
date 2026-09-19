@@ -136,3 +136,25 @@ test("health: reports the census date and only a boolean about the key", async (
   assert.ok(!JSON.stringify(res.body).includes('"k"'));
   assert.ok(res.body.snapshots >= 1);
 });
+
+test("cors: every function answers with Access-Control-Allow-Origin: * — the GitHub Pages copy calls them cross-origin", async () => {
+  stubFetch([200, envelope([{ id: 41513, symbol: "wMSx", status: "untracked" }])], [200, envelope({ 41513: { status: "inactive" } })]);
+  for (const [fn, q] of [[health, {}], [status, { symbols: "wMSx", ids: "41513" }], [roster, { symbol: "MS" }]]) {
+    const res = await run(fn, q, {});
+    assert.equal(res.headers["Access-Control-Allow-Origin"], "*");
+    assert.match(res.headers["Access-Control-Allow-Methods"], /GET/);
+  }
+});
+
+test("cors: an OPTIONS preflight is answered 204 with the allow headers, no body, and no upstream call", async () => {
+  const calls = stubFetch();
+  for (const fn of [health, status, roster]) {
+    const res = { headers: {}, code: null, body: undefined, setHeader(k, v) { this.headers[k] = v; }, status(c) { this.code = c; return this; }, send(b) { this.body = b; } };
+    await fn({ method: "OPTIONS", query: {} }, res);
+    assert.equal(res.code, 204);
+    assert.equal(res.body, "");
+    assert.equal(res.headers["Access-Control-Allow-Origin"], "*");
+    assert.match(res.headers["Access-Control-Allow-Headers"], /Accept/);
+  }
+  assert.equal(calls.length, 0);
+});

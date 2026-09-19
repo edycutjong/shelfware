@@ -99,9 +99,28 @@ async function getKeylessFirst(pathAndQuery, key) {
   return { ...second, base: "keyed", keyless_error: first.error, keyless_http: first.http };
 }
 
+/** CORS, open: the same site/ is served from GitHub Pages (shelfware.edycu.dev) as well as from
+ *  this deployment, and the Pages copy calls these functions cross-origin. Nothing here is
+ *  private — the responses are CoinMarketCap rows and a health line — so any origin may read. */
+function cors(res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Accept, Content-Type");
+  res.setHeader("Access-Control-Max-Age", "86400");
+}
+
+/** A CORS preflight is answered here, before any work: 204, the allow headers, no body.
+ *  Returns true when the request was a preflight and has been answered. */
+function preflight(req, res) {
+  if ((req.method || "GET").toUpperCase() !== "OPTIONS") return false;
+  cors(res);
+  res.status(204).send("");
+  return true;
+}
+
 function send(res, status, body) {
   res.setHeader("Content-Type", "application/json; charset=utf-8");
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  cors(res);
   res.setHeader("Cache-Control", "no-store");
   res.status(status).send(JSON.stringify(body));
 }
@@ -110,4 +129,4 @@ function nowUtc() {
   return new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
 }
 
-module.exports = { KEYED, KEYLESS, SYMBOL, FILTERABLE, MAP_AUX, INFO_AUX, get, getKeylessFirst, send, cached, snapshot, readData, nowUtc };
+module.exports = { KEYED, KEYLESS, SYMBOL, FILTERABLE, MAP_AUX, INFO_AUX, get, getKeylessFirst, send, cors, preflight, cached, snapshot, readData, nowUtc };

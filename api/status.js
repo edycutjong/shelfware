@@ -6,9 +6,10 @@
 // the judge exactly what the API said. 60 s in-memory cache per query per instance; failures
 // are never cached.
 "use strict";
-const { FILTERABLE, MAP_AUX, INFO_AUX, getKeylessFirst, send, cached, nowUtc } = require("./_lib.js");
+const { FILTERABLE, MAP_AUX, INFO_AUX, getKeylessFirst, send, preflight, cached, nowUtc } = require("./_lib.js");
 
 module.exports = async (req, res) => {
+  if (preflight(req, res)) return;
   const q = req.query || {};
   const symbols = String(q.symbols || "")
     .split(",")
