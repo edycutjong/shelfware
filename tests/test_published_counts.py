@@ -36,7 +36,7 @@ def test_the_suite_size_on_every_judge_facing_surface_is_the_suite_size():
     demo = (ROOT / "DEMO.md").read_text()
     judge = (ROOT / "JUDGE.md").read_text()
     assert f"tests-{c['total']}-" in readme, "README badge"
-    assert f"**{c['total']} tests**" in readme, "README prose"
+    assert f"**{c['total']}**" in readme, "README prose"
     assert f"{c['offline']} offline" in readme and f"{c['live']} live" in readme
     assert f"**{c['total']}**" in demo and f"{c['offline']} offline" in demo, "DEMO"
     assert f"{c['live']} live" in demo
