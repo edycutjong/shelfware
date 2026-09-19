@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-09-19T00:02:08Z",
- "wall_clock_s": 24.3,
+ "generated_utc": "2026-09-19T01:15:23Z",
+ "wall_clock_s": 22.6,
  "credits_used": 5,
  "keyed_calls": 39,
  "keyless_calls": 15,
@@ -98,7 +98,7 @@
    "untracked": 632,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 667868652.65,
+   "live_market_cap_usd": 669440202.04,
    "shelf_rate": 0.8187
   },
   {
@@ -122,7 +122,7 @@
    "untracked": 8,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 135210936.29,
+   "live_market_cap_usd": 135362786.81,
    "shelf_rate": 0.0755
   },
   {
@@ -134,7 +134,7 @@
    "untracked": 4,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 890598163.56,
+   "live_market_cap_usd": 891995505.95,
    "shelf_rate": 0.0187
   },
   {
@@ -158,7 +158,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 797640351.14,
+   "live_market_cap_usd": 778129364.62,
    "shelf_rate": 0.0
   },
   {
@@ -170,7 +170,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 131299687.98,
+   "live_market_cap_usd": 131479299.87,
    "shelf_rate": 0.0
   },
   {
@@ -194,7 +194,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 17401984.41,
+   "live_market_cap_usd": 17365526.61,
    "shelf_rate": 0.0
   },
   {
@@ -206,7 +206,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 16005326.21,
+   "live_market_cap_usd": 15896504.35,
    "shelf_rate": 0.0
   },
   {
@@ -218,7 +218,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 2742886462.31,
+   "live_market_cap_usd": 2741287473.54,
    "shelf_rate": 0.0
   },
   {
@@ -230,7 +230,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 1898022071.44,
+   "live_market_cap_usd": 1896868627.08,
    "shelf_rate": 0.0
   },
   {
@@ -242,7 +242,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 19628089.43,
+   "live_market_cap_usd": 19650547.26,
    "shelf_rate": 0.0
   },
   {
@@ -254,7 +254,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 5848129.4,
+   "live_market_cap_usd": 5848609.65,
    "shelf_rate": 0.0
   },
   {
@@ -266,7 +266,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 47851218.26,
+   "live_market_cap_usd": 47906421.85,
    "shelf_rate": 0.0
   },
   {
@@ -314,7 +314,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 664547.04,
+   "live_market_cap_usd": 664552.82,
    "shelf_rate": 0.0
   },
   {
@@ -326,7 +326,7 @@
    "untracked": 0,
    "inactive": 0,
    "unresolved": 0,
-   "live_market_cap_usd": 72124358.73,
+   "live_market_cap_usd": 72122418.69,
    "shelf_rate": 0.0
   },
   {
@@ -482,12 +482,12 @@
    "url": "https://pro-api.coinmarketcap.com/v1/key/info",
    "keyed": true,
    "http": 200,
-   "bytes": 493,
-   "sha256": "2044cc85358acc89",
+   "bytes": 495,
+   "sha256": "f372a70a03029c4b",
    "credit_count": 0,
    "rows": null,
-   "elapsed_ms": 273,
-   "utc": "2026-09-19T00:01:43Z",
+   "elapsed_ms": 307,
+   "utc": "2026-09-19T01:15:01Z",
    "error": null,
    "throttled": false
   },
@@ -497,11 +497,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 58872,
-   "sha256": "b44df50e23eaf239",
+   "sha256": "2acded68a6b8167f",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 1237,
-   "utc": "2026-09-19T00:01:44Z",
+   "elapsed_ms": 789,
+   "utc": "2026-09-19T01:15:01Z",
    "error": null,
    "throttled": false
   },
@@ -511,11 +511,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 61603,
-   "sha256": "76a1b4932c8b6da3",
+   "sha256": "d1a58ff125d290a2",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 1157,
-   "utc": "2026-09-19T00:01:45Z",
+   "elapsed_ms": 903,
+   "utc": "2026-09-19T01:15:02Z",
    "error": null,
    "throttled": false
   },
@@ -525,11 +525,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 61083,
-   "sha256": "cd40cb9840da1976",
+   "sha256": "382a2c77a04e2510",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 285,
-   "utc": "2026-09-19T00:01:46Z",
+   "elapsed_ms": 295,
+   "utc": "2026-09-19T01:15:03Z",
    "error": null,
    "throttled": false
   },
@@ -539,11 +539,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 60232,
-   "sha256": "2f72b85a2f7e8ce5",
+   "sha256": "d134f0c156a1eff5",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 792,
-   "utc": "2026-09-19T00:01:46Z",
+   "elapsed_ms": 546,
+   "utc": "2026-09-19T01:15:03Z",
    "error": null,
    "throttled": false
   },
@@ -553,11 +553,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 58277,
-   "sha256": "ec9595633fd62d31",
+   "sha256": "5126019bd0c0eb3a",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 288,
-   "utc": "2026-09-19T00:01:47Z",
+   "elapsed_ms": 300,
+   "utc": "2026-09-19T01:15:04Z",
    "error": null,
    "throttled": false
   },
@@ -567,11 +567,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 58289,
-   "sha256": "5bcab535d9a9bb8a",
+   "sha256": "e82933463a1b17c8",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 296,
-   "utc": "2026-09-19T00:01:47Z",
+   "elapsed_ms": 303,
+   "utc": "2026-09-19T01:15:04Z",
    "error": null,
    "throttled": false
   },
@@ -581,11 +581,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 57770,
-   "sha256": "bd756696a8eb3bd6",
+   "sha256": "ad807aa4f739ac01",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 509,
-   "utc": "2026-09-19T00:01:48Z",
+   "elapsed_ms": 293,
+   "utc": "2026-09-19T01:15:04Z",
    "error": null,
    "throttled": false
   },
@@ -595,11 +595,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 58167,
-   "sha256": "c8e254c22bcad903",
+   "sha256": "4276be268a5bb4ea",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 295,
-   "utc": "2026-09-19T00:01:48Z",
+   "elapsed_ms": 309,
+   "utc": "2026-09-19T01:15:05Z",
    "error": null,
    "throttled": false
   },
@@ -609,11 +609,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 62204,
-   "sha256": "64749f681168b15d",
+   "sha256": "3c73d4886de62807",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 304,
-   "utc": "2026-09-19T00:01:49Z",
+   "elapsed_ms": 296,
+   "utc": "2026-09-19T01:15:05Z",
    "error": null,
    "throttled": false
   },
@@ -623,11 +623,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 63653,
-   "sha256": "b4a2b4a1e3805a75",
+   "sha256": "08d710838edb8920",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 303,
-   "utc": "2026-09-19T00:01:49Z",
+   "elapsed_ms": 762,
+   "utc": "2026-09-19T01:15:05Z",
    "error": null,
    "throttled": false
   },
@@ -637,11 +637,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 63718,
-   "sha256": "d51d81dd5614f0ea",
+   "sha256": "20f63aa3781c43f2",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 286,
-   "utc": "2026-09-19T00:01:49Z",
+   "elapsed_ms": 304,
+   "utc": "2026-09-19T01:15:06Z",
    "error": null,
    "throttled": false
   },
@@ -651,11 +651,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 63733,
-   "sha256": "c1839aa462ecab6d",
+   "sha256": "5ffb1432d895d724",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 761,
-   "utc": "2026-09-19T00:01:49Z",
+   "elapsed_ms": 467,
+   "utc": "2026-09-19T01:15:06Z",
    "error": null,
    "throttled": false
   },
@@ -665,11 +665,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 63235,
-   "sha256": "f06e3d1ed70590af",
+   "sha256": "ad9a8c5fc647744f",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 295,
-   "utc": "2026-09-19T00:01:50Z",
+   "elapsed_ms": 745,
+   "utc": "2026-09-19T01:15:07Z",
    "error": null,
    "throttled": false
   },
@@ -679,11 +679,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 63653,
-   "sha256": "38b1552afa558dea",
+   "sha256": "8bc816009a1bf4eb",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 301,
-   "utc": "2026-09-19T00:01:51Z",
+   "elapsed_ms": 294,
+   "utc": "2026-09-19T01:15:08Z",
    "error": null,
    "throttled": false
   },
@@ -693,11 +693,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 63557,
-   "sha256": "36e16bdbf25a7d8c",
+   "sha256": "d9a6dd113488933e",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 286,
-   "utc": "2026-09-19T00:01:51Z",
+   "elapsed_ms": 301,
+   "utc": "2026-09-19T01:15:08Z",
    "error": null,
    "throttled": false
   },
@@ -707,11 +707,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 63519,
-   "sha256": "a53cddc749d6967e",
+   "sha256": "69f1931e548fd4eb",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 293,
-   "utc": "2026-09-19T00:01:51Z",
+   "elapsed_ms": 311,
+   "utc": "2026-09-19T01:15:08Z",
    "error": null,
    "throttled": false
   },
@@ -721,11 +721,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 63431,
-   "sha256": "69f0957a896138c0",
+   "sha256": "72769da3b2b5178b",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 294,
-   "utc": "2026-09-19T00:01:51Z",
+   "elapsed_ms": 296,
+   "utc": "2026-09-19T01:15:08Z",
    "error": null,
    "throttled": false
   },
@@ -735,11 +735,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 67730,
-   "sha256": "6142f326c84229cb",
+   "sha256": "b8c85544c0cb6450",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 290,
-   "utc": "2026-09-19T00:01:52Z",
+   "elapsed_ms": 313,
+   "utc": "2026-09-19T01:15:09Z",
    "error": null,
    "throttled": false
   },
@@ -749,11 +749,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 68039,
-   "sha256": "fada0f7295e59c6f",
+   "sha256": "3bd5762af10b7c93",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 310,
-   "utc": "2026-09-19T00:01:52Z",
+   "elapsed_ms": 294,
+   "utc": "2026-09-19T01:15:09Z",
    "error": null,
    "throttled": false
   },
@@ -763,11 +763,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 67215,
-   "sha256": "ec5e8af0f4905fcf",
+   "sha256": "627bf5778b239a90",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 764,
-   "utc": "2026-09-19T00:01:52Z",
+   "elapsed_ms": 305,
+   "utc": "2026-09-19T01:15:09Z",
    "error": null,
    "throttled": false
   },
@@ -777,11 +777,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 69907,
-   "sha256": "ae493ef678578ab6",
+   "sha256": "b1da909c01b28894",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 289,
-   "utc": "2026-09-19T00:01:53Z",
+   "elapsed_ms": 300,
+   "utc": "2026-09-19T01:15:10Z",
    "error": null,
    "throttled": false
   },
@@ -791,11 +791,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 73318,
-   "sha256": "03d9de916718db55",
+   "sha256": "610701ba997d84d4",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 304,
-   "utc": "2026-09-19T00:01:53Z",
+   "elapsed_ms": 512,
+   "utc": "2026-09-19T01:15:10Z",
    "error": null,
    "throttled": false
   },
@@ -805,11 +805,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 72280,
-   "sha256": "6ed1c4b281c4d960",
+   "sha256": "056e7b6e11d66e4b",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 284,
-   "utc": "2026-09-19T00:01:54Z",
+   "elapsed_ms": 296,
+   "utc": "2026-09-19T01:15:11Z",
    "error": null,
    "throttled": false
   },
@@ -819,11 +819,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 69339,
-   "sha256": "c9cc9b51fc562d82",
+   "sha256": "f4b74154d788abed",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 295,
-   "utc": "2026-09-19T00:01:54Z",
+   "elapsed_ms": 309,
+   "utc": "2026-09-19T01:15:11Z",
    "error": null,
    "throttled": false
   },
@@ -833,11 +833,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 63308,
-   "sha256": "9eccc79b06bb62a5",
+   "sha256": "a8b8946389edd54f",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 296,
-   "utc": "2026-09-19T00:01:54Z",
+   "elapsed_ms": 289,
+   "utc": "2026-09-19T01:15:11Z",
    "error": null,
    "throttled": false
   },
@@ -847,11 +847,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 69704,
-   "sha256": "9658a85258af9abe",
+   "sha256": "ea8ae249c71a4ad7",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 297,
-   "utc": "2026-09-19T00:01:55Z",
+   "elapsed_ms": 302,
+   "utc": "2026-09-19T01:15:11Z",
    "error": null,
    "throttled": false
   },
@@ -861,11 +861,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 66082,
-   "sha256": "8f81e720683cafa2",
+   "sha256": "b73ba58d59e70708",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 295,
-   "utc": "2026-09-19T00:01:55Z",
+   "elapsed_ms": 302,
+   "utc": "2026-09-19T01:15:12Z",
    "error": null,
    "throttled": false
   },
@@ -875,11 +875,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 67406,
-   "sha256": "e4e5e7a3afff81b3",
+   "sha256": "2f01923e9093c36e",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 303,
-   "utc": "2026-09-19T00:01:55Z",
+   "elapsed_ms": 290,
+   "utc": "2026-09-19T01:15:12Z",
    "error": null,
    "throttled": false
   },
@@ -889,11 +889,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 72207,
-   "sha256": "8873eb6abb925139",
+   "sha256": "deee146a77d6b00e",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 292,
-   "utc": "2026-09-19T00:01:55Z",
+   "elapsed_ms": 304,
+   "utc": "2026-09-19T01:15:12Z",
    "error": null,
    "throttled": false
   },
@@ -903,11 +903,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 73054,
-   "sha256": "eaa3c380c222f469",
+   "sha256": "b4e7e3e0c39b5ed0",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 288,
-   "utc": "2026-09-19T00:01:56Z",
+   "elapsed_ms": 735,
+   "utc": "2026-09-19T01:15:13Z",
    "error": null,
    "throttled": false
   },
@@ -917,11 +917,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 72611,
-   "sha256": "bf910013c22ca623",
+   "sha256": "2d578f0d0e4ec9bd",
    "credit_count": 0,
    "rows": 250,
-   "elapsed_ms": 311,
-   "utc": "2026-09-19T00:01:56Z",
+   "elapsed_ms": 293,
+   "utc": "2026-09-19T01:15:13Z",
    "error": null,
    "throttled": false
   },
@@ -931,11 +931,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 18150,
-   "sha256": "9cd0ed04a0de4a5c",
+   "sha256": "d267541b45dd74ed",
    "credit_count": 0,
    "rows": 61,
-   "elapsed_ms": 291,
-   "utc": "2026-09-19T00:01:56Z",
+   "elapsed_ms": 290,
+   "utc": "2026-09-19T01:15:14Z",
    "error": null,
    "throttled": false
   },
@@ -944,12 +944,12 @@
    "url": "https://pro-api.coinmarketcap.com/v5/real-world-assets/quotes/latest?rwa_id=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C42%2C43%2C44%2C45%2C47%2C48%2C49%2C50%2C51%2C53%2C54%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C65%2C66%2C68%2C69%2C70%2C71%2C73%2C74%2C75%2C76%2C78%2C80%2C81%2C82%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C210%2C211%2C212%2C213%2C214&skip_invalid=true",
    "keyed": true,
    "http": 200,
-   "bytes": 287900,
-   "sha256": "1d9bc7448e3d022a",
+   "bytes": 287923,
+   "sha256": "3d2041e6e1602ee7",
    "credit_count": 1,
    "rows": 686,
-   "elapsed_ms": 554,
-   "utc": "2026-09-19T00:01:57Z",
+   "elapsed_ms": 546,
+   "utc": "2026-09-19T01:15:14Z",
    "error": null,
    "throttled": false
   },
@@ -958,12 +958,12 @@
    "url": "https://pro-api.coinmarketcap.com/v5/real-world-assets/quotes/latest?rwa_id=215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C249%2C250%2C251%2C252%2C254%2C255%2C256%2C257%2C259%2C260%2C261%2C262%2C263%2C264%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C277%2C278%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318%2C319%2C320%2C321%2C322%2C324%2C325%2C326%2C328%2C329%2C330%2C331%2C332%2C333%2C335%2C336%2C337%2C339%2C340%2C341%2C342%2C343%2C344%2C345%2C346%2C347%2C348%2C349%2C350%2C352%2C353%2C354%2C355%2C356%2C357%2C359%2C360%2C361%2C362%2C363%2C364%2C365%2C366%2C367%2C368%2C369%2C370%2C371%2C372%2C373%2C375%2C376%2C377%2C378%2C379%2C380%2C381%2C382%2C383%2C384%2C385%2C386%2C388%2C389%2C390%2C391%2C392%2C393%2C394%2C395%2C396%2C397%2C398%2C399%2C400%2C401%2C402%2C404%2C405%2C406%2C407%2C408%2C409%2C410%2C411%2C412%2C413%2C415%2C416%2C418%2C420%2C421%2C422%2C424%2C425%2C426%2C428%2C429%2C430%2C431%2C432%2C433%2C435%2C436%2C437&skip_invalid=true",
    "keyed": true,
    "http": 200,
-   "bytes": 185941,
-   "sha256": "0a5076b62bbcfd40",
+   "bytes": 185970,
+   "sha256": "4373f608ea9e1016",
    "credit_count": 1,
    "rows": 274,
-   "elapsed_ms": 542,
-   "utc": "2026-09-19T00:01:57Z",
+   "elapsed_ms": 954,
+   "utc": "2026-09-19T01:15:15Z",
    "error": null,
    "throttled": false
   },
@@ -972,12 +972,12 @@
    "url": "https://pro-api.coinmarketcap.com/v5/real-world-assets/quotes/latest?rwa_id=438%2C439%2C440%2C441%2C442%2C443%2C444%2C445%2C446%2C447%2C448%2C449%2C450%2C451%2C452%2C453%2C454%2C455%2C456%2C457%2C459%2C460%2C461%2C463%2C464%2C465%2C466%2C467%2C468%2C469%2C470%2C471%2C472%2C473%2C475%2C476%2C477%2C478%2C479%2C480%2C481%2C482%2C484%2C486%2C487%2C489%2C490%2C491%2C492%2C493%2C494%2C495%2C496%2C498%2C499%2C500%2C501%2C503%2C504%2C506%2C507%2C508%2C509%2C510%2C511%2C512%2C513%2C515%2C516%2C518%2C520%2C521%2C522%2C523%2C524%2C526%2C527%2C528%2C529%2C530%2C531%2C532%2C533%2C534%2C536%2C537%2C538%2C539%2C540%2C541%2C542%2C543%2C544%2C545%2C546%2C548%2C551%2C552%2C553%2C554%2C555%2C556%2C559%2C561%2C563%2C565%2C568%2C569%2C571%2C573%2C574%2C575%2C576%2C577%2C579%2C580%2C581%2C582%2C583%2C584%2C585%2C586%2C587%2C588%2C589%2C591%2C593%2C594%2C598%2C599%2C600%2C601%2C603%2C604%2C607%2C613%2C614%2C616%2C617%2C619%2C621%2C623%2C624%2C626%2C629%2C631%2C632%2C634%2C636%2C640%2C642%2C645%2C646%2C647%2C649%2C653%2C661%2C675%2C712%2C751%2C769%2C770%2C771%2C772%2C773%2C774%2C776%2C777%2C778%2C779%2C780%2C781%2C783%2C784%2C785%2C786%2C787%2C788%2C789%2C790%2C791%2C792%2C793%2C794%2C796%2C798%2C799%2C800%2C801%2C804%2C805%2C806%2C807%2C808%2C809%2C810%2C811%2C812%2C813%2C814&skip_invalid=true",
    "keyed": true,
    "http": 200,
-   "bytes": 170733,
-   "sha256": "d4a9e31b2facbe1c",
+   "bytes": 170724,
+   "sha256": "fac6cb57fb3decac",
    "credit_count": 1,
    "rows": 218,
-   "elapsed_ms": 1003,
-   "utc": "2026-09-19T00:01:58Z",
+   "elapsed_ms": 529,
+   "utc": "2026-09-19T01:15:15Z",
    "error": null,
    "throttled": false
   },
@@ -986,12 +986,12 @@
    "url": "https://pro-api.coinmarketcap.com/v5/real-world-assets/quotes/latest?rwa_id=815%2C816%2C817%2C818%2C819%2C821%2C822%2C825%2C827%2C828%2C830%2C832%2C833%2C835%2C836%2C837%2C838%2C839%2C842%2C844%2C845%2C846%2C847%2C848%2C849%2C850%2C852%2C854%2C855%2C857%2C859%2C860%2C861%2C862%2C863%2C864%2C865%2C866%2C867%2C868%2C869%2C870%2C872%2C873%2C874%2C876%2C877%2C878%2C879%2C880%2C884%2C885%2C886%2C887%2C889%2C892%2C896%2C898%2C900%2C901%2C902%2C904%2C906%2C908%2C912%2C915%2C963%2C980%2C1062%2C1083%2C1102%2C1123%2C1135%2C1164%2C1171%2C1198%2C1209%2C1263%2C1304%2C1373%2C1400%2C1408%2C1410%2C1465%2C1491%2C1551%2C1582%2C1588%2C1602%2C1613%2C1682%2C1701%2C1747%2C1791%2C1832%2C1843%2C1847%2C1857%2C1945%2C2023%2C2028%2C2032%2C2126%2C2220%2C2301%2C2393%2C2469%2C2690%2C2703%2C2769%2C2928%2C3066%2C3089%2C3133%2C3179%2C3206%2C3231%2C3233%2C3240%2C3447%2C3450%2C3627%2C3674%2C3831%2C3848%2C3855%2C4016%2C4060%2C4090%2C4472%2C4538%2C4586%2C4789%2C4876%2C4918%2C4936%2C4949%2C5100%2C5103%2C5186%2C5201%2C5263%2C5289%2C5382%2C5383%2C5397%2C5407%2C5630%2C5699%2C5704%2C5727%2C5826%2C5846%2C5853%2C5856%2C5877%2C5913%2C5920%2C5952%2C5967%2C6206%2C6776%2C6918%2C6925%2C6932%2C7062%2C7198%2C7216%2C7230%2C7410%2C7436%2C7470%2C7640%2C7697%2C7712%2C7733%2C7750%2C7751%2C7766%2C7801%2C7856%2C7934%2C7950%2C7971%2C8012%2C8025%2C8050%2C8065%2C16385%2C16386%2C16388&skip_invalid=true",
    "keyed": true,
    "http": 200,
-   "bytes": 178847,
-   "sha256": "709b300fb90f22bc",
+   "bytes": 178807,
+   "sha256": "67d8d561317814c7",
    "credit_count": 1,
    "rows": 257,
-   "elapsed_ms": 313,
-   "utc": "2026-09-19T00:01:59Z",
+   "elapsed_ms": 309,
+   "utc": "2026-09-19T01:15:16Z",
    "error": null,
    "throttled": false
   },
@@ -1001,11 +1001,11 @@
    "keyed": true,
    "http": 200,
    "bytes": 4321,
-   "sha256": "ae2aa937acef1451",
+   "sha256": "3eec2f14d16cd9bd",
    "credit_count": 1,
    "rows": 25,
-   "elapsed_ms": 284,
-   "utc": "2026-09-19T00:01:59Z",
+   "elapsed_ms": 277,
+   "utc": "2026-09-19T01:15:16Z",
    "error": null,
    "throttled": false
   },
@@ -1014,12 +1014,12 @@
    "url": "https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active%2Cinactive%2Cuntracked&start=1&limit=5000&aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform",
    "keyed": false,
    "http": 200,
-   "bytes": 882616,
-   "sha256": "7d1466fbcb336d87",
+   "bytes": 882614,
+   "sha256": "17f9b22376d2aaaa",
    "credit_count": 1,
    "rows": 5000,
-   "elapsed_ms": 812,
-   "utc": "2026-09-19T00:01:59Z",
+   "elapsed_ms": 782,
+   "utc": "2026-09-19T01:15:17Z",
    "error": null,
    "throttled": false
   },
@@ -1028,12 +1028,12 @@
    "url": "https://pro-api.coinmarketcap.com/public-api/v1/cryptocurrency/map?listing_status=active%2Cinactive%2Cuntracked&start=5001&limit=5000&aux=first_historical_data%2Clast_historical_data%2Cstatus%2Cplatform",
    "keyed": false,
    "http": 200,
-   "bytes": 1144846,
-   "sha256": "af46475c88eeacb6",
+   "bytes": 1144847,
+   "sha256": "a30ed88f394cb244",
    "credit_count": 1,
    "rows": 5000,
-   "elapsed_ms": 795,
-   "utc": "2026-09-19T00:02:00Z",
+   "elapsed_ms": 545,
+   "utc": "2026-09-19T01:15:17Z",
    "error": null,
    "throttled": false
   },
@@ -1043,11 +1043,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 1235492,
-   "sha256": "48d38fd60679fed5",
+   "sha256": "968789a4dd6677c6",
    "credit_count": 1,
    "rows": 5000,
-   "elapsed_ms": 800,
-   "utc": "2026-09-19T00:02:01Z",
+   "elapsed_ms": 354,
+   "utc": "2026-09-19T01:15:18Z",
    "error": null,
    "throttled": false
   },
@@ -1057,11 +1057,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 1205945,
-   "sha256": "a8b93745c589f0ce",
+   "sha256": "90ed3c533083b35d",
    "credit_count": 1,
    "rows": 5000,
-   "elapsed_ms": 368,
-   "utc": "2026-09-19T00:02:02Z",
+   "elapsed_ms": 776,
+   "utc": "2026-09-19T01:15:18Z",
    "error": null,
    "throttled": false
   },
@@ -1071,11 +1071,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 1214243,
-   "sha256": "b23b216f56d60e85",
+   "sha256": "929a2443bed59571",
    "credit_count": 1,
    "rows": 5000,
-   "elapsed_ms": 349,
-   "utc": "2026-09-19T00:02:02Z",
+   "elapsed_ms": 563,
+   "utc": "2026-09-19T01:15:19Z",
    "error": null,
    "throttled": false
   },
@@ -1085,11 +1085,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 1292231,
-   "sha256": "444a2d2eafbe0a46",
+   "sha256": "94f7ac2798993922",
    "credit_count": 1,
    "rows": 5000,
-   "elapsed_ms": 352,
-   "utc": "2026-09-19T00:02:03Z",
+   "elapsed_ms": 363,
+   "utc": "2026-09-19T01:15:20Z",
    "error": null,
    "throttled": false
   },
@@ -1099,11 +1099,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 1369463,
-   "sha256": "ba96f5669b1fdf82",
+   "sha256": "407653143a5140e3",
    "credit_count": 1,
    "rows": 5000,
-   "elapsed_ms": 364,
-   "utc": "2026-09-19T00:02:03Z",
+   "elapsed_ms": 352,
+   "utc": "2026-09-19T01:15:20Z",
    "error": null,
    "throttled": false
   },
@@ -1113,11 +1113,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 1151289,
-   "sha256": "b0cda61e3f01cbd0",
+   "sha256": "5df78abc56be5ac2",
    "credit_count": 1,
    "rows": 3681,
-   "elapsed_ms": 1818,
-   "utc": "2026-09-19T00:02:03Z",
+   "elapsed_ms": 475,
+   "utc": "2026-09-19T01:15:21Z",
    "error": null,
    "throttled": false
   },
@@ -1127,11 +1127,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 996,
-   "sha256": "05f6ccf4cc2b7d77",
+   "sha256": "2d4c33778414377b",
    "credit_count": 1,
    "rows": 4,
-   "elapsed_ms": 287,
-   "utc": "2026-09-19T00:02:05Z",
+   "elapsed_ms": 284,
+   "utc": "2026-09-19T01:15:21Z",
    "error": null,
    "throttled": false
   },
@@ -1141,11 +1141,11 @@
    "keyed": false,
    "http": 400,
    "bytes": 174,
-   "sha256": "43a7f9cb18c2e8b5",
+   "sha256": "740e7d4066b32b4b",
    "credit_count": 0,
    "rows": null,
-   "elapsed_ms": 298,
-   "utc": "2026-09-19T00:02:06Z",
+   "elapsed_ms": 305,
+   "utc": "2026-09-19T01:15:21Z",
    "error": "HTTP 400 error_code 400: Invalid value for 'id': '39318,39002,39839'",
    "throttled": false
   },
@@ -1155,11 +1155,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 169802,
-   "sha256": "1bad7d5e805c2b11",
+   "sha256": "7a88a89489042a80",
    "credit_count": 1,
    "rows": 197,
-   "elapsed_ms": 330,
-   "utc": "2026-09-19T00:02:06Z",
+   "elapsed_ms": 310,
+   "utc": "2026-09-19T01:15:22Z",
    "error": null,
    "throttled": false
   },
@@ -1169,11 +1169,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 157395,
-   "sha256": "e37d937dbd74a9a5",
+   "sha256": "58b36a5ebe0c3d14",
    "credit_count": 1,
    "rows": 200,
-   "elapsed_ms": 314,
-   "utc": "2026-09-19T00:02:06Z",
+   "elapsed_ms": 299,
+   "utc": "2026-09-19T01:15:22Z",
    "error": null,
    "throttled": false
   },
@@ -1182,12 +1182,12 @@
    "url": "https://pro-api.coinmarketcap.com/public-api/v2/cryptocurrency/info?id=41769%2C41164%2C41307%2C41702%2C41514%2C41647%2C41255%2C41552%2C41393%2C41312%2C41287%2C41506%2C41200%2C41364%2C41713%2C41133%2C41457%2C41263%2C41754%2C41694%2C41607%2C41474%2C41279%2C41582%2C41247%2C41097%2C41365%2C41292%2C41416%2C41304%2C41731%2C41491%2C41407%2C41701%2C41141%2C41726%2C41253%2C41624%2C41197%2C41557%2C41533%2C41410%2C41484%2C41656%2C41687%2C41220%2C41674%2C41677%2C41224%2C41421%2C41488%2C41226%2C41681%2C41538%2C41440%2C41679%2C41150%2C41606%2C41659%2C41316%2C41216%2C41412%2C41396%2C41477%2C41414%2C41181%2C41566%2C41678%2C41721%2C41568%2C41157%2C41599%2C41137%2C41578%2C41282%2C41441%2C41684%2C41168%2C41676%2C41727%2C41203%2C41742%2C41643%2C41705%2C41411%2C41171%2C41117%2C41323%2C41463%2C41565%2C41132%2C41717%2C41669%2C41248%2C41495%2C41374%2C41625%2C41165%2C41478%2C41290%2C41225%2C41547%2C41288%2C41605%2C41749%2C41494%2C41467%2C41397%2C41602%2C41490%2C41163%2C41722%2C41314%2C41399%2C41591%2C41761%2C41728%2C41285%2C41652%2C41503%2C41340%2C41302%2C41439%2C41743%2C41317%2C41401%2C41261%2C41341%2C41270%2C41086%2C41299%2C41272%2C41303%2C41175%2C40776%2C41593%2C41433%2C41473%2C41724%2C41160%2C41301%2C41530%2C41635%2C41480%2C41768%2C41460%2C41239%2C41366%2C41376%2C41139%2C41391%2C41213%2C41122%2C41383%2C41182%2C41356%2C41476%2C41368%2C41516%2C41454%2C41836%2C41195%2C41662%2C41522%2C41505%2C41212%2C41207%2C41672%2C41510%2C41259%2C41753%2C41470%2C41620%2C41604%2C41328%2C41666%2C41469%2C41266%2C41349%2C41249%2C41101%2C41497%2C41429%2C41258%2C41267%2C41169%2C42326%2C41193%2C41851%2C41243%2C41388%2C41486%2C41854%2C41716%2C40709%2C41623%2C41558%2C41102%2C40746%2C41762&aux=status%2Cdate_added%2Cplatform",
    "keyed": false,
    "http": 400,
-   "bytes": 161,
-   "sha256": "0236357fe51fde54",
+   "bytes": 162,
+   "sha256": "fcb1c3feea0ca7e8",
    "credit_count": 0,
    "rows": null,
-   "elapsed_ms": 299,
-   "utc": "2026-09-19T00:02:07Z",
+   "elapsed_ms": 291,
+   "utc": "2026-09-19T01:15:22Z",
    "error": "HTTP 400 error_code 400: Invalid value for 'id': '42326'",
    "throttled": false
   },
@@ -1196,12 +1196,12 @@
    "url": "https://pro-api.coinmarketcap.com/public-api/v2/cryptocurrency/info?id=41769%2C41164%2C41307%2C41702%2C41514%2C41647%2C41255%2C41552%2C41393%2C41312%2C41287%2C41506%2C41200%2C41364%2C41713%2C41133%2C41457%2C41263%2C41754%2C41694%2C41607%2C41474%2C41279%2C41582%2C41247%2C41097%2C41365%2C41292%2C41416%2C41304%2C41731%2C41491%2C41407%2C41701%2C41141%2C41726%2C41253%2C41624%2C41197%2C41557%2C41533%2C41410%2C41484%2C41656%2C41687%2C41220%2C41674%2C41677%2C41224%2C41421%2C41488%2C41226%2C41681%2C41538%2C41440%2C41679%2C41150%2C41606%2C41659%2C41316%2C41216%2C41412%2C41396%2C41477%2C41414%2C41181%2C41566%2C41678%2C41721%2C41568%2C41157%2C41599%2C41137%2C41578%2C41282%2C41441%2C41684%2C41168%2C41676%2C41727%2C41203%2C41742%2C41643%2C41705%2C41411%2C41171%2C41117%2C41323%2C41463%2C41565%2C41132%2C41717%2C41669%2C41248%2C41495%2C41374%2C41625%2C41165%2C41478%2C41290%2C41225%2C41547%2C41288%2C41605%2C41749%2C41494%2C41467%2C41397%2C41602%2C41490%2C41163%2C41722%2C41314%2C41399%2C41591%2C41761%2C41728%2C41285%2C41652%2C41503%2C41340%2C41302%2C41439%2C41743%2C41317%2C41401%2C41261%2C41341%2C41270%2C41086%2C41299%2C41272%2C41303%2C41175%2C40776%2C41593%2C41433%2C41473%2C41724%2C41160%2C41301%2C41530%2C41635%2C41480%2C41768%2C41460%2C41239%2C41366%2C41376%2C41139%2C41391%2C41213%2C41122%2C41383%2C41182%2C41356%2C41476%2C41368%2C41516%2C41454%2C41836%2C41195%2C41662%2C41522%2C41505%2C41212%2C41207%2C41672%2C41510%2C41259%2C41753%2C41470%2C41620%2C41604%2C41328%2C41666%2C41469%2C41266%2C41349%2C41249%2C41101%2C41497%2C41429%2C41258%2C41267%2C41169%2C41193%2C41851%2C41243%2C41388%2C41486%2C41854%2C41716%2C40709%2C41623%2C41558%2C41102%2C40746%2C41762&aux=status%2Cdate_added%2Cplatform",
    "keyed": false,
    "http": 200,
-   "bytes": 156466,
-   "sha256": "79795d303d0d158c",
+   "bytes": 156467,
+   "sha256": "9e0409550e70165f",
    "credit_count": 1,
    "rows": 199,
-   "elapsed_ms": 312,
-   "utc": "2026-09-19T00:02:07Z",
+   "elapsed_ms": 310,
+   "utc": "2026-09-19T01:15:23Z",
    "error": null,
    "throttled": false
   },
@@ -1211,11 +1211,11 @@
    "keyed": false,
    "http": 200,
    "bytes": 95404,
-   "sha256": "54503d1a7b0ad715",
+   "sha256": "e524d79bcf8ef81d",
    "credit_count": 1,
    "rows": 77,
-   "elapsed_ms": 302,
-   "utc": "2026-09-19T00:02:07Z",
+   "elapsed_ms": 292,
+   "utc": "2026-09-19T01:15:23Z",
    "error": null,
    "throttled": false
   },
@@ -1224,12 +1224,12 @@
    "url": "https://pro-api.coinmarketcap.com/v1/key/info",
    "keyed": true,
    "http": 200,
-   "bytes": 494,
-   "sha256": "22409a69e931ac7d",
+   "bytes": 496,
+   "sha256": "74889488f514d983",
    "credit_count": 0,
    "rows": null,
-   "elapsed_ms": 287,
-   "utc": "2026-09-19T00:02:07Z",
+   "elapsed_ms": 274,
+   "utc": "2026-09-19T01:15:23Z",
    "error": null,
    "throttled": false
   }
@@ -1241,24 +1241,24 @@
     "requests_left": 600
    },
    "current_day": {
-    "credits_used": 5
+    "credits_used": 405
    },
    "current_month": {
-    "credits_used": 12037,
-    "credits_left": 437963
+    "credits_used": 12437,
+    "credits_left": 437563
    }
   },
   "after": {
    "current_minute": {
-    "requests_made": 0,
-    "requests_left": 600
+    "requests_made": 37,
+    "requests_left": 563
    },
    "current_day": {
-    "credits_used": 10
+    "credits_used": 410
    },
    "current_month": {
-    "credits_used": 12042,
-    "credits_left": 437958
+    "credits_used": 12442,
+    "credits_left": 437558
    }
   }
  },
@@ -1270,8 +1270,8 @@
    "rwa_id": 1,
    "issuer_name": "Paxos",
    "status": "active",
-   "price": 4368.308003598585,
-   "market_cap": 1898022071.44
+   "price": 4365.641860013813,
+   "market_cap": 1896868627.08
   },
   {
    "crypto_id": 5176,
@@ -1280,8 +1280,8 @@
    "rwa_id": 1,
    "issuer_name": "Tether Holdings",
    "status": "active",
-   "price": 4374.853143150998,
-   "market_cap": 2724762044.53
+   "price": 4372.337118242409,
+   "market_cap": 2723195004.69
   },
   {
    "crypto_id": 20245,
@@ -1290,8 +1290,8 @@
    "rwa_id": 1,
    "issuer_name": "Comtech Gold",
    "status": "active",
-   "price": 139.20630798719307,
-   "market_cap": 19628089.43
+   "price": 139.36558342315882,
+   "market_cap": 19650547.26
   },
   {
    "crypto_id": 22492,
@@ -1300,8 +1300,8 @@
    "rwa_id": 1,
    "issuer_name": "VNX",
    "status": "active",
-   "price": 138.91043714024292,
-   "market_cap": 5848129.4
+   "price": 138.921844502517,
+   "market_cap": 5848609.65
   },
   {
    "crypto_id": 34212,
@@ -1310,8 +1310,8 @@
    "rwa_id": 1,
    "issuer_name": "Matrixdock",
    "status": "active",
-   "price": 4360.029026342877,
-   "market_cap": 47851218.26
+   "price": 4365.058976817577,
+   "market_cap": 47906421.85
   },
   {
    "crypto_id": 37082,
@@ -1320,8 +1320,8 @@
    "rwa_id": 1,
    "issuer_name": "Tether Holdings",
    "status": "active",
-   "price": 4371.7443236624185,
-   "market_cap": 18124417.78
+   "price": 4364.038004920198,
+   "market_cap": 18092468.85
   },
   {
    "crypto_id": 39344,
@@ -1330,7 +1330,7 @@
    "rwa_id": 1,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 4381.201703719503,
+   "price": 4380.2472501667535,
    "market_cap": 0
   },
   {
@@ -1350,8 +1350,8 @@
    "rwa_id": 2,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 222.73354490237776,
-   "market_cap": 41315179.09
+   "price": 222.6325423032981,
+   "market_cap": 41296436.6
   },
   {
    "crypto_id": 37270,
@@ -1360,8 +1360,8 @@
    "rwa_id": 2,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 222.74463046708658,
-   "market_cap": 588017.74
+   "price": 222.5732996726894,
+   "market_cap": 587282.49
   },
   {
    "crypto_id": 38093,
@@ -1370,8 +1370,8 @@
    "rwa_id": 2,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 222.70022001038208,
-   "market_cap": 37398228.46
+   "price": 222.738897350894,
+   "market_cap": 37401269.02
   },
   {
    "crypto_id": 38153,
@@ -1380,7 +1380,7 @@
    "rwa_id": 2,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 222.5280395936548,
+   "price": 222.50584571382228,
    "market_cap": 0
   },
   {
@@ -1390,8 +1390,8 @@
    "rwa_id": 2,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 222.28656169725545,
-   "market_cap": 31620546.54
+   "price": 222.24081414518844,
+   "market_cap": 31105052.29
   },
   {
    "crypto_id": 40605,
@@ -1400,8 +1400,8 @@
    "rwa_id": 2,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 222.44783291068322,
-   "market_cap": 4915759.77
+   "price": 222.3318880231983,
+   "market_cap": 4913197.56
   },
   {
    "crypto_id": 40685,
@@ -1410,8 +1410,8 @@
    "rwa_id": 2,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 222.41708232841566,
-   "market_cap": 20516119.88
+   "price": 222.3498433142753,
+   "market_cap": 20509917.64
   },
   {
    "crypto_id": 28624,
@@ -1430,8 +1430,8 @@
    "rwa_id": 3,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 335.60358604941337,
-   "market_cap": 13539770.71
+   "price": 335.62518991921314,
+   "market_cap": 13538117.14
   },
   {
    "crypto_id": 37269,
@@ -1440,8 +1440,8 @@
    "rwa_id": 3,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 336.3276093853658,
-   "market_cap": 379406.86
+   "price": 336.07412337120616,
+   "market_cap": 379675.5
   },
   {
    "crypto_id": 38037,
@@ -1450,8 +1450,8 @@
    "rwa_id": 3,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 335.9108766197677,
-   "market_cap": 9012393.55
+   "price": 336.23724849678894,
+   "market_cap": 9019546.95
   },
   {
    "crypto_id": 39491,
@@ -1460,7 +1460,7 @@
    "rwa_id": 3,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 334.99528636847543,
+   "price": 335.20819173052297,
    "market_cap": 0
   },
   {
@@ -1480,8 +1480,8 @@
    "rwa_id": 3,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 334.79152775629984,
-   "market_cap": 806273.24
+   "price": 334.5628082920302,
+   "market_cap": 805722.42
   },
   {
    "crypto_id": 40703,
@@ -1490,8 +1490,8 @@
    "rwa_id": 3,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 335.15179566435893,
-   "market_cap": 5471077.88
+   "price": 335.09025416010707,
+   "market_cap": 5470073.26
   },
   {
    "crypto_id": 40927,
@@ -1500,8 +1500,8 @@
    "rwa_id": 3,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 334.72207109929053,
-   "market_cap": 6535678.21
+   "price": 334.8634104102974,
+   "market_cap": 6407938.27
   },
   {
    "crypto_id": 28634,
@@ -1520,8 +1520,8 @@
    "rwa_id": 4,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 350.91608735400405,
-   "market_cap": 35180136.7
+   "price": 351.00127406622795,
+   "market_cap": 35178225.25
   },
   {
    "crypto_id": 37121,
@@ -1530,8 +1530,8 @@
    "rwa_id": 4,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 351.1263791852541,
-   "market_cap": 283989.18
+   "price": 351.07702144813703,
+   "market_cap": 283349.42
   },
   {
    "crypto_id": 38001,
@@ -1540,8 +1540,8 @@
    "rwa_id": 4,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 351.2821813313816,
-   "market_cap": 20263506.69
+   "price": 351.4870794359149,
+   "market_cap": 20272684.67
   },
   {
    "crypto_id": 39470,
@@ -1550,7 +1550,7 @@
    "rwa_id": 4,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 350.8091295136681,
+   "price": 350.54962563354377,
    "market_cap": 0
   },
   {
@@ -1570,8 +1570,8 @@
    "rwa_id": 4,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 350.5062878624112,
-   "market_cap": 10673916.97
+   "price": 350.55683868519935,
+   "market_cap": 10675456.39
   },
   {
    "crypto_id": 40757,
@@ -1580,8 +1580,8 @@
    "rwa_id": 4,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 351.17658189011007,
-   "market_cap": 5585277.26
+   "price": 351.18246951041033,
+   "market_cap": 5585370.9
   },
   {
    "crypto_id": 40793,
@@ -1590,8 +1590,8 @@
    "rwa_id": 4,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 350.4073395445276,
-   "market_cap": 26433622.74
+   "price": 350.2688960165438,
+   "market_cap": 25152868.12
   },
   {
    "crypto_id": 42272,
@@ -1610,7 +1610,7 @@
    "rwa_id": 5,
    "issuer_name": "Kinesis Assets",
    "status": "active",
-   "price": 31.608355416971527,
+   "price": 31.250909134288918,
    "market_cap": 0
   },
   {
@@ -1620,7 +1620,7 @@
    "rwa_id": 5,
    "issuer_name": "XAGx",
    "status": "active",
-   "price": 66.10441293602302,
+   "price": 66.34707476293278,
    "market_cap": 0
   },
   {
@@ -1630,7 +1630,7 @@
    "rwa_id": 5,
    "issuer_name": "Token",
    "status": "active",
-   "price": 2.1225776071270217,
+   "price": 2.1195432432367656,
    "market_cap": 0
   },
   {
@@ -1650,7 +1650,7 @@
    "rwa_id": 5,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 66.47485863017806,
+   "price": 66.20295164138363,
    "market_cap": 0
   },
   {
@@ -1660,8 +1660,8 @@
    "rwa_id": 6,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 254.21097619778385,
-   "market_cap": 7991852.82
+   "price": 254.26621778950005,
+   "market_cap": 7993589.48
   },
   {
    "crypto_id": 37112,
@@ -1680,8 +1680,8 @@
    "rwa_id": 6,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 254.20879548789168,
-   "market_cap": 6286719.85
+   "price": 254.31896013363615,
+   "market_cap": 6289444.28
   },
   {
    "crypto_id": 39471,
@@ -1690,7 +1690,7 @@
    "rwa_id": 6,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 254.34735187565784,
+   "price": 254.51354750770489,
    "market_cap": 0
   },
   {
@@ -1710,8 +1710,8 @@
    "rwa_id": 6,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 254.14754880856998,
-   "market_cap": 841660.45
+   "price": 254.0607407090322,
+   "market_cap": 841372.96
   },
   {
    "crypto_id": 40718,
@@ -1720,8 +1720,8 @@
    "rwa_id": 6,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 254.10247865994808,
-   "market_cap": 3485725.71
+   "price": 254.4728400376174,
+   "market_cap": 3490806.25
   },
   {
    "crypto_id": 40929,
@@ -1730,8 +1730,8 @@
    "rwa_id": 6,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 254.11174440022708,
-   "market_cap": 1870041.67
+   "price": 254.3688615118748,
+   "market_cap": 1833208.79
   },
   {
    "crypto_id": 28618,
@@ -1750,8 +1750,8 @@
    "rwa_id": 7,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 497.460922173965,
-   "market_cap": 7572493.54
+   "price": 496.587893491545,
+   "market_cap": 7559203.47
   },
   {
    "crypto_id": 37214,
@@ -1760,8 +1760,8 @@
    "rwa_id": 7,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 498.27349629346355,
-   "market_cap": 145950.8
+   "price": 498.2734962934636,
+   "market_cap": 146071.1
   },
   {
    "crypto_id": 38086,
@@ -1770,8 +1770,8 @@
    "rwa_id": 7,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 496.97287807107864,
-   "market_cap": 7906128.68
+   "price": 497.23909608539805,
+   "market_cap": 7910363.83
   },
   {
    "crypto_id": 39495,
@@ -1780,7 +1780,7 @@
    "rwa_id": 7,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 494.3310057736538,
+   "price": 494.60491768681214,
    "market_cap": 0
   },
   {
@@ -1800,8 +1800,8 @@
    "rwa_id": 7,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 493.76180094926013,
-   "market_cap": 2877692.49
+   "price": 494.01815923883106,
+   "market_cap": 2852628.27
   },
   {
    "crypto_id": 40609,
@@ -1810,8 +1810,8 @@
    "rwa_id": 7,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 493.8097969750593,
-   "market_cap": 1390052.87
+   "price": 493.66655987310037,
+   "market_cap": 1389649.67
   },
   {
    "crypto_id": 40695,
@@ -1820,8 +1820,8 @@
    "rwa_id": 7,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 495.34361857800224,
-   "market_cap": 3012598.04
+   "price": 494.5049276735875,
+   "market_cap": 3007497.26
   },
   {
    "crypto_id": 38075,
@@ -1830,8 +1830,8 @@
    "rwa_id": 8,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 437.5881389595865,
-   "market_cap": 6508705.39
+   "price": 437.671091443909,
+   "market_cap": 6509939.23
   },
   {
    "crypto_id": 39490,
@@ -1840,7 +1840,7 @@
    "rwa_id": 8,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 433.68121637451947,
+   "price": 433.4308760475569,
    "market_cap": 0
   },
   {
@@ -1850,8 +1850,8 @@
    "rwa_id": 8,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 433.39939547050875,
-   "market_cap": 2791830.48
+   "price": 433.1478219524834,
+   "market_cap": 2790209.92
   },
   {
    "crypto_id": 40769,
@@ -1860,8 +1860,8 @@
    "rwa_id": 8,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 433.48490082885763,
-   "market_cap": 1542591.99
+   "price": 433.45327907680627,
+   "market_cap": 1542479.46
   },
   {
    "crypto_id": 40846,
@@ -1870,8 +1870,8 @@
    "rwa_id": 8,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 432.59161664523265,
-   "market_cap": 3929813.2
+   "price": 432.332931004136,
+   "market_cap": 3850210.64
   },
   {
    "crypto_id": 41688,
@@ -1880,7 +1880,7 @@
    "rwa_id": 8,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 436.218598144193,
+   "price": 436.2185981441929,
    "market_cap": 0
   },
   {
@@ -1890,7 +1890,7 @@
    "rwa_id": 9,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 149.77805752577837,
+   "price": 149.9119683494031,
    "market_cap": 0
   },
   {
@@ -1900,8 +1900,8 @@
    "rwa_id": 9,
    "issuer_name": "PreStocks Assets",
    "status": "active",
-   "price": 607.2484981219627,
-   "market_cap": 5308879.27
+   "price": 607.0977696513646,
+   "market_cap": 5307561.53
   },
   {
    "crypto_id": 39501,
@@ -1910,7 +1910,7 @@
    "rwa_id": 9,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 152.59539418280556,
+   "price": 152.49659289645106,
    "market_cap": 0
   },
   {
@@ -1920,8 +1920,8 @@
    "rwa_id": 9,
    "issuer_name": "Tessera Assets",
    "status": "active",
-   "price": 558.9125665489333,
-   "market_cap": 664547.04
+   "price": 558.9174267775497,
+   "market_cap": 664552.82
   },
   {
    "crypto_id": 40217,
@@ -1930,8 +1930,8 @@
    "rwa_id": 9,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 152.52079941795645,
-   "market_cap": 70306918.46
+   "price": 152.45573906466421,
+   "market_cap": 68120098.02
   },
   {
    "crypto_id": 40218,
@@ -1940,8 +1940,8 @@
    "rwa_id": 9,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 152.47777444223138,
-   "market_cap": 40702781.69
+   "price": 152.39783174331575,
+   "market_cap": 40681440.97
   },
   {
    "crypto_id": 40232,
@@ -1950,8 +1950,8 @@
    "rwa_id": 9,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 152.52605468871982,
-   "market_cap": 10225968.92
+   "price": 152.44024406550116,
+   "market_cap": 10220215.83
   },
   {
    "crypto_id": 40238,
@@ -1960,8 +1960,8 @@
    "rwa_id": 9,
    "issuer_name": "Backpack",
    "status": "active",
-   "price": 152.06909771127962,
-   "market_cap": 6453792.86
+   "price": 151.92233995359243,
+   "market_cap": 6447564.48
   },
   {
    "crypto_id": 40643,
@@ -1970,8 +1970,8 @@
    "rwa_id": 9,
    "issuer_name": "Republic",
    "status": "active",
-   "price": 151.9207134973779,
-   "market_cap": 72124358.73
+   "price": 151.9166270531246,
+   "market_cap": 72122418.69
   },
   {
    "crypto_id": 40668,
@@ -1980,8 +1980,8 @@
    "rwa_id": 9,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 152.55082795450446,
-   "market_cap": 9967497.61
+   "price": 152.4778469134902,
+   "market_cap": 9962729.11
   },
   {
    "crypto_id": 41610,
@@ -1990,7 +1990,7 @@
    "rwa_id": 9,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 152.9713831318333,
+   "price": 152.76692153273814,
    "market_cap": 0
   },
   {
@@ -2010,8 +2010,8 @@
    "rwa_id": 10,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 669.3385410309145,
-   "market_cap": 9875777.07
+   "price": 670.4474463304534,
+   "market_cap": 9897598.86
   },
   {
    "crypto_id": 37211,
@@ -2020,8 +2020,8 @@
    "rwa_id": 10,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 669.6750548072673,
-   "market_cap": 127092.69
+   "price": 670.5390038737568,
+   "market_cap": 127056.68
   },
   {
    "crypto_id": 38065,
@@ -2030,8 +2030,8 @@
    "rwa_id": 10,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 669.4812464468114,
-   "market_cap": 6878850.19
+   "price": 671.0302352349768,
+   "market_cap": 6894504.64
   },
   {
    "crypto_id": 39615,
@@ -2040,7 +2040,7 @@
    "rwa_id": 10,
    "issuer_name": "Hyperliquid Assets",
    "status": "active",
-   "price": 687.180667487244,
+   "price": 687.2037407079072,
    "market_cap": 0
   },
   {
@@ -2050,8 +2050,8 @@
    "rwa_id": 10,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 668.1957679302303,
-   "market_cap": 3882577.85
+   "price": 669.2817661574659,
+   "market_cap": 3705954.73
   },
   {
    "crypto_id": 40602,
@@ -2060,8 +2060,8 @@
    "rwa_id": 10,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 667.8333398165644,
-   "market_cap": 990755.32
+   "price": 668.5451196985503,
+   "market_cap": 991811.27
   },
   {
    "crypto_id": 40780,
@@ -2070,8 +2070,8 @@
    "rwa_id": 10,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 667.2792016244267,
-   "market_cap": 6256664.03
+   "price": 668.2958194533921,
+   "market_cap": 6266196.22
   },
   {
    "crypto_id": 37038,
@@ -2080,8 +2080,8 @@
    "rwa_id": 11,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 1151.505088950129,
-   "market_cap": 973878.11
+   "price": 1151.5652514991707,
+   "market_cap": 973928.99
   },
   {
    "crypto_id": 37207,
@@ -2100,8 +2100,8 @@
    "rwa_id": 11,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 1157.4066123181121,
-   "market_cap": 5000120.85
+   "price": 1156.572545681082,
+   "market_cap": 4996520.64
   },
   {
    "crypto_id": 39509,
@@ -2110,7 +2110,7 @@
    "rwa_id": 11,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 1153.7251331778757,
+   "price": 1153.3274803711367,
    "market_cap": 0
   },
   {
@@ -2120,8 +2120,8 @@
    "rwa_id": 11,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 1153.5757540323698,
-   "market_cap": 51262.34
+   "price": 1153.5947069770732,
+   "market_cap": 51263.18
   },
   {
    "crypto_id": 40720,
@@ -2130,8 +2130,8 @@
    "rwa_id": 11,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 1150.8045661388828,
-   "market_cap": 2063968.89
+   "price": 1151.8491893767198,
+   "market_cap": 2065842.42
   },
   {
    "crypto_id": 38014,
@@ -2140,8 +2140,8 @@
    "rwa_id": 12,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 1015.127235910312,
-   "market_cap": 40398928.57
+   "price": 1017.6412026822004,
+   "market_cap": 40498285.5
   },
   {
    "crypto_id": 39469,
@@ -2150,7 +2150,7 @@
    "rwa_id": 12,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 1018.0659613872555,
+   "price": 1016.9060902561182,
    "market_cap": 0
   },
   {
@@ -2160,8 +2160,8 @@
    "rwa_id": 12,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 1017.49877306807,
-   "market_cap": 18320848
+   "price": 1016.4473194446407,
+   "market_cap": 18301915.77
   },
   {
    "crypto_id": 40212,
@@ -2170,8 +2170,8 @@
    "rwa_id": 12,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 1017.2844241340943,
-   "market_cap": 46105481.75
+   "price": 1016.2907634533924,
+   "market_cap": 45909430.61
   },
   {
    "crypto_id": 40616,
@@ -2180,8 +2180,8 @@
    "rwa_id": 12,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 1017.4699098350412,
-   "market_cap": 9122209.86
+   "price": 1016.6328258653499,
+   "market_cap": 9114704.91
   },
   {
    "crypto_id": 40696,
@@ -2190,8 +2190,8 @@
    "rwa_id": 12,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 1016.3147759462498,
-   "market_cap": 4837519.75
+   "price": 1022.6149291349358,
+   "market_cap": 4867507.62
   },
   {
    "crypto_id": 40817,
@@ -2200,8 +2200,8 @@
    "rwa_id": 12,
    "issuer_name": "Backpack",
    "status": "active",
-   "price": 1015.1714551583882,
-   "market_cap": 6507429.41
+   "price": 1013.4539007833401,
+   "market_cap": 6496419.58
   },
   {
    "crypto_id": 41636,
@@ -2210,7 +2210,7 @@
    "rwa_id": 12,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 1017.9856998340604,
+   "price": 1017.4302536558707,
    "market_cap": 0
   },
   {
@@ -2220,8 +2220,8 @@
    "rwa_id": 13,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 357.0934849747556,
-   "market_cap": 6251688.21
+   "price": 357.0011205421815,
+   "market_cap": 6258023.36
   },
   {
    "crypto_id": 37126,
@@ -2240,8 +2240,8 @@
    "rwa_id": 13,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 359.09670305186813,
-   "market_cap": 140565.32
+   "price": 358.7572854205009,
+   "market_cap": 140912.88
   },
   {
    "crypto_id": 38062,
@@ -2250,8 +2250,8 @@
    "rwa_id": 13,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 358.4825851540433,
-   "market_cap": 4975238.23
+   "price": 358.3327293557822,
+   "market_cap": 4966585.01
   },
   {
    "crypto_id": 40604,
@@ -2260,8 +2260,8 @@
    "rwa_id": 13,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 356.87422196110373,
-   "market_cap": 4722448.06
+   "price": 356.7746541768782,
+   "market_cap": 4721130.5
   },
   {
    "crypto_id": 40705,
@@ -2270,8 +2270,8 @@
    "rwa_id": 13,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 356.68716700126356,
-   "market_cap": 200916.89
+   "price": 358.168092958559,
+   "market_cap": 201751.07
   },
   {
    "crypto_id": 40845,
@@ -2280,8 +2280,8 @@
    "rwa_id": 13,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 356.8648212355906,
-   "market_cap": 11124899.69
+   "price": 356.69179342829733,
+   "market_cap": 10885040.03
   },
   {
    "crypto_id": 28626,
@@ -2300,8 +2300,8 @@
    "rwa_id": 14,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 363.8704730746546,
-   "market_cap": 69858630.86
+   "price": 364.3110480661868,
+   "market_cap": 69943230.18
   },
   {
    "crypto_id": 37227,
@@ -2310,8 +2310,8 @@
    "rwa_id": 14,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 363.9540360050596,
-   "market_cap": 266604.23
+   "price": 364.99294703455695,
+   "market_cap": 267361.61
   },
   {
    "crypto_id": 38029,
@@ -2320,8 +2320,8 @@
    "rwa_id": 14,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 363.8235846359936,
-   "market_cap": 17024597.85
+   "price": 364.5124451673448,
+   "market_cap": 17062718.84
   },
   {
    "crypto_id": 38152,
@@ -2330,7 +2330,7 @@
    "rwa_id": 14,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 364.15275515986434,
+   "price": 364.63200790725,
    "market_cap": 0
   },
   {
@@ -2350,8 +2350,8 @@
    "rwa_id": 14,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 363.9264606025617,
-   "market_cap": 20268425.18
+   "price": 364.4244718871207,
+   "market_cap": 20021392.04
   },
   {
    "crypto_id": 40624,
@@ -2360,8 +2360,8 @@
    "rwa_id": 14,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 363.74199390113785,
-   "market_cap": 3962576.27
+   "price": 364.05209738900396,
+   "market_cap": 3965954.51
   },
   {
    "crypto_id": 40691,
@@ -2370,8 +2370,8 @@
    "rwa_id": 14,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 364.92979164957126,
-   "market_cap": 5141144.04
+   "price": 364.69475607130073,
+   "market_cap": 5137832.85
   },
   {
    "crypto_id": 28630,
@@ -2390,8 +2390,8 @@
    "rwa_id": 15,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 507.9235521278566,
-   "market_cap": 1813130.51
+   "price": 510.54161459996294,
+   "market_cap": 1822475.98
   },
   {
    "crypto_id": 37191,
@@ -2401,7 +2401,7 @@
    "issuer_name": "Backed Assets",
    "status": "active",
    "price": 509.5387246024097,
-   "market_cap": 59502.35
+   "market_cap": 59471.73
   },
   {
    "crypto_id": 40016,
@@ -2410,7 +2410,7 @@
    "rwa_id": 15,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 510.6858375609631,
+   "price": 510.9706422018398,
    "market_cap": 0
   },
   {
@@ -2420,8 +2420,8 @@
    "rwa_id": 16,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 348.88859121414265,
-   "market_cap": 371948.57
+   "price": 348.91991151371684,
+   "market_cap": 371981.96
   },
   {
    "crypto_id": 37204,
@@ -2440,8 +2440,8 @@
    "rwa_id": 16,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 353.98728042310245,
-   "market_cap": 2885562.46
+   "price": 354.0023446445088,
+   "market_cap": 2885680.69
   },
   {
    "crypto_id": 40013,
@@ -2450,7 +2450,7 @@
    "rwa_id": 16,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 349.6044346084362,
+   "price": 349.49966412005733,
    "market_cap": 0
   },
   {
@@ -2460,8 +2460,8 @@
    "rwa_id": 17,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 108.11055060669048,
-   "market_cap": 244272.24
+   "price": 108.1105358855567,
+   "market_cap": 244272.16
   },
   {
    "crypto_id": 37229,
@@ -2480,8 +2480,8 @@
    "rwa_id": 17,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 109.32729403049593,
-   "market_cap": 2216467.14
+   "price": 106.67945627817876,
+   "market_cap": 2162788.53
   },
   {
    "crypto_id": 40015,
@@ -2490,7 +2490,7 @@
    "rwa_id": 17,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 107.06666521841643,
+   "price": 107.12232898611192,
    "market_cap": 0
   },
   {
@@ -2500,8 +2500,8 @@
    "rwa_id": 18,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 365.49682868745373,
-   "market_cap": 463434.15
+   "price": 365.2652064004218,
+   "market_cap": 463140.46
   },
   {
    "crypto_id": 38040,
@@ -2510,8 +2510,8 @@
    "rwa_id": 18,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 370.1659173563149,
-   "market_cap": 2008529.74
+   "price": 370.3237153076313,
+   "market_cap": 2009331.59
   },
   {
    "crypto_id": 40014,
@@ -2520,7 +2520,7 @@
    "rwa_id": 18,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 368.84116737122696,
+   "price": 369.04903375786665,
    "market_cap": 0
   },
   {
@@ -2540,8 +2540,8 @@
    "rwa_id": 19,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 270.19175434237195,
-   "market_cap": 500264.17
+   "price": 270.191782510711,
+   "market_cap": 500264.23
   },
   {
    "crypto_id": 37203,
@@ -2560,8 +2560,8 @@
    "rwa_id": 19,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 272.81906845651275,
-   "market_cap": 12534.5
+   "price": 271.4856589848004,
+   "market_cap": 12473.24
   },
   {
    "crypto_id": 40820,
@@ -2570,7 +2570,7 @@
    "rwa_id": 19,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 267.59431318180884,
+   "price": 269.8724498143263,
    "market_cap": 0
   },
   {
@@ -2580,8 +2580,8 @@
    "rwa_id": 20,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 108.94395517617107,
-   "market_cap": 12947073.48
+   "price": 109.07900196797216,
+   "market_cap": 12963122.66
   },
   {
    "crypto_id": 37202,
@@ -2590,8 +2590,8 @@
    "rwa_id": 20,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 108.95207111832809,
-   "market_cap": 125871.05
+   "price": 109.02948396284326,
+   "market_cap": 125361.01
   },
   {
    "crypto_id": 38035,
@@ -2600,8 +2600,8 @@
    "rwa_id": 20,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 108.93912766891141,
-   "market_cap": 18783166.24
+   "price": 108.73662633463007,
+   "market_cap": 18748265.13
   },
   {
    "crypto_id": 39472,
@@ -2610,7 +2610,7 @@
    "rwa_id": 20,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 109.1198934054382,
+   "price": 109.04669844641238,
    "market_cap": 0
   },
   {
@@ -2620,8 +2620,8 @@
    "rwa_id": 20,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 109.04079187905775,
-   "market_cap": 13900095.51
+   "price": 109.00300328361202,
+   "market_cap": 13556434.32
   },
   {
    "crypto_id": 40618,
@@ -2630,8 +2630,8 @@
    "rwa_id": 20,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 109.04462346709207,
-   "market_cap": 7211318.55
+   "price": 109.08167627845602,
+   "market_cap": 7213768.91
   },
   {
    "crypto_id": 40697,
@@ -2640,8 +2640,8 @@
    "rwa_id": 20,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 109.16484967439925,
-   "market_cap": 1974869.31
+   "price": 108.75656540619654,
+   "market_cap": 1967483.16
   },
   {
    "crypto_id": 37011,
@@ -2650,8 +2650,8 @@
    "rwa_id": 21,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 264.7069283904559,
-   "market_cap": 267731.41
+   "price": 265.0936361860654,
+   "market_cap": 268122.54
   },
   {
    "crypto_id": 37272,
@@ -2670,8 +2670,8 @@
    "rwa_id": 21,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 267.8418255947622,
-   "market_cap": 5870.82
+   "price": 268.90726140272056,
+   "market_cap": 5894.17
   },
   {
    "crypto_id": 39218,
@@ -2680,8 +2680,8 @@
    "rwa_id": 22,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 444.545382751792,
-   "market_cap": 665856.44
+   "price": 443.4538587392723,
+   "market_cap": 664221.51
   },
   {
    "crypto_id": 40087,
@@ -2690,7 +2690,7 @@
    "rwa_id": 22,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 443.9044977340183,
+   "price": 443.89559026000506,
    "market_cap": 0
   },
   {
@@ -2700,8 +2700,8 @@
    "rwa_id": 22,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 443.4925805670046,
-   "market_cap": 676539.06
+   "price": 443.23274448077,
+   "market_cap": 676142.69
   },
   {
    "crypto_id": 40639,
@@ -2710,8 +2710,8 @@
    "rwa_id": 22,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 443.50611662243665,
-   "market_cap": 311471.6
+   "price": 443.594151838021,
+   "market_cap": 311533.43
   },
   {
    "crypto_id": 40752,
@@ -2730,8 +2730,8 @@
    "rwa_id": 22,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 443.0270173308367,
-   "market_cap": 2594748.83
+   "price": 442.9384985201361,
+   "market_cap": 2576588.29
   },
   {
    "crypto_id": 41094,
@@ -2750,8 +2750,8 @@
    "rwa_id": 23,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 57.82,
-   "market_cap": 229414.69
+   "price": 57.82293,
+   "market_cap": 229426.31
   },
   {
    "crypto_id": 37190,
@@ -2770,8 +2770,8 @@
    "rwa_id": 23,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 58.28719851777604,
-   "market_cap": 27463.12
+   "price": 58.26727655740408,
+   "market_cap": 27453.73
   },
   {
    "crypto_id": 37059,
@@ -2780,8 +2780,8 @@
    "rwa_id": 24,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 147.64072481264432,
-   "market_cap": 3616496.51
+   "price": 147.54198942212517,
+   "market_cap": 3614077.96
   },
   {
    "crypto_id": 37218,
@@ -2791,7 +2791,7 @@
    "issuer_name": "Backed Assets",
    "status": "active",
    "price": 148.83928203645547,
-   "market_cap": 131689.24
+   "market_cap": 132170.1
   },
   {
    "crypto_id": 38009,
@@ -2800,8 +2800,8 @@
    "rwa_id": 24,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 148.72335749609752,
-   "market_cap": 4916178.65
+   "price": 148.7781248653931,
+   "market_cap": 4917867.03
   },
   {
    "crypto_id": 39482,
@@ -2810,7 +2810,7 @@
    "rwa_id": 24,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 147.6260793191642,
+   "price": 147.5747066969237,
    "market_cap": 0
   },
   {
@@ -2820,8 +2820,8 @@
    "rwa_id": 24,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 147.5321372503983,
-   "market_cap": 1142037.1
+   "price": 147.49817938861972,
+   "market_cap": 1141774.23
   },
   {
    "crypto_id": 40773,
@@ -2830,8 +2830,8 @@
    "rwa_id": 24,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 145.69340152387286,
-   "market_cap": 963337.11
+   "price": 148.97530887398267,
+   "market_cap": 985037.36
   },
   {
    "crypto_id": 40882,
@@ -2840,8 +2840,8 @@
    "rwa_id": 24,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 147.53121550355175,
-   "market_cap": 3411678.74
+   "price": 147.46798961133126,
+   "market_cap": 3265421.92
   },
   {
    "crypto_id": 28632,
@@ -2860,8 +2860,8 @@
    "rwa_id": 25,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 557.6291184464336,
-   "market_cap": 9118309.21
+   "price": 556.8894676285435,
+   "market_cap": 9106221.36
   },
   {
    "crypto_id": 39489,
@@ -2870,7 +2870,7 @@
    "rwa_id": 25,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 557.911086652594,
+   "price": 557.1084262570881,
    "market_cap": 0
   },
   {
@@ -2880,8 +2880,8 @@
    "rwa_id": 25,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 557.4072853644423,
-   "market_cap": 3689588.55
+   "price": 556.6264270498416,
+   "market_cap": 3450731.53
   },
   {
    "crypto_id": 40601,
@@ -2890,8 +2890,8 @@
    "rwa_id": 25,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 557.4291574210232,
-   "market_cap": 2468828.29
+   "price": 557.7840334480653,
+   "market_cap": 2470400.02
   },
   {
    "crypto_id": 40687,
@@ -2900,8 +2900,8 @@
    "rwa_id": 25,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 556.1457932732011,
-   "market_cap": 1896426.57
+   "price": 555.9737942192271,
+   "market_cap": 1895840.06
   },
   {
    "crypto_id": 41115,
@@ -2910,7 +2910,7 @@
    "rwa_id": 25,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 556.7420221594385,
+   "price": 556.3345142595246,
    "market_cap": 0
   },
   {
@@ -2920,8 +2920,8 @@
    "rwa_id": 26,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 1677.4610461537525,
-   "market_cap": 3285292.84
+   "price": 1680.1373729747845,
+   "market_cap": 3290103.34
   },
   {
    "crypto_id": 39677,
@@ -2930,7 +2930,7 @@
    "rwa_id": 26,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 1672.8699343767705,
+   "price": 1675.2846624589483,
    "market_cap": 0
   },
   {
@@ -2940,8 +2940,8 @@
    "rwa_id": 26,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 1671.7193224957518,
-   "market_cap": 771577.28
+   "price": 1671.3200416126915,
+   "market_cap": 771392.99
   },
   {
    "crypto_id": 40652,
@@ -2950,8 +2950,8 @@
    "rwa_id": 26,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 1671.957579287784,
-   "market_cap": 561472.46
+   "price": 1669.983283912209,
+   "market_cap": 560809.46
   },
   {
    "crypto_id": 40726,
@@ -2960,8 +2960,8 @@
    "rwa_id": 26,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 1666.998474905531,
-   "market_cap": 202384.18
+   "price": 1668.927888984706,
+   "market_cap": 202618.43
   },
   {
    "crypto_id": 40968,
@@ -2970,8 +2970,8 @@
    "rwa_id": 26,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 1669.8494629128547,
-   "market_cap": 3664012.48
+   "price": 1672.793487636076,
+   "market_cap": 3656955.57
   },
   {
    "crypto_id": 41170,
@@ -2980,7 +2980,7 @@
    "rwa_id": 26,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 1674.5404153305647,
+   "price": 1677.7080466396499,
    "market_cap": 0
   },
   {
@@ -2990,8 +2990,8 @@
    "rwa_id": 27,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 161.81924665537144,
-   "market_cap": 654350.65
+   "price": 160.63679753326392,
+   "market_cap": 649271.09
   },
   {
    "crypto_id": 37230,
@@ -3010,8 +3010,8 @@
    "rwa_id": 27,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 165.56135636004603,
-   "market_cap": 146577.83
+   "price": 165.5350045416399,
+   "market_cap": 146554.5
   },
   {
    "crypto_id": 40741,
@@ -3020,8 +3020,8 @@
    "rwa_id": 27,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 162.44326751802268,
-   "market_cap": 34928.05
+   "price": 162.4340631016364,
+   "market_cap": 34926.07
   },
   {
    "crypto_id": 37051,
@@ -3030,8 +3030,8 @@
    "rwa_id": 28,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 569.1693744197703,
-   "market_cap": 193326.17
+   "price": 566.6851301288594,
+   "market_cap": 192482.36
   },
   {
    "crypto_id": 37208,
@@ -3050,8 +3050,8 @@
    "rwa_id": 28,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 567.9444301087373,
-   "market_cap": 1273823.58
+   "price": 568.5743194222885,
+   "market_cap": 1275240.31
   },
   {
    "crypto_id": 37032,
@@ -3060,8 +3060,8 @@
    "rwa_id": 29,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 111.83974073046448,
-   "market_cap": 722513.03
+   "price": 111.06503759056423,
+   "market_cap": 717508.25
   },
   {
    "crypto_id": 37196,
@@ -3080,8 +3080,8 @@
    "rwa_id": 29,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 111.32050725639493,
-   "market_cap": 2801066.41
+   "price": 111.0667951369223,
+   "market_cap": 2794682.46
   },
   {
    "crypto_id": 39631,
@@ -3090,7 +3090,7 @@
    "rwa_id": 29,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 109.62042748889014,
+   "price": 109.61578304843756,
    "market_cap": 0
   },
   {
@@ -3100,8 +3100,8 @@
    "rwa_id": 29,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 109.55445806526053,
-   "market_cap": 7211.75
+   "price": 109.4415498438908,
+   "market_cap": 7204.32
   },
   {
    "crypto_id": 39235,
@@ -3110,8 +3110,8 @@
    "rwa_id": 30,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 810.8579017655759,
-   "market_cap": 18303.63
+   "price": 810.5927440412601,
+   "market_cap": 18297.64
   },
   {
    "crypto_id": 40683,
@@ -3120,7 +3120,7 @@
    "rwa_id": 30,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 808.0338767553046,
+   "price": 809.8187401554444,
    "market_cap": 0
   },
   {
@@ -3140,8 +3140,8 @@
    "rwa_id": 31,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 902.0597430585975,
-   "market_cap": 1163302.65
+   "price": 902.2282127697962,
+   "market_cap": 1163522.84
   },
   {
    "crypto_id": 40762,
@@ -3150,8 +3150,8 @@
    "rwa_id": 31,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 899.7657617071403,
-   "market_cap": 1349291.06
+   "price": 901.0030592069323,
+   "market_cap": 1351146.51
   },
   {
    "crypto_id": 41837,
@@ -3170,8 +3170,8 @@
    "rwa_id": 32,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 287.34832250252066,
-   "market_cap": 369218.38
+   "price": 288.5837371172085,
+   "market_cap": 370805.78
   },
   {
    "crypto_id": 40152,
@@ -3180,8 +3180,8 @@
    "rwa_id": 32,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 266.88,
-   "market_cap": 310663.64
+   "price": 266.88848,
+   "market_cap": 310673.51
   },
   {
    "crypto_id": 40547,
@@ -3190,7 +3190,7 @@
    "rwa_id": 32,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 288.29198266932974,
+   "price": 287.81624518268535,
    "market_cap": 0
   },
   {
@@ -3200,8 +3200,8 @@
    "rwa_id": 32,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 288.17650904710877,
-   "market_cap": 150010.6
+   "price": 288.2387329374084,
+   "market_cap": 150042.99
   },
   {
    "crypto_id": 41375,
@@ -3220,8 +3220,8 @@
    "rwa_id": 33,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 383.8473548500977,
-   "market_cap": 507279.87
+   "price": 383.61358355093074,
+   "market_cap": 506970.93
   },
   {
    "crypto_id": 37228,
@@ -3240,8 +3240,8 @@
    "rwa_id": 33,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 385.8620713458167,
-   "market_cap": 1215153.79
+   "price": 387.63174921096055,
+   "market_cap": 1220726.47
   },
   {
    "crypto_id": 39630,
@@ -3250,7 +3250,7 @@
    "rwa_id": 33,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 379.5884451716924,
+   "price": 379.865086524687,
    "market_cap": 0
   },
   {
@@ -3260,8 +3260,8 @@
    "rwa_id": 34,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 89.8377340317955,
-   "market_cap": 1046400.12
+   "price": 90.36159139496584,
+   "market_cap": 1054496.02
   },
   {
    "crypto_id": 37205,
@@ -3270,8 +3270,8 @@
    "rwa_id": 34,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 90.22933484363527,
-   "market_cap": 23529.6
+   "price": 90.13732383304449,
+   "market_cap": 23505.6
   },
   {
    "crypto_id": 38036,
@@ -3280,8 +3280,8 @@
    "rwa_id": 34,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 90.34599022141192,
-   "market_cap": 4104698.17
+   "price": 90.11727617266085,
+   "market_cap": 4093898.96
   },
   {
    "crypto_id": 40982,
@@ -3290,7 +3290,7 @@
    "rwa_id": 34,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 88.19479269509283,
+   "price": 88.28274955148562,
    "market_cap": 0
   },
   {
@@ -3310,8 +3310,8 @@
    "rwa_id": 36,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 307.0620406787744,
-   "market_cap": 84004.63
+   "price": 306.8444334612949,
+   "market_cap": 83945.09
   },
   {
    "crypto_id": 37198,
@@ -3330,8 +3330,8 @@
    "rwa_id": 36,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 310.2257122107193,
-   "market_cap": 22507.24
+   "price": 310.1428347928265,
+   "market_cap": 22501.23
   },
   {
    "crypto_id": 39996,
@@ -3340,7 +3340,7 @@
    "rwa_id": 36,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 300.04356763456525,
+   "price": 300.3521443006058,
    "market_cap": 0
   },
   {
@@ -3360,8 +3360,8 @@
    "rwa_id": 37,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 71.81446066752163,
-   "market_cap": 1253443.87
+   "price": 71.88302563738732,
+   "market_cap": 1254640.42
   },
   {
    "crypto_id": 37216,
@@ -3380,8 +3380,8 @@
    "rwa_id": 37,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 719.6889021222394,
-   "market_cap": 876746.65
+   "price": 722.2721033821572,
+   "market_cap": 879900.09
   },
   {
    "crypto_id": 39479,
@@ -3390,7 +3390,7 @@
    "rwa_id": 37,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 72.02077299641542,
+   "price": 72.15391668359143,
    "market_cap": 0
   },
   {
@@ -3400,8 +3400,8 @@
    "rwa_id": 37,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 71.63531734109338,
-   "market_cap": 788432.34
+   "price": 72.11638114460777,
+   "market_cap": 793727.03
   },
   {
    "crypto_id": 40973,
@@ -3410,8 +3410,8 @@
    "rwa_id": 37,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 71.94011767635835,
-   "market_cap": 1295386.64
+   "price": 72.1207725631301,
+   "market_cap": 1256452.41
   },
   {
    "crypto_id": 37054,
@@ -3420,8 +3420,8 @@
    "rwa_id": 38,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 144.03,
-   "market_cap": 269750.29
+   "price": 144.03536,
+   "market_cap": 269760.33
   },
   {
    "crypto_id": 37212,
@@ -3440,8 +3440,8 @@
    "rwa_id": 38,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 148.31709299874777,
-   "market_cap": 18424.24
+   "price": 148.9296295468448,
+   "market_cap": 18500.33
   },
   {
    "crypto_id": 41946,
@@ -3450,7 +3450,7 @@
    "rwa_id": 38,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 146.57862740451225,
+   "price": 146.9813339032002,
    "market_cap": 0
   },
   {
@@ -3460,8 +3460,8 @@
    "rwa_id": 39,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 928.07,
-   "market_cap": 295868.51
+   "price": 928.076,
+   "market_cap": 295870.43
   },
   {
    "crypto_id": 37197,
@@ -3480,8 +3480,8 @@
    "rwa_id": 39,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 953.5110785718924,
-   "market_cap": 1243327.46
+   "price": 955.5603952734871,
+   "market_cap": 1245999.65
   },
   {
    "crypto_id": 40934,
@@ -3490,8 +3490,8 @@
    "rwa_id": 39,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 940.8655479112383,
-   "market_cap": 591876.27
+   "price": 940.4304771167327,
+   "market_cap": 590639.84
   },
   {
    "crypto_id": 40942,
@@ -3500,7 +3500,7 @@
    "rwa_id": 39,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 944.4190931031009,
+   "price": 944.4709898331937,
    "market_cap": 0
   },
   {
@@ -3510,8 +3510,8 @@
    "rwa_id": 40,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 132.63899090080454,
-   "market_cap": 167201.9
+   "price": 133.22164891154026,
+   "market_cap": 167936.33
   },
   {
    "crypto_id": 37183,
@@ -3530,8 +3530,8 @@
    "rwa_id": 42,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 230.40008949212003,
-   "market_cap": 1028789.49
+   "price": 230.66461598534383,
+   "market_cap": 1029970.66
   },
   {
    "crypto_id": 38018,
@@ -3540,8 +3540,8 @@
    "rwa_id": 42,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 235.1876680113691,
-   "market_cap": 2505169.45
+   "price": 235.421735612421,
+   "market_cap": 2510570.71
   },
   {
    "crypto_id": 39634,
@@ -3550,7 +3550,7 @@
    "rwa_id": 42,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 230.3080307761046,
+   "price": 230.53235180792376,
    "market_cap": 0
   },
   {
@@ -3560,8 +3560,8 @@
    "rwa_id": 42,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 230.02537458542247,
-   "market_cap": 162534.84
+   "price": 230.09915914383254,
+   "market_cap": 162586.98
   },
   {
    "crypto_id": 40847,
@@ -3570,8 +3570,8 @@
    "rwa_id": 42,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 229.24822154332557,
-   "market_cap": 866624.56
+   "price": 229.17999654271165,
+   "market_cap": 754061.42
   },
   {
    "crypto_id": 41431,
@@ -3590,8 +3590,8 @@
    "rwa_id": 43,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 363.3522792898304,
-   "market_cap": 2867758.63
+   "price": 363.63663347052756,
+   "market_cap": 2870002.9
   },
   {
    "crypto_id": 40199,
@@ -3600,7 +3600,7 @@
    "rwa_id": 43,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 363.6914886544134,
+   "price": 363.7989843548892,
    "market_cap": 0
   },
   {
@@ -3620,8 +3620,8 @@
    "rwa_id": 44,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 571.1627237767535,
-   "market_cap": 1538023.99
+   "price": 571.9992834338291,
+   "market_cap": 1540276.68
   },
   {
    "crypto_id": 40617,
@@ -3630,8 +3630,8 @@
    "rwa_id": 44,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 570.774827784845,
-   "market_cap": 76527.93
+   "price": 571.2193132242974,
+   "market_cap": 76587.52
   },
   {
    "crypto_id": 40743,
@@ -3640,8 +3640,8 @@
    "rwa_id": 44,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 570.5265960377582,
-   "market_cap": 391113.22
+   "price": 570.2846095146798,
+   "market_cap": 390947.33
   },
   {
    "crypto_id": 40931,
@@ -3650,8 +3650,8 @@
    "rwa_id": 44,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 570.8674452591595,
-   "market_cap": 841948.67
+   "price": 571.6950976191047,
+   "market_cap": 834859.45
   },
   {
    "crypto_id": 41142,
@@ -3660,7 +3660,7 @@
    "rwa_id": 44,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 572.754090526725,
+   "price": 572.8057865628425,
    "market_cap": 0
   },
   {
@@ -3670,8 +3670,8 @@
    "rwa_id": 45,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 268.7978908518578,
-   "market_cap": 697663.87
+   "price": 269.93632311349955,
+   "market_cap": 700618.67
   },
   {
    "crypto_id": 40682,
@@ -3680,7 +3680,7 @@
    "rwa_id": 45,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 266.2151425884725,
+   "price": 266.6167737973259,
    "market_cap": 0
   },
   {
@@ -3700,8 +3700,8 @@
    "rwa_id": 47,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 314.26619844998334,
-   "market_cap": 881865.47
+   "price": 313.9182503797228,
+   "market_cap": 880889.08
   },
   {
    "crypto_id": 41841,
@@ -3720,7 +3720,7 @@
    "rwa_id": 48,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 1796.020404877131,
+   "price": 1788.1324633354875,
    "market_cap": 0
   },
   {
@@ -3730,8 +3730,8 @@
    "rwa_id": 48,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 1793.5724171906224,
-   "market_cap": 6712338.23
+   "price": 1788.5815764076808,
+   "market_cap": 6693660.3
   },
   {
    "crypto_id": 40037,
@@ -3740,8 +3740,8 @@
    "rwa_id": 48,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 1794.671214900552,
-   "market_cap": 17631635.19
+   "price": 1787.3851496800066,
+   "market_cap": 17560053.7
   },
   {
    "crypto_id": 40216,
@@ -3750,8 +3750,8 @@
    "rwa_id": 48,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 1795.7062460669495,
-   "market_cap": 49111025.38
+   "price": 1788.3468403160628,
+   "market_cap": 48989231.59
   },
   {
    "crypto_id": 40648,
@@ -3760,8 +3760,8 @@
    "rwa_id": 48,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 1795.7874061017615,
-   "market_cap": 6217461.15
+   "price": 1792.4202680634671,
+   "market_cap": 6205803.28
   },
   {
    "crypto_id": 40700,
@@ -3770,8 +3770,8 @@
    "rwa_id": 48,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 1785.0544693661122,
-   "market_cap": 1681442.77
+   "price": 1792.743310914649,
+   "market_cap": 1688685.32
   },
   {
    "crypto_id": 40815,
@@ -3780,8 +3780,8 @@
    "rwa_id": 48,
    "issuer_name": "Backpack",
    "status": "active",
-   "price": 1797.0725172434431,
-   "market_cap": 2099601.58
+   "price": 1785.3612521718806,
+   "market_cap": 2085918.77
   },
   {
    "crypto_id": 41493,
@@ -3790,7 +3790,7 @@
    "rwa_id": 48,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 1796.4632011040085,
+   "price": 1785.1475546502368,
    "market_cap": 0
   },
   {
@@ -3800,8 +3800,8 @@
    "rwa_id": 49,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 315.87368056125723,
-   "market_cap": 1490374.8
+   "price": 315.6887234355702,
+   "market_cap": 1489502.12
   },
   {
    "crypto_id": 41322,
@@ -3820,8 +3820,8 @@
    "rwa_id": 50,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 149.62712703499142,
-   "market_cap": 450968.98
+   "price": 149.70404703941344,
+   "market_cap": 451200.82
   },
   {
    "crypto_id": 37116,
@@ -3840,8 +3840,8 @@
    "rwa_id": 50,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 150.07359256357117,
-   "market_cap": 2706865.87
+   "price": 149.11493372407952,
+   "market_cap": 2689574.61
   },
   {
    "crypto_id": 37022,
@@ -3850,8 +3850,8 @@
    "rwa_id": 51,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 209.20665300678814,
-   "market_cap": 1066553.37
+   "price": 209.20770095062502,
+   "market_cap": 1066558.71
   },
   {
    "crypto_id": 37118,
@@ -3870,8 +3870,8 @@
    "rwa_id": 51,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 214.8647080774276,
-   "market_cap": 2817281.61
+   "price": 215.0968720803344,
+   "market_cap": 2819735.71
   },
   {
    "crypto_id": 42327,
@@ -3880,7 +3880,7 @@
    "rwa_id": 51,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 209.50170364954712,
+   "price": 209.81875514870237,
    "market_cap": 0
   },
   {
@@ -3890,8 +3890,8 @@
    "rwa_id": 53,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 176.85486901453007,
-   "market_cap": 2652953.18
+   "price": 176.9317465365359,
+   "market_cap": 2653007.2
   },
   {
    "crypto_id": 37220,
@@ -3900,8 +3900,8 @@
    "rwa_id": 53,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 177.7122350714807,
-   "market_cap": 118539.52
+   "price": 177.49814097490855,
+   "market_cap": 118396.86
   },
   {
    "crypto_id": 38073,
@@ -3910,8 +3910,8 @@
    "rwa_id": 53,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 177.20185981225382,
-   "market_cap": 3166746.89
+   "price": 177.4539490397788,
+   "market_cap": 3171404.07
   },
   {
    "crypto_id": 39475,
@@ -3920,7 +3920,7 @@
    "rwa_id": 53,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 177.26060206408735,
+   "price": 177.2595187399797,
    "market_cap": 0
   },
   {
@@ -3930,8 +3930,8 @@
    "rwa_id": 53,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 177.1597176371011,
-   "market_cap": 1983473.28
+   "price": 177.2681565173654,
+   "market_cap": 1939683.74
   },
   {
    "crypto_id": 40655,
@@ -3940,8 +3940,8 @@
    "rwa_id": 53,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 177.27248881022587,
-   "market_cap": 662573.82
+   "price": 177.30770639213475,
+   "market_cap": 662705.45
   },
   {
    "crypto_id": 40689,
@@ -3950,8 +3950,8 @@
    "rwa_id": 53,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 176.4436990744606,
-   "market_cap": 2505508.11
+   "price": 177.45050632076246,
+   "market_cap": 2519804.82
   },
   {
    "crypto_id": 28633,
@@ -3970,8 +3970,8 @@
    "rwa_id": 54,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 274.09893104475253,
-   "market_cap": 3812764.8
+   "price": 274.56954708649465,
+   "market_cap": 3819311.16
   },
   {
    "crypto_id": 40663,
@@ -3980,8 +3980,8 @@
    "rwa_id": 54,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 275.01078030617003,
-   "market_cap": 256834.21
+   "price": 274.7534707215326,
+   "market_cap": 256593.91
   },
   {
    "crypto_id": 40693,
@@ -4000,8 +4000,8 @@
    "rwa_id": 54,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 275.0225117243026,
-   "market_cap": 2692930.84
+   "price": 274.5210694001128,
+   "market_cap": 2521721.33
   },
   {
    "crypto_id": 41183,
@@ -4020,8 +4020,8 @@
    "rwa_id": 56,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 191.09676044493068,
-   "market_cap": 219787.47
+   "price": 191.04246794226094,
+   "market_cap": 219725.02
   },
   {
    "crypto_id": 37225,
@@ -4040,7 +4040,7 @@
    "rwa_id": 57,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 939.2073217079859,
+   "price": 940.6948010275548,
    "market_cap": 0
   },
   {
@@ -4050,8 +4050,8 @@
    "rwa_id": 57,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 938.7088975907839,
-   "market_cap": 1237788.41
+   "price": 938.7342080139914,
+   "market_cap": 1237821.78
   },
   {
    "crypto_id": 41400,
@@ -4070,8 +4070,8 @@
    "rwa_id": 58,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 1767.1256367087274,
-   "market_cap": 68138.71
+   "price": 1774.0886537698757,
+   "market_cap": 68407.2
   },
   {
    "crypto_id": 40131,
@@ -4080,8 +4080,8 @@
    "rwa_id": 58,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 176.530178548168,
-   "market_cap": 350934.05
+   "price": 176.47946162592422,
+   "market_cap": 350833.23
   },
   {
    "crypto_id": 40548,
@@ -4090,7 +4090,7 @@
    "rwa_id": 58,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 176.93111270788665,
+   "price": 176.99462505378105,
    "market_cap": 0
   },
   {
@@ -4110,8 +4110,8 @@
    "rwa_id": 59,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 195.37365263105255,
-   "market_cap": 57485.41
+   "price": 195.1624870040473,
+   "market_cap": 57423.28
   },
   {
    "crypto_id": 41584,
@@ -4130,8 +4130,8 @@
    "rwa_id": 60,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 87.87767363975814,
-   "market_cap": 1324881.52
+   "price": 87.91965290032367,
+   "market_cap": 1325518.15
   },
   {
    "crypto_id": 41706,
@@ -4150,8 +4150,8 @@
    "rwa_id": 61,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 464.92,
-   "market_cap": 198489.48
+   "price": 464.92516,
+   "market_cap": 198491.68
   },
   {
    "crypto_id": 37231,
@@ -4170,8 +4170,8 @@
    "rwa_id": 61,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 468.1875187568876,
-   "market_cap": 1522069.12
+   "price": 468.2582003985682,
+   "market_cap": 1522298.9
   },
   {
    "crypto_id": 39270,
@@ -4180,8 +4180,8 @@
    "rwa_id": 62,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 134.1305860167375,
-   "market_cap": 1952.31
+   "price": 134.10366248979105,
+   "market_cap": 1951.92
   },
   {
    "crypto_id": 41111,
@@ -4200,8 +4200,8 @@
    "rwa_id": 63,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 115.04654233446908,
-   "market_cap": 2743435.95
+   "price": 115.08546678187376,
+   "market_cap": 2744364.16
   },
   {
    "crypto_id": 39486,
@@ -4210,7 +4210,7 @@
    "rwa_id": 63,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 114.15947388473221,
+   "price": 114.2282262472566,
    "market_cap": 0
   },
   {
@@ -4220,8 +4220,8 @@
    "rwa_id": 63,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 114.08298890781579,
-   "market_cap": 288895.43
+   "price": 114.15989214625802,
+   "market_cap": 289090.17
   },
   {
    "crypto_id": 40739,
@@ -4230,8 +4230,8 @@
    "rwa_id": 63,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 113.47647580222481,
-   "market_cap": 599743.71
+   "price": 114.00489282396899,
+   "market_cap": 602536.49
   },
   {
    "crypto_id": 40852,
@@ -4240,8 +4240,8 @@
    "rwa_id": 63,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 114.04857982620557,
-   "market_cap": 5412321.2
+   "price": 114.03569729734481,
+   "market_cap": 5326683.08
   },
   {
    "crypto_id": 37058,
@@ -4250,8 +4250,8 @@
    "rwa_id": 65,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 44.24014785865757,
-   "market_cap": 524764.78
+   "price": 44.24020824758119,
+   "market_cap": 524765.49
   },
   {
    "crypto_id": 37217,
@@ -4270,8 +4270,8 @@
    "rwa_id": 65,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 44.54707372225262,
-   "market_cap": 2274107.68
+   "price": 44.445547164939924,
+   "market_cap": 2268924.8
   },
   {
    "crypto_id": 40104,
@@ -4280,7 +4280,7 @@
    "rwa_id": 65,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 43.32677357730484,
+   "price": 43.33530117562022,
    "market_cap": 0
   },
   {
@@ -4290,8 +4290,8 @@
    "rwa_id": 66,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 199.7334583520291,
-   "market_cap": 189152.35
+   "price": 199.6608359012693,
+   "market_cap": 189083.57
   },
   {
    "crypto_id": 40144,
@@ -4310,8 +4310,8 @@
    "rwa_id": 66,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 199.58525004771664,
-   "market_cap": 9769.64
+   "price": 199.77981125595153,
+   "market_cap": 9779.17
   },
   {
    "crypto_id": 41081,
@@ -4330,7 +4330,7 @@
    "rwa_id": 66,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 200.13968860044255,
+   "price": 200.81588390471322,
    "market_cap": 0
   },
   {
@@ -4340,8 +4340,8 @@
    "rwa_id": 68,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 253.430822106443,
-   "market_cap": 2015340.18
+   "price": 252.65744770681667,
+   "market_cap": 2008467.38
   },
   {
    "crypto_id": 37209,
@@ -4360,8 +4360,8 @@
    "rwa_id": 68,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 254.61231409693306,
-   "market_cap": 2463256.27
+   "price": 255.32188838696604,
+   "market_cap": 2470124.88
   },
   {
    "crypto_id": 37064,
@@ -4370,8 +4370,8 @@
    "rwa_id": 69,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 134.93676101246177,
-   "market_cap": 272230.15
+   "price": 134.94840968427704,
+   "market_cap": 272253.66
   },
   {
    "crypto_id": 37219,
@@ -4390,8 +4390,8 @@
    "rwa_id": 69,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 134.40864184060007,
-   "market_cap": 2101685.04
+   "price": 134.90157112504332,
+   "market_cap": 2109422.8
   },
   {
    "crypto_id": 37050,
@@ -4400,8 +4400,8 @@
    "rwa_id": 70,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 243.0287251640529,
-   "market_cap": 7598037.19
+   "price": 242.50076429628498,
+   "market_cap": 7581531.05
   },
   {
    "crypto_id": 37213,
@@ -4410,8 +4410,8 @@
    "rwa_id": 70,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 243.7239205237448,
-   "market_cap": 138215.37
+   "price": 242.8650133792318,
+   "market_cap": 136870.93
   },
   {
    "crypto_id": 38089,
@@ -4420,8 +4420,8 @@
    "rwa_id": 70,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 243.0482403756431,
-   "market_cap": 16730603.67
+   "price": 242.97040770423874,
+   "market_cap": 16708881.35
   },
   {
    "crypto_id": 40614,
@@ -4430,8 +4430,8 @@
    "rwa_id": 70,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 243.19110332636126,
-   "market_cap": 5486393.95
+   "price": 243.11458642705736,
+   "market_cap": 5484667.73
   },
   {
    "crypto_id": 40723,
@@ -4440,8 +4440,8 @@
    "rwa_id": 70,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 243.20373459210253,
-   "market_cap": 427974.56
+   "price": 243.1397276719713,
+   "market_cap": 427861.93
   },
   {
    "crypto_id": 40848,
@@ -4450,8 +4450,8 @@
    "rwa_id": 70,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 243.028548014371,
-   "market_cap": 7632422.17
+   "price": 242.40018748416682,
+   "market_cap": 7324935
   },
   {
    "crypto_id": 41146,
@@ -4470,8 +4470,8 @@
    "rwa_id": 73,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 860.670779006169,
-   "market_cap": 148961.27
+   "price": 861.0974701820198,
+   "market_cap": 149035.12
   },
   {
    "crypto_id": 41963,
@@ -4480,8 +4480,8 @@
    "rwa_id": 73,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 859.6122747308643,
-   "market_cap": 503615.78
+   "price": 859.5326676512913,
+   "market_cap": 480469.94
   },
   {
    "crypto_id": 39230,
@@ -4490,8 +4490,8 @@
    "rwa_id": 74,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 375.875143549264,
-   "market_cap": 5501.56
+   "price": 374.9252986834251,
+   "market_cap": 5487.66
   },
   {
    "crypto_id": 41091,
@@ -4510,8 +4510,8 @@
    "rwa_id": 75,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 441.79667120504826,
-   "market_cap": 429186.88
+   "price": 441.6148472281296,
+   "market_cap": 429010.24
   },
   {
    "crypto_id": 40796,
@@ -4520,8 +4520,8 @@
    "rwa_id": 75,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 441.58128102241625,
-   "market_cap": 2239221.75
+   "price": 440.6362285712702,
+   "market_cap": 2192074.58
   },
   {
    "crypto_id": 41725,
@@ -4540,8 +4540,8 @@
    "rwa_id": 75,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 441.313583712317,
-   "market_cap": 624020.43
+   "price": 441.30362400459825,
+   "market_cap": 624006.35
   },
   {
    "crypto_id": 39278,
@@ -4550,8 +4550,8 @@
    "rwa_id": 76,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 105.95794669385151,
-   "market_cap": 2986.81
+   "price": 105.94751099104303,
+   "market_cap": 2986.51
   },
   {
    "crypto_id": 41555,
@@ -4620,8 +4620,8 @@
    "rwa_id": 82,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 193.65314677790067,
-   "market_cap": 13196047.73
+   "price": 194.6180559419423,
+   "market_cap": 13235518.65
   },
   {
    "crypto_id": 37193,
@@ -4630,8 +4630,8 @@
    "rwa_id": 82,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 194.05508847204453,
-   "market_cap": 149093.3
+   "price": 194.93493688360724,
+   "market_cap": 149805.52
   },
   {
    "crypto_id": 38046,
@@ -4640,8 +4640,8 @@
    "rwa_id": 82,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 194.08323740570376,
-   "market_cap": 9519848.81
+   "price": 194.9923982268252,
+   "market_cap": 9563882.3
   },
   {
    "crypto_id": 39483,
@@ -4650,7 +4650,7 @@
    "rwa_id": 82,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 194.23703056589517,
+   "price": 194.9710797571198,
    "market_cap": 0
   },
   {
@@ -4660,8 +4660,8 @@
    "rwa_id": 82,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 194.12702082026593,
-   "market_cap": 3305156.23
+   "price": 194.73158485193576,
+   "market_cap": 3315449.38
   },
   {
    "crypto_id": 40722,
@@ -4670,8 +4670,8 @@
    "rwa_id": 82,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 194.33789246334436,
-   "market_cap": 2298379.06
+   "price": 195.2531928591906,
+   "market_cap": 2309204.06
   },
   {
    "crypto_id": 40789,
@@ -4680,8 +4680,8 @@
    "rwa_id": 82,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 194.0639478553106,
-   "market_cap": 18231870.34
+   "price": 194.7651890067021,
+   "market_cap": 17954683.67
   },
   {
    "crypto_id": 37041,
@@ -4690,8 +4690,8 @@
    "rwa_id": 84,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 119.82277099562883,
-   "market_cap": 12993412.12
+   "price": 120.06306194772745,
+   "market_cap": 13009722.47
   },
   {
    "crypto_id": 37200,
@@ -4700,8 +4700,8 @@
    "rwa_id": 84,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 120.0245901106512,
-   "market_cap": 219442.36
+   "price": 120.11455289431399,
+   "market_cap": 218845.39
   },
   {
    "crypto_id": 38004,
@@ -4710,8 +4710,8 @@
    "rwa_id": 84,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 119.85927826082123,
-   "market_cap": 7797098.71
+   "price": 120.00714453405982,
+   "market_cap": 7806720.77
   },
   {
    "crypto_id": 39002,
@@ -4730,7 +4730,7 @@
    "rwa_id": 84,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 120.00744361797389,
+   "price": 120.13237555069392,
    "market_cap": 0
   },
   {
@@ -4740,7 +4740,7 @@
    "rwa_id": 84,
    "issuer_name": "Hyperliquid Assets",
    "status": "active",
-   "price": 118.64903633814323,
+   "price": 118.65302017460199,
    "market_cap": 0
   },
   {
@@ -4750,8 +4750,8 @@
    "rwa_id": 84,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 119.70074935978485,
-   "market_cap": 2180421.76
+   "price": 119.92380876010323,
+   "market_cap": 2184484.92
   },
   {
    "crypto_id": 40850,
@@ -4760,8 +4760,8 @@
    "rwa_id": 84,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 119.81111470898902,
-   "market_cap": 6121551.08
+   "price": 120.03932523080914,
+   "market_cap": 5922088.48
   },
   {
    "crypto_id": 37037,
@@ -4770,8 +4770,8 @@
    "rwa_id": 85,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 5.990571381365512,
-   "market_cap": 1084122.74
+   "price": 5.932753690497278,
+   "market_cap": 1073659.39
   },
   {
    "crypto_id": 41179,
@@ -4800,8 +4800,8 @@
    "rwa_id": 86,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 764.9864955636739,
-   "market_cap": 64935197.68
+   "price": 765.3563084843678,
+   "market_cap": 64966582.49
   },
   {
    "crypto_id": 38067,
@@ -4810,8 +4810,8 @@
    "rwa_id": 86,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 769.8313648235372,
-   "market_cap": 45240094.07
+   "price": 769.9021567248894,
+   "market_cap": 45211560.43
   },
   {
    "crypto_id": 39621,
@@ -4830,7 +4830,7 @@
    "rwa_id": 86,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 762.8878083543764,
+   "price": 762.9987162211894,
    "market_cap": 0
   },
   {
@@ -4840,8 +4840,8 @@
    "rwa_id": 86,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 762.6125912917662,
-   "market_cap": 1082196.62
+   "price": 762.6820465235339,
+   "market_cap": 1082295.19
   },
   {
    "crypto_id": 40694,
@@ -4850,8 +4850,8 @@
    "rwa_id": 86,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 762.6477849025314,
-   "market_cap": 25878564.62
+   "price": 762.9119568481407,
+   "market_cap": 25887528.64
   },
   {
    "crypto_id": 40790,
@@ -4860,8 +4860,8 @@
    "rwa_id": 86,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 762.1373633141656,
-   "market_cap": 20856378.15
+   "price": 762.0695477295761,
+   "market_cap": 20991128.37
   },
   {
    "crypto_id": 41525,
@@ -4870,7 +4870,7 @@
    "rwa_id": 86,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 764.5693446070885,
+   "price": 765.8747304580464,
    "market_cap": 0
   },
   {
@@ -4880,8 +4880,8 @@
    "rwa_id": 87,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 401.42053601496536,
-   "market_cap": 10913702.92
+   "price": 401.7965673594883,
+   "market_cap": 10923925.8
   },
   {
    "crypto_id": 37081,
@@ -4900,8 +4900,8 @@
    "rwa_id": 87,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 401.28572700692257,
-   "market_cap": 3372873.79
+   "price": 402.0005539768175,
+   "market_cap": 3378882.03
   },
   {
    "crypto_id": 39617,
@@ -4910,7 +4910,7 @@
    "rwa_id": 87,
    "issuer_name": "Hyperliquid Assets",
    "status": "active",
-   "price": 442.96440024186467,
+   "price": 442.9792734998538,
    "market_cap": 0
   },
   {
@@ -4930,7 +4930,7 @@
    "rwa_id": 87,
    "issuer_name": "Hyperliquid Assets",
    "status": "active",
-   "price": 401.6674952904534,
+   "price": 401.37441460820355,
    "market_cap": 0
   },
   {
@@ -4940,7 +4940,7 @@
    "rwa_id": 87,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 401.40467904968256,
+   "price": 401.79327747410787,
    "market_cap": 0
   },
   {
@@ -4950,8 +4950,8 @@
    "rwa_id": 88,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 16.938692552675935,
-   "market_cap": 611911.48
+   "price": 17.183151812141116,
+   "market_cap": 620638.7
   },
   {
    "crypto_id": 40646,
@@ -4960,8 +4960,8 @@
    "rwa_id": 88,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 17.004483362442574,
-   "market_cap": 77243.71
+   "price": 17.06400489436624,
+   "market_cap": 77514.09
   },
   {
    "crypto_id": 40714,
@@ -4970,8 +4970,8 @@
    "rwa_id": 88,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 16.87634682960601,
-   "market_cap": 21160.9
+   "price": 16.874122488524506,
+   "market_cap": 21158.11
   },
   {
    "crypto_id": 41934,
@@ -4980,7 +4980,7 @@
    "rwa_id": 88,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 17.08835871892827,
+   "price": 17.103833912107728,
    "market_cap": 0
   },
   {
@@ -4990,8 +4990,8 @@
    "rwa_id": 89,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 168.12981531619698,
-   "market_cap": 12622857.3
+   "price": 168.09643292373264,
+   "market_cap": 12620351.02
   },
   {
    "crypto_id": 37999,
@@ -5000,8 +5000,8 @@
    "rwa_id": 90,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 21.271141634763463,
-   "market_cap": 2465605.83
+   "price": 21.33889063749647,
+   "market_cap": 2473458.83
   },
   {
    "crypto_id": 38012,
@@ -5010,8 +5010,8 @@
    "rwa_id": 91,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 23.8159183989624,
-   "market_cap": 531335.35
+   "price": 23.65593558131076,
+   "market_cap": 527766.12
   },
   {
    "crypto_id": 41630,
@@ -5030,7 +5030,7 @@
    "rwa_id": 91,
    "issuer_name": null,
    "status": "active",
-   "price": 23.79975620027119,
+   "price": 23.805507656458502,
    "market_cap": 0
   },
   {
@@ -5050,8 +5050,8 @@
    "rwa_id": 92,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 27.59,
-   "market_cap": 348614.28
+   "price": 27.59764,
+   "market_cap": 348710.82
   },
   {
    "crypto_id": 37115,
@@ -5070,8 +5070,8 @@
    "rwa_id": 92,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 29.297228529509237,
-   "market_cap": 3510261.49
+   "price": 29.26059402174334,
+   "market_cap": 3505872.11
   },
   {
    "crypto_id": 28623,
@@ -5090,8 +5090,8 @@
    "rwa_id": 93,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 52.99070075799049,
-   "market_cap": 1103737.02
+   "price": 53.165128581723515,
+   "market_cap": 1107370.16
   },
   {
    "crypto_id": 40165,
@@ -5100,8 +5100,8 @@
    "rwa_id": 93,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 51.75,
-   "market_cap": 307981.86
+   "price": 51.75151,
+   "market_cap": 307990.85
   },
   {
    "crypto_id": 40935,
@@ -5110,8 +5110,8 @@
    "rwa_id": 93,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 52.38830786598751,
-   "market_cap": 669183.69
+   "price": 52.41197115141399,
+   "market_cap": 669484.75
   },
   {
    "crypto_id": 40941,
@@ -5120,7 +5120,7 @@
    "rwa_id": 93,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 52.52383697002214,
+   "price": 52.53208169132408,
    "market_cap": 0
   },
   {
@@ -5140,8 +5140,8 @@
    "rwa_id": 94,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 107.52333610917798,
-   "market_cap": 11240253.12
+   "price": 107.74817186815812,
+   "market_cap": 11263784.79
   },
   {
    "crypto_id": 38021,
@@ -5150,8 +5150,8 @@
    "rwa_id": 95,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 100.54085628742011,
-   "market_cap": 17075746.73
+   "price": 100.91531832348954,
+   "market_cap": 17139344.94
   },
   {
    "crypto_id": 38072,
@@ -5160,8 +5160,8 @@
    "rwa_id": 96,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 99.88451555019257,
-   "market_cap": 14220643.04
+   "price": 99.94708522522457,
+   "market_cap": 14229575.1
   },
   {
    "crypto_id": 38045,
@@ -5170,8 +5170,8 @@
    "rwa_id": 97,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 195.83794667494743,
-   "market_cap": 2008657.79
+   "price": 195.14260610352304,
+   "market_cap": 2001525.87
   },
   {
    "crypto_id": 39257,
@@ -5180,8 +5180,8 @@
    "rwa_id": 100,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 169.40973864739507,
-   "market_cap": 14394.94
+   "price": 170.4796417243998,
+   "market_cap": 14485.85
   },
   {
    "crypto_id": 41509,
@@ -5200,8 +5200,8 @@
    "rwa_id": 101,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 390.1638232371925,
-   "market_cap": 7690.64
+   "price": 390.5785910796065,
+   "market_cap": 7698.81
   },
   {
    "crypto_id": 41234,
@@ -5220,8 +5220,8 @@
    "rwa_id": 102,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 237.37529645870003,
-   "market_cap": 795273.23
+   "price": 237.72602557404946,
+   "market_cap": 796448.27
   },
   {
    "crypto_id": 37195,
@@ -5240,8 +5240,8 @@
    "rwa_id": 102,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 947.7178650084592,
-   "market_cap": 286669.85
+   "price": 948.0951861079905,
+   "market_cap": 286783.98
   },
   {
    "crypto_id": 40065,
@@ -5250,7 +5250,7 @@
    "rwa_id": 102,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 236.87667240669398,
+   "price": 237.38993059215593,
    "market_cap": 0
   },
   {
@@ -5270,8 +5270,8 @@
    "rwa_id": 102,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 237.55677187886778,
-   "market_cap": 498692.18
+   "price": 237.64856016515384,
+   "market_cap": 467756.2
   },
   {
    "crypto_id": 38048,
@@ -5280,8 +5280,8 @@
    "rwa_id": 103,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 181.6469849232782,
-   "market_cap": 3735753.18
+   "price": 181.66887544204513,
+   "market_cap": 3571285.97
   },
   {
    "crypto_id": 39932,
@@ -5290,7 +5290,7 @@
    "rwa_id": 103,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 178.09693919181066,
+   "price": 178.80286269487797,
    "market_cap": 0
   },
   {
@@ -5300,8 +5300,8 @@
    "rwa_id": 103,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 177.92227800396998,
-   "market_cap": 572958.46
+   "price": 178.1374148902205,
+   "market_cap": 573651.26
   },
   {
    "crypto_id": 40749,
@@ -5310,8 +5310,8 @@
    "rwa_id": 103,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 178.01594333198844,
-   "market_cap": 25045.78
+   "price": 177.98815977082464,
+   "market_cap": 25041.87
   },
   {
    "crypto_id": 40792,
@@ -5320,8 +5320,8 @@
    "rwa_id": 103,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 177.6759325827643,
-   "market_cap": 2683500.32
+   "price": 178.3155580472433,
+   "market_cap": 2462714.64
   },
   {
    "crypto_id": 41622,
@@ -5340,8 +5340,8 @@
    "rwa_id": 103,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 178.02900278064837,
-   "market_cap": 569845.39
+   "price": 178.2489548966311,
+   "market_cap": 570549.42
   },
   {
    "crypto_id": 37043,
@@ -5350,8 +5350,8 @@
    "rwa_id": 104,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 642.69,
-   "market_cap": 232976.41
+   "price": 642.69852,
+   "market_cap": 232979.5
   },
   {
    "crypto_id": 37226,
@@ -5370,8 +5370,8 @@
    "rwa_id": 104,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 650.7512594388546,
-   "market_cap": 14235.41
+   "price": 650.2711006181554,
+   "market_cap": 14224.9
   },
   {
    "crypto_id": 39271,
@@ -5380,8 +5380,8 @@
    "rwa_id": 105,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 81.4495947788825,
-   "market_cap": 36259.21
+   "price": 81.60539932202227,
+   "market_cap": 36328.57
   },
   {
    "crypto_id": 41528,
@@ -5410,8 +5410,8 @@
    "rwa_id": 106,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 198.80997665501093,
-   "market_cap": 1217094.11
+   "price": 198.22197135992613,
+   "market_cap": 1213494.41
   },
   {
    "crypto_id": 40742,
@@ -5420,8 +5420,8 @@
    "rwa_id": 106,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 199.75885951070165,
-   "market_cap": 279630.24
+   "price": 198.73952596915112,
+   "market_cap": 278203.34
   },
   {
    "crypto_id": 41119,
@@ -5440,8 +5440,8 @@
    "rwa_id": 107,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 49.722429024910696,
-   "market_cap": 12576.66
+   "price": 49.462571891289436,
+   "market_cap": 12510.93
   },
   {
    "crypto_id": 41740,
@@ -5480,8 +5480,8 @@
    "rwa_id": 108,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 308.6682478263231,
-   "market_cap": 483476.21
+   "price": 309.0008569629801,
+   "market_cap": 483997.19
   },
   {
    "crypto_id": 39629,
@@ -5490,7 +5490,7 @@
    "rwa_id": 108,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 310.1116999174923,
+   "price": 310.05849655814035,
    "market_cap": 0
   },
   {
@@ -5520,8 +5520,8 @@
    "rwa_id": 110,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 103.91863879560711,
-   "market_cap": 978089.14
+   "price": 103.87444111561439,
+   "market_cap": 977673.15
   },
   {
    "crypto_id": 39998,
@@ -5530,7 +5530,7 @@
    "rwa_id": 110,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 102.77241212866439,
+   "price": 102.9701721282308,
    "market_cap": 0
   },
   {
@@ -5560,8 +5560,8 @@
    "rwa_id": 112,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 104.52723183493417,
-   "market_cap": 250285.14
+   "price": 104.92344340832923,
+   "market_cap": 251233.85
   },
   {
    "crypto_id": 37095,
@@ -5580,8 +5580,8 @@
    "rwa_id": 112,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 104.09337258718236,
-   "market_cap": 1407049.94
+   "price": 104.32652362483243,
+   "market_cap": 1410201.49
   },
   {
    "crypto_id": 37003,
@@ -5590,8 +5590,8 @@
    "rwa_id": 114,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 152.91868795347978,
-   "market_cap": 88691827.82
+   "price": 154.6340018484694,
+   "market_cap": 89686375.4
   },
   {
    "crypto_id": 37215,
@@ -5600,8 +5600,8 @@
    "rwa_id": 114,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 153.05009642287217,
-   "market_cap": 192117.06
+   "price": 154.65434436491546,
+   "market_cap": 190556.81
   },
   {
    "crypto_id": 38092,
@@ -5610,8 +5610,8 @@
    "rwa_id": 114,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 152.69207446962804,
-   "market_cap": 29110223.77
+   "price": 154.737445282617,
+   "market_cap": 29497196.18
   },
   {
    "crypto_id": 39473,
@@ -5620,7 +5620,7 @@
    "rwa_id": 114,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 153.07883247783275,
+   "price": 154.66838553155196,
    "market_cap": 0
   },
   {
@@ -5630,8 +5630,8 @@
    "rwa_id": 114,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 152.85351618566477,
-   "market_cap": 60828731.18
+   "price": 154.58339618248954,
+   "market_cap": 59494301.9
   },
   {
    "crypto_id": 40632,
@@ -5640,8 +5640,8 @@
    "rwa_id": 114,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 152.82042161179285,
-   "market_cap": 12790136.68
+   "price": 154.84559801624667,
+   "market_cap": 12959631.58
   },
   {
    "crypto_id": 40745,
@@ -5650,8 +5650,8 @@
    "rwa_id": 114,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 152.49419347032497,
-   "market_cap": 3256511.69
+   "price": 154.55781687137454,
+   "market_cap": 3300580.34
   },
   {
    "crypto_id": 37005,
@@ -5660,8 +5660,8 @@
    "rwa_id": 115,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 91.41855592330526,
-   "market_cap": 80662736.77
+   "price": 92.12956028255427,
+   "market_cap": 81290087.94
   },
   {
    "crypto_id": 38056,
@@ -5670,8 +5670,8 @@
    "rwa_id": 115,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 91.34058444676714,
-   "market_cap": 109718351.55
+   "price": 92.07057236778475,
+   "market_cap": 110583364.84
   },
   {
    "crypto_id": 38154,
@@ -5680,7 +5680,7 @@
    "rwa_id": 115,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 91.60762911668596,
+   "price": 92.23387572129158,
    "market_cap": 0
   },
   {
@@ -5690,8 +5690,8 @@
    "rwa_id": 115,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 91.4733069971546,
-   "market_cap": 119451488.74
+   "price": 92.14029529694623,
+   "market_cap": 117477118.91
   },
   {
    "crypto_id": 40635,
@@ -5700,8 +5700,8 @@
    "rwa_id": 115,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 91.44287921138361,
-   "market_cap": 15867229.39
+   "price": 91.54008007333005,
+   "market_cap": 15884095.75
   },
   {
    "crypto_id": 40708,
@@ -5710,8 +5710,8 @@
    "rwa_id": 115,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 91.55588590277986,
-   "market_cap": 4673718.31
+   "price": 92.09916772840025,
+   "market_cap": 4701451.61
   },
   {
    "crypto_id": 41268,
@@ -5720,7 +5720,7 @@
    "rwa_id": 115,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 91.61909177647604,
+   "price": 92.29312742724188,
    "market_cap": 0
   },
   {
@@ -5730,8 +5730,8 @@
    "rwa_id": 116,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 22.538453013880876,
-   "market_cap": 1402928.38
+   "price": 22.52791904930346,
+   "market_cap": 1402272.62
   },
   {
    "crypto_id": 37117,
@@ -5750,8 +5750,8 @@
    "rwa_id": 116,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 22.71936260347932,
-   "market_cap": 190154.85
+   "price": 22.710130375236172,
+   "market_cap": 190049.78
   },
   {
    "crypto_id": 37997,
@@ -5760,8 +5760,8 @@
    "rwa_id": 116,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 22.56829261711947,
-   "market_cap": 416494.64
+   "price": 22.522646590703427,
+   "market_cap": 415652.25
   },
   {
    "crypto_id": 39928,
@@ -5770,7 +5770,7 @@
    "rwa_id": 116,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 22.591914594168234,
+   "price": 22.55648862011059,
    "market_cap": 0
   },
   {
@@ -5780,8 +5780,8 @@
    "rwa_id": 116,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 22.58801633024052,
-   "market_cap": 2986637.66
+   "price": 22.55341618188698,
+   "market_cap": 2982062.76
   },
   {
    "crypto_id": 41077,
@@ -5790,8 +5790,8 @@
    "rwa_id": 116,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 22.578379124561263,
-   "market_cap": 6381672.13
+   "price": 22.563695126502314,
+   "market_cap": 6324131.71
   },
   {
    "crypto_id": 37015,
@@ -5820,8 +5820,8 @@
    "rwa_id": 118,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 723.1911316916254,
-   "market_cap": 37193699.53
+   "price": 723.1136306706665,
+   "market_cap": 37189713.03
   },
   {
    "crypto_id": 38094,
@@ -5830,8 +5830,8 @@
    "rwa_id": 118,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 724.402747742872,
-   "market_cap": 32515082.56
+   "price": 724.5894937247114,
+   "market_cap": 32499424.13
   },
   {
    "crypto_id": 39517,
@@ -5840,7 +5840,7 @@
    "rwa_id": 118,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 722.2675293189463,
+   "price": 722.4524368405943,
    "market_cap": 0
   },
   {
@@ -5870,8 +5870,8 @@
    "rwa_id": 118,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 721.7122002350454,
-   "market_cap": 56755601.04
+   "price": 721.9347920681306,
+   "market_cap": 56038892.65
   },
   {
    "crypto_id": 40606,
@@ -5880,8 +5880,8 @@
    "rwa_id": 118,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 721.965778033864,
-   "market_cap": 2913286.75
+   "price": 722.3262247551938,
+   "market_cap": 2914741.23
   },
   {
    "crypto_id": 40686,
@@ -5890,8 +5890,8 @@
    "rwa_id": 118,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 722.212382334573,
-   "market_cap": 5288834.94
+   "price": 722.4168200472136,
+   "market_cap": 5290332.06
   },
   {
    "crypto_id": 41519,
@@ -5900,7 +5900,7 @@
    "rwa_id": 118,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 724.211008534524,
+   "price": 723.9065968054773,
    "market_cap": 0
   },
   {
@@ -5920,8 +5920,8 @@
    "rwa_id": 120,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 108.24002315970056,
-   "market_cap": 10843323.86
+   "price": 109.03510483066763,
+   "market_cap": 10922973.96
   },
   {
    "crypto_id": 38088,
@@ -5930,8 +5930,8 @@
    "rwa_id": 121,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 83.04298205508557,
-   "market_cap": 1007844.07
+   "price": 83.040962073678,
+   "market_cap": 1007819.56
   },
   {
    "crypto_id": 38047,
@@ -5940,8 +5940,8 @@
    "rwa_id": 122,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 1048.233328437297,
-   "market_cap": 1679229.86
+   "price": 1047.4118725984217,
+   "market_cap": 1677913.92
   },
   {
    "crypto_id": 41339,
@@ -5970,8 +5970,8 @@
    "rwa_id": 123,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 13.17763113186051,
-   "market_cap": 284594.04
+   "price": 13.33241636436496,
+   "market_cap": 287936.9
   },
   {
    "crypto_id": 41335,
@@ -5990,7 +5990,7 @@
    "rwa_id": 123,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 13.24658799337075,
+   "price": 13.243370639126669,
    "market_cap": 0
   },
   {
@@ -6000,8 +6000,8 @@
    "rwa_id": 124,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 68.0320679360078,
-   "market_cap": 7599607.38
+   "price": 68.0407762403275,
+   "market_cap": 7600589.37
   },
   {
    "crypto_id": 38034,
@@ -6010,8 +6010,8 @@
    "rwa_id": 125,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 27.971986966963865,
-   "market_cap": 29499712.12
+   "price": 27.983124335118525,
+   "market_cap": 29511460.9
   },
   {
    "crypto_id": 40148,
@@ -6020,8 +6020,8 @@
    "rwa_id": 125,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 27.94199588791061,
-   "market_cap": 441451.63
+   "price": 27.971989669140427,
+   "market_cap": 441925.5
   },
   {
    "crypto_id": 41430,
@@ -6040,7 +6040,7 @@
    "rwa_id": 125,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 27.92250642205384,
+   "price": 27.903886784067613,
    "market_cap": 0
   },
   {
@@ -6050,8 +6050,8 @@
    "rwa_id": 125,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 28.22721768973823,
-   "market_cap": 876050.96
+   "price": 27.780681819941442,
+   "market_cap": 740814.24
   },
   {
    "crypto_id": 38058,
@@ -6060,8 +6060,8 @@
    "rwa_id": 126,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 36.542982609493144,
-   "market_cap": 1837164.45
+   "price": 36.556850382609234,
+   "market_cap": 1838769.74
   },
   {
    "crypto_id": 41576,
@@ -6080,8 +6080,8 @@
    "rwa_id": 127,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 39.035523420694986,
-   "market_cap": 1728050.07
+   "price": 39.04363764175122,
+   "market_cap": 1728410.76
   },
   {
    "crypto_id": 40143,
@@ -6100,7 +6100,7 @@
    "rwa_id": 127,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 39.05635493972275,
+   "price": 38.96143207571039,
    "market_cap": 0
   },
   {
@@ -6110,8 +6110,8 @@
    "rwa_id": 127,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 39.027338651955205,
-   "market_cap": 112905.01
+   "price": 39.066274825532076,
+   "market_cap": 113017.65
   },
   {
    "crypto_id": 40774,
@@ -6120,8 +6120,8 @@
    "rwa_id": 127,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 38.56683946946213,
-   "market_cap": 29145.42
+   "price": 38.56337837089801,
+   "market_cap": 29142.81
   },
   {
    "crypto_id": 40966,
@@ -6130,8 +6130,8 @@
    "rwa_id": 127,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 39.01047676851133,
-   "market_cap": 1613261.17
+   "price": 38.93971321134881,
+   "market_cap": 1610334.77
   },
   {
    "crypto_id": 41508,
@@ -6150,8 +6150,8 @@
    "rwa_id": 128,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 70.53281824654708,
-   "market_cap": 947811.02
+   "price": 70.53384779090433,
+   "market_cap": 947824.86
   },
   {
    "crypto_id": 39997,
@@ -6160,7 +6160,7 @@
    "rwa_id": 128,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 70.65665168374655,
+   "price": 70.68379110293496,
    "market_cap": 0
   },
   {
@@ -6180,8 +6180,8 @@
    "rwa_id": 129,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 97.46684323256207,
-   "market_cap": 1934764.05
+   "price": 98.14343635340096,
+   "market_cap": 1948203.78
   },
   {
    "crypto_id": 41626,
@@ -6200,8 +6200,8 @@
    "rwa_id": 130,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 33.877794732128045,
-   "market_cap": 1043473.58
+   "price": 33.815233655864496,
+   "market_cap": 1041546.63
   },
   {
    "crypto_id": 41242,
@@ -6220,8 +6220,8 @@
    "rwa_id": 131,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 495.18323872636637,
-   "market_cap": 9395606.55
+   "price": 495.1344685748455,
+   "market_cap": 9394684.82
   },
   {
    "crypto_id": 38026,
@@ -6230,8 +6230,8 @@
    "rwa_id": 132,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 128.58798029044323,
-   "market_cap": 665127.47
+   "price": 128.41565691126868,
+   "market_cap": 664205.97
   },
   {
    "crypto_id": 40727,
@@ -6240,8 +6240,8 @@
    "rwa_id": 132,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 127.9071122450181,
-   "market_cap": 253257.36
+   "price": 127.89488923125757,
+   "market_cap": 242323.98
   },
   {
    "crypto_id": 41871,
@@ -6250,7 +6250,7 @@
    "rwa_id": 132,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 128.471203551647,
+   "price": 128.46287782669472,
    "market_cap": 0
   },
   {
@@ -6280,8 +6280,8 @@
    "rwa_id": 134,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 428.7407532218734,
-   "market_cap": 931992.56
+   "price": 429.2142593179096,
+   "market_cap": 933021.87
   },
   {
    "crypto_id": 41850,
@@ -6300,8 +6300,8 @@
    "rwa_id": 135,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 331.6225257723701,
-   "market_cap": 1871819.68
+   "price": 331.4082652111415,
+   "market_cap": 1870610.3
   },
   {
    "crypto_id": 40843,
@@ -6310,7 +6310,7 @@
    "rwa_id": 135,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 333.0401347422558,
+   "price": 333.2921113602695,
    "market_cap": 0
   },
   {
@@ -6330,8 +6330,8 @@
    "rwa_id": 136,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 190.31707882993751,
-   "market_cap": 232281.36
+   "price": 190.53962269733677,
+   "market_cap": 232552.97
   },
   {
    "crypto_id": 37099,
@@ -6350,8 +6350,8 @@
    "rwa_id": 136,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 202.11401670455854,
-   "market_cap": 1103326.21
+   "price": 199.59004273864147,
+   "market_cap": 1089548.01
   },
   {
    "crypto_id": 38017,
@@ -6360,8 +6360,8 @@
    "rwa_id": 137,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 546.131638270525,
-   "market_cap": 4019512.64
+   "price": 545.9945996183958,
+   "market_cap": 4018506.65
   },
   {
    "crypto_id": 41313,
@@ -6390,8 +6390,8 @@
    "rwa_id": 138,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 248.04999526628646,
-   "market_cap": 840364.8
+   "price": 248.95256603339658,
+   "market_cap": 843422.61
   },
   {
    "crypto_id": 41083,
@@ -6410,8 +6410,8 @@
    "rwa_id": 139,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 1095.7220190183434,
-   "market_cap": 1885933.1
+   "price": 1105.5677342567835,
+   "market_cap": 1902879.33
   },
   {
    "crypto_id": 41838,
@@ -6430,8 +6430,8 @@
    "rwa_id": 140,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 286.65871478031613,
-   "market_cap": 3334828.21
+   "price": 286.5649065280036,
+   "market_cap": 3333736.9
   },
   {
    "crypto_id": 39493,
@@ -6440,7 +6440,7 @@
    "rwa_id": 140,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 283.8135177462246,
+   "price": 284.2415647857484,
    "market_cap": 0
   },
   {
@@ -6450,7 +6450,7 @@
    "rwa_id": 140,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 284.68829994958423,
+   "price": 285.1836269292103,
    "market_cap": 0
   },
   {
@@ -6460,8 +6460,8 @@
    "rwa_id": 141,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 772.2270732453865,
-   "market_cap": 69711504.57
+   "price": 772.2699520943452,
+   "market_cap": 69713665.79
   },
   {
    "crypto_id": 38097,
@@ -6470,8 +6470,8 @@
    "rwa_id": 142,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 1790.5442476689352,
-   "market_cap": 756986.05
+   "price": 1790.3429042607727,
+   "market_cap": 756900.93
   },
   {
    "crypto_id": 38020,
@@ -6490,8 +6490,8 @@
    "rwa_id": 144,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 9.244450772180114,
-   "market_cap": 522026.61
+   "price": 9.324709480810098,
+   "market_cap": 526558.76
   },
   {
    "crypto_id": 41596,
@@ -6510,8 +6510,8 @@
    "rwa_id": 145,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 212.69147247623624,
-   "market_cap": 240426.93
+   "price": 212.5903994143642,
+   "market_cap": 240312.67
   },
   {
    "crypto_id": 37119,
@@ -6530,8 +6530,8 @@
    "rwa_id": 146,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 94.26,
-   "market_cap": 185032.84
+   "price": 94.26484,
+   "market_cap": 185042.34
   },
   {
    "crypto_id": 37210,
@@ -6550,8 +6550,8 @@
    "rwa_id": 147,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 105.49,
-   "market_cap": 509573.68
+   "price": 105.4909,
+   "market_cap": 509578.03
   },
   {
    "crypto_id": 41670,
@@ -6570,8 +6570,8 @@
    "rwa_id": 148,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 376.5841232411049,
-   "market_cap": 1772125.5
+   "price": 376.7739877517835,
+   "market_cap": 1773018.96
   },
   {
    "crypto_id": 39262,
@@ -6580,8 +6580,8 @@
    "rwa_id": 148,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 378.28928994777465,
-   "market_cap": 465949.49
+   "price": 378.2699958130259,
+   "market_cap": 465925.73
   },
   {
    "crypto_id": 41690,
@@ -6640,8 +6640,8 @@
    "rwa_id": 152,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 12.993567723202226,
-   "market_cap": 9678.84
+   "price": 12.98060854114982,
+   "market_cap": 9669.19
   },
   {
    "crypto_id": 39232,
@@ -6650,8 +6650,8 @@
    "rwa_id": 153,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 2.677327965427494,
-   "market_cap": 128958.78
+   "price": 2.677064277805755,
+   "market_cap": 128946.08
   },
   {
    "crypto_id": 42009,
@@ -6660,7 +6660,7 @@
    "rwa_id": 153,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 2.6905859548199684,
+   "price": 2.6974827365872214,
    "market_cap": 0
   },
   {
@@ -6670,7 +6670,7 @@
    "rwa_id": 153,
    "issuer_name": "Backpack",
    "status": "active",
-   "price": 2.6943171073462677,
+   "price": 2.698754887490517,
    "market_cap": 0
   },
   {
@@ -6680,7 +6680,7 @@
    "rwa_id": 153,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 2.6929618721894215,
+   "price": 2.692223707020162,
    "market_cap": 0
   },
   {
@@ -6690,8 +6690,8 @@
    "rwa_id": 154,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 14.922468317161625,
-   "market_cap": 277806.16
+   "price": 14.918352299499604,
+   "market_cap": 277729.53
   },
   {
    "crypto_id": 39236,
@@ -6700,8 +6700,8 @@
    "rwa_id": 155,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 38.361723219879416,
-   "market_cap": 18029.71
+   "price": 38.35794500828476,
+   "market_cap": 18027.94
   },
   {
    "crypto_id": 41843,
@@ -6720,8 +6720,8 @@
    "rwa_id": 156,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 5.526861523317706,
-   "market_cap": 4556.61
+   "price": 5.526317187700411,
+   "market_cap": 4556.17
   },
   {
    "crypto_id": 39253,
@@ -6730,8 +6730,8 @@
    "rwa_id": 157,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 253.92052118969428,
-   "market_cap": 434857.88
+   "price": 256.7414771203528,
+   "market_cap": 439688.98
   },
   {
    "crypto_id": 41185,
@@ -6760,8 +6760,8 @@
    "rwa_id": 159,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 206.3550914489413,
-   "market_cap": 4176.79
+   "price": 205.68802892246413,
+   "market_cap": 4163.29
   },
   {
    "crypto_id": 41187,
@@ -6780,8 +6780,8 @@
    "rwa_id": 160,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 86.99900566816446,
-   "market_cap": 1526824.3
+   "price": 87.40465657566178,
+   "market_cap": 1533943.43
   },
   {
    "crypto_id": 41209,
@@ -6850,8 +6850,8 @@
    "rwa_id": 165,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 2.7950912563286257,
-   "market_cap": 70202.29
+   "price": 2.7948585867348172,
+   "market_cap": 70196.45
   },
   {
    "crypto_id": 39221,
@@ -6860,8 +6860,8 @@
    "rwa_id": 166,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 393.4932355291854,
-   "market_cap": 421130.98
+   "price": 393.5503796656163,
+   "market_cap": 421192.13
   },
   {
    "crypto_id": 40228,
@@ -6870,7 +6870,7 @@
    "rwa_id": 166,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 393.3033122441366,
+   "price": 393.2330768138145,
    "market_cap": 0
   },
   {
@@ -6890,8 +6890,8 @@
    "rwa_id": 166,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 392.6875128719602,
-   "market_cap": 144960.72
+   "price": 392.6875461772108,
+   "market_cap": 144960.73
   },
   {
    "crypto_id": 39241,
@@ -6900,8 +6900,8 @@
    "rwa_id": 167,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 12.109585075053205,
-   "market_cap": 124200.09
+   "price": 12.108863049345008,
+   "market_cap": 124192.69
   },
   {
    "crypto_id": 39290,
@@ -6910,8 +6910,8 @@
    "rwa_id": 168,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 47.52420451163359,
-   "market_cap": 361768.82
+   "price": 48.02933537851397,
+   "market_cap": 365614.03
   },
   {
    "crypto_id": 40638,
@@ -6920,8 +6920,8 @@
    "rwa_id": 168,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 48.06440682341205,
-   "market_cap": 34243.4
+   "price": 48.03312449761557,
+   "market_cap": 34221.11
   },
   {
    "crypto_id": 39259,
@@ -6930,8 +6930,8 @@
    "rwa_id": 169,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 214.54235134080125,
-   "market_cap": 1867.78
+   "price": 214.5212212577043,
+   "market_cap": 1867.59
   },
   {
    "crypto_id": 41614,
@@ -6950,8 +6950,8 @@
    "rwa_id": 170,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 3.669782065155113,
-   "market_cap": 215755.5
+   "price": 3.6693606452622456,
+   "market_cap": 215730.72
   },
   {
    "crypto_id": 39294,
@@ -6960,8 +6960,8 @@
    "rwa_id": 171,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 38.473388392876,
-   "market_cap": 636936.4
+   "price": 38.30606480834593,
+   "market_cap": 634166.31
   },
   {
    "crypto_id": 40158,
@@ -6980,8 +6980,8 @@
    "rwa_id": 171,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 38.117633780713426,
-   "market_cap": 2787413.88
+   "price": 38.08661900851516,
+   "market_cap": 2785145.88
   },
   {
    "crypto_id": 41661,
@@ -7030,8 +7030,8 @@
    "rwa_id": 173,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 32.132109047284445,
-   "market_cap": 327625.32
+   "price": 32.128944384783054,
+   "market_cap": 327593.05
   },
   {
    "crypto_id": 40804,
@@ -7040,7 +7040,7 @@
    "rwa_id": 173,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 32.115144009655076,
+   "price": 32.51983484192073,
    "market_cap": 0
   },
   {
@@ -7050,8 +7050,8 @@
    "rwa_id": 174,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 13.272442304739403,
-   "market_cap": 1860.84
+   "price": 13.271135113841913,
+   "market_cap": 1860.66
   },
   {
    "crypto_id": 41535,
@@ -7070,8 +7070,8 @@
    "rwa_id": 175,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 79.24716518617997,
-   "market_cap": 10194150.08
+   "price": 79.31830102214583,
+   "market_cap": 10203300.81
   },
   {
    "crypto_id": 39861,
@@ -7080,7 +7080,7 @@
    "rwa_id": 175,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 78.81909848555433,
+   "price": 78.73526620386212,
    "market_cap": 0
   },
   {
@@ -7090,8 +7090,8 @@
    "rwa_id": 176,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 2.0950304941725477,
-   "market_cap": 22774.48
+   "price": 2.0868131348659698,
+   "market_cap": 22685.15
   },
   {
    "crypto_id": 39261,
@@ -7100,8 +7100,8 @@
    "rwa_id": 177,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 69.0790975878887,
-   "market_cap": 407559.78
+   "price": 69.07229404973796,
+   "market_cap": 407519.64
   },
   {
    "crypto_id": 39256,
@@ -7110,8 +7110,8 @@
    "rwa_id": 178,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 15.0604472686462,
-   "market_cap": 28966.46
+   "price": 15.066908396066987,
+   "market_cap": 28978.88
   },
   {
    "crypto_id": 39499,
@@ -7120,7 +7120,7 @@
    "rwa_id": 178,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 15.05809640568662,
+   "price": 15.083971153185933,
    "market_cap": 0
   },
   {
@@ -7130,8 +7130,8 @@
    "rwa_id": 178,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 14.996154733029815,
-   "market_cap": 493282.81
+   "price": 14.98453033456708,
+   "market_cap": 492900.44
   },
   {
    "crypto_id": 41521,
@@ -7150,8 +7150,8 @@
    "rwa_id": 178,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 15.075681502314563,
-   "market_cap": 15676.15
+   "price": 15.035694232447174,
+   "market_cap": 15634.57
   },
   {
    "crypto_id": 39314,
@@ -7190,8 +7190,8 @@
    "rwa_id": 181,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 38.37949854737505,
-   "market_cap": 229234.88
+   "price": 38.38369250702871,
+   "market_cap": 229259.93
   },
   {
    "crypto_id": 40619,
@@ -7200,8 +7200,8 @@
    "rwa_id": 181,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 37.76774729177428,
-   "market_cap": 344853
+   "price": 37.756734906866605,
+   "market_cap": 344752.44
   },
   {
    "crypto_id": 41962,
@@ -7210,8 +7210,8 @@
    "rwa_id": 181,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 37.780879225129695,
-   "market_cap": 627596.72
+   "price": 37.815981414070315,
+   "market_cap": 576037.87
   },
   {
    "crypto_id": 39289,
@@ -7240,8 +7240,8 @@
    "rwa_id": 183,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 153.90704494713023,
-   "market_cap": 2829405.52
+   "price": 153.47318598734256,
+   "market_cap": 2821429.52
   },
   {
    "crypto_id": 39515,
@@ -7250,7 +7250,7 @@
    "rwa_id": 183,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 153.88499624562732,
+   "price": 154.77980943679572,
    "market_cap": 0
   },
   {
@@ -7260,8 +7260,8 @@
    "rwa_id": 183,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 154.74020448120527,
-   "market_cap": 2489935.15
+   "price": 153.93041421632037,
+   "market_cap": 2476904.76
   },
   {
    "crypto_id": 39310,
@@ -7270,8 +7270,8 @@
    "rwa_id": 184,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 141.41340166033424,
-   "market_cap": 417364.4
+   "price": 141.73969188690234,
+   "market_cap": 418327.4
   },
   {
    "crypto_id": 41844,
@@ -7290,7 +7290,7 @@
    "rwa_id": 184,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 141.52184827896573,
+   "price": 142.04428069653054,
    "market_cap": 0
   },
   {
@@ -7300,8 +7300,8 @@
    "rwa_id": 185,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 17.005364472201858,
-   "market_cap": 377245.1
+   "price": 17.003689629159698,
+   "market_cap": 377207.94
   },
   {
    "crypto_id": 40156,
@@ -7330,7 +7330,7 @@
    "rwa_id": 186,
    "issuer_name": null,
    "status": "active",
-   "price": 95.9940346018118,
+   "price": 95.93031362373861,
    "market_cap": 0
   },
   {
@@ -7340,8 +7340,8 @@
    "rwa_id": 187,
    "issuer_name": "PreStocks Assets",
    "status": "active",
-   "price": 1016.0576445822901,
-   "market_cap": 7500437.67
+   "price": 1004.3826815254812,
+   "market_cap": 7414252.23
   },
   {
    "crypto_id": 39496,
@@ -7350,7 +7350,7 @@
    "rwa_id": 187,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 2097.4299150079496,
+   "price": 2096.933960071494,
    "market_cap": 0
   },
   {
@@ -7360,8 +7360,8 @@
    "rwa_id": 188,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 317.45838179429,
-   "market_cap": 1511170.26
+   "price": 316.9580057220884,
+   "market_cap": 1508788.36
   },
   {
    "crypto_id": 39995,
@@ -7370,7 +7370,7 @@
    "rwa_id": 188,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 317.3948785408763,
+   "price": 315.6364804833249,
    "market_cap": 0
   },
   {
@@ -7380,8 +7380,8 @@
    "rwa_id": 188,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 317.24707789953857,
-   "market_cap": 513453.53
+   "price": 316.9286532929041,
+   "market_cap": 512938.17
   },
   {
    "crypto_id": 40965,
@@ -7390,8 +7390,8 @@
    "rwa_id": 188,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 317.0700615336514,
-   "market_cap": 3751954.96
+   "price": 315.27198972003475,
+   "market_cap": 3415945.45
   },
   {
    "crypto_id": 41149,
@@ -7410,8 +7410,8 @@
    "rwa_id": 189,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 929.9449041985982,
-   "market_cap": 2231480.99
+   "price": 925.9146054678394,
+   "market_cap": 2221809.95
   },
   {
    "crypto_id": 40591,
@@ -7420,8 +7420,8 @@
    "rwa_id": 189,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 929.4602031374686,
-   "market_cap": 4304523.18
+   "price": 925.4018607005388,
+   "market_cap": 4209618.59
   },
   {
    "crypto_id": 40664,
@@ -7430,8 +7430,8 @@
    "rwa_id": 189,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 929.1985470541077,
-   "market_cap": 562977.85
+   "price": 926.5544731394365,
+   "market_cap": 561375.87
   },
   {
    "crypto_id": 40750,
@@ -7440,8 +7440,8 @@
    "rwa_id": 189,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 938.4449967958876,
-   "market_cap": 259113.11
+   "price": 920.5676410920613,
+   "market_cap": 254177.01
   },
   {
    "crypto_id": 41452,
@@ -7460,8 +7460,8 @@
    "rwa_id": 190,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 266.94339754691595,
-   "market_cap": 323830.75
+   "price": 266.91622418539714,
+   "market_cap": 323797.78
   },
   {
    "crypto_id": 40758,
@@ -7470,8 +7470,8 @@
    "rwa_id": 190,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 266.25974367494985,
-   "market_cap": 916995.63
+   "price": 266.39884097985146,
+   "market_cap": 917474.68
   },
   {
    "crypto_id": 40933,
@@ -7480,8 +7480,8 @@
    "rwa_id": 190,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 266.9204106824019,
-   "market_cap": 2930149.48
+   "price": 266.9408853481831,
+   "market_cap": 2484193.69
   },
   {
    "crypto_id": 41174,
@@ -7500,8 +7500,8 @@
    "rwa_id": 191,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 104.76601154520762,
-   "market_cap": 517690.15
+   "price": 104.00346041065399,
+   "market_cap": 513922.09
   },
   {
    "crypto_id": 40699,
@@ -7520,8 +7520,8 @@
    "rwa_id": 191,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 104.69732054759893,
-   "market_cap": 4793104.47
+   "price": 103.70849568808546,
+   "market_cap": 4723502.81
   },
   {
    "crypto_id": 41090,
@@ -7550,8 +7550,8 @@
    "rwa_id": 193,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 165.90510645874147,
-   "market_cap": 1487472.95
+   "price": 166.47824796879684,
+   "market_cap": 1492611.62
   },
   {
    "crypto_id": 41084,
@@ -7570,8 +7570,8 @@
    "rwa_id": 194,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 114.28375261852202,
-   "market_cap": 864556.91
+   "price": 114.19910305229423,
+   "market_cap": 863926.55
   },
   {
    "crypto_id": 40627,
@@ -7580,8 +7580,8 @@
    "rwa_id": 194,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 112.16361159706389,
-   "market_cap": 74527.61
+   "price": 111.9606648019343,
+   "market_cap": 74392.76
   },
   {
    "crypto_id": 40716,
@@ -7600,8 +7600,8 @@
    "rwa_id": 195,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 27.70522939414052,
-   "market_cap": 1254223.38
+   "price": 27.709948727858883,
+   "market_cap": 1254437.02
   },
   {
    "crypto_id": 38053,
@@ -7610,8 +7610,8 @@
    "rwa_id": 196,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 151.5726400806234,
-   "market_cap": 744049.46
+   "price": 151.44967722890843,
+   "market_cap": 743445.85
   },
   {
    "crypto_id": 39633,
@@ -7620,7 +7620,7 @@
    "rwa_id": 196,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 151.96816631312987,
+   "price": 152.27079485149366,
    "market_cap": 0
   },
   {
@@ -7630,8 +7630,8 @@
    "rwa_id": 196,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 151.09246773757377,
-   "market_cap": 2414088.52
+   "price": 151.98793701177053,
+   "market_cap": 2428395.93
   },
   {
    "crypto_id": 41583,
@@ -7650,8 +7650,8 @@
    "rwa_id": 196,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 151.5512610698517,
-   "market_cap": 636627.46
+   "price": 151.77330509930204,
+   "market_cap": 636100.58
   },
   {
    "crypto_id": 38071,
@@ -7660,8 +7660,8 @@
    "rwa_id": 197,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 90.1683767820118,
-   "market_cap": 1140650.09
+   "price": 89.86401526626516,
+   "market_cap": 1136799.85
   },
   {
    "crypto_id": 37042,
@@ -7670,8 +7670,8 @@
    "rwa_id": 198,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 235.43000000000004,
-   "market_cap": 544561.04
+   "price": 235.43078000000003,
+   "market_cap": 544562.84
   },
   {
    "crypto_id": 37194,
@@ -7690,8 +7690,8 @@
    "rwa_id": 198,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 239.70948533758155,
-   "market_cap": 1043569.04
+   "price": 238.9556921251917,
+   "market_cap": 1040287.42
   },
   {
    "crypto_id": 40116,
@@ -7700,7 +7700,7 @@
    "rwa_id": 198,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 238.9861807435594,
+   "price": 239.59251924105016,
    "market_cap": 0
   },
   {
@@ -7710,8 +7710,8 @@
    "rwa_id": 198,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 238.37218862457559,
-   "market_cap": 492994.8
+   "price": 239.04790870602903,
+   "market_cap": 494321.06
   },
   {
    "crypto_id": 38078,
@@ -7720,8 +7720,8 @@
    "rwa_id": 199,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 192.24571118263145,
-   "market_cap": 908589.21
+   "price": 193.20631268012173,
+   "market_cap": 913120.35
   },
   {
    "crypto_id": 41178,
@@ -7740,8 +7740,8 @@
    "rwa_id": 200,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 73.80153538533665,
-   "market_cap": 2989179.4
+   "price": 73.7942667385374,
+   "market_cap": 2988885
   },
   {
    "crypto_id": 38079,
@@ -7750,8 +7750,8 @@
    "rwa_id": 201,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 305.92713611426547,
-   "market_cap": 682383.22
+   "price": 305.6444962564351,
+   "market_cap": 681752.78
   },
   {
    "crypto_id": 40734,
@@ -7760,8 +7760,8 @@
    "rwa_id": 201,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 304.15067891123397,
-   "market_cap": 21777.49
+   "price": 304.10367384878424,
+   "market_cap": 21774.13
   },
   {
    "crypto_id": 41309,
@@ -7780,8 +7780,8 @@
    "rwa_id": 202,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 510.67850660347506,
-   "market_cap": 548531.49
+   "price": 509.9508178649511,
+   "market_cap": 547749.86
   },
   {
    "crypto_id": 38025,
@@ -7790,8 +7790,8 @@
    "rwa_id": 203,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 680.9647083299003,
-   "market_cap": 1769286.08
+   "price": 681.1664248095029,
+   "market_cap": 1769539.14
   },
   {
    "crypto_id": 40111,
@@ -7800,7 +7800,7 @@
    "rwa_id": 203,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 136.06032969492296,
+   "price": 136.18381376627025,
    "market_cap": 0
   },
   {
@@ -7810,8 +7810,8 @@
    "rwa_id": 203,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 135.9159058176186,
-   "market_cap": 230373.54
+   "price": 135.96223231884898,
+   "market_cap": 230452.06
   },
   {
    "crypto_id": 40740,
@@ -7820,8 +7820,8 @@
    "rwa_id": 203,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 135.917957432405,
-   "market_cap": 31105.64
+   "price": 135.89678751128233,
+   "market_cap": 31100.8
   },
   {
    "crypto_id": 41548,
@@ -7840,8 +7840,8 @@
    "rwa_id": 204,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 84.78573497968999,
-   "market_cap": 18959042.76
+   "price": 84.67560808688992,
+   "market_cap": 18934417.15
   },
   {
    "crypto_id": 42328,
@@ -7850,7 +7850,7 @@
    "rwa_id": 204,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 81.7002114036117,
+   "price": 82.24521617930336,
    "market_cap": 0
   },
   {
@@ -7860,8 +7860,8 @@
    "rwa_id": 205,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 59.90231573962791,
-   "market_cap": 25615860.54
+   "price": 60.02672805520376,
+   "market_cap": 25669085.07
   },
   {
    "crypto_id": 39620,
@@ -7870,7 +7870,7 @@
    "rwa_id": 205,
    "issuer_name": "Hyperliquid Assets",
    "status": "active",
-   "price": 57.428013097168524,
+   "price": 57.433689108191835,
    "market_cap": 0
   },
   {
@@ -7880,7 +7880,7 @@
    "rwa_id": 205,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 59.84658886420069,
+   "price": 59.842665309940635,
    "market_cap": 0
   },
   {
@@ -7890,8 +7890,8 @@
    "rwa_id": 205,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 59.97530395100419,
-   "market_cap": 1150045.23
+   "price": 59.946610823902574,
+   "market_cap": 1149495.03
   },
   {
    "crypto_id": 41644,
@@ -7910,8 +7910,8 @@
    "rwa_id": 206,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 82.30304445926487,
-   "market_cap": 10517006.78
+   "price": 82.41338226967163,
+   "market_cap": 10531106.18
   },
   {
    "crypto_id": 38098,
@@ -7920,8 +7920,8 @@
    "rwa_id": 207,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 22.66483969897819,
-   "market_cap": 506614.33
+   "price": 22.769516488863616,
+   "market_cap": 508954.11
   },
   {
    "crypto_id": 41855,
@@ -7940,7 +7940,7 @@
    "rwa_id": 207,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 22.704092899509963,
+   "price": 22.620708697638594,
    "market_cap": 0
   },
   {
@@ -7950,8 +7950,8 @@
    "rwa_id": 208,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 24.74480425243189,
-   "market_cap": 215173.19
+   "price": 24.983175570474728,
+   "market_cap": 217245.99
   },
   {
    "crypto_id": 37192,
@@ -7970,8 +7970,8 @@
    "rwa_id": 210,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 2.5,
-   "market_cap": 90188.86
+   "price": 2.50779,
+   "market_cap": 90469.89
   },
   {
    "crypto_id": 39266,
@@ -8000,8 +8000,8 @@
    "rwa_id": 211,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 73.09315105842897,
-   "market_cap": 4078897.97
+   "price": 73.0625628898034,
+   "market_cap": 4077191.02
   },
   {
    "crypto_id": 39284,
@@ -8010,8 +8010,8 @@
    "rwa_id": 211,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 73.12663026046468,
-   "market_cap": 5348690.59
+   "price": 72.97389670573001,
+   "market_cap": 5337519.22
   },
   {
    "crypto_id": 40633,
@@ -8020,8 +8020,8 @@
    "rwa_id": 211,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 72.73640267203538,
-   "market_cap": 925002.85
+   "price": 72.82441456090102,
+   "market_cap": 926122.11
   },
   {
    "crypto_id": 40884,
@@ -8030,8 +8030,8 @@
    "rwa_id": 211,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 72.75571597440666,
-   "market_cap": 2673779.97
+   "price": 72.73859246881011,
+   "market_cap": 2462354.93
   },
   {
    "crypto_id": 41573,
@@ -8110,8 +8110,8 @@
    "rwa_id": 214,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 118.30156697823276,
-   "market_cap": 490888.96
+   "price": 118.43825563470968,
+   "market_cap": 491456.14
   },
   {
    "crypto_id": 41534,
@@ -8140,8 +8140,8 @@
    "rwa_id": 216,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 5.299949070389567,
-   "market_cap": 34092.81
+   "price": 5.270943725405667,
+   "market_cap": 33906.22
   },
   {
    "crypto_id": 39225,
@@ -8150,8 +8150,8 @@
    "rwa_id": 217,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 2.8141333951390393,
-   "market_cap": 12720.61
+   "price": 2.8246303976063403,
+   "market_cap": 12768.06
   },
   {
    "crypto_id": 39269,
@@ -8160,8 +8160,8 @@
    "rwa_id": 218,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 52.45941839695714,
-   "market_cap": 105860.14
+   "price": 52.463041755242955,
+   "market_cap": 105867.45
   },
   {
    "crypto_id": 39224,
@@ -8170,8 +8170,8 @@
    "rwa_id": 219,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 25.779393848804585,
-   "market_cap": 7516600.96
+   "price": 25.755928929868585,
+   "market_cap": 7509759.2
   },
   {
    "crypto_id": 39670,
@@ -8180,7 +8180,7 @@
    "rwa_id": 219,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 25.829882208976045,
+   "price": 25.910569895886308,
    "market_cap": 0
   },
   {
@@ -8190,8 +8190,8 @@
    "rwa_id": 219,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 25.813965938405477,
-   "market_cap": 7926578.74
+   "price": 25.89672224923862,
+   "market_cap": 7919818.79
   },
   {
    "crypto_id": 41124,
@@ -8200,7 +8200,7 @@
    "rwa_id": 219,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 25.882930842658173,
+   "price": 25.971050501310277,
    "market_cap": 0
   },
   {
@@ -8210,8 +8210,8 @@
    "rwa_id": 220,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 14.791328801030144,
-   "market_cap": 13623.78
+   "price": 14.789872016368621,
+   "market_cap": 13622.44
   },
   {
    "crypto_id": 39298,
@@ -8220,8 +8220,8 @@
    "rwa_id": 221,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 18.334992119452853,
-   "market_cap": 203841.92
+   "price": 18.33318632258037,
+   "market_cap": 203821.84
   },
   {
    "crypto_id": 39264,
@@ -8240,8 +8240,8 @@
    "rwa_id": 223,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 133.5382010525202,
-   "market_cap": 30141.51
+   "price": 134.29070315517657,
+   "market_cap": 30311.36
   },
   {
    "crypto_id": 41221,
@@ -8260,8 +8260,8 @@
    "rwa_id": 224,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 14.371624891138895,
-   "market_cap": 9122.37
+   "price": 14.45747138577068,
+   "market_cap": 9176.86
   },
   {
    "crypto_id": 41229,
@@ -8300,8 +8300,8 @@
    "rwa_id": 227,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 13.523154086874786,
-   "market_cap": 11934.28
+   "price": 13.553689413268025,
+   "market_cap": 11961.23
   },
   {
    "crypto_id": 40755,
@@ -8310,8 +8310,8 @@
    "rwa_id": 227,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 13.178429120596237,
-   "market_cap": 260947.33
+   "price": 13.115203960160375,
+   "market_cap": 259695.41
   },
   {
    "crypto_id": 41320,
@@ -8330,8 +8330,8 @@
    "rwa_id": 228,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 5.801252376750379,
-   "market_cap": 3799.87
+   "price": 5.800681016624879,
+   "market_cap": 3799.49
   },
   {
    "crypto_id": 39254,
@@ -8340,8 +8340,8 @@
    "rwa_id": 229,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 46.35794911279008,
-   "market_cap": 3369066.96
+   "price": 46.415181059615854,
+   "market_cap": 3373226.29
   },
   {
    "crypto_id": 40117,
@@ -8350,7 +8350,7 @@
    "rwa_id": 229,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 46.447589968690075,
+   "price": 46.538604216809894,
    "market_cap": 0
   },
   {
@@ -8360,8 +8360,8 @@
    "rwa_id": 229,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 46.32891658285625,
-   "market_cap": 857652.45
+   "price": 46.515384299245035,
+   "market_cap": 861104.39
   },
   {
    "crypto_id": 40623,
@@ -8370,8 +8370,8 @@
    "rwa_id": 229,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 46.40765179902432,
-   "market_cap": 271258.66
+   "price": 46.53341307920593,
+   "market_cap": 271993.75
   },
   {
    "crypto_id": 40731,
@@ -8380,8 +8380,8 @@
    "rwa_id": 229,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 46.180677199640705,
-   "market_cap": 28216.16
+   "price": 47.03199704421654,
+   "market_cap": 28736.32
   },
   {
    "crypto_id": 40970,
@@ -8390,8 +8390,8 @@
    "rwa_id": 229,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 46.42462831796784,
-   "market_cap": 1763233.19
+   "price": 46.51432537419396,
+   "market_cap": 1688319.32
   },
   {
    "crypto_id": 41291,
@@ -8410,8 +8410,8 @@
    "rwa_id": 230,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 51.78900320180528,
-   "market_cap": 91253.36
+   "price": 51.78250870157496,
+   "market_cap": 91241.92
   },
   {
    "crypto_id": 40167,
@@ -8440,8 +8440,8 @@
    "rwa_id": 231,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 194.5789353457468,
-   "market_cap": 469.87
+   "price": 194.55977144152425,
+   "market_cap": 469.82
   },
   {
    "crypto_id": 41358,
@@ -8460,8 +8460,8 @@
    "rwa_id": 232,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 154.35920929663763,
-   "market_cap": 134517.16
+   "price": 153.99696432719614,
+   "market_cap": 134201.48
   },
   {
    "crypto_id": 41483,
@@ -8480,7 +8480,7 @@
    "rwa_id": 232,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 154.03091610304293,
+   "price": 154.06611100562057,
    "market_cap": 0
   },
   {
@@ -8490,8 +8490,8 @@
    "rwa_id": 232,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 153.9261506967246,
-   "market_cap": 1284159.19
+   "price": 153.9306148941473,
+   "market_cap": 1276714.08
   },
   {
    "crypto_id": 42005,
@@ -8500,7 +8500,7 @@
    "rwa_id": 232,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 153.6882556430875,
+   "price": 153.4343849609186,
    "market_cap": 0
   },
   {
@@ -8510,8 +8510,8 @@
    "rwa_id": 233,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 14.371147950884732,
-   "market_cap": 18405.16
+   "price": 14.369732549456979,
+   "market_cap": 18403.35
   },
   {
    "crypto_id": 39272,
@@ -8520,8 +8520,8 @@
    "rwa_id": 234,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 117.60082034107973,
-   "market_cap": 13823.04
+   "price": 117.58923794212424,
+   "market_cap": 13821.68
   },
   {
    "crypto_id": 39312,
@@ -8530,8 +8530,8 @@
    "rwa_id": 235,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 7.401032942332524,
-   "market_cap": 248834.8
+   "price": 7.4015121398551615,
+   "market_cap": 248850.91
   },
   {
    "crypto_id": 40118,
@@ -8540,7 +8540,7 @@
    "rwa_id": 235,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 7.4057773395187905,
+   "price": 7.4141001332820835,
    "market_cap": 0
   },
   {
@@ -8550,8 +8550,8 @@
    "rwa_id": 235,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 7.349481154428641,
-   "market_cap": 487511.61
+   "price": 7.394828492797037,
+   "market_cap": 490519.63
   },
   {
    "crypto_id": 40660,
@@ -8560,8 +8560,8 @@
    "rwa_id": 235,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 7.407635145539591,
-   "market_cap": 203384.92
+   "price": 7.407359633016454,
+   "market_cap": 203377.36
   },
   {
    "crypto_id": 41638,
@@ -8590,8 +8590,8 @@
    "rwa_id": 237,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 59.42788272466115,
-   "market_cap": 139923.14
+   "price": 59.4114920180154,
+   "market_cap": 139884.55
   },
   {
    "crypto_id": 41592,
@@ -8610,8 +8610,8 @@
    "rwa_id": 238,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 19.65979438856352,
-   "market_cap": 35840.65
+   "price": 19.657858113107864,
+   "market_cap": 35837.12
   },
   {
    "crypto_id": 39267,
@@ -8640,8 +8640,8 @@
    "rwa_id": 240,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 25.990682366762243,
-   "market_cap": 6809.51
+   "price": 25.952264997197773,
+   "market_cap": 6799.44
   },
   {
    "crypto_id": 39308,
@@ -8650,8 +8650,8 @@
    "rwa_id": 241,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 15.667192856818822,
-   "market_cap": 138274.68
+   "price": 15.711413912446575,
+   "market_cap": 138664.96
   },
   {
    "crypto_id": 40615,
@@ -8660,8 +8660,8 @@
    "rwa_id": 241,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 15.694989444665529,
-   "market_cap": 37109.22
+   "price": 15.734391447190147,
+   "market_cap": 37202.39
   },
   {
    "crypto_id": 40768,
@@ -8670,8 +8670,8 @@
    "rwa_id": 241,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 15.21356463997973,
-   "market_cap": 16393.38
+   "price": 15.215085844323294,
+   "market_cap": 16395.02
   },
   {
    "crypto_id": 41959,
@@ -8680,7 +8680,7 @@
    "rwa_id": 241,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 15.731139136852038,
+   "price": 15.760768366861017,
    "market_cap": 0
   },
   {
@@ -8690,8 +8690,8 @@
    "rwa_id": 242,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 102.03348091642899,
-   "market_cap": 9200970.17
+   "price": 101.96920393734908,
+   "market_cap": 9195173.93
   },
   {
    "crypto_id": 40781,
@@ -8700,8 +8700,8 @@
    "rwa_id": 242,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 100.58010163323478,
-   "market_cap": 4115947.19
+   "price": 100.61180013920905,
+   "market_cap": 4117244.36
   },
   {
    "crypto_id": 41665,
@@ -8720,8 +8720,8 @@
    "rwa_id": 243,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 16.990342890544056,
-   "market_cap": 11838786.3
+   "price": 16.984461813525996,
+   "market_cap": 11834688.4
   },
   {
    "crypto_id": 40662,
@@ -8730,8 +8730,8 @@
    "rwa_id": 243,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 16.955488464270843,
-   "market_cap": 185434.31
+   "price": 16.95395673089866,
+   "market_cap": 185417.56
   },
   {
    "crypto_id": 40725,
@@ -8740,8 +8740,8 @@
    "rwa_id": 243,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 17.006583896112595,
-   "market_cap": 46076.33
+   "price": 17.007417314212354,
+   "market_cap": 46078.59
   },
   {
    "crypto_id": 40888,
@@ -8750,7 +8750,7 @@
    "rwa_id": 243,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 16.96903807385161,
+   "price": 17.00375940599604,
    "market_cap": 0
   },
   {
@@ -8770,8 +8770,8 @@
    "rwa_id": 244,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 5.948151875418016,
-   "market_cap": 16351.29
+   "price": 5.937955552499384,
+   "market_cap": 16323.26
   },
   {
    "crypto_id": 39309,
@@ -8780,8 +8780,8 @@
    "rwa_id": 245,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 40.64476199843208,
-   "market_cap": 144373.63
+   "price": 40.74919627546131,
+   "market_cap": 144744.59
   },
   {
    "crypto_id": 39249,
@@ -8810,8 +8810,8 @@
    "rwa_id": 247,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 249.22024007523754,
-   "market_cap": 1045548.19
+   "price": 250.18376686894612,
+   "market_cap": 1049590.45
   },
   {
    "crypto_id": 40140,
@@ -8820,8 +8820,8 @@
    "rwa_id": 247,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 249.0473805387673,
-   "market_cap": 588964.48
+   "price": 249.09492598762387,
+   "market_cap": 589076.92
   },
   {
    "crypto_id": 41733,
@@ -8860,8 +8860,8 @@
    "rwa_id": 250,
    "issuer_name": "PreStocks Assets",
    "status": "active",
-   "price": 1680.4228090879424,
-   "market_cap": 3196009.27
+   "price": 1669.2138876764373,
+   "market_cap": 3174690.59
   },
   {
    "crypto_id": 39485,
@@ -8870,7 +8870,7 @@
    "rwa_id": 250,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 1498.3811982343655,
+   "price": 1490.926123606932,
    "market_cap": 0
   },
   {
@@ -8880,7 +8880,7 @@
    "rwa_id": 251,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 198.52265524774157,
+   "price": 198.1747961162074,
    "market_cap": 0
   },
   {
@@ -8890,8 +8890,8 @@
    "rwa_id": 251,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 198.5366180707372,
-   "market_cap": 332380.1
+   "price": 198.81015192686337,
+   "market_cap": 332838.04
   },
   {
    "crypto_id": 40698,
@@ -8900,8 +8900,8 @@
    "rwa_id": 251,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 196.49383460431264,
-   "market_cap": 99831.44
+   "price": 196.42442462815137,
+   "market_cap": 99796.18
   },
   {
    "crypto_id": 40791,
@@ -8910,8 +8910,8 @@
    "rwa_id": 251,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 198.39633662198491,
-   "market_cap": 2625412.88
+   "price": 197.9834482963713,
+   "market_cap": 2465694.4
   },
   {
    "crypto_id": 41273,
@@ -8930,7 +8930,7 @@
    "rwa_id": 252,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 175.33505607228696,
+   "price": 175.6119035206577,
    "market_cap": 0
   },
   {
@@ -8940,8 +8940,8 @@
    "rwa_id": 252,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 175.34402220346078,
-   "market_cap": 503636.56
+   "price": 175.86731177281845,
+   "market_cap": 505139.59
   },
   {
    "crypto_id": 40967,
@@ -8950,8 +8950,8 @@
    "rwa_id": 252,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 175.3546029154049,
-   "market_cap": 2178841.35
+   "price": 175.52036622540655,
+   "market_cap": 1696319.17
   },
   {
    "crypto_id": 40650,
@@ -8960,8 +8960,8 @@
    "rwa_id": 254,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 222.27085791635238,
-   "market_cap": 938714.72
+   "price": 222.12082462297653,
+   "market_cap": 938081.08
   },
   {
    "crypto_id": 40770,
@@ -8970,8 +8970,8 @@
    "rwa_id": 254,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 224.44716193521518,
-   "market_cap": 297161.31
+   "price": 224.44760253132907,
+   "market_cap": 297161.89
   },
   {
    "crypto_id": 40797,
@@ -8980,8 +8980,8 @@
    "rwa_id": 254,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 222.14527701459457,
-   "market_cap": 6581980.83
+   "price": 221.70342829650244,
+   "market_cap": 6568889.22
   },
   {
    "crypto_id": 41481,
@@ -9000,8 +9000,8 @@
    "rwa_id": 255,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 302.22274675862917,
-   "market_cap": 1100953.35
+   "price": 301.2461920482701,
+   "market_cap": 1070296.51
   },
   {
    "crypto_id": 41095,
@@ -9020,8 +9020,8 @@
    "rwa_id": 256,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 150.85941600423016,
-   "market_cap": 11791.93
+   "price": 150.87070879480834,
+   "market_cap": 11792.81
   },
   {
    "crypto_id": 40795,
@@ -9030,8 +9030,8 @@
    "rwa_id": 256,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 149.7967266846972,
-   "market_cap": 1584191.14
+   "price": 149.77117092516386,
+   "market_cap": 1583920.82
   },
   {
    "crypto_id": 41402,
@@ -9050,8 +9050,8 @@
    "rwa_id": 256,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 149.97958318432703,
-   "market_cap": 508375.86
+   "price": 149.94460602381642,
+   "market_cap": 508257.3
   },
   {
    "crypto_id": 41103,
@@ -9070,8 +9070,8 @@
    "rwa_id": 257,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 124.90633997500213,
-   "market_cap": 90289.21
+   "price": 124.90218732325904,
+   "market_cap": 90286.21
   },
   {
    "crypto_id": 41842,
@@ -9260,8 +9260,8 @@
    "rwa_id": 278,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 228.88758716596985,
-   "market_cap": 190936.42
+   "price": 228.77421044537044,
+   "market_cap": 190841.84
   },
   {
    "crypto_id": 41153,
@@ -9280,7 +9280,7 @@
    "rwa_id": 278,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 230.26787280420552,
+   "price": 230.46589515076212,
    "market_cap": 0
   },
   {
@@ -9320,7 +9320,7 @@
    "rwa_id": 281,
    "issuer_name": null,
    "status": "active",
-   "price": 323.58195037755473,
+   "price": 324.1984082433138,
    "market_cap": 0
   },
   {
@@ -9470,8 +9470,8 @@
    "rwa_id": 297,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 64.4394280002,
-   "market_cap": 1215601.01
+   "price": 64.4970099220272,
+   "market_cap": 1216687.25
   },
   {
    "crypto_id": 40690,
@@ -9480,8 +9480,8 @@
    "rwa_id": 297,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 63.608380125321354,
-   "market_cap": 99092.44
+   "price": 63.608254171704566,
+   "market_cap": 99092.25
   },
   {
    "crypto_id": 40849,
@@ -9490,8 +9490,8 @@
    "rwa_id": 297,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 64.38205347531675,
-   "market_cap": 2961050.72
+   "price": 64.41104380178776,
+   "market_cap": 2852737.49
   },
   {
    "crypto_id": 41489,
@@ -9550,8 +9550,8 @@
    "rwa_id": 302,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 348.8786220569314,
-   "market_cap": 32728.4
+   "price": 349.6253753910263,
+   "market_cap": 32798.45
   },
   {
    "crypto_id": 41201,
@@ -9670,8 +9670,8 @@
    "rwa_id": 314,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 365.29547668210205,
-   "market_cap": 315716.68
+   "price": 364.8174071994712,
+   "market_cap": 315303.5
   },
   {
    "crypto_id": 40680,
@@ -9680,7 +9680,7 @@
    "rwa_id": 314,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 369.973449433756,
+   "price": 368.8889667288091,
    "market_cap": 0
   },
   {
@@ -9710,7 +9710,7 @@
    "rwa_id": 316,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 109.04054288812141,
+   "price": 109.05981665824474,
    "market_cap": 0
   },
   {
@@ -9780,8 +9780,8 @@
    "rwa_id": 322,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 413.8984617660527,
-   "market_cap": 71672.34
+   "price": 413.88470124621796,
+   "market_cap": 71669.96
   },
   {
    "crypto_id": 41461,
@@ -10020,8 +10020,8 @@
    "rwa_id": 350,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 195.2532824256553,
-   "market_cap": 56502.2
+   "price": 194.83578603354388,
+   "market_cap": 56381.38
   },
   {
    "crypto_id": 41766,
@@ -10160,8 +10160,8 @@
    "rwa_id": 365,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 47.83149334072298,
-   "market_cap": 854232.3
+   "price": 47.71339460366497,
+   "market_cap": 852123.15
   },
   {
    "crypto_id": 41487,
@@ -10270,7 +10270,7 @@
    "rwa_id": 373,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 385.2476198213937,
+   "price": 385.8655028442006,
    "market_cap": 0
   },
   {
@@ -10290,7 +10290,7 @@
    "rwa_id": 376,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 89.0909953505792,
+   "price": 89.65846587240225,
    "market_cap": 0
   },
   {
@@ -10300,8 +10300,8 @@
    "rwa_id": 376,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 90.06264371991732,
-   "market_cap": 69889.51
+   "price": 90.20950560890853,
+   "market_cap": 70003.48
   },
   {
    "crypto_id": 41693,
@@ -10320,8 +10320,8 @@
    "rwa_id": 376,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 92.07518738352564,
-   "market_cap": 155968.22
+   "price": 92.07212624037263,
+   "market_cap": 155963.03
   },
   {
    "crypto_id": 41186,
@@ -10560,8 +10560,8 @@
    "rwa_id": 401,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 98.73388481460098,
-   "market_cap": 268885.88
+   "price": 99.51198641900788,
+   "market_cap": 271004.92
   },
   {
    "crypto_id": 41682,
@@ -10620,7 +10620,7 @@
    "rwa_id": 407,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 155.74506023672285,
+   "price": 156.1906793057067,
    "market_cap": 0
   },
   {
@@ -10870,8 +10870,8 @@
    "rwa_id": 438,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 13.789675818748712,
-   "market_cap": 276261.23
+   "price": 13.768934542605109,
+   "market_cap": 279013.81
   },
   {
    "crypto_id": 41409,
@@ -10920,8 +10920,8 @@
    "rwa_id": 443,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 81.2640568125389,
-   "market_cap": 237316.97
+   "price": 81.3738494304013,
+   "market_cap": 237637.6
   },
   {
    "crypto_id": 40692,
@@ -10930,8 +10930,8 @@
    "rwa_id": 443,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 82.07683055600528,
-   "market_cap": 554010.81
+   "price": 81.65768061203663,
+   "market_cap": 551181.59
   },
   {
    "crypto_id": 40877,
@@ -10940,8 +10940,8 @@
    "rwa_id": 443,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 81.25161571414908,
-   "market_cap": 1361052.84
+   "price": 81.16706542329348,
+   "market_cap": 1331460.82
   },
   {
    "crypto_id": 41257,
@@ -11160,7 +11160,7 @@
    "rwa_id": 466,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 206.67410928627817,
+   "price": 207.49230387020242,
    "market_cap": 0
   },
   {
@@ -11170,8 +11170,8 @@
    "rwa_id": 466,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 206.66323692806532,
-   "market_cap": 1320647.73
+   "price": 207.8397031470544,
+   "market_cap": 1327109.3
   },
   {
    "crypto_id": 41680,
@@ -11560,8 +11560,8 @@
    "rwa_id": 511,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 58.84715454692304,
-   "market_cap": 740205.55
+   "price": 58.797045112103824,
+   "market_cap": 739575.26
   },
   {
    "crypto_id": 40665,
@@ -11570,8 +11570,8 @@
    "rwa_id": 511,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 58.73125031045222,
-   "market_cap": 327599.49
+   "price": 58.731125970959155,
+   "market_cap": 327598.79
   },
   {
    "crypto_id": 40724,
@@ -11580,8 +11580,8 @@
    "rwa_id": 511,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 59.21679896088694,
-   "market_cap": 51394.32
+   "price": 59.21190074997993,
+   "market_cap": 51390.07
   },
   {
    "crypto_id": 40971,
@@ -11590,8 +11590,8 @@
    "rwa_id": 511,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 58.716847008577936,
-   "market_cap": 908091.95
+   "price": 58.70780696045217,
+   "market_cap": 886994.43
   },
   {
    "crypto_id": 41099,
@@ -11890,8 +11890,8 @@
    "rwa_id": 545,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 39.01754382326724,
-   "market_cap": 132131.06
+   "price": 39.006096205168966,
+   "market_cap": 132092.29
   },
   {
    "crypto_id": 40701,
@@ -11910,7 +11910,7 @@
    "rwa_id": 545,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 39.02850633391567,
+   "price": 39.13091017335863,
    "market_cap": 0
   },
   {
@@ -11950,8 +11950,8 @@
    "rwa_id": 552,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 196.3162204014849,
-   "market_cap": 14374.86
+   "price": 196.27696500848322,
+   "market_cap": 14371.99
   },
   {
    "crypto_id": 41694,
@@ -11970,7 +11970,7 @@
    "rwa_id": 552,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 197.25406118177742,
+   "price": 196.55571357515706,
    "market_cap": 0
   },
   {
@@ -12580,8 +12580,8 @@
    "rwa_id": 712,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 6.148037266540956,
-   "market_cap": 109853.53
+   "price": 6.157805039052815,
+   "market_cap": 110028.06
   },
   {
    "crypto_id": 40764,
@@ -12590,8 +12590,8 @@
    "rwa_id": 751,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 28.312983802008855,
-   "market_cap": 22537.73
+   "price": 28.310466589121653,
+   "market_cap": 22535.73
   },
   {
    "crypto_id": 41203,
@@ -12750,7 +12750,7 @@
    "rwa_id": 785,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 191.9939190101639,
+   "price": 191.69529177002104,
    "market_cap": 0
   },
   {
@@ -12840,8 +12840,8 @@
    "rwa_id": 794,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 100.73057452299912,
-   "market_cap": 32354.86
+   "price": 100.72788264096798,
+   "market_cap": 32354
   },
   {
    "crypto_id": 41605,
@@ -12970,7 +12970,7 @@
    "rwa_id": 809,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 182.9103617412129,
+   "price": 183.01879861614145,
    "market_cap": 0
   },
   {
@@ -12990,8 +12990,8 @@
    "rwa_id": 809,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 183.07215944550174,
-   "market_cap": 118367.02
+   "price": 183.07564262913695,
+   "market_cap": 118369.27
   },
   {
    "crypto_id": 41761,
@@ -13450,8 +13450,8 @@
    "rwa_id": 868,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 97.59714261510894,
-   "market_cap": 688366.6
+   "price": 97.57515862835231,
+   "market_cap": 688211.55
   },
   {
    "crypto_id": 41836,
@@ -13650,7 +13650,7 @@
    "rwa_id": 898,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 98.53950256538829,
+   "price": 99.09110887301495,
    "market_cap": 0
   },
   {
@@ -13730,7 +13730,7 @@
    "rwa_id": 912,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 27.949474886193965,
+   "price": 27.88192869685478,
    "market_cap": 0
   },
   {
@@ -13780,7 +13780,7 @@
    "rwa_id": 963,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 77.77098426850503,
+   "price": 77.71106805619876,
    "market_cap": 0
   },
   {
@@ -13800,7 +13800,7 @@
    "rwa_id": 1062,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 180.92134650649575,
+   "price": 180.7258939442024,
    "market_cap": 0
   },
   {
@@ -13810,8 +13810,8 @@
    "rwa_id": 1062,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 180.8214045959021,
-   "market_cap": 905943.58
+   "price": 180.88568548881003,
+   "market_cap": 906285.52
   },
   {
    "crypto_id": 40159,
@@ -13820,8 +13820,8 @@
    "rwa_id": 1062,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 180.73392693748647,
-   "market_cap": 2193380.81
+   "price": 180.60066073208517,
+   "market_cap": 2191763.49
   },
   {
    "crypto_id": 40539,
@@ -13830,8 +13830,8 @@
    "rwa_id": 1062,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 180.72221322839587,
-   "market_cap": 9122255.71
+   "price": 180.54153783332757,
+   "market_cap": 9050454.71
   },
   {
    "crypto_id": 40645,
@@ -13840,8 +13840,8 @@
    "rwa_id": 1062,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 180.94223499901025,
-   "market_cap": 272824.35
+   "price": 180.90186477795353,
+   "market_cap": 272763.48
   },
   {
    "crypto_id": 40763,
@@ -13850,8 +13850,8 @@
    "rwa_id": 1062,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 179.58877043485163,
-   "market_cap": 188391.85
+   "price": 179.63255852799924,
+   "market_cap": 188437.79
   },
   {
    "crypto_id": 41388,
@@ -13870,8 +13870,8 @@
    "rwa_id": 1083,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 24.025209339277243,
-   "market_cap": 20342.48
+   "price": 24.19583119531807,
+   "market_cap": 20486.95
   },
   {
    "crypto_id": 40576,
@@ -13880,7 +13880,7 @@
    "rwa_id": 1102,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 223.3139553799208,
+   "price": 222.64168199643504,
    "market_cap": 0
   },
   {
@@ -13890,8 +13890,8 @@
    "rwa_id": 1102,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 222.98342657775007,
-   "market_cap": 21025.33
+   "price": 222.96146813595868,
+   "market_cap": 21023.26
   },
   {
    "crypto_id": 41486,
@@ -13910,8 +13910,8 @@
    "rwa_id": 1135,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 271.3133844128805,
-   "market_cap": 19664.56
+   "price": 271.90262047389245,
+   "market_cap": 19707.26
   },
   {
    "crypto_id": 40803,
@@ -13920,7 +13920,7 @@
    "rwa_id": 1135,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 271.22879841784265,
+   "price": 271.9324113184794,
    "market_cap": 0
   },
   {
@@ -13930,8 +13930,8 @@
    "rwa_id": 1164,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 69.9276759015512,
-   "market_cap": 348611.17
+   "price": 69.9075342833902,
+   "market_cap": 348510.75
   },
   {
    "crypto_id": 40875,
@@ -13940,8 +13940,8 @@
    "rwa_id": 1164,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 69.88440105695818,
-   "market_cap": 4308330.45
+   "price": 69.53835137141043,
+   "market_cap": 4054244.14
   },
   {
    "crypto_id": 41854,
@@ -13960,7 +13960,7 @@
    "rwa_id": 1198,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 13.402059159730488,
+   "price": 13.41368719952858,
    "market_cap": 0
   },
   {
@@ -13980,7 +13980,7 @@
    "rwa_id": 1263,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 49.22575657927553,
+   "price": 49.28951868377266,
    "market_cap": 0
   },
   {
@@ -14020,8 +14020,8 @@
    "rwa_id": 1400,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 7.26157189691871,
-   "market_cap": 1073255.23
+   "price": 7.244955399420844,
+   "market_cap": 989330.02
   },
   {
    "crypto_id": 41623,
@@ -14040,8 +14040,8 @@
    "rwa_id": 1410,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 53.03477438587566,
-   "market_cap": 147003.54
+   "price": 52.850713694289894,
+   "market_cap": 146493.35
   },
   {
    "crypto_id": 40822,
@@ -14050,7 +14050,7 @@
    "rwa_id": 1410,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 53.15433314777409,
+   "price": 53.18611184525396,
    "market_cap": 0
   },
   {
@@ -14060,7 +14060,7 @@
    "rwa_id": 1465,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 35.12373805576719,
+   "price": 35.18276129565283,
    "market_cap": 0
   },
   {
@@ -14080,7 +14080,7 @@
    "rwa_id": 1551,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 81.0355402690736,
+   "price": 81.03554026907362,
    "market_cap": 20125.18
   },
   {
@@ -14110,8 +14110,8 @@
    "rwa_id": 1588,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 10.65659792867099,
-   "market_cap": 734638.09
+   "price": 10.666572155066113,
+   "market_cap": 735325.68
   },
   {
    "crypto_id": 40746,
@@ -14130,8 +14130,8 @@
    "rwa_id": 1588,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 10.644619639968848,
-   "market_cap": 1873781.52
+   "price": 10.627168964223197,
+   "market_cap": 1855995.39
   },
   {
    "crypto_id": 41762,
@@ -14160,8 +14160,8 @@
    "rwa_id": 1682,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 15.625011784721162,
-   "market_cap": 43793.08
+   "price": 15.634975492524276,
+   "market_cap": 43821.01
   },
   {
    "crypto_id": 40738,
@@ -14170,8 +14170,8 @@
    "rwa_id": 1682,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 15.6389025961762,
-   "market_cap": 649823.54
+   "price": 15.55640470483313,
+   "market_cap": 646395.61
   },
   {
    "crypto_id": 40969,
@@ -14180,8 +14180,8 @@
    "rwa_id": 1682,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 15.626756786195976,
-   "market_cap": 897956.57
+   "price": 15.58653306892825,
+   "market_cap": 895645.2
   },
   {
    "crypto_id": 41736,
@@ -14220,8 +14220,8 @@
    "rwa_id": 1791,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 13.83975435611641,
-   "market_cap": 11262.6
+   "price": 14.289421572598695,
+   "market_cap": 11628.53
   },
   {
    "crypto_id": 41129,
@@ -14250,8 +14250,8 @@
    "rwa_id": 1843,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 96.53876336501943,
-   "market_cap": 40811.09
+   "price": 96.53441905775401,
+   "market_cap": 40809.25
   },
   {
    "crypto_id": 40771,
@@ -14280,8 +14280,8 @@
    "rwa_id": 1945,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 10.776559631432765,
-   "market_cap": 18384.93
+   "price": 10.806527178656486,
+   "market_cap": 18436.05
   },
   {
    "crypto_id": 40706,
@@ -14300,8 +14300,8 @@
    "rwa_id": 2023,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 8.831764022212544,
-   "market_cap": 1676209.91
+   "price": 8.833100921898954,
+   "market_cap": 1669044.39
   },
   {
    "crypto_id": 41918,
@@ -14310,7 +14310,7 @@
    "rwa_id": 2023,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 8.842335874251992,
+   "price": 8.840539415932932,
    "market_cap": 0
   },
   {
@@ -14320,7 +14320,7 @@
    "rwa_id": 2023,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 8.779076969201306,
+   "price": 8.780954314018654,
    "market_cap": 0
   },
   {
@@ -14330,8 +14330,8 @@
    "rwa_id": 2028,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 8.69743703164824,
-   "market_cap": 222786.11
+   "price": 8.686615595966433,
+   "market_cap": 222508.92
   },
   {
    "crypto_id": 40759,
@@ -14360,7 +14360,7 @@
    "rwa_id": 2220,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 57.534477384168355,
+   "price": 57.22709262715049,
    "market_cap": 0
   },
   {
@@ -14420,7 +14420,7 @@
    "rwa_id": 2703,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 7.705270098907348,
+   "price": 7.737267238461818,
    "market_cap": 0
   },
   {
@@ -14450,7 +14450,7 @@
    "rwa_id": 3066,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 6.125594369517594,
+   "price": 6.181486602825911,
    "market_cap": 0
   },
   {
@@ -14460,8 +14460,8 @@
    "rwa_id": 3066,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 6.1429048792591585,
-   "market_cap": 23746349.34
+   "price": 6.1844890004425785,
+   "market_cap": 23022798.72
   },
   {
    "crypto_id": 42229,
@@ -14520,7 +14520,7 @@
    "rwa_id": 3231,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 6.7474477479566675,
+   "price": 6.765809510221126,
    "market_cap": 0
   },
   {
@@ -14550,8 +14550,8 @@
    "rwa_id": 3233,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 15.609723844715882,
-   "market_cap": 250010.86
+   "price": 15.607894849382523,
+   "market_cap": 249981.57
   },
   {
    "crypto_id": 42003,
@@ -14560,7 +14560,7 @@
    "rwa_id": 3240,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 18.988865842092366,
+   "price": 18.965289057675026,
    "market_cap": 0
   },
   {
@@ -14650,7 +14650,7 @@
    "rwa_id": 4016,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 1.2898228666029359,
+   "price": 1.2890264119470174,
    "market_cap": 0
   },
   {
@@ -14660,8 +14660,8 @@
    "rwa_id": 4016,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 1.2995506072113723,
-   "market_cap": 641479.4
+   "price": 1.2883344036340518,
+   "market_cap": 628660.89
   },
   {
    "crypto_id": 41853,
@@ -14720,8 +14720,8 @@
    "rwa_id": 4789,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 59.640959889729,
-   "market_cap": 1828995.85
+   "price": 59.64083362429656,
+   "market_cap": 1828991.98
   },
   {
    "crypto_id": 40782,
@@ -14740,8 +14740,8 @@
    "rwa_id": 4789,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 59.68604708583614,
-   "market_cap": 19330675.61
+   "price": 59.549411054321276,
+   "market_cap": 19197884.45
   },
   {
    "crypto_id": 41281,
@@ -14790,8 +14790,8 @@
    "rwa_id": 5100,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 45.83659291299195,
-   "market_cap": 127177.06
+   "price": 45.832078508208554,
+   "market_cap": 127164.53
   },
   {
    "crypto_id": 40902,
@@ -14810,7 +14810,7 @@
    "rwa_id": 5186,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 26.465107112031486,
+   "price": 26.3817014642397,
    "market_cap": 0
   },
   {
@@ -14820,8 +14820,8 @@
    "rwa_id": 5186,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 26.432871608317768,
-   "market_cap": 721982.18
+   "price": 26.354333701922428,
+   "market_cap": 680373.66
   },
   {
    "crypto_id": 40145,
@@ -14860,8 +14860,8 @@
    "rwa_id": 5289,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 19.856393559032174,
-   "market_cap": 3656796.25
+   "price": 19.757958694987014,
+   "market_cap": 3546319.23
   },
   {
    "crypto_id": 40675,
@@ -14870,7 +14870,7 @@
    "rwa_id": 5382,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 33.8214953400614,
+   "price": 33.69782094414815,
    "market_cap": 0
   },
   {
@@ -14880,8 +14880,8 @@
    "rwa_id": 5382,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 33.79444818698859,
-   "market_cap": 1915037.23
+   "price": 33.660794115380924,
+   "market_cap": 1867712.47
   },
   {
    "crypto_id": 40879,
@@ -14890,8 +14890,8 @@
    "rwa_id": 5383,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 30.642804600118634,
-   "market_cap": 1149879.01
+   "price": 30.472500077608224,
+   "market_cap": 1082726.32
   },
   {
    "crypto_id": 42271,
@@ -14900,8 +14900,8 @@
    "rwa_id": 5397,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 50.056931026484335,
-   "market_cap": 35698.29
+   "price": 50.052000964398424,
+   "market_cap": 35694.77
   },
   {
    "crypto_id": 40166,
@@ -14940,7 +14940,7 @@
    "rwa_id": 5699,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 18.012905168827665,
+   "price": 17.944006759821512,
    "market_cap": 0
   },
   {
@@ -14950,8 +14950,8 @@
    "rwa_id": 5699,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 17.999115413088873,
-   "market_cap": 8647008.83
+   "price": 17.901618576375036,
+   "market_cap": 6947255.8
   },
   {
    "crypto_id": 40137,
@@ -14960,8 +14960,8 @@
    "rwa_id": 5704,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 532.9446164562459,
-   "market_cap": 168426.57
+   "price": 532.9159778506579,
+   "market_cap": 168417.52
   },
   {
    "crypto_id": 40719,
@@ -14970,8 +14970,8 @@
    "rwa_id": 5704,
    "issuer_name": "Robinhood",
    "status": "active",
-   "price": 530.8464614367371,
-   "market_cap": 138144.07
+   "price": 530.931398006939,
+   "market_cap": 138166.17
   },
   {
    "crypto_id": 41667,
@@ -15000,7 +15000,7 @@
    "rwa_id": 5826,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 44.82547673398956,
+   "price": 44.87877300051714,
    "market_cap": 0
   },
   {
@@ -15020,8 +15020,8 @@
    "rwa_id": 5853,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 36.45893743708389,
-   "market_cap": 85344.33
+   "price": 36.455346629148494,
+   "market_cap": 85335.92
   },
   {
    "crypto_id": 40138,
@@ -15090,7 +15090,7 @@
    "rwa_id": 5952,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 156.4023440459629,
+   "price": 156.4099180072422,
    "market_cap": 0
   },
   {
@@ -15110,7 +15110,7 @@
    "rwa_id": 6206,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 12.368918767700777,
+   "price": 12.29887390877778,
    "market_cap": 0
   },
   {
@@ -15200,7 +15200,7 @@
    "rwa_id": 7062,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 95.75136060829071,
+   "price": 95.91237443990396,
    "market_cap": 0
   },
   {
@@ -15260,7 +15260,7 @@
    "rwa_id": 7470,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 34.95328545961913,
+   "price": 34.91461996102411,
    "market_cap": 0
   },
   {
@@ -15300,7 +15300,7 @@
    "rwa_id": 7733,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 572.826338374124,
+   "price": 572.1358447130094,
    "market_cap": 0
   },
   {
@@ -15320,8 +15320,8 @@
    "rwa_id": 7733,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 571.861900603257,
-   "market_cap": 1229430.2
+   "price": 571.3343126616307,
+   "market_cap": 1216538.84
   },
   {
    "crypto_id": 41627,
@@ -15340,8 +15340,8 @@
    "rwa_id": 7750,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 122.99272784311668,
-   "market_cap": 6827026.9
+   "price": 121.60367000216272,
+   "market_cap": 6749923.69
   },
   {
    "crypto_id": 40600,
@@ -15350,8 +15350,8 @@
    "rwa_id": 7750,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 123.00073256507305,
-   "market_cap": 2334924.32
+   "price": 123.06045288553312,
+   "market_cap": 2336057.99
   },
   {
    "crypto_id": 40794,
@@ -15360,8 +15360,8 @@
    "rwa_id": 7750,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 123.00214234501397,
-   "market_cap": 20059577.74
+   "price": 121.62983473350755,
+   "market_cap": 18262054.26
   },
   {
    "crypto_id": 41586,
@@ -15380,8 +15380,8 @@
    "rwa_id": 7751,
    "issuer_name": "Reality",
    "status": "active",
-   "price": 41.65670128402628,
-   "market_cap": 127068.49
+   "price": 42.02649422670847,
+   "market_cap": 128196.5
   },
   {
    "crypto_id": 40862,
@@ -15390,7 +15390,7 @@
    "rwa_id": 7751,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 41.66121920603659,
+   "price": 42.099064685265155,
    "market_cap": 0
   },
   {
@@ -15400,8 +15400,8 @@
    "rwa_id": 7751,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 41.67589870821261,
-   "market_cap": 1188216.41
+   "price": 42.107866416349914,
+   "market_cap": 1104681.86
   },
   {
    "crypto_id": 40765,
@@ -15430,7 +15430,7 @@
    "rwa_id": 7856,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 9.638864820326669,
+   "price": 9.629984121215948,
    "market_cap": 0
   },
   {
@@ -15520,8 +15520,8 @@
    "rwa_id": 8065,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 187.83821378355796,
-   "market_cap": 7751236.08
+   "price": 187.59549537941692,
+   "market_cap": 7730947.72
   },
   {
    "crypto_id": 40813,
@@ -15530,8 +15530,8 @@
    "rwa_id": 8065,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 187.91558622757017,
-   "market_cap": 24972634.84
+   "price": 187.49335607757445,
+   "market_cap": 24420139.98
   },
   {
    "crypto_id": 40823,
@@ -15540,8 +15540,8 @@
    "rwa_id": 8065,
    "issuer_name": "Ondo Assets",
    "status": "active",
-   "price": 188.14826924200293,
-   "market_cap": 1402048.01
+   "price": 188.08313795404788,
+   "market_cap": 1401562.66
   },
   {
    "crypto_id": 40824,
@@ -15550,7 +15550,7 @@
    "rwa_id": 8065,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 187.8799538127466,
+   "price": 187.40689605787907,
    "market_cap": 0
   },
   {
@@ -15560,8 +15560,8 @@
    "rwa_id": 8065,
    "issuer_name": "Backpack",
    "status": "active",
-   "price": 187.93739043047466,
-   "market_cap": 2341160.56
+   "price": 187.4929233552302,
+   "market_cap": 2335623.78
   },
   {
    "crypto_id": 41523,
@@ -15570,7 +15570,7 @@
    "rwa_id": 8065,
    "issuer_name": "Backed Assets",
    "status": "active",
-   "price": 187.88749393695534,
+   "price": 187.50104276049433,
    "market_cap": 0
   },
   {
@@ -15580,7 +15580,7 @@
    "rwa_id": 16385,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 8.287199932557968,
+   "price": 8.298751525531083,
    "market_cap": 0
   },
   {
@@ -15590,7 +15590,7 @@
    "rwa_id": 16386,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 51.85646227576476,
+   "price": 51.948251000772984,
    "market_cap": 0
   },
   {
@@ -15600,8 +15600,8 @@
    "rwa_id": 16386,
    "issuer_name": "bStocks",
    "status": "active",
-   "price": 51.95165092777504,
-   "market_cap": 588568.08
+   "price": 51.846141044763606,
+   "market_cap": 580048.15
   },
   {
    "crypto_id": 39481,
@@ -15610,7 +15610,7 @@
    "rwa_id": 16388,
    "issuer_name": "NA (Derivatives)",
    "status": "active",
-   "price": 1303.086725693215,
+   "price": 1305.2760841314591,
    "market_cap": 0
   }
  ]
