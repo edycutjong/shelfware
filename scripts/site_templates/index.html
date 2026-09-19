@@ -193,7 +193,7 @@ svg.block rect.pre{opacity:0}
 .hero.lit .claim em{color:var(--verdict)}
 .hero.none .share{color:var(--muted)}
 .hero.none .claim em{color:var(--muted)}
-.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface)}
+.tablewrap{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface)}
 table.pools{width:100%;border-collapse:collapse;font-size:.95rem}
 table.pools th,table.pools td{padding:11px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--border)}
 table.pools th{font-family:var(--font-mono);color:var(--muted);font-weight:500;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
@@ -224,7 +224,7 @@ table.pools td.src{color:var(--muted);font-size:.8rem;white-space:normal;min-wid
 .rows{margin:0 0 24px;padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg)}
 .rows h3{margin:0 0 4px}
 .rows .cap{color:var(--muted);font-size:.9rem;margin-bottom:12px;font-family:var(--font-mono);overflow-wrap:anywhere}
-.rowlist{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.rowlist{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .rowlist table{width:100%;border-collapse:collapse;font-size:.88rem}
 .rowlist th,.rowlist td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap}
 .rowlist th{font-family:var(--font-mono);font-weight:500;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -315,7 +315,7 @@ table.issuers pre{margin:0 0 6px;background:var(--bg);border:1px solid var(--bor
 .proof .arrow-ext{position:absolute;top:10px;right:12px;margin:0;color:var(--muted)}
 
 /* ── api table + findings ────────────────────────────────────────────────────── */
-.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll-x{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch}
 table.api{width:100%;border-collapse:collapse;font-size:.95rem}
 table.api th,table.api td{padding:12px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
 table.api tr:last-child td{border-bottom:0}
