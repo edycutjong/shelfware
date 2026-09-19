@@ -1,4 +1,4 @@
-.PHONY: help setup lint test test-live test-api bench bench-replay seed site demo census snapshot verify check audit ci all
+.PHONY: help setup lint lint-fix typecheck test test-coverage test-live test-api bench bench-replay seed site demo census snapshot verify check audit ci all
 
 help:  ## show targets
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-13s %s\n",$$1,$$2}'
@@ -9,8 +9,17 @@ setup:  ## install dev deps (the product itself needs nothing)
 lint:  ## ruff check + format check
 	ruff check . && ruff format --check .
 
-test:  ## pytest, offline only (no internet)
+lint-fix:  ## ruff autofix + format
+	ruff check --fix . && ruff format .
+
+typecheck:  ## mypy over the engine, the scripts and the tests
+	mypy . --ignore-missing-imports
+
+test:  ## pytest, offline only (no internet), ~1 s
 	pytest -q -m "not live"
+
+test-coverage:  ## the offline suite with coverage of the engine (shelfware/), gated at 90%
+	pytest -q -m "not live" --cov=shelfware --cov-report=term-missing --cov-report=xml --cov-fail-under=90
 
 test-live:  ## the live tests — hit the real CoinMarketCap API, keyless
 	pytest -q -m live
@@ -42,14 +51,14 @@ seed:  ## re-select the hero ticker by the published rule and re-cut data/seed/ 
 site:  ## re-render site/index.html from data/census.json
 	python3 scripts/render_site.py
 
-audit:  ## dependency + secret audit
+audit:  ## dependency CVEs (pip-audit) + secrets in the whole git history (gitleaks)
 	pip-audit -r requirements.txt || true
-	gitleaks detect --no-banner --redact || true
+	gitleaks git --no-banner --redact . || true
 
 check:  ## refuse to ship a placeholder, a key, or a page that drifted from its census
 	python3 scripts/check_submission_readiness.py
 	python3 scripts/render_site.py --check
 	python3 scripts/verify.py
 
-ci: lint test test-api check  ## everything CI runs, offline
+ci: lint typecheck test-coverage test-api audit check  ## everything CI runs, offline
 all: ci bench-replay  ## ci plus the deterministic benchmark

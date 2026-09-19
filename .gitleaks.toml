@@ -1,0 +1,38 @@
+# gitleaks configuration — runs locally via `make audit` and in CI over the FULL git history
+# (.github/workflows/gitleaks.yml, fetch-depth: 0), which is the mechanical form of the
+# rule "scan history for secrets before any private -> public flip".
+
+title = "shelfware"
+
+[extend]
+useDefault = true
+
+# The one secret this project could ever leak is a CoinMarketCap Pro key, which is a UUID.
+# The default rules have no UUID rule (too noisy), so this one binds the shape to the header
+# and the three environment variables the client reads. scripts/check_submission_readiness.py
+# scans every tracked file for a bare UUID as a second, independent net.
+[[rules]]
+id = "coinmarketcap-api-key"
+description = "A CoinMarketCap Pro API key (UUID) assigned to its header or an env var"
+regex = '''(?i)(X-CMC_PRO_API_KEY|CMC_API_KEY|COINMARKETCAP_API_KEY|CMC_PRO_API_KEY)['"\]\)]*\s*[:=]+\s*['"]?([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})'''
+secretGroup = 2
+keywords = ["cmc", "coinmarketcap"]
+
+# The committed census carries 1,435 wrapper contract addresses (EVM 0x…40, Solana base58,
+# Tron). They are public chain identifiers copied verbatim from the API's `token_address`
+# field, and the default generic-api-key rule flags every one of them — 4,421 findings on a
+# repository with no secret in it. Allowlisting the FIELD, not the shape, keeps a UUID-shaped
+# key anywhere else fully visible to both rules above.
+[[allowlists]]
+description = "public on-chain contract addresses in the committed census JSON"
+regexTarget = "match"
+regexes = [
+  '''token_address"\s*:\s*"[0-9A-Za-z]{20,64}"''',
+]
+
+[[allowlists]]
+description = "scripts/spike.py passes a variable named `key` next to `symbol=TICKER` — code, not a credential"
+regexTarget = "match"
+regexes = [
+  '''key, symbol=TICKER''',
+]

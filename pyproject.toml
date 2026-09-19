@@ -37,3 +37,16 @@ testpaths = ["tests"]
 addopts = "-q"
 markers = ["live: hits the real CoinMarketCap API"]
 asyncio_default_fixture_loop_scope = "function"
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+exclude = ["^site/", "^data/", "^docs/", "^\\.venv/"]
+
+[tool.coverage.run]
+# shelfware/__main__.py is three lines that exist so `python3 -m shelfware` works; it only
+# ever runs as a subprocess, where the tracer cannot see it.
+omit = ["shelfware/__main__.py"]
+
+[tool.coverage.report]
+show_missing = true
