@@ -234,3 +234,79 @@ def test_census_command_writes_every_artifact_from_a_scripted_run(monkeypatch, t
     assert list((tmp_path / "snapshots").glob("*.json"))
     assert "1 of 1" not in out.getvalue() and "MS rwa_rank 43" in out.getvalue()
     assert not Path(str(tmp_path / "census.json")).read_text().count("_rwa_rows")
+
+
+def test_census_repeats_a_refused_keyless_map_paging_keyed_and_says_so(monkeypatch, tmp_path):
+    """2026-09-19T00:00Z: the day-2 snapshot's keyless map paging was refused (429 error 1022 —
+    this IP had paged the map several times that day). With the key already required for the
+    census, the identical paging on the keyed base is the honest continuation; the receipt marks
+    those calls keyed."""
+    rwa = {
+        "rwa_assets": [
+            {
+                "rwa_id": 35,
+                "symbol": "MS",
+                "name": "Morgan Stanley",
+                "asset_type": "stock",
+                "rwa_rank": 43,
+                "has_tokens": True,
+            }
+        ],
+        "has_more": False,
+    }
+    quotes = {
+        "rwa_assets": [
+            {
+                "rwa_id": 35,
+                "symbol": "MS",
+                "name": "Morgan Stanley",
+                "asset_type": "stock",
+                "rwa_rank": 43,
+                "has_tokens": True,
+                "tokens": [
+                    {
+                        "crypto_id": 41513,
+                        "symbol": "wMSx",
+                        "name": "W",
+                        "issuer_id": "b",
+                        "issuer_name": "Backed Assets",
+                        "price": None,
+                        "market_cap": None,
+                        "volume_24h": None,
+                    }
+                ],
+            }
+        ]
+    }
+    usage = {"usage": {"current_month": {"credits_used": 1}}}
+    refused = (429, envelope(None, error_code=1022, error_message="limit for anonymous access"))
+    op = FakeOpener(
+        (200, envelope(usage, credit_count=0)),
+        (200, envelope(rwa, credit_count=0)),
+        (200, envelope(quotes, credit_count=1)),
+        (200, envelope({"issuers": []}, credit_count=1)),
+        refused,
+        refused,
+        refused,
+        refused,  # keyless map page 1, exhausted
+        (200, envelope([MS_MAP_ROW], credit_count=0)),  # the same page, keyed
+        (200, envelope(MS_INFO, credit_count=1)),  # info, keyed from the start
+        (200, envelope(usage, credit_count=0)),
+    )
+    monkeypatch.setattr(
+        cli, "Client", lambda api_key=None: Client(api_key="k", sleep=noop, opener=op)
+    )
+    monkeypatch.setattr(cli, "api_key", lambda: "k")
+    monkeypatch.setattr(cli, "DATA", tmp_path)
+    monkeypatch.setattr(cli, "SNAPSHOTS", tmp_path / "snapshots")
+    out = io.StringIO()
+    rc = cli.cmd_census(
+        ["--out", str(tmp_path / "census.json"), "--receipt", str(tmp_path / "live_run.json")],
+        out=out,
+    )
+    assert rc == 0, out.getvalue()
+    assert "keyless pool refused this IP" in out.getvalue()
+    doc = json.loads((tmp_path / "census.json").read_text())
+    map_calls = [m for m in doc["receipt"] if m["call"].startswith("cmc/map")]
+    assert [m["keyed"] for m in map_calls] == [False, True]
+    assert doc["counts"]["untracked"] == 1 and doc["credits_used"] == 3

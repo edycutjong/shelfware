@@ -188,7 +188,17 @@ def run_census(client, out=None, now=None):
     issuers = client.issuers()
     p(f"   {len(issuers)} issuers")
     p("4. /public-api/v1/cryptocurrency/map active,inactive,untracked (keyless, 0 credits)")
-    cmc, _, _ = client.cmc_map()
+    keyed_leg = False
+    try:
+        cmc, _, _ = client.cmc_map()
+    except RuntimeError as e:
+        if "transient" not in str(e):
+            raise
+        # the anonymous pool refused this IP (429 error 1022 after ~8 pages of 5,000 in a day):
+        # the identical paging on the keyed base — 0 credits on the map, and the receipt says keyed
+        keyed_leg = True
+        p(f"   keyless pool refused this IP ({str(e)[:60]}…) — the identical paging, keyed")
+        cmc, _, _ = client.cmc_map(keyed=True)
     p(f"   {len(cmc):,} rows")
     # the paged map omits rows the symbol filter returns (VVV 40784, 2026-09-18): ask again by
     # symbol for whatever did not resolve, so 'unresolved' means CMC has no row, not that we
@@ -201,7 +211,10 @@ def run_census(client, out=None, now=None):
         if t.get("crypto_id") not in cmc and t.get("symbol")
     ]
     if missing:
-        more, _, _ = client.cmc_map(missing)
+        more, meta, _ = client.cmc_map(missing, keyed=keyed_leg)
+        if meta is not None and meta.get("throttled") and not keyed_leg:
+            keyed_leg = True
+            more, _, _ = client.cmc_map(missing, keyed=True)
         found = {k: v for k, v in more.items() if k in ids_in_roster and k not in cmc}
         cmc.update(found)
         p(f"   +{len(found)} resolved by symbol that the paged map omitted")
@@ -212,7 +225,10 @@ def run_census(client, out=None, now=None):
         for t in a.get("tokens") or []
         if (cmc.get(t.get("crypto_id")) or {}).get("status") != "active"
     ]
-    info, _, dropped = client.cmc_info(shelf_ids)
+    info, metas, dropped = client.cmc_info(shelf_ids, keyed=keyed_leg)
+    if metas and metas[-1].get("throttled") and not keyed_leg:
+        p("   keyless pool refused this IP — the identical calls, keyed")
+        info, metas, dropped = client.cmc_info(shelf_ids, keyed=True)
     p(f"   {len(info):,} listing dates · {len(dropped)} ids CMC does not know")
     after = client.key_info()
     doc = census(
