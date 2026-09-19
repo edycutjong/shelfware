@@ -18,7 +18,7 @@ free Basic key as `CMC_API_KEY` and the roster leg goes live too.
 make setup           # dev deps only: pytest, pytest-cov, ruff, mypy, hypothesis, pip-audit
 make lint            # ruff check + format check
 make typecheck       # mypy
-make test            # 99 offline tests, ~1 s, no internet
+make test            # 104 offline tests, ~1 s, no internet
 make test-coverage   # the same, with the engine gated at 90% coverage
 make test-api        # the three Vercel functions, in-process with a stubbed fetch
 make test-live       # 6 tests against the real CoinMarketCap contract and the deployed /judge route

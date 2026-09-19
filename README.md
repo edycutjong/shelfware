@@ -22,6 +22,7 @@ CMC-tracked market.</strong> The ticker question is keyless:
 
 [![Judge Guide](https://img.shields.io/badge/⚖️_Start-Here-06b6d4?style=for-the-badge)](https://shelfware-cmc.vercel.app/judge)
 [![Live](https://img.shields.io/badge/📦_shelfware--cmc.vercel.app-Live-0B0F14?style=for-the-badge)](https://shelfware-cmc.vercel.app)
+[![Pitch Deck](https://img.shields.io/badge/📊_Pitch-Deck-FFB020?style=for-the-badge)](https://shelfware-cmc.vercel.app/pitch/)
 [![API Feedback](https://img.shields.io/badge/📮_CMC_API-Feedback-4C9AFF?style=for-the-badge)](FEEDBACK.md)
 [![Built for Build with CMC](https://img.shields.io/badge/DoraHacks-Build_with_CMC-8b5cf6?style=for-the-badge)](https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail)
 
@@ -31,7 +32,7 @@ CMC-tracked market.</strong> The ticker question is keyless:
 ![CoinMarketCap](https://img.shields.io/badge/CoinMarketCap_RWA_API-3861FB?style=flat&logo=coinmarketcap&logoColor=white)
 ![No API key](https://img.shields.io/badge/API_key-optional-4C9AFF?style=flat)
 ![Zero dependencies](https://img.shields.io/badge/runtime_deps-zero-5E6C80?style=flat)
-![Tests](https://img.shields.io/badge/tests-114-3BD37D?style=flat)
+![Tests](https://img.shields.io/badge/tests-121-3BD37D?style=flat)
 [![CI](https://github.com/edycutjong/shelfware/actions/workflows/ci.yml/badge.svg)](https://github.com/edycutjong/shelfware/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/edycutjong/shelfware?sort=semver&color=FFB020)](https://github.com/edycutjong/shelfware/releases/latest)
 [![License](https://img.shields.io/badge/License-MIT-FFB020?style=flat)](LICENSE)
@@ -188,7 +189,7 @@ browser reach an API that sends no CORS header.
 |---|---|
 | Engine | Python 3.11, **stdlib only** — `python3 -m shelfware MS` needs no `pip install` |
 | Data | CoinMarketCap RWA family (keyed, Basic tier) + the keyless `/public-api` cryptocurrency surface |
-| Site | Static HTML rendered by `scripts/render_site.py`; Vercel functions in dependency-free Node |
+| Site | Static HTML rendered by `scripts/render_site.py` (landing, `/judge`, `/pitch`); served by Vercel and, once public, GitHub Pages at shelfware.edycu.dev; Vercel functions in dependency-free Node with open CORS |
 | Tests | pytest · **hypothesis** (property-based) · live contract tests · `node --test` for the functions |
 | Quality | ruff · mypy · pytest-cov (engine gated at 90%) · pip-audit · gitleaks · CodeQL · Dependabot |
 
@@ -248,7 +249,7 @@ and each one changed something in this code.
 | Live census wall clock | **40.9 s** — 54 calls, cold start to final line ([`live_run.json`](docs/proof/live_run.json)) |
 | **Keyed credits** | **5** — `/v1/key/info` read 12,020 → 12,025 before and after, equal to Σ `credit_count` over the 39 keyed calls |
 | Keyless calls | 15 — charged to no key |
-| Tests | **114** — 99 offline (~1 s), 9 for the proxy functions, 6 live |
+| Tests | **121** — 104 offline (~1 s), 11 for the proxy functions, 6 live |
 | Regression tests named for the defect they pin, each seen against the live API on 2026-09-18 | 9 |
 | **Property-based verification of the join** | **500 generated ledgers, 0 failing** — six invariants |
 | Engine coverage | 91% of `shelfware/`, gated at 90% in CI |
@@ -359,7 +360,7 @@ roster line and in its receipt, so it can never pass as a keyless one.
 make setup           # dev deps only: pytest, pytest-cov, ruff, mypy, hypothesis, pip-audit
 make lint            # ruff check + format check
 make typecheck       # mypy over the engine, the scripts and the tests
-make test            # 99 offline tests, ~1 s, no internet
+make test            # 104 offline tests, ~1 s, no internet
 make test-coverage   # the same, with shelfware/ gated at 90%
 make test-api        # the three Vercel functions, in-process with a stubbed fetch
 make test-live       # 6 tests against the real CoinMarketCap contract and the deployed /judge route
@@ -372,10 +373,10 @@ make ci              # lint + typecheck + coverage + api tests + audit + check
 | Layer | Tool | Status |
 |---|---|---|
 | Code quality | ruff (check + format) · mypy | ✅ |
-| Unit testing | pytest, 99 offline tests, engine coverage gated at 90% | ✅ |
+| Unit testing | pytest, 104 offline tests, engine coverage gated at 90% | ✅ |
 | Property testing | hypothesis, 500 generated ledgers | ✅ |
 | Live contract testing | pytest `-m live` against the real API and the deployed `/judge` | ✅ |
-| Proxy functions | `node --test`, 9 tests with a stubbed fetch | ✅ |
+| Proxy functions | `node --test`, 11 tests with a stubbed fetch | ✅ |
 | Security (SAST) | CodeQL — Python and JavaScript, weekly + on PRs | ✅ |
 | Security (SCA) | Dependabot alerts + monthly grouped updates · pip-audit | ✅ |
 | Secret scanning | gitleaks over the full history, with a rule for the CMC key shape | ✅ |
@@ -410,12 +411,12 @@ shelfware/
 │   ├── delta.py · verify.py      two snapshots diffed · every headline recounted from the rows
 │   └── cli.py                    shelfware TICKER · census · verify · delta
 ├── api/                          Vercel functions, no dependencies: roster (keyed) · status (keyless first) · health
-├── site/                         generated: the one screen (/) and the judge page (/judge)
+├── site/                         generated: the one screen (/), the judge page (/judge) and the deck (/pitch); CNAME for Pages
 ├── scripts/                      snapshot · seed · bench · verify · render_site · md2html · readiness gate · spike
 ├── data/                         census.json · roster_snapshot.json · snapshots/ · delta.json · seed/
 ├── docs/proof/                   live_run.json · ms.json · bench.json · spike.json — the receipts
 ├── docs/                         METHOD.md · COMPARISON.md · screenshots/ · assets/
-├── tests/                        99 offline · 6 live · api.test.mjs
+├── tests/                        104 offline · 6 live · api.test.mjs
 ├── JUDGE.md · DEMO.md · ARCHITECTURE.md · FEEDBACK.md
 └── README.md                     you are here
 ```
@@ -430,6 +431,7 @@ shelfware/
 - [x] A daily snapshot series and the delta panel (two days so far, +0 / +0 / +0 / −0)
 - [x] Receipts, benchmarks, a property test over 500 ledgers, and a gate that recounts every headline
 - [x] `/judge` — the claim, the 30-second path and the receipt on one page, no auth
+- [x] `/pitch` — the twelve-slide deck, rendered from the census, drift-gated like the page
 - [x] Twelve dated findings for the CoinMarketCap team, filed in [FEEDBACK.md](FEEDBACK.md)
 - [ ] A week of snapshots → the first *weekly* delta ("what changed this week") on the page
 - [ ] A demo video, recorded from the live site and the CLI
@@ -443,6 +445,8 @@ shelfware/
 |---|---|
 | **Live** | **[shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)** — the census with its receipt, the issuer scorecard, and the ticker question through the site's proxy |
 | **For judges** | **[shelfware-cmc.vercel.app/judge](https://shelfware-cmc.vercel.app/judge)** — the 30-second path; source in [JUDGE.md](JUDGE.md) |
+| **Pitch deck** | **[shelfware-cmc.vercel.app/pitch](https://shelfware-cmc.vercel.app/pitch/)** — 12 slides, arrow keys, `P` for speaker notes, `Cmd+P` for a PDF; rendered from the census by `scripts/render_site.py`, so every number on it is the receipt's. Source: [`scripts/site_templates/pitch.html`](scripts/site_templates/pitch.html) |
+| **Static mirror** | `site/` also deploys to GitHub Pages at **shelfware.edycu.dev** (`site/CNAME`, [`.github/workflows/pages.yml`](.github/workflows/pages.yml)) once the repository is public — same page, same deck; the ticker search calls the Vercel functions cross-origin |
 | **The receipt** | **[DEMO.md](DEMO.md)** — both live runs transcribed, with [`docs/proof/live_run.json`](docs/proof/live_run.json) and [`ms.json`](docs/proof/ms.json) behind them |
 | **Health** | [shelfware-cmc.vercel.app/api/health](https://shelfware-cmc.vercel.app/api/health) — census date, snapshot days, the counts, the deployed commit; a boolean about the key, never the key |
 | **Screenshots** | [docs/screenshots/](docs/screenshots/) — eight captures of live execution: the MS card, the NVDA answer with its evidence drawer, the issuer scorecard, the census receipt, the delta panel, the type bars, the limits card, the whole page |
