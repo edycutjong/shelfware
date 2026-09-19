@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Render site/index.html and site/judge/index.html from data/census.json (+ delta.json,
-docs/proof/ms.json, JUDGE.md).
+"""Render site/index.html, site/judge/index.html and site/pitch/index.html from data/census.json
+(+ delta.json, docs/proof/ms.json, docs/proof/bench.json, JUDGE.md).
 
-    python3 scripts/render_site.py            # write site/index.html and data/health.json
+    python3 scripts/render_site.py            # write the three pages and data/health.json
     python3 scripts/render_site.py --check    # exit 1 if what is on disk is not this render
 
 Every number on the page comes from the committed census — a real keyed run whose receipt is
@@ -13,6 +13,7 @@ hand. site/index.html is generated output: edit the template or the census, neve
 
 import json
 import re
+import subprocess
 import sys
 import urllib.parse
 from html import escape
@@ -33,8 +34,20 @@ HEALTH_OUT = DATA / "health.json"
 PROOF = ROOT / "docs" / "proof"
 JUDGE_MD = ROOT / "JUDGE.md"
 JUDGE_OUT = SITE / "judge" / "index.html"
+PITCH_OUT = SITE / "pitch" / "index.html"
 REPO = "https://github.com/edycutjong/shelfware"
+# The canonical host. The same site/ is served by Vercel (with the api/ functions) and, once the
+# repository is public, by GitHub Pages at PAGES_URL (static; its page calls the Vercel functions
+# cross-origin). Flip SITE_URL to PAGES_URL after the DNS record and the Pages site exist.
 SITE_URL = "https://shelfware-cmc.vercel.app"
+PAGES_URL = "https://shelfware.edycu.dev"
+# Where the api/ functions run, always: the page fetches them same-origin on Vercel and at this
+# absolute URL from any other host (GitHub Pages), so the search works on both.
+API_URL = "https://shelfware-cmc.vercel.app"
+# Public-page fixtures that are not numbers: test counts as README states them, and the QR that
+# encodes SITE_URL/judge (generated once with segno; static so the render needs no dependency).
+TESTS = {"offline": 104, "node": 11, "live": 6}
+QR_SVG = TEMPLATES / "qr-judge.svg"
 DOTTED = re.compile(r"^[A-Za-z0-9]+$")
 
 LOGO = (
@@ -48,6 +61,23 @@ FAVICON = urllib.parse.quote(
     + LOGO.split('aria-hidden="true">', 1)[1].rsplit("</svg>", 1)[0]
     + "</svg>"
 )
+
+
+def version():
+    """The deck's version stamp: the repository's latest tag, so the deck, the README's Release
+    badge and the live app carry the same string. No tag yet reads v0.0.0-dev — an honest signal
+    that no release exists, never a faked number. The CI check job clones with tags for this."""
+    try:
+        out = subprocess.run(
+            ["git", "describe", "--tags", "--abbrev=0"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout.strip()
+        return out or "v0.0.0-dev"
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return "v0.0.0-dev"
 
 
 def money(x):
@@ -264,12 +294,14 @@ def render():
         "jq": JQ_RECIPE,
         "repo": REPO,
         "site_url": SITE_URL,
+        "api_url": API_URL,
         "logo": LOGO,
         "favicon": FAVICON,
         "inline_json": json.dumps(
             {
                 "definition": UNTRACKED_DEFINITION,
                 "generated_utc": doc["generated_utc"],
+                "api_base": API_URL,
                 "hero_run": hero,
             },
             separators=(",", ":"),
@@ -326,6 +358,7 @@ def render_judge():
         "favicon": FAVICON,
         "repo": REPO,
         "site_url": SITE_URL,
+        "api_url": API_URL,
         "share_pct": str(share),
         "generated_utc": doc["generated_utc"],
         "description": (
@@ -342,10 +375,111 @@ def render_judge():
     return html
 
 
+def issuer(doc, name):
+    return next((e for e in doc["by_issuer"] if e["issuer_name"] == name), None)
+
+
+def render_pitch():
+    """site/pitch/index.html — the twelve-slide deck, every number a slot from the census, the
+    receipt and the benchmark; served at /pitch/ on both hosts. Same drift gate as the page."""
+    doc = json.loads((DATA / "census.json").read_text())
+    c, a = doc["counts"], doc["age_tracked_days"]
+    bench = json.loads((PROOF / "bench.json").read_text())
+    tu = {e["asset_type"]: e for e in type_underlyings(doc["wrappers"])}
+    stock = tu.get("stock", {"zero_tracked": 0, "underlyings": 0, "share": 0})
+    share = round(100 * c["underlyings_zero_tracked"] / c["has_tokens"])
+    usage = doc.get("key_usage") or {}
+    cm = lambda k: ((usage.get(k) or {}).get("current_month") or {}).get("credits_used")  # noqa: E731
+    backed = issuer(doc, "Backed Assets") or {}
+    dinari = issuer(doc, "Dinari Assets") or {}
+    bstocks = issuer(doc, "bStocks") or {}
+    type_rows = "".join(
+        f'<div class="type"><span class="muted">{escape(t["asset_type"])}</span>'
+        + bar(
+            t["tracked"],
+            t["untracked"],
+            t["other"],
+            label=f"{t['asset_type']}: {t['untracked']} of {t['attached']} wrappers untracked",
+        )
+        + f'<span class="r">{t["shelf_rate"]:.0%} shelf</span></div>'
+        for t in doc["by_type"]
+    )
+    qr = QR_SVG.read_text()
+    qr_paths = qr.split(">", 1)[1].rsplit("</svg>", 1)[0]
+    slots = {
+        "version": version(),
+        "share_pct": share,
+        "lit_pct": 100 - share,
+        "zero_tracked": c["underlyings_zero_tracked"],
+        "has_tokens": c["has_tokens"],
+        "with_tracked": c["has_tokens"] - c["underlyings_zero_tracked"],
+        "stock_zero": stock["zero_tracked"],
+        "stock_under": stock["underlyings"],
+        "stock_pct": round(100 * (stock["share"] or 0)),
+        "untracked": c["untracked"],
+        "wrappers": c["wrappers"],
+        "wrappers_fmt": f"{c['wrappers']:,}",
+        "underlyings_fmt": f"{c['underlyings']:,}",
+        "map_rows_fmt": f"{c['cmc_map_rows']:,}",
+        "issuers": c["issuers_in_registry"],
+        "unresolved": c["unresolved"],
+        "generated_utc": doc["generated_utc"],
+        "generated_short": doc["generated_utc"].replace("T", " ").replace("Z", "")[:16],
+        "credits": doc["credits_used"],
+        "keyed_calls": doc["keyed_calls"],
+        "keyless_calls": doc["keyless_calls"],
+        "wall_clock": doc["wall_clock_s"],
+        "usage_before": cm("before") if cm("before") is not None else "—",
+        "usage_after": cm("after") if cm("after") is not None else "—",
+        "age_median": a["median"],
+        "age_p90": a["p90"],
+        "age_n": a["n"],
+        "backed_declared": backed.get("declared", "—"),
+        "backed_attached": backed.get("attached", "—"),
+        "backed_untracked": backed.get("untracked", "—"),
+        "backed_pct": round(100 * (backed.get("shelf_rate") or 0)),
+        "backed_live": money(backed.get("live_market_cap_usd")),
+        "dinari_attached": dinari.get("attached", "—"),
+        "dinari_untracked": dinari.get("untracked", "—"),
+        "bstocks_attached": bstocks.get("attached", "—"),
+        "bstocks_live": money(bstocks.get("live_market_cap_usd")),
+        "lookup_p50": round(bench["lookup"]["p50"]),
+        "lookup_p95": round(bench["lookup"]["p95"]),
+        "join_p50": f"{bench['join_seed']['p50']:.2f}",
+        "join_p95": f"{bench['join_seed']['p95']:.2f}",
+        "tests_total": sum(TESTS.values()),
+        "tests_offline": TESTS["offline"],
+        "tests_node": TESTS["node"],
+        "tests_live": TESTS["live"],
+        "repo": REPO,
+        "site_url": SITE_URL,
+        "site_host": SITE_URL.split("//", 1)[1],
+        "logo": LOGO,
+        "favicon": FAVICON,
+        "type_rows": type_rows,
+        "qr_paths": qr_paths,
+    }
+    html = (TEMPLATES / "pitch.html").read_text()
+    raw = {"logo", "favicon", "type_rows", "qr_paths"}
+    for k, v in slots.items():
+        html = html.replace(
+            "{{" + k + "}}", str(v) if k in raw or not isinstance(v, str) else escape(v)
+        )
+    left = re.findall(r"\{\{[a-z_0-9]+\}\}", html)
+    if left:
+        sys.exit(f"unfilled slots on the deck: {sorted(set(left))}")
+    return html
+
+
 def main():
     check = "--check" in sys.argv
     html, health = render()
-    targets = {SITE / "index.html": html, HEALTH_OUT: health, JUDGE_OUT: render_judge()}
+    targets = {
+        SITE / "index.html": html,
+        HEALTH_OUT: health,
+        JUDGE_OUT: render_judge(),
+        PITCH_OUT: render_pitch(),
+    }
     if check:
         stale = [p.name for p, want in targets.items() if not p.exists() or p.read_text() != want]
         if stale:
@@ -353,7 +487,9 @@ def main():
                 f"drift: {', '.join(stale)} is not what the census renders — run: python3 scripts/render_site.py"
             )
             return 1
-        print("site/index.html, site/judge/index.html and data/health.json match the census")
+        print(
+            "site/index.html, site/judge/index.html, site/pitch/index.html and data/health.json match the census"
+        )
         return 0
     SITE.mkdir(exist_ok=True)
     for p, content in targets.items():

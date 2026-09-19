@@ -31,7 +31,7 @@ def suite_counts():
 
 def test_the_suite_size_on_every_judge_facing_surface_is_the_suite_size():
     c = suite_counts()
-    assert c["offline"] > 90 and c["node"] == 9 and c["live"] >= 5
+    assert c["offline"] > 90 and c["node"] == 11 and c["live"] >= 5
     readme = (ROOT / "README.md").read_text()
     demo = (ROOT / "DEMO.md").read_text()
     judge = (ROOT / "JUDGE.md").read_text()
@@ -42,3 +42,7 @@ def test_the_suite_size_on_every_judge_facing_surface_is_the_suite_size():
     assert f"{c['live']} live" in demo
     assert f"**{c['total']}**" in judge and f"{c['offline']} offline" in judge, "JUDGE"
     assert f"{c['live']} live" in judge
+    # the deck renders its count from render_site.TESTS — held to the same number
+    deck = (ROOT / "site" / "pitch" / "index.html").read_text()
+    assert f'<div class="v">{c["total"]}</div>' in deck, "deck metric"
+    assert f"{c['offline']} offline · {c['node']} node · {c['live']} live" in deck, "deck split"

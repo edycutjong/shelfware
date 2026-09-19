@@ -31,6 +31,7 @@ TARGETS = [
     "ARCHITECTURE.md",
     "site/index.html",
     "site/judge/index.html",
+    "site/pitch/index.html",
 ]
 TARGET_GLOBS = ["docs/*.md", ".github/*.md"]
 # The key scan covers everything tracked, not just the judge-facing files.

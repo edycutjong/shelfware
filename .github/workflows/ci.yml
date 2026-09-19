@@ -69,6 +69,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0        # the deck's version stamp is `git describe --tags`; the drift gate needs the tags
       - uses: actions/setup-python@v7
         with: { python-version: '3.11' }
       # A TODO, a template token, a fake video link, a key-shaped string or a census older

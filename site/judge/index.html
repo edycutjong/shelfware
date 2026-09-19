@@ -60,6 +60,7 @@ footer{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:14px;bo
     <a class="btn primary" href="/#search">Type a ticker</a>
     <a class="btn" href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     <a class="btn" href="https://github.com/edycutjong/shelfware/blob/main/DEMO.md" target="_blank" rel="noopener noreferrer">DEMO.md ↗</a>
+    <a class="btn" href="/pitch/">Pitch deck</a>
   </nav>
 </header>
 <article>
@@ -75,12 +76,12 @@ python3 -m shelfware MS</pre>
 <p>Or open <strong><a href="https://shelfware-cmc.vercel.app">shelfware-cmc.vercel.app</a></strong>: the census, the issuer table, and the same ticker question live through the site's proxy. Type <code>NVDA</code> for a mixed case (7 of 8 wrappers tracked; Dinari's is not), <code>GILD</code> or <code>PLD</code> for more shelf, <code>GOLD</code> for a commodity that trades. Open the evidence drawer on any answer for the raw <code>tokens[]</code> entry, the raw map row and the raw info row.</p>
 <ol><li><strong>The two facts come from the same API and disagree.</strong> <code>has_tokens: true</code> is from the RWA map; <code>status: untracked</code> is from the cryptocurrency map. The product is that pair, one row at a time; the issuer table is the same pair 772 times (Backed Assets: 632 of 772 on the shelf).</li><li><strong>The number is a count, not a model.</strong> Two <code>jq</code> filters over the committed rows reproduce it; <code>python3 -m shelfware verify</code> does the same and fails on drift. See <a href="https://github.com/edycutjong/shelfware/blob/main/DEMO.md">DEMO.md</a>.</li><li><strong>The word is CoinMarketCap's.</strong> "untracked" means <em>listed, no CMC-tracked market</em>, and the surfaces say so — never "never traded". The spike that settled the wording is committed.</li></ol>
 <h2>Receipt — live census, 2026-09-18T22:16:17Z</h2>
-<table><tbody><tr><td>Wall clock</td><td><strong>40.9 s</strong>, 54 calls</td></tr><tr><td>Rows</td><td>7,811 underlyings · 791 <code>has_tokens</code> · <strong>1,435 wrappers</strong> · 25 issuers · 38,682 map rows</td></tr><tr><td><strong>Keyed credits</strong></td><td><strong>5</strong> — <code>/v1/key/info</code> read 12,020 → 12,025 before and after</td></tr><tr><td>Keyless calls</td><td>15, charged to no key</td></tr><tr><td><strong>The number</strong></td><td><strong>476 of 791</strong> tokenised underlyings with no wrapper that has a CMC-tracked market (60%); stocks alone 437 of 689 (63%); 673 of 1,435 wrappers untracked</td></tr><tr><td>Issuers</td><td>Dinari 27 / 27 on the shelf · Backed 632 / 772 (82%, $669M live in the rest) · Robinhood 8 / 106 · Ondo 4 / 214 · bStocks 0 / 77</td></tr><tr><td>Tests</td><td><strong>114</strong> (99 offline in ~1 s, 9 for the proxy functions, 6 live against the real contract and this page's route), 9 named for the defect they pin, one property over 500 generated ledgers</td></tr><tr><td>Latency</td><td>ticker question p50 <strong>552 ms</strong> keyless (p95 603 ms); the join itself 1.2 ms</td></tr><tr><td>Raw receipts</td><td><a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/live_run.json"><code>docs/proof/live_run.json</code></a> · <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/ms.json"><code>ms.json</code></a> · <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/bench.json"><code>bench.json</code></a> · <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/spike.json"><code>spike.json</code></a></td></tr></tbody></table>
+<table><tbody><tr><td>Wall clock</td><td><strong>40.9 s</strong>, 54 calls</td></tr><tr><td>Rows</td><td>7,811 underlyings · 791 <code>has_tokens</code> · <strong>1,435 wrappers</strong> · 25 issuers · 38,682 map rows</td></tr><tr><td><strong>Keyed credits</strong></td><td><strong>5</strong> — <code>/v1/key/info</code> read 12,020 → 12,025 before and after</td></tr><tr><td>Keyless calls</td><td>15, charged to no key</td></tr><tr><td><strong>The number</strong></td><td><strong>476 of 791</strong> tokenised underlyings with no wrapper that has a CMC-tracked market (60%); stocks alone 437 of 689 (63%); 673 of 1,435 wrappers untracked</td></tr><tr><td>Issuers</td><td>Dinari 27 / 27 on the shelf · Backed 632 / 772 (82%, $669M live in the rest) · Robinhood 8 / 106 · Ondo 4 / 214 · bStocks 0 / 77</td></tr><tr><td>Tests</td><td><strong>121</strong> (104 offline in ~1 s, 11 for the proxy functions, 6 live against the real contract and this page's route), 9 named for the defect they pin, one property over 500 generated ledgers</td></tr><tr><td>Latency</td><td>ticker question p50 <strong>552 ms</strong> keyless (p95 603 ms); the join itself 1.2 ms</td></tr><tr><td>Raw receipts</td><td><a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/live_run.json"><code>docs/proof/live_run.json</code></a> · <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/ms.json"><code>ms.json</code></a> · <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/bench.json"><code>bench.json</code></a> · <a href="https://github.com/edycutjong/shelfware/blob/main/docs/proof/spike.json"><code>spike.json</code></a></td></tr></tbody></table>
 <h2>Reproduce</h2>
 <pre>python3 -m shelfware MS                 # the ticker question, keyless
 python3 -m shelfware NVDA               # a mixed one
 python3 -m shelfware verify             # recount the headline from data/census.json
-make test                               # 99 offline tests
+make test                               # 104 offline tests
 make test-live                          # 6 live tests, keyless
 export CMC_API_KEY=… &amp;&amp; make census     # the full census, ~5 credits (a free Basic key is enough)</pre>
 <h2>Why only CoinMarketCap</h2>
@@ -95,7 +96,8 @@ export CMC_API_KEY=… &amp;&amp; make census     # the full census, ~5 credits 
   <span>Built on the CoinMarketCap API for <a href="https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail" target="_blank" rel="noopener noreferrer">Build with CMC</a> · Real World Assets</span>
   <a href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">Repository</a>
   <a href="https://github.com/edycutjong/shelfware/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">API feedback</a>
-  <a href="/api/health">/api/health</a>
+  <a href="/pitch/">Pitch deck</a>
+  <a href="https://shelfware-cmc.vercel.app/api/health">/api/health</a>
 </footer>
 </main>
 </body>

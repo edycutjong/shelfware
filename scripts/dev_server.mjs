@@ -39,7 +39,8 @@ http
     // a directory resolves to its index.html, as Vercel does: /judge -> site/judge/index.html
     if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, "index.html");
     if (file.startsWith(path.join(ROOT, "site")) && fs.existsSync(file) && fs.statSync(file).isFile()) {
-      res.setHeader("Content-Type", file.endsWith(".html") ? "text/html; charset=utf-8" : "application/octet-stream");
+      const types = { ".html": "text/html; charset=utf-8", ".png": "image/png", ".svg": "image/svg+xml", ".json": "application/json", ".css": "text/css", ".js": "text/javascript" };
+      res.setHeader("Content-Type", types[path.extname(file)] || "application/octet-stream");
       fs.createReadStream(file).pipe(res);
     } else {
       res.statusCode = 404;
