@@ -110,6 +110,7 @@
     $("calls-list").innerHTML = "<table><thead><tr><th>call</th><th>http</th><th>key</th><th>credits</th><th>ms</th><th>sha256</th><th>utc</th></tr></thead><tbody>" + calls.map(function (m) {
       return "<tr><td>" + esc(m.call || "") + '</td><td class="mono">' + esc(m.http) + "</td><td>" + (m.keyed ? "keyed" : "keyless") + '</td><td class="mono">' + (m.keyed ? esc(m.credit_count) : "0 to any key") + '</td><td class="mono">' + (m.elapsed_ms != null ? esc(m.elapsed_ms) : "—") + '</td><td class="mono">' + esc(m.sha256 || "—") + '</td><td class="mono">' + esc(m.fetched_utc || "") + "</td></tr>";
     }).join("") + "</tbody></table>";
+    if ($("calls-n")) $("calls-n").textContent = String(calls.length);
   }
 
   function joinWrappers(tokens, mapRows, infoRows, snapTokens, bases) {

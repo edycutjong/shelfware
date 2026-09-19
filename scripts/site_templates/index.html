@@ -306,7 +306,6 @@ table.issuers pre{margin:0 0 6px;background:var(--bg);border:1px solid var(--bor
 .calls .rowlist{padding:0 14px 14px}
 .calls .rowlist td{white-space:normal;overflow-wrap:anywhere}
 .calls .rowlist td.mono{white-space:nowrap}
-.calls summary{font-family:var(--font-mono);font-weight:500;font-size:.86rem}
 .proof{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
 .proof>*{min-width:0}
 .proof a{display:block;position:relative;padding:14px 16px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);color:var(--text);transition:border-color var(--t-fast),transform var(--t-fast) var(--ease)}
@@ -432,9 +431,11 @@ footer .bottom .ver{color:var(--accent)}
 }
 @media (max-width:480px){
   .statband{grid-template-columns:1fr 1fr}footer .cols{grid-template-columns:1fr}
-  .brand{font-size:.95rem;white-space:nowrap}.nav-links a.judge{font-size:.8rem;white-space:nowrap}.nav{gap:8px}
+  /* a two-word brand and the judge pill share 335px: neither may wrap */
+  .nav{gap:8px}.brand{font-size:.95rem;gap:9px;white-space:nowrap}.brand svg{width:26px;height:26px}
+  .nav-links a.judge{padding:7px 10px;font-size:.8rem;white-space:nowrap}
 }
-@media (max-width:360px){.brand{font-size:.84rem}.brand svg{width:22px;height:22px}.nav-links a.judge{font-size:.72rem;padding:7px 9px}.gh{width:32px;height:32px}}
+@media (max-width:360px){.brand{font-size:.84rem;gap:7px}.brand svg{width:22px;height:22px}.nav-links{gap:2px}.nav-links a.judge{padding:6px 8px;font-size:.72rem}.gh{width:32px;height:32px}}
 </style>
 </head>
 <body>
@@ -589,22 +590,22 @@ footer .bottom .ver{color:var(--accent)}
     <h2 class="reveal d1">Every number on this page came from a call you can replay.</h2>
     <p class="lede reveal d2" style="margin-top:16px">The census's {{calls_total}} calls — URL, HTTP status, <span class="mono">credit_count</span>, bytes, sha256, UTC — are in <a href="{{repo}}/blob/main/docs/proof/live_run.json" target="_blank" rel="noopener noreferrer">live_run.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>; the ticker answer's are in <a href="{{repo}}/blob/main/docs/proof/ms.json" target="_blank" rel="noopener noreferrer">ms.json<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>. The grid below follows the answer: type a ticker and it updates.</p>
     <div class="receipt" id="receipt-grid">{{receipt}}</div>
-    <details class="calls" id="calls">
-      <summary>every call behind this answer<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+    <div class="proof reveal">{{proof_links}}</div>
+    <details class="calls reveal" id="calls">
+      <summary><span>every call behind this answer · <span class="mono" id="calls-n">{{calls_n}}</span> · call · http · key · credits · ms · sha256 · utc</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="fold"><div class="fold-clip"><div class="rowlist" id="calls-list">{{calls_rows}}</div></div></div>
     </details>
     <details class="calls reveal">
-      <summary>every call of the census — {{calls_total}}, {{generated_short}} UTC<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <summary><span>every call of the census · <span class="mono">{{calls_total}}</span> · call · http · key · credit_count · bytes · sha256 · utc</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="fold"><div class="fold-clip"><div class="rowlist">{{census_calls}}</div><p class="note" style="margin:0 14px 14px">{{keyed_calls}} keyed calls = {{credits}} credits, read off <span class="mono">/v1/key/info</span> before and after: {{usage_before}} → {{usage_after}} credits used this month. {{keyless_calls}} keyless calls, charged to no key. Re-derive both headline numbers by hand:</p><pre class="json" style="max-height:none">{{jq}}</pre></div></div>
     </details>
-    <div class="proof reveal">{{proof_links}}</div>
   </div>
 </section>
 
 <section id="api">
   <div class="wrap">
     <div class="kicker reveal">The API</div>
-    <h2 class="reveal d1">Six endpoints. Two of them are the whole join.</h2>
+    <h2 class="reveal d1">{{api_count}} endpoints. Two of them are the whole join.</h2>
     <p class="lede reveal d2" style="margin-top:16px">The wrapper roster with its null-price rows exists in one place: <span class="mono">tokens[]</span> on <span class="mono">/v5/real-world-assets/quotes/latest</span>. The listing state that explains the nulls exists in one place: <span class="mono">status</span> on <span class="mono">/v1/cryptocurrency/map</span>. Delete CoinMarketCap and both ledgers vanish — no single endpoint says a wrapper has no market; only the join does.</p>
     <div class="card reveal" style="margin-top:32px;padding:0 24px">
       <div class="scroll-x">
@@ -631,7 +632,7 @@ footer .bottom .ver{color:var(--accent)}
         <p><span class="mono">tokens[]</span> carries ids the map and the info endpoint both deny exist ({{unresolved_list}} — null symbols). Counting them as shelf would inflate the headline; <b>they sit in their own bucket and are counted nowhere</b>, and the property test holds that rule over {{property_cases}} generated ledgers.</p>
       </div>
     </div>
-    <p class="note reveal" style="margin-top:18px">{{feedback_n}} dated, evidenced findings for the CoinMarketCap team — and what is worth protecting — in <a href="{{repo}}/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">FEEDBACK.md<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>. Every endpoint the client calls is named above; <span class="mono">tests/test_render_site.py</span> holds this page to the six, and a seventh that was tried and refused is listed rather than hidden.</p>
+    <p class="note reveal" style="margin-top:18px">{{feedback_n}} dated, evidenced findings for the CoinMarketCap team — and what is worth protecting — in <a href="{{repo}}/blob/main/FEEDBACK.md" target="_blank" rel="noopener noreferrer">FEEDBACK.md<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>. Every endpoint the client calls is named above; <span class="mono">tests/test_render_site.py</span> holds this page to every one of them, and the one that was tried and refused is listed rather than hidden.</p>
   </div>
 </section>
 

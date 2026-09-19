@@ -530,6 +530,7 @@ def answer_ctx(res, doc):
         "rows_json": rows_json,
         "receipt": receipt,
         "calls_rows": calls_rows,
+        "calls_n": len(calls),
         "hero_asked": asked,
         "hero_rank": u.get("rwa_rank") if u else "—",
     }
@@ -830,6 +831,7 @@ def render():
         "backed_attached": backed["attached"],
         "census_calls": census_calls(doc["receipt"]),
         "api_rows": api_rows(doc["receipt"], (hero or {}).get("calls") or []),
+        "api_count": sum(1 for *_, cls in ENDPOINTS if cls != "unused"),
         "proof_links": proof_links(doc, hero, bench),
         "runs": runs,
         "snapshots_n": len(snaps),
