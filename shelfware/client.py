@@ -255,7 +255,7 @@ class Client:
                     "limit": CMC_MAP_PAGE,
                     "aux": MAP_AUX,
                 },
-                keyed=False,
+                keyed=keyed,
                 label=f"cmc/map start={start}",
             )
             if meta["error"]:
