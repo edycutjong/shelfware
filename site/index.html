@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market</title>
-<meta name="description" content="476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Type a ticker: every wrapper, its issuer, chain and listing state, with the raw API rows beside it.">
+<meta name="description" content="476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Type a ticker: every wrapper, issuer, chain, listing state.">
 <meta name="author" content="Edy Cu">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a tracked market">
@@ -24,6 +24,7 @@
 --sans:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 *{box-sizing:border-box}
 html{color-scheme:dark;background:var(--bg)}
+:focus-visible{outline:2px solid var(--flag);outline-offset:3px}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:var(--text)}a:hover,a:focus-visible{color:var(--flag)}
 main{max-width:1120px;margin:0 auto;padding:24px 20px 80px}
@@ -32,7 +33,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:16px;pa
 .brand svg{width:34px;height:22px}
 nav{display:flex;gap:10px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);text-decoration:none;font-size:15px;font-family:var(--mono);min-height:44px;transition:border-color .15s,transform .15s,background .15s}
-.btn:hover,.btn:focus-visible{border-color:var(--flag);color:var(--text);transform:translateY(-1px);outline:none}
+.btn:hover,.btn:focus-visible{border-color:var(--flag);color:var(--text);transform:translateY(-1px)}
 .btn:active{transform:translateY(0)}
 .btn.primary{background:var(--flag);color:#0B0F14;border-color:var(--flag);font-weight:600}
 .btn.primary:hover{background:#ffc247}
@@ -57,7 +58,7 @@ h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute
 .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;overflow-x:auto}
 .search form{display:flex;gap:10px;flex-wrap:wrap}
 .search input{flex:1 1 220px;min-height:52px;font-size:22px;font-family:var(--mono);padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);text-transform:uppercase;transition:border-color .15s}
-.search input:focus{outline:none;border-color:var(--flag)}
+.search input:focus{border-color:var(--flag);box-shadow:0 0 0 3px rgba(255,176,32,.35)}
 .search button{min-width:120px}
 .hint{color:var(--muted);font-size:15px;margin:10px 0 0}
 .hint code{font-family:var(--mono)}
@@ -81,7 +82,7 @@ details{margin-top:10px}
 summary{cursor:pointer;color:var(--muted);font-size:15px;list-style:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;transition:color .15s}
 summary::before{content:"▸";display:inline-block;transition:transform .15s}
 details[open] summary::before{transform:rotate(90deg)}
-summary:hover,summary:focus-visible{color:var(--flag);outline:none}
+summary:hover,summary:focus-visible{color:var(--flag)}
 pre{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-family:var(--mono);font-size:13px;line-height:1.45;overflow-x:auto;margin:8px 0;color:#c9d4e0;max-height:420px}
 .ev{font-size:14px;color:var(--muted);font-family:var(--mono);margin:6px 0}
 table{width:100%;border-collapse:collapse;font-size:16px}

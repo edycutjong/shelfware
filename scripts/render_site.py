@@ -329,9 +329,8 @@ def render_judge():
         "share_pct": str(share),
         "generated_utc": doc["generated_utc"],
         "description": (
-            f"The claim, the 30-second path and the receipt: {c['underlyings_zero_tracked']} of "
-            f"{c['has_tokens']} tokenised underlyings on CoinMarketCap have no wrapper with a "
-            "CMC-tracked market. No key, no login."
+            f"The claim, the 30-second path, the receipt: {c['underlyings_zero_tracked']} of "
+            f"{c['has_tokens']} tokenised underlyings on CoinMarketCap have no CMC-tracked wrapper."
         ),
     }
     html = (TEMPLATES / "judge.html").read_text()
