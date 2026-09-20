@@ -134,7 +134,7 @@ its listing state on the cryptocurrency map, and reports what the boolean hides.
   beside the live market cap of what does trade.
 - 📊 **Asset-type bars** — stock 49% shelf (606 / 1,244 wrappers) · ETF 38% · commodity 0%.
 - 📅 **Delta panel** — newly tracked / newly shelved / new / gone since the previous daily snapshot
-  (series started 2026-09-18; day 2: +0 / +0 / +0 / −0, a real zero on the live page).
+  (series started 2026-09-18, three days so far; day 3: +0 / +0 / +0 / −0, a real zero on the live page).
 - 🧾 **A receipt on every number** — endpoint, HTTP status, `credit_count`, bytes, sha256, UTC —
   and two `jq` filters that re-derive both headlines from the committed rows.
 
@@ -308,7 +308,7 @@ Re-derive by hand: `jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .sta
    `/v2/cryptocurrency/info`, whose vocabulary is coarser, and the map's finer word from the
    committed snapshot; each row names both sources.
 4. **The census is a daily series, not a history.** Untracked rows carry no dates; `date_added`
-   is a listing day, not a market day. The series started 2026-09-18 and has two days.
+   is a listing day, not a market day. The series started 2026-09-18 and has three days.
 5. **The anonymous tier is per IP.** A shared cloud egress can be refused outright (429 error
    1022); the CLI backs off, repeats the identical call keyed if a key is exported and says so,
    and otherwise answers from the snapshot and exits 75 (`EX_TEMPFAIL`).
@@ -428,7 +428,7 @@ shelfware/
 - [x] The three-endpoint join, live: 476 of 791 on 2026-09-18, 5 credits, 40.9 s
 - [x] The ticker question keyless — state leg live, roster snapshot labelled, key optional
 - [x] The one screen with the evidence drawer, the issuer scorecard and the type bars
-- [x] A daily snapshot series and the delta panel (two days so far, +0 / +0 / +0 / −0)
+- [x] A daily snapshot series and the delta panel (three days so far, +0 / +0 / +0 / −0)
 - [x] Receipts, benchmarks, a property test over 500 ledgers, and a gate that recounts every headline
 - [x] `/judge` — the claim, the 30-second path and the receipt on one page, no auth
 - [x] `/pitch` — the twelve-slide deck, rendered from the census, drift-gated like the page
