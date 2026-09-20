@@ -52,8 +52,10 @@ module.exports = async (req, res) => {
         raw: null,
       };
     }
-    const r = await get(`${KEYED}/v5/real-world-assets/quotes/latest?symbol=${encodeURIComponent(sym)}`, key);
-    const meta = { upstream_http: r.http, credit_count: r.credit_count, sha256: r.sha256, elapsed_ms: r.elapsed_ms };
+    const url = `${KEYED}/v5/real-world-assets/quotes/latest?symbol=${encodeURIComponent(sym)}`;
+    const r = await get(url, key);
+    // the same receipt shape /api/status returns: the URL carries the symbol only — the key travels in a header
+    const meta = { upstream_url: url, upstream_http: r.http, credit_count: r.credit_count, sha256: r.sha256, elapsed_ms: r.elapsed_ms };
     if (r.http === 200 && r.raw && r.raw.data) {
       return { ...base, ...meta, source: "live", as_of: null, assets: r.raw.data.rwa_assets || [], raw: r.raw };
     }

@@ -107,6 +107,9 @@ test("roster: with a key the live body passes through verbatim and the snapshot 
   assert.deepEqual(res.body.raw, body);
   assert.equal(calls[0].headers["X-CMC_PRO_API_KEY"], "k");
   assert.ok(calls[0].url.startsWith("https://pro-api.coinmarketcap.com/v5/real-world-assets/quotes/latest?symbol=MS1"));
+  // the receipt names the upstream URL like /api/status does — and the key is never in it
+  assert.equal(res.body.upstream_url, calls[0].url);
+  assert.ok(!JSON.stringify(res.body).includes('"k"'));
 });
 
 test("roster: an unknown symbol is a live answer with no assets, a quota error is a labelled snapshot", async () => {
