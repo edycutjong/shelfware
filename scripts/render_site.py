@@ -44,13 +44,12 @@ PITCH_OUT = SITE / "pitch" / "index.html"
 REPO = "https://github.com/edycutjong/shelfware"
 # The canonical host: a production domain on the Vercel project (DNS live 2026-09-20), so the
 # api/ functions are same-origin there. VERCEL_URL is the same deployment under its default name
-# and stays live; PAGES_URL names the GitHub Pages mirror (site/CNAME) — the same hostname, which
-# the Pages mirror can only take over if the DNS record is ever moved off Vercel.
+# and stays live. One host, one deployment: the GitHub Pages mirror and its CNAME were removed on
+# 2026-09-20 so nothing else can ever claim the same hostname.
 SITE_URL = "https://shelfware.edycu.dev"
 VERCEL_URL = "https://shelfware-cmc.vercel.app"
-PAGES_URL = SITE_URL
 # Where the api/ functions run, always: the page fetches them same-origin on either Vercel host
-# and at this absolute URL from any other host (a static mirror), so the search works on all three.
+# and at this absolute URL from anywhere else (a local file, a fork's preview), so the search works.
 API_URL = VERCEL_URL
 EVENT = "https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail"
 AUTHOR = "Edy Cu"

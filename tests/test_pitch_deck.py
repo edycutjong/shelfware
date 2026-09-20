@@ -72,4 +72,6 @@ def test_the_landing_and_judge_pages_link_the_deck_and_call_the_api_at_an_absolu
     app = (ROOT / "scripts" / "site_templates" / "app.js").read_text()
     assert "fetch(API + url" in app and "S.api_base" in app
     assert "shelfware\\.edycu\\.dev" in app
-    assert (ROOT / "site" / "CNAME").read_text().strip() == render_site.PAGES_URL.split("//", 1)[1]
+    # one host: no Pages mirror, so no CNAME may reappear and claim the Vercel domain
+    assert not (ROOT / "site" / "CNAME").exists()
+    assert not (ROOT / ".github" / "workflows" / "pages.yml").exists()

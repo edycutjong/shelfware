@@ -99,8 +99,8 @@ async function getKeylessFirst(pathAndQuery, key) {
   return { ...second, base: "keyed", keyless_error: first.error, keyless_http: first.http };
 }
 
-/** CORS, open: the same site/ is served from GitHub Pages (shelfware.edycu.dev) as well as from
- *  this deployment, and the Pages copy calls these functions cross-origin. Nothing here is
+/** CORS, open: the page is same-origin on shelfware.edycu.dev and on *.vercel.app, but a local
+ *  copy of site/ or a fork's preview calls these functions cross-origin. Nothing here is
  *  private — the responses are CoinMarketCap rows and a health line — so any origin may read. */
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");

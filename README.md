@@ -430,7 +430,7 @@ shelfware/
 │   ├── delta.py · verify.py      two snapshots diffed · every headline recounted from the rows
 │   └── cli.py                    shelfware TICKER · census · verify · delta
 ├── api/                          Vercel functions, no dependencies: roster (keyed) · status (keyless first) · health
-├── site/                         generated: the one screen (/), the judge page (/judge) and the deck (/pitch); CNAME for Pages
+├── site/                         generated: the one screen (/), the judge page (/judge) and the deck (/pitch)
 ├── scripts/                      snapshot · seed · bench · verify · render_site · md2html · readiness gate · spike
 ├── data/                         census.json · roster_snapshot.json · snapshots/ · delta.json · seed/
 ├── docs/proof/                   live_run.json · ms.json · bench.json · spike.json — the receipts
@@ -465,7 +465,7 @@ shelfware/
 | **Live** | **[shelfware.edycu.dev](https://shelfware.edycu.dev)** — the census with its receipt, the issuer scorecard, and the ticker question through the site's proxy |
 | **For judges** | **[shelfware.edycu.dev/judge](https://shelfware.edycu.dev/judge)** — the 30-second path; source in [JUDGE.md](JUDGE.md) |
 | **Pitch deck** | **[shelfware.edycu.dev/pitch](https://shelfware.edycu.dev/pitch/)** — 12 slides, arrow keys, `P` for speaker notes, `Cmd+P` for a PDF; rendered from the census by `scripts/render_site.py`, so every number on it is the receipt's. Source: [`scripts/site_templates/pitch.html`](scripts/site_templates/pitch.html) |
-| **Also at** | **[shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)** — the same deployment under the project's default Vercel name (the address the demo video shows). `shelfware.edycu.dev` is the canonical host, a production domain on the same project since 2026-09-20, so the ticker search is same-origin on both. A static mirror of `site/` on GitHub Pages ([`.github/workflows/pages.yml`](.github/workflows/pages.yml), `site/CNAME`) is wired but dormant while the DNS record points at Vercel |
+| **Also at** | **[shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)** — the same deployment under the project's default Vercel name (the address the demo video shows). `shelfware.edycu.dev` is the canonical host, a production domain on the same project since 2026-09-20, so the ticker search is same-origin on both. One host, one deployment — there is no GitHub Pages mirror |
 | **The receipt** | **[DEMO.md](DEMO.md)** — both live runs transcribed, with [`docs/proof/live_run.json`](docs/proof/live_run.json) and [`ms.json`](docs/proof/ms.json) behind them |
 | **Health** | [shelfware.edycu.dev/api/health](https://shelfware.edycu.dev/api/health) — census date, snapshot days, the counts, the deployed commit; a boolean about the key, never the key |
 | **Screenshots** | [docs/screenshots/](docs/screenshots/) — eight captures of live execution: the MS card, the NVDA answer with its evidence drawer, the issuer scorecard, the census receipt, the delta panel, the type bars, the limits card, the whole page |

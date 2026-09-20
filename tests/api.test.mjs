@@ -140,7 +140,7 @@ test("health: reports the census date and only a boolean about the key", async (
   assert.ok(res.body.snapshots >= 1);
 });
 
-test("cors: every function answers with Access-Control-Allow-Origin: * — the GitHub Pages copy calls them cross-origin", async () => {
+test("cors: every function answers with Access-Control-Allow-Origin: * — a local copy of site/ calls them cross-origin", async () => {
   stubFetch([200, envelope([{ id: 41513, symbol: "wMSx", status: "untracked" }])], [200, envelope({ 41513: { status: "inactive" } })]);
   for (const [fn, q] of [[health, {}], [status, { symbols: "wMSx", ids: "41513" }], [roster, { symbol: "MS" }]]) {
     const res = await run(fn, q, {});

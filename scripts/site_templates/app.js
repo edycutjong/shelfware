@@ -11,8 +11,8 @@
   var $ = function (id) { return document.getElementById(id); };
   // The two proxy functions live on the Vercel project, which answers on shelfware.edycu.dev and
   // on *.vercel.app. On those hosts (and on the local dev server) the calls are same-origin; served
-  // from a static mirror the same page calls them cross-origin at the absolute URL — the functions
-  // answer with Access-Control-Allow-Origin: *.
+  // from anywhere else (a local copy of site/) the same page calls them cross-origin at the absolute
+  // URL — the functions answer with Access-Control-Allow-Origin: *.
   var API = /^shelfware\.edycu\.dev$|(^|\.)vercel\.app$|^localhost$|^127\.0\.0\.1$/.test(location.hostname) ? "" : S.api_base;
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
   var FILTERABLE = /^[A-Za-z0-9]+$/;
