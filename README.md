@@ -234,11 +234,30 @@ every chain those wrappers sit on, and a registry to reconcile the two — three
 recompute what two calls return, and none of them would carry CoinMarketCap's definition of the
 word the whole count rests on.
 
-The API also got in the way in twelve specific, dated, evidenced places — the plan gate on
-`market-pairs/list`, the symbol filter that rejects CoinMarketCap's own dotted symbols, the
-`tokens[]` ids that exist on no public surface, the per-IP anonymous tier that a shared cloud
-egress exhausts for good. They are written up for the CMC team in **[FEEDBACK.md](FEEDBACK.md)**,
-and each one changed something in this code.
+### Where the API got in the way
+
+Twelve dated, evidenced findings are written up for the CMC team in **[FEEDBACK.md](FEEDBACK.md)**,
+and each one changed something in this code. The RWA-family ones, in one screen:
+
+1. **A `tokens[]` row carries neither the wrapper's listing state nor its chain** — eight fields
+   (`crypto_id`, `symbol`, `name`, `issuer_id`, `issuer_name`, `price`, `market_cap`,
+   `volume_24h`); the *why* of a null price and the `platform` live only on the map row. The
+   product exists because of that gap ([#1](FEEDBACK.md)).
+2. **`price == null ⇔ status == "untracked"`, 0 exceptions in 1,431 resolved wrappers** — the null
+   is a listing state, not a data hole, and nothing on the RWA endpoints documents it (#1, #7).
+3. **The RWA family is keyed; the cryptocurrency map is keyless** — one question on two plan
+   tiers, 403 error 1005 keyless (#2).
+4. **`market-pairs/list` is documented as Basic and returns 403 error 1006 on Startup** — tried,
+   recorded, not built on (#3).
+5. **The map's `symbol` filter rejects symbols CoinMarketCap itself assigns** — `NVDA.D`,
+   `AI.FRx`, 38 wrappers — and one bad symbol fails the whole batched call (#4, #5).
+6. **Untracked map rows carry no dates**; the listing day is on `/v2/cryptocurrency/info`, whose
+   `status` vocabulary is coarser (#7, #8).
+7. **`tokens[]` references 4 ids that exist on no public surface** — shown, never counted (#9).
+8. **`num_tokens` on the issuer registry is undocumented and over-declares what is attached** —
+   Backed 1,176 declared vs 772 in `tokens[]`, Dinari 91 vs 27 (#11).
+9. **The anonymous tier is per IP, a shared cloud egress exhausts it for good, and the envelope
+   hides it** — two undocumented 429 codes, no `Retry-After` (#10).
 
 ---
 
