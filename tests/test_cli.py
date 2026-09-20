@@ -2,6 +2,7 @@
 
 import io
 import json
+import re
 from pathlib import Path
 
 from conftest import ROOT, FakeOpener, envelope
@@ -31,7 +32,8 @@ def test_help_lists_every_subcommand_and_the_exit_codes(capsys):
 
 def test_version_flag(capsys):
     rc, out = run(["--version"], capsys)
-    assert rc == 0 and out.startswith("shelfware 0.")
+    assert rc == 0 and out.strip() == f"shelfware {cli.__version__}"
+    assert re.fullmatch(r"\d+\.\d+\.\d+", cli.__version__)
 
 
 def test_census_without_a_key_refuses_with_one_line_and_exit_1(monkeypatch, capsys):

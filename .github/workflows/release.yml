@@ -5,6 +5,9 @@ name: release
 # The version is therefore a consequence of what the commits say they did — it cannot drift
 # from the changelog because it IS the changelog. Docs/chore-only pushes correctly produce no
 # release; that is the intended behaviour.
+#
+# v1.0.0 was set deliberately on 2026-09-20 to leave 0.x behind; the bump reads the last tag,
+# so releases from here are 1.x.
 
 on:
   push:
