@@ -399,14 +399,20 @@ make ci              # lint + typecheck + coverage + api tests + audit + check
 | Security (SAST) | CodeQL — Python and JavaScript, weekly + on PRs | ✅ |
 | Security (SCA) | Dependabot alerts + monthly grouped updates · pip-audit | ✅ |
 | Secret scanning | gitleaks over the full history, with a rule for the CMC key shape | ✅ |
-| Release automation | semver from conventional commits | ✅ |
+| Release automation | semver from conventional commits — `release.yml` stamps the version into the tree, re-renders, commits, tags, publishes | ✅ |
+| Deploy automation | `vercel build` + `vercel deploy --prebuilt --prod` from CI, main only, after every gate and the release | ✅ |
 
 CI runs seven jobs on every push: lint + typecheck, the test matrix on Python 3.11 / 3.12 / 3.13,
 the node proxy tests, `pip-audit`, the no-placeholder / no-drift gate, the deterministic replay
 bench — **and a `live-api` job that asks the ticker question against the real CoinMarketCap API
 with no credentials.** It is keyless, so it runs on forks and PRs too; if CMC changes the
 contract, it breaks in CI rather than in front of a judge. A throttled shared runner IP (exit 75)
-is a warning, every other non-zero exit is red.
+is a warning, every other non-zero exit is red. On `main` only, three more stages follow the
+seven: a **deploy gate** (one required check), the **release** (`feat` → minor, `fix`/`perf` →
+patch, `!` → major, computed from the commits since the last tag; when there is one, the version
+is written into `pyproject.toml` / `__version__` / `api/health.js` by `scripts/bump_version.py`,
+the site re-rendered, the result committed as `chore(release): vX.Y.Z`, tagged and published — a
+chore- or data-only push mints nothing) and the **production deploy** of that commit to Vercel.
 
 **The page, the judge route and the health file are generated, never hand-edited.**
 `scripts/render_site.py` renders `site/index.html`, `site/judge/index.html` and

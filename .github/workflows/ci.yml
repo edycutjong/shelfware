@@ -30,6 +30,8 @@ jobs:
         python-version: ${{ github.event_name == 'push' && fromJSON('["3.11","3.12","3.13"]') || fromJSON('["3.11"]') }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0        # tags: the deck test checks a tag on HEAD against the page's stamp
       - uses: actions/setup-python@v7
         with: { python-version: '${{ matrix.python-version }}' }
       - run: pip install -r requirements-dev.txt
@@ -130,3 +132,83 @@ jobs:
           exit "$code"
       - name: Live contract tests (skip, not fail, on a throttled IP)
         run: pytest -q -m live -rs
+
+  # ── Stage 5: gate (main only) ─────────────────────────────────────────────────────────────
+  # One job every later stage needs, so "all gates passed" is a single required check.
+  deploy-gate:
+    name: "Stage 5 · Deploy Gate"
+    needs: [lint, test, api, audit, readiness, bench, live-api]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: All gates passed
+        run: |
+          echo "all CI/CD gates passed"
+          echo "  Stage 1 — lint + typecheck · test matrix 3.11/3.12/3.13 (engine coverage >= 90%) · proxy functions"
+          echo "  Stage 2 — pip-audit · no placeholders, no drift, every headline recounted"
+          echo "  Stage 3 — deterministic replay bench"
+          echo "  Stage 4 — the judged capability against the real CoinMarketCap API, keyless"
+
+  # ── Stage 5b: release (main only, after the gate) ────────────────────────────────────────
+  # release.yml: semver from the conventional commits since the last tag; when there is
+  # something to release it stamps the version into the tree, re-renders site/, commits, tags
+  # that commit and publishes the Release — so the deploy below ships the stamped commit.
+  release:
+    name: "Stage 5 · Release"
+    needs: [deploy-gate]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'edycutjong/shelfware'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/release.yml
+
+  # ── Stage 6: production deploy (main only, after every gate and the release) ─────────────
+  # Prebuilt flow: `vercel build` runs here on the runner, `vercel deploy --prebuilt` uploads the
+  # output — Vercel never builds from git for this project. The only secret is VERCEL_TOKEN; the
+  # org/project ids are plain repository variables. Skipped on PRs and on forks. The custom domain
+  # shelfware.edycu.dev and the shelfware-cmc.vercel.app name both follow --prod on their own.
+  # The commit deployed is the release commit when one was just minted, else the pushed one.
+  deploy:
+    name: "Stage 6 · Production Deploy"
+    needs: [deploy-gate, release]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'edycutjong/shelfware'
+    concurrency:
+      group: production-deploy
+      cancel-in-progress: false
+    environment:
+      name: production
+      url: https://shelfware.edycu.dev
+    env:
+      VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.release.outputs.sha || github.sha }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 20
+      - name: Install Vercel CLI
+        run: npm i -g vercel@latest
+      - name: Pull Vercel project settings (production)
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build (vercel build → .vercel/output)
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy prebuilt output to production
+        id: deploy
+        run: |
+          URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          {
+            echo "## Production deploy"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Deployment | $URL |"
+            echo "| Production | https://shelfware.edycu.dev |"
+            echo "| Alias | https://shelfware-cmc.vercel.app |"
+            echo "| Commit | \`$(git rev-parse HEAD)\` |"
+            echo "| Version | \`${{ needs.release.outputs.version || 'unchanged' }}\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
