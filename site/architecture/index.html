@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shelfware — Architecture</title>
+<meta name="description" content="How Shelfware is built: four CoinMarketCap ledgers, one join on crypto_id, three counting rules and a receipt beside every number — the modules, the data flow, the arithmetic and the failure handling, derived from the code.">
+<meta name="author" content="Edy Cu">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0E14">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F6FA">
+<link rel="canonical" href="https://shelfware.edycu.dev/architecture/">
+<link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Shelfware">
+<meta property="og:url" content="https://shelfware.edycu.dev/architecture/">
+<meta property="og:title" content="Shelfware — Architecture">
+<meta property="og:description" content="Four CoinMarketCap ledgers, one join on crypto_id, three counting rules, a receipt beside every number. The modules, the flow, the arithmetic, the failure handling.">
+<meta property="og:image" content="https://shelfware.edycu.dev/og-image.png?v=eb3e9283">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@edycutjong">
+<script>
+/* the stored choice lands on <html> before the first paint; no stored choice = the system's */
+(function(){try{var t=localStorage.getItem('shelfware-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t)}}catch(e){}})();
+</script>
+<link rel="preload" href="../assets/fonts/inter-tight-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Fonts are the site's own self-hosted latin subsets (SIL OFL 1.1) — this page loads no third-party resource. */
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:500 800;font-display:swap;src:url(../assets/fonts/inter-tight-latin-var.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(../assets/fonts/inter-latin-var.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(../assets/fonts/jetbrains-mono-latin-var.woff2) format('woff2')}
+@font-face{font-family:'Inter Fallback';src:local('Arial'),local('Helvetica');ascent-override:90.2%;descent-override:22.48%;line-gap-override:0%;size-adjust:107.4%}
+
+/* ── family tokens: the same names and dark values as the landing page; the light palette keeps
+      the hue relationships (amber accent, blue data, green verdict, red flag) at AA contrast ── */
+:root{
+  --bg:#0B0E14; --surface:#141A24; --surface-2:#1A2230; --border:#243044; --text:#E6EDF3; --muted:#8B98A9; --dim:#5E6C80;
+  --accent:#FFB020; --data:#4C9AFF; --verdict:#3DDC97; --flag:#FF5C5C; --unknown:#8B7CF6;
+  --link-hover:#8EC0FF; --on-accent:#0B0E14;
+  --glow-a:rgba(255,176,32,.09); --glow-b:rgba(76,154,255,.07);
+  --header-bg:rgba(11,14,20,.78); --code-bg:#0E121A; --shadow:rgba(0,0,0,.8);
+  --font-display:'Inter Tight','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',system-ui,sans-serif;
+  --font-body:'Inter','Inter Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono',Menlo,Consolas,'Liberation Mono',ui-monospace,monospace;
+  --num:'tnum' 1,'lnum' 1;
+  --r-sm:6px; --r-md:12px; --r-lg:20px;
+  --t-fast:160ms; --t-med:320ms; --ease:cubic-bezier(.16,.84,.44,1);
+  --maxw:1180px;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#F4F6FA; --surface:#FFFFFF; --surface-2:#E9EEF5; --border:#CBD5E1; --text:#111823; --muted:#4A5768; --dim:#66738A;
+    --accent:#8A5300; --data:#1656C4; --verdict:#0D7048; --flag:#C22F2F; --unknown:#5A44D0;
+    --link-hover:#0E3C8F; --on-accent:#FFFFFF;
+    --glow-a:rgba(255,176,32,.16); --glow-b:rgba(22,86,196,.08);
+    --header-bg:rgba(244,246,250,.82); --code-bg:#FFFFFF; --shadow:rgba(17,24,35,.18);
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F4F6FA; --surface:#FFFFFF; --surface-2:#E9EEF5; --border:#CBD5E1; --text:#111823; --muted:#4A5768; --dim:#66738A;
+  --accent:#8A5300; --data:#1656C4; --verdict:#0D7048; --flag:#C22F2F; --unknown:#5A44D0;
+  --link-hover:#0E3C8F; --on-accent:#FFFFFF;
+  --glow-a:rgba(255,176,32,.16); --glow-b:rgba(22,86,196,.08);
+  --header-bg:rgba(244,246,250,.82); --code-bg:#FFFFFF; --shadow:rgba(17,24,35,.18);
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:0s!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:17px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(900px 480px at 78% -8%,var(--glow-a),transparent 60%),radial-gradient(700px 420px at 12% 18%,var(--glow-b),transparent 60%)}
+a{color:var(--data);text-decoration:none}
+a:hover{color:var(--link-hover)}
+p a,li a,td a,.note a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em;text-decoration-color:color-mix(in srgb,var(--data) 55%,transparent);transition:text-decoration-color var(--t-fast)}
+p a:hover,li a:hover,td a:hover,.note a:hover{text-decoration-color:currentColor}
+::selection{background:color-mix(in srgb,var(--accent) 35%,transparent)}
+img,svg{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.02em;line-height:1.08;margin:0}
+h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800}
+h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0 0 1rem}
+code,.mono{font-family:var(--font-mono);font-feature-settings:var(--num)}
+code{font-size:.88em;color:var(--text);background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:.08em .34em;white-space:nowrap}
+pre code{font-size:inherit;background:none;border:0;padding:0;white-space:pre}
+.muted{color:var(--muted)}
+.wrap{width:min(var(--maxw),calc(100% - 40px));margin:0 auto;position:relative;z-index:1}
+section{padding:clamp(40px,6vw,72px) 0;scroll-margin-top:84px;border-top:1px solid var(--border)}
+section:first-of-type{border-top:0}
+.kicker{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.lede{font-size:1.15rem;color:var(--muted);max-width:64ch}
+.lede b{color:var(--text);font-weight:600}
+.note{color:var(--muted);font-size:.95rem}
+.note b{color:var(--text);font-weight:600}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;padding:10px 14px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:700;transition:top var(--t-fast)}
+.skip:focus{top:12px;color:var(--on-accent)}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ── header: the landing page's, plus a theme switch ─────────────────────────── */
+header.top{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--header-bg);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text);font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+.brand:hover{color:var(--text)}
+.brand svg{width:30px;height:30px;border-radius:7px;flex:none}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{padding:8px 12px;border-radius:999px;color:var(--muted);font-size:.92rem;font-weight:500;transition:color var(--t-fast),background var(--t-fast),border-color var(--t-fast)}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.nav-links a[aria-current="page"]{color:var(--text)}
+.nav-links a.judge{font-family:var(--font-mono);font-size:.86rem;letter-spacing:-.01em;color:var(--text);border:1px solid var(--border)}
+.nav-links a.judge:hover{border-color:var(--accent);color:var(--accent);background:var(--surface)}
+.gh{display:inline-flex;width:38px;height:38px;border-radius:50%;align-items:center;justify-content:center;color:var(--muted);transition:color var(--t-fast),background var(--t-fast)}
+.gh:hover{color:var(--text);background:var(--surface)}
+.gh svg{width:20px;height:20px}
+.theme{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;padding:0;transition:color var(--t-fast),border-color var(--t-fast),transform var(--t-fast) var(--ease)}
+.theme:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
+.theme svg{width:18px;height:18px}
+.theme .sun{display:none}.theme .moon{display:block}
+:root[data-theme="light"] .theme .sun{display:block}
+:root[data-theme="light"] .theme .moon{display:none}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .theme .sun{display:block}
+  :root:not([data-theme="dark"]) .theme .moon{display:none}
+}
+
+/* ── the lead ────────────────────────────────────────────────────────────────── */
+.lead{padding:clamp(44px,7vw,84px) 0 clamp(24px,4vw,40px)}
+.eyebrow{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--muted);display:inline-block}
+.lead .lede{margin-top:18px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.toc a{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--muted);font-size:.9rem;font-weight:500;transition:color var(--t-fast),border-color var(--t-fast),transform var(--t-fast) var(--ease)}
+.toc a:hover{color:var(--text);border-color:var(--accent);transform:translateY(-1px)}
+
+/* ── the diagram ─────────────────────────────────────────────────────────────── */
+.figure{margin:26px 0 0;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);padding:14px}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroller svg.diagram{min-width:1120px;width:100%;height:auto}
+.diagram text{font-family:var(--font-body);font-size:12.5px;fill:var(--muted)}
+.diagram .t{font-family:var(--font-mono);font-size:12.5px;font-weight:700;fill:var(--text)}
+.diagram .frame-t{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;fill:var(--text)}
+.diagram .lbl{font-family:var(--font-mono);font-size:11px}
+.diagram .lbl.k{fill:var(--accent)}.diagram .lbl.f{fill:var(--verdict)}.diagram .lbl.b{fill:var(--data)}
+.diagram .frame{fill:none;stroke:var(--border);stroke-width:1;stroke-dasharray:5 4;rx:14}
+.diagram .box{fill:var(--surface-2);stroke:var(--border);stroke-width:1;rx:8}
+.diagram .box.file{fill:var(--bg)}
+.diagram .box.hot{stroke:var(--accent);stroke-width:1.5}
+.diagram .a{fill:none;stroke-width:1.6;stroke-linejoin:round}
+.diagram .a.k{stroke:var(--accent);marker-end:url(#mk)}
+.diagram .a.f{stroke:var(--verdict);marker-end:url(#mf)}
+.diagram .a.e{stroke:var(--muted);marker-end:url(#me)}
+.diagram .a.b{stroke:var(--data);stroke-dasharray:6 4;marker-end:url(#mb)}
+.diagram .a.w{stroke:var(--data);marker-end:url(#mb)}
+.diagram .a.nm{marker-end:none}
+.diagram .d{font-family:var(--font-body);font-weight:400;fill:var(--muted)}
+.diagram .divider{stroke:var(--border);stroke-width:1}
+.viz-key{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:12px;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.viz-key span{display:inline-flex;align-items:center;gap:8px}
+.viz-key i{display:inline-block;width:22px;height:0;border-top:2px solid var(--muted)}
+.viz-key i.k{border-color:var(--accent)}.viz-key i.f{border-color:var(--verdict)}.viz-key i.b{border-color:var(--data);border-top-style:dashed}
+.viz-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+
+/* ── cards, tables, code ─────────────────────────────────────────────────────── */
+.grid{display:grid;gap:14px;margin-top:22px}
+.grid.two{grid-template-columns:1fr 1fr}
+.grid.three{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px;transition:transform var(--t-med) var(--ease),border-color var(--t-med),box-shadow var(--t-med)}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 18px 50px -24px var(--shadow)}
+.card h3{margin-bottom:8px}
+.card h3 code{font-size:.92em}
+.card p{margin:0}
+.card p+p{margin-top:8px}
+.card .n{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.stages{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;counter-reset:stage}
+.stages li{position:relative;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:14px 16px}
+.stages li::before{counter-increment:stage;content:counter(stage);display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);font-family:var(--font-mono);font-weight:700;color:var(--accent);font-size:.95rem}
+.stages b{color:var(--text)}
+.stages .m{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);display:block;margin-top:4px}
+.tablewrap{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);margin-top:22px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:0}
+th{font-family:var(--font-mono);color:var(--muted);font-weight:500;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;background:var(--surface-2)}
+td:first-child{white-space:nowrap}
+td b{color:var(--text);font-weight:600}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted);white-space:nowrap}
+.tag.k{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+.tag.f{color:var(--verdict);border-color:color-mix(in srgb,var(--verdict) 55%,transparent)}
+.tag.b{color:var(--data);border-color:color-mix(in srgb,var(--data) 55%,transparent)}
+.tag.r{color:var(--flag);border-color:color-mix(in srgb,var(--flag) 55%,transparent)}
+pre{margin:22px 0 0;padding:18px 20px;background:var(--code-bg);border:1px solid var(--border);border-radius:var(--r-md);overflow-x:auto;font-family:var(--font-mono);font-size:.84rem;line-height:1.55;color:var(--text);tab-size:4}
+pre .c{color:var(--muted)}
+pre .fn{color:var(--data)}
+pre .kw{color:var(--accent)}
+pre .ok{color:var(--verdict)}
+pre .no{color:var(--flag)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.two-col h3{margin-bottom:8px}
+.two-col p{margin-bottom:8px}
+ul.tight{margin:8px 0 0;padding-left:1.2em}
+ul.tight li{margin:4px 0}
+ul.tight li::marker{color:var(--accent)}
+
+/* ── the bottom ──────────────────────────────────────────────────────────────── */
+.final{border-top:1px solid var(--border);background:linear-gradient(180deg,var(--glow-a),transparent 70%)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:-.01em;border:1px solid var(--border);color:var(--text);background:var(--surface);cursor:pointer;transition:transform var(--t-fast) var(--ease),box-shadow var(--t-fast) var(--ease),background var(--t-fast),border-color var(--t-fast),color var(--t-fast)}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent);background:var(--surface-2);color:var(--text)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn-primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn-primary:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent);box-shadow:0 10px 34px -8px color-mix(in srgb,var(--accent) 55%,transparent)}
+.btn .arrow{transition:transform var(--t-fast) var(--ease)}
+.btn:hover .arrow{transform:translateX(3px)}
+.btn .gh-mark{width:.9em;height:.9em;flex:none}
+.arrow-ext{display:inline-block}
+a:not(.btn) .arrow-ext{font-size:.85em;margin-left:.3em;transition:transform var(--t-fast) var(--ease)}
+a:not(.btn):hover .arrow-ext{transform:translate(1px,-1px)}
+footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--border)}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+footer h3{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:500;line-height:1.6}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin:6px 0}
+footer .brand{color:var(--text)}
+footer .brand img{width:30px;height:30px;border-radius:7px}
+.link-quiet{color:var(--muted);transition:color var(--t-fast)}
+.link-quiet:hover{color:var(--text)}
+footer .bottom{margin-top:28px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--font-mono);font-size:.78rem}
+footer .bottom .ver{color:var(--accent)}
+
+/* ── breakpoints ─────────────────────────────────────────────────────────────── */
+@media (max-width:960px){.grid.three{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.grid.two,.grid.three,.two-col{grid-template-columns:1fr}footer .cols{grid-template-columns:1fr 1fr}footer .cols>div:first-child{grid-column:1/-1}}
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding:32px 0;scroll-margin-top:70px}
+  .lede{font-size:1.02rem}
+  h2{font-size:1.5rem}
+  .card{padding:18px}
+  .figure{padding:10px}
+  pre{padding:14px;font-size:.76rem}
+  .stages li{grid-template-columns:32px 1fr;gap:10px;padding:12px}
+  .stages li::before{width:28px;height:28px;font-size:.82rem}
+  /* a table becomes one block per row — its columns cannot share 350px */
+  table,tbody,tr,td{display:block}
+  thead{display:none}
+  tr{padding:12px 14px;border-bottom:1px solid var(--border)}
+  tr:last-child{border-bottom:0}
+  td{padding:3px 0;border:0;white-space:normal}
+  td:first-child{white-space:normal}
+  td::before{content:attr(data-th);display:block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  td code{white-space:normal;overflow-wrap:anywhere}
+  .toc a{padding:7px 12px;font-size:.84rem}
+  .cta-row{gap:8px}.btn{padding:12px 18px;font-size:.95rem}
+  footer{padding:28px 0 40px;font-size:.85rem}
+}
+@media (max-width:480px){
+  footer .cols{grid-template-columns:1fr}
+  .nav{gap:8px}.brand{font-size:.95rem;gap:9px;white-space:nowrap}.brand svg{width:26px;height:26px}
+  .nav-links{gap:2px}
+  .nav-links a{padding:7px 8px;font-size:.82rem}
+  .nav-links a.judge{padding:7px 10px;font-size:.8rem;white-space:nowrap}
+  .nav-links a.home,.nav-links a.pitch{display:none}
+  .gh,.theme{width:34px;height:34px}
+}
+@media (max-width:360px){.brand{font-size:.84rem;gap:7px}.brand svg{width:22px;height:22px}.nav-links a.judge{padding:6px 8px;font-size:.72rem}.gh,.theme{width:32px;height:32px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" id="top">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Shelfware — home">
+      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false"><rect width="512" height="512" rx="112" fill="#0B0E14"/><rect x="8" y="8" width="496" height="496" rx="105" fill="none" stroke="#5E6C80" stroke-width="6"/><g fill="#5E6C80"><rect x="58" y="212" width="68" height="132" rx="8"/><rect x="140" y="188" width="68" height="156" rx="8"/><rect x="222" y="200" width="68" height="144" rx="8"/></g><g fill="#3DDC97"><rect x="304" y="168" width="68" height="176" rx="8"/><rect x="386" y="144" width="68" height="200" rx="8"/></g><rect x="44" y="344" width="424" height="20" rx="10" fill="#8B98A9"/></svg>
+      Shelfware
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="home" href="/">Home</a>
+      <a class="pitch" href="/pitch/">Pitch deck</a>
+      <a class="judge" href="/judge" title="For judges — the claim, the 30-second path, the receipt">For judges</a>
+      <a class="gh" href="https://github.com/edycutjong/shelfware" aria-label="Source on GitHub (opens in a new tab)" title="Source on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+      <button class="theme" id="theme" type="button" aria-label="Switch to light theme" title="Switch theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="lead" id="lead">
+  <div class="wrap">
+    <div class="eyebrow"><span>Architecture</span><span class="dot"></span><span>derived from the code</span><span class="dot"></span><span>stdlib only</span><span class="dot"></span><span>v1.0.1</span></div>
+    <h1>A join over four ledgers, then counting.</h1>
+    <p class="lede">Shelfware is <b>one HTTP GET, one join on <code>crypto_id</code>, three counting rules and a receipt beside every number</b>. No database, no model, no framework, no server on the judged path. Every function named on this page exists in <code>shelfware/</code>, <code>scripts/</code> or <code>api/</code>. The long form, with every failure mode, is <a href="https://github.com/edycutjong/shelfware/blob/main/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">ARCHITECTURE.md<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a> on GitHub.</p>
+    <nav class="toc" aria-label="On this page">
+      <a href="#shape">Shape</a>
+      <a href="#call">One call</a>
+      <a href="#census">The census</a>
+      <a href="#arithmetic">The arithmetic</a>
+      <a href="#ticker">The ticker question</a>
+      <a href="#proxy">The proxy</a>
+      <a href="#data">Data files</a>
+      <a href="#failure">Failure handling</a>
+      <a href="#layout">Repository</a>
+      <a href="#not">Not built</a>
+    </nav>
+  </div>
+</section>
+
+<section id="shape">
+  <div class="wrap">
+    <div class="kicker">Shape of the thing</div>
+    <h2>Six endpoints in, one join, five files out.</h2>
+    <p class="lede">Three keyed RWA ledgers and two keyless cryptocurrency ledgers reach <code>client.py</code>; <code>join.py</code> matches every wrapper's <code>crypto_id</code> to its listing state; the result is committed as JSON and rendered to a static page. Two dependency-free Vercel functions exist only because CoinMarketCap sends no CORS header.</p>
+
+    <figure class="figure" aria-labelledby="fig-cap">
+      <div class="scroller">
+      <svg class="diagram" viewBox="0 0 1280 690" role="img" aria-labelledby="fig-title fig-desc">
+        <title id="fig-title">Shelfware data flow</title>
+        <desc id="fig-desc">Six CoinMarketCap endpoints feed client.py; client.py feeds join.py and lookup.py; join.py writes census.json, roster_snapshot.json, the snapshot series and the proof receipts; render_site.py turns the census into site/index.html; the page calls api/roster.js, api/status.js and api/health.js, which call CoinMarketCap on the browser's behalf.</desc>
+        <defs>
+          <marker id="mk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--accent)"/></marker>
+          <marker id="mf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--verdict)"/></marker>
+          <marker id="me" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker>
+          <marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--data)"/></marker>
+        </defs>
+
+        <!-- CoinMarketCap column -->
+        <rect class="frame" x="16" y="24" width="340" height="444"/>
+        <text class="frame-t" x="32" y="48">CoinMarketCap Pro API</text>
+        <rect class="box" x="32" y="64" width="308" height="44"/>
+        <text class="t" x="44" y="82">K /v1/key/info</text><text x="44" y="98">keyed · 0 credits · the month's counter</text>
+        <rect class="box" x="32" y="118" width="308" height="44"/>
+        <text class="t" x="44" y="136">A /v5/real-world-assets/map</text><text x="44" y="152">keyed · 0 credits · has_tokens · rwa_rank</text>
+        <rect class="box" x="32" y="172" width="308" height="44"/>
+        <text class="t" x="44" y="190">C /v5/real-world-assets/issuers/list</text><text x="44" y="206">keyed · 1 credit · num_tokens per issuer</text>
+        <rect class="box hot" x="32" y="226" width="308" height="44"/>
+        <text class="t" x="44" y="244">B /v5/real-world-assets/quotes/latest</text><text x="44" y="260">keyed · 1 / 250 · tokens[] with price: null</text>
+        <line class="divider" x1="32" y1="294" x2="340" y2="294"/>
+        <text class="lbl f" x="32" y="312">keyless · /public-api · the key is never sent</text>
+        <rect class="box" x="32" y="322" width="308" height="44"/>
+        <text class="t" x="44" y="340">D /public-api/v1/cryptocurrency/map</text><text x="44" y="356">0 credits · active · inactive · untracked</text>
+        <rect class="box" x="32" y="376" width="308" height="44"/>
+        <text class="t" x="44" y="394">E /public-api/v2/cryptocurrency/info</text><text x="44" y="410">0 credits · date_added for the shelf</text>
+
+        <!-- engine column -->
+        <rect class="frame" x="424" y="24" width="300" height="444"/>
+        <text class="frame-t" x="440" y="48">shelfware/ — stdlib Python</text>
+        <rect class="box hot" x="440" y="64" width="268" height="92"/>
+        <text class="t" x="452" y="84">client.py</text>
+        <text x="452" y="102">Client.get() · backoff 2, 4, 8, 16 s</text>
+        <text x="452" y="118">receipt per call · errors never raised</text>
+        <text x="452" y="134">rwa_map · rwa_quotes · issuers</text>
+        <text x="452" y="150">cmc_map · cmc_info · key_info</text>
+        <rect class="box hot" x="440" y="180" width="268" height="88"/>
+        <text class="t" x="452" y="200">join.py</text>
+        <text x="452" y="218">wrappers_from · resolve · enrich_info</text>
+        <text x="452" y="234">zero_tracked · scorecard · type_bars</text>
+        <text x="452" y="250">hero · census · recount</text>
+        <rect class="box" x="440" y="292" width="268" height="44"/>
+        <text class="t" x="452" y="310">delta.py · verify.py</text>
+        <text x="452" y="326">delta(before, after) · compare_counts</text>
+        <rect class="box" x="440" y="356" width="268" height="50"/>
+        <text class="t" x="452" y="374">lookup.py</text>
+        <text x="452" y="392">lookup(ticker) — roster leg + state leg</text>
+        <rect class="box" x="440" y="426" width="268" height="34"/>
+        <text class="t" x="452" y="448">cli.py  <tspan class="d">TICKER · census · verify · delta</tspan></text>
+
+        <!-- committed data column -->
+        <rect class="frame" x="792" y="24" width="250" height="444"/>
+        <text class="frame-t" x="808" y="48">committed data</text>
+        <rect class="box file" x="808" y="64" width="218" height="60"/>
+        <text class="t" x="820" y="84">docs/proof/*.json</text>
+        <text x="820" y="102">live_run · ms · bench · spike</text>
+        <text x="820" y="118">the receipts</text>
+        <rect class="box file" x="808" y="150" width="218" height="60"/>
+        <text class="t" x="820" y="170">data/snapshots/*.json</text>
+        <text x="820" y="188">one per day → data/delta.json</text>
+        <text x="820" y="204">by scripts/snapshot.py</text>
+        <rect class="box file" x="808" y="236" width="218" height="60"/>
+        <text class="t" x="820" y="256">data/roster_snapshot.json</text>
+        <text x="820" y="274">the roster with a date —</text>
+        <text x="820" y="290">the keyless fallback</text>
+        <rect class="box file hot" x="808" y="322" width="218" height="60"/>
+        <text class="t" x="820" y="342">data/census.json</text>
+        <text x="820" y="360">every wrapper, its state,</text>
+        <text x="820" y="376">the counts, the receipt</text>
+
+        <!-- Vercel row -->
+        <rect class="frame" x="16" y="492" width="1248" height="182"/>
+        <text class="frame-t" x="32" y="516">Vercel — shelfware.edycu.dev</text>
+        <rect class="box" x="32" y="548" width="200" height="64"/>
+        <text class="t" x="44" y="568">api/roster.js</text>
+        <text x="44" y="585">keyed · 1 symbol · 1 credit</text>
+        <text x="44" y="600">snapshot fallback, labelled</text>
+        <rect class="box" x="248" y="548" width="200" height="64"/>
+        <text class="t" x="260" y="568">api/status.js</text>
+        <text x="260" y="585">keyless first · keyed repeat</text>
+        <text x="260" y="600">if refused · raw verbatim</text>
+        <rect class="box" x="464" y="548" width="176" height="64"/>
+        <text class="t" x="476" y="568">api/health.js</text>
+        <text x="476" y="585">census date · counts</text>
+        <text x="476" y="600">a boolean about the key</text>
+        <rect class="box hot" x="740" y="548" width="508" height="64"/>
+        <text class="t" x="752" y="568">site/index.html  <tspan class="d">+ /judge · /pitch · /architecture</tspan></text>
+        <text x="752" y="585">rendered from the census by scripts/render_site.py · --check fails on drift</text>
+        <text x="752" y="600">the ticker box fetches the three functions same-origin</text>
+
+        <!-- keyed calls → client.py (amber) -->
+        <path class="a k nm" d="M340 86H384"/>
+        <path class="a k nm" d="M340 140H384"/>
+        <path class="a k nm" d="M340 194H384"/>
+        <path class="a k nm" d="M340 248H384"/>
+        <path class="a k" d="M384 248V96H440"/>
+        <text class="lbl k" x="362" y="60">keyed</text>
+        <!-- keyless calls → client.py (green) -->
+        <path class="a f nm" d="M340 344H404"/>
+        <path class="a f nm" d="M340 398H404"/>
+        <path class="a f" d="M404 398V122H440"/>
+        <text class="lbl f" x="392" y="460" transform="rotate(-90 392 460)">keyless</text>
+
+        <!-- engine internals (grey) -->
+        <path class="a e" d="M574 156V180"/>
+        <path class="a e" d="M574 268V292"/>
+        <path class="a e" d="M440 130H432V381H440"/>
+        <path class="a e" d="M574 406V426"/>
+
+        <!-- join.py → the committed files (grey bus) -->
+        <path class="a e nm" d="M708 224H758"/>
+        <path class="a e" d="M758 224V92H808"/>
+        <path class="a e" d="M758 224V178H808"/>
+        <path class="a e" d="M758 224V264H808"/>
+        <path class="a e" d="M758 224V350H808"/>
+
+        <!-- census → the page (blue) -->
+        <path class="a w" d="M917 382V548"/>
+        <text class="lbl b" x="927" y="470">render_site.py</text>
+
+        <!-- the page → the functions (blue, below the boxes) -->
+        <path class="a w" d="M740 580H640"/>
+        <path class="a w" d="M994 612V640H140V612"/>
+        <path class="a w" d="M348 640V612"/>
+
+        <!-- the functions → CoinMarketCap (blue, dashed) -->
+        <path class="a b" d="M80 548V468"/>
+        <text class="lbl b" x="88" y="486">quotes/latest · 1 credit</text>
+        <path class="a b" d="M300 548V468"/>
+        <text class="lbl b" x="308" y="486">map · info</text>
+        <text class="lbl b" x="308" y="500">keyless first</text>
+      </svg>
+      </div>
+      <div class="viz-key" aria-hidden="true">
+        <span><i class="k"></i>keyed call · Pro base · credits counted</span>
+        <span><i class="f"></i>keyless call · /public-api · 0 credits</span>
+        <span><i></i>in-process · stdlib</span>
+        <span><i class="b"></i>the browser's path · one hop for CORS</span>
+      </div>
+      <figcaption id="fig-cap" class="viz-foot">
+        <span>6 endpoints · 6 modules · 5 committed artifacts · 3 functions · 1 static page</span>
+        <span>amber outlines mark the path the product cannot exist without</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="call">
+  <div class="wrap">
+    <div class="kicker">One call</div>
+    <h2><code>Client.get()</code> — one GET, a receipt, no exceptions.</h2>
+    <p class="lede">Everything the engine knows about CoinMarketCap passes through one method in <code>shelfware/client.py</code>. It returns <code>(json, meta)</code>; the <code>meta</code> is the receipt line that ends up beside every number on the page.</p>
+    <div class="grid three">
+      <div class="card">
+        <div class="n">the base is a boolean</div>
+        <h3>keyed=False → /public-api</h3>
+        <p><b>Never sends the key, even when one is exported.</b> <code>keyed=True</code> needs a key (<code>NoKey</code> otherwise) and goes to the Pro base. The judged CLI path is entirely keyless.</p>
+      </div>
+      <div class="card">
+        <div class="n">the receipt</div>
+        <h3>URL · HTTP · credit_count · bytes · sha256 · elapsed · UTC</h3>
+        <p><code>credit_count</code> is read from CoinMarketCap's own envelope. <code>credits_used()</code> sums it over <b>keyed</b> calls only — the keyless envelope also says 1, charged to nobody.</p>
+      </div>
+      <div class="card">
+        <div class="n">errors are data</div>
+        <h3>returned, never raised</h3>
+        <p>429 / 5xx / dropped connections retry with 2, 4, 8, 16 s backoff, then come back as <code>throttled: true</code>. A rate limit can therefore never be reported as a fact about a token.</p>
+      </div>
+    </div>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Ledger</th><th>Method</th><th>Endpoint</th><th>Cost</th><th>What it carries</th></tr></thead>
+      <tbody>
+        <tr><td data-th="Ledger"><b>A</b></td><td data-th="Method"><code>rwa_map()</code></td><td data-th="Endpoint"><code>/v5/real-world-assets/map</code></td><td data-th="Cost"><span class="tag k">keyed · 0</span></td><td data-th="What it carries">Every underlying: <code>has_tokens</code>, <code>rwa_rank</code>, <code>asset_type</code>. Paged by <code>has_more</code>, 250 per page.</td></tr>
+        <tr><td data-th="Ledger"><b>B</b></td><td data-th="Method"><code>rwa_quotes()</code></td><td data-th="Endpoint"><code>/v5/real-world-assets/quotes/latest</code></td><td data-th="Cost"><span class="tag k">keyed · 1 / 250</span></td><td data-th="What it carries"><code>tokens[]</code> — the wrapper roster, <code>price: null</code> rows included, with <code>issuer_id</code> and <code>crypto_id</code> per wrapper. Batches of 200 ids with <code>skip_invalid=true</code>, or one <code>symbol=</code> for the ticker question. <b>The engine.</b></td></tr>
+        <tr><td data-th="Ledger"><b>C</b></td><td data-th="Method"><code>issuers()</code></td><td data-th="Endpoint"><code>/v5/real-world-assets/issuers/list</code></td><td data-th="Cost"><span class="tag k">keyed · 1</span></td><td data-th="What it carries">Each issuer's declared <code>num_tokens</code>.</td></tr>
+        <tr><td data-th="Ledger"><b>D</b></td><td data-th="Method"><code>cmc_map()</code></td><td data-th="Endpoint"><code>/public-api/v1/cryptocurrency/map</code></td><td data-th="Cost"><span class="tag f">keyless · 0</span></td><td data-th="What it carries">Listing <code>status</code> across <code>active,inactive,untracked</code>. Full map: 8 pages of 5,000. Per ticker: a <code>symbol=</code> filter — dotted symbols are never sent, an unknown symbol named in a 400 is dropped and the call retried.</td></tr>
+        <tr><td data-th="Ledger"><b>E</b></td><td data-th="Method"><code>cmc_info()</code></td><td data-th="Endpoint"><code>/public-api/v2/cryptocurrency/info</code></td><td data-th="Cost"><span class="tag f">keyless · 0</span></td><td data-th="What it carries"><code>date_added</code> for the shelf, in batches of 200; ids named in a 400 are dropped and the batch retried.</td></tr>
+        <tr><td data-th="Ledger"><b>K</b></td><td data-th="Method"><code>key_info()</code></td><td data-th="Endpoint"><code>/v1/key/info</code></td><td data-th="Cost"><span class="tag k">keyed · 0</span></td><td data-th="What it carries">The month's credit counter, read before and after a census so the receipt's total can be checked against CMC's.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="census">
+  <div class="wrap">
+    <div class="kicker">The census, stage by stage</div>
+    <h2><code>cli.run_census()</code> — A, B, C, D, E, then the join.</h2>
+    <p class="lede">The orchestration is one function. Each stage is a real call with its own receipt line; the whole run on 2026-09-18 was 54 calls, 5 credits and 40.9 s.</p>
+    <ol class="stages">
+      <li><div><b>Ledger A — the universe.</b> <code>rwa_map()</code>; keep the rows with <code>has_tokens</code>.<span class="m">791 underlyings</span></div></li>
+      <li><div><b>Ledger B — the roster.</b> <code>rwa_quotes(rwa_ids=…)</code> for those ids; every <code>tokens[]</code> entry is a wrapper.<span class="m">1,435 wrappers, price: null rows kept</span></div></li>
+      <li><div><b>Ledger C — the issuers.</b> <code>issuers()</code>, for the declared-vs-attached column of the scorecard.</div></li>
+      <li><div><b>Ledger D — the state.</b> <code>cmc_map()</code> keyless, all of <code>active,inactive,untracked</code>. If the anonymous pool refuses the IP (429, error 1022), the identical paging runs keyed and the receipt says so. Whatever did not resolve is asked again <b>by symbol</b> — so <code>unresolved</code> means CMC has no row, not that a page was skipped.</div></li>
+      <li><div><b>Ledger E — the shelf's dates.</b> <code>cmc_info()</code> keyless for every wrapper that is not <code>active</code>; <code>date_added</code> is the shelf's age.</div></li>
+      <li><div><b>The join.</b> <code>join.census()</code> — wrappers, resolution, the three rules, the scorecard, the type bars, the hero, the receipt and the counts — then <code>key_info()</code> again.</div></li>
+      <li><div><b>Five artifacts.</b> <code>cli.write_census()</code> writes <code>data/census.json</code>, <code>data/roster_snapshot.json</code>, <code>docs/proof/live_run.json</code>, today's <code>data/snapshots/</code> file and, via <code>write_delta()</code>, <code>data/delta.json</code>.</div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="arithmetic">
+  <div class="wrap">
+    <div class="kicker">The arithmetic, in full</div>
+    <h2><code>join.py</code> — every number is a count.</h2>
+    <p class="lede">The whole product fits in one screen of definitions. Nothing is inferred; a p95 is a real observation (nearest-rank, <code>pct_rank()</code>).</p>
+<pre><code><span class="c"># shelfware/join.py — the function that computes each line is named on the right</span>
+wrappers      = flatten(tokens[] per underlying)                            <span class="fn">wrappers_from()</span>
+status        = D[crypto_id].status, else <span class="kw">"unresolved"</span>                      <span class="fn">resolve()</span>
+date_added    = E[crypto_id].date_added                                    <span class="fn">enrich_info()</span>
+
+shelf(w)                  = w.status == <span class="kw">"untracked"</span>                        <span class="fn">is_shelf()</span>
+zero_tracked(underlying)  = wrappers ≥ 1 and all shelf     <span class="c">(strict)</span>        <span class="fn">zero_tracked(strict=True)</span>
+                          = no wrapper active             <span class="c">(loose)</span>         <span class="fn">zero_tracked(strict=False)</span>
+scorecard[issuer]         = declared (C.num_tokens) · attached · tracked · untracked
+                            · inactive · unresolved · untracked/attached
+                            · Σ market_cap over tracked                    <span class="fn">scorecard()</span>
+type_bars[asset_type]     = the same, over wrappers                        <span class="fn">type_bars()</span>
+type_underlyings[type]    = the headline split by type                     <span class="fn">type_underlyings()</span>
+age_tracked               = days since first_historical_data, active      <span class="fn">age_of_tracked()</span>
+age_shelf                 = days since date_added, untracked              <span class="fn">age_of_shelf()</span>
+hero                      = min rwa_rank over strict zero-tracked         <span class="fn">hero()</span>
+census(...)               = all of the above + receipt + counts           <span class="fn">census()</span>
+recount(doc)              = the counts again, from wrappers[] alone       <span class="fn">recount()</span>
+
+<span class="c"># the headline on 2026-09-18</span>
+zero_tracked / has_tokens = <span class="ok">476</span> / <span class="ok">791</span>   <span class="c">→ 60 %, recounted by shelfware verify on every make check</span></code></pre>
+  </div>
+</section>
+
+<section id="ticker">
+  <div class="wrap">
+    <div class="kicker">The ticker question</div>
+    <h2><code>lookup(ticker)</code> — two legs, each row labelled.</h2>
+    <p class="lede"><code>python3 -m shelfware MS</code> runs <code>lookup.lookup()</code> from <code>shelfware/lookup.py</code>: it never raises for an API condition, and every leg records its source and, when it fell back, why.</p>
+    <div class="two-col">
+      <div class="card">
+        <div class="n">roster leg · which wrappers exist</div>
+        <h3>keyed if a key is exported, else the snapshot</h3>
+        <p>With a key: <code>rwa_quotes(symbol=)</code> for 1 credit. A 400 means the RWA universe has no such symbol — an answer, not a fallback. Without a key, or on any other error: <code>data/roster_snapshot.json</code>, with its date and the reason, <code>source: "snapshot"</code>.</p>
+      </div>
+      <div class="card">
+        <div class="n">state leg · are they tracked</div>
+        <h3>keyless, live, always first</h3>
+        <p><code>cmc_map(symbols)</code> on <code>/public-api</code>. Wrappers whose symbol the filter rejects take <code>active</code> from <code>cmc_info</code>, or the map's finer word from the snapshot when info says <code>inactive</code>. Each wrapper carries <code>status_source</code> ∈ {<code>map</code>, <code>info</code>, <code>info+snapshot</code>, <code>snapshot</code>}.</p>
+        <p>Pool exhausted and a key exported: the identical call keyed, <code>status.base = "keyed"</code>. No key: the committed state, <code>temporary_failure</code> set — the CLI answers, then exits <b>75</b> (<code>EX_TEMPFAIL</code>).</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:18px">The answer is one screen: every wrapper, its issuer, chain and listing state, then the receipt line. <code>delta.delta()</code> diffs two censuses by <code>crypto_id</code> — <code>newly_tracked</code> is strictly <code>untracked → active</code>, <code>newly_shelved</code> strictly the reverse, everything else <code>other_flips</code>. <code>verify.compare_counts()</code> recounts every headline from the rows; <code>live_check()</code> re-fetches ten states keyless and compares.</p>
+  </div>
+</section>
+
+<section id="proxy">
+  <div class="wrap">
+    <div class="kicker">The proxy — api/</div>
+    <h2>One hop, because CoinMarketCap sends no CORS header.</h2>
+    <p class="lede">Three Node functions with no dependencies, sharing <code>api/_lib.js</code>. They never reshape CoinMarketCap's payload — <code>raw</code> passes through verbatim — and failures are never cached.</p>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Route</th><th>Secret</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td data-th="Route"><code>GET /api/roster?symbol=</code></td><td data-th="Secret"><span class="tag k">CMC_API_KEY</span></td><td data-th="Behaviour">Read from the Vercel environment — the only place a secret exists. Exactly one symbol matching <code>^[A-Za-z0-9.$-]{1,16}$</code>. Live <code>quotes/latest?symbol=</code> for 1 credit; a 400 is "no such symbol"; a missing key, 429, 403 or 5xx answers from <code>data/roster_snapshot.json</code> with <code>source: "snapshot"</code>, its date and the reason. The snapshot tokens ride along on every answer. 60 s cache per symbol per instance.</td></tr>
+        <tr><td data-th="Route"><code>GET /api/status?symbols=&amp;ids=</code></td><td data-th="Secret"><span class="tag f">none</span></td><td data-th="Behaviour">1–20 alphanumeric symbols → <code>/public-api/v1/cryptocurrency/map</code>; 1–100 ids → <code>/public-api/v2/cryptocurrency/info</code>. Keyless first, always. If the anonymous pool refuses the host's shared IP (429 error 1022, seen on the first production deploy), the identical call is repeated on the keyed base for 1 credit with <code>base: "keyed"</code> and the keyless error kept beside it.</td></tr>
+        <tr><td data-th="Route"><code>GET /api/health</code></td><td data-th="Secret"><span class="tag f">none</span></td><td data-th="Behaviour">Census date, snapshot days, counts, hero, the deployed commit and <code>roster_key_configured</code> — a boolean is all that is ever said about the key. Reads <code>data/health.json</code>, written by <code>render_site.py</code>.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note" style="margin-top:14px"><code>vercel.json</code>: <code>outputDirectory: site</code>, <code>includeFiles: data/*.json</code> for the functions, <code>Cache-Control: no-store</code> on <code>/api/*</code>. <code>scripts/dev_server.mjs</code> serves the same three routes and <code>site/</code> locally on port 8103.</p>
+  </div>
+</section>
+
+<section id="data">
+  <div class="wrap">
+    <div class="kicker">Data files</div>
+    <h2>Who writes what, who reads it.</h2>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>File</th><th>Written by</th><th>Read by</th></tr></thead>
+      <tbody>
+        <tr><td data-th="File"><code>data/census.json</code></td><td data-th="Written by"><code>shelfware census</code></td><td data-th="Read by"><code>render_site.py</code>, <code>shelfware verify</code>, the tests, <code>bench.py --replay</code></td></tr>
+        <tr><td data-th="File"><code>data/roster_snapshot.json</code></td><td data-th="Written by"><code>shelfware census</code></td><td data-th="Read by"><code>shelfware TICKER</code> (no key), <code>api/roster.js</code></td></tr>
+        <tr><td data-th="File"><code>data/snapshots/*.json</code>, <code>data/delta.json</code></td><td data-th="Written by"><code>shelfware census</code>, <code>scripts/snapshot.py</code></td><td data-th="Read by"><code>render_site.py</code> (the delta panel), <code>shelfware delta</code></td></tr>
+        <tr><td data-th="File"><code>data/health.json</code></td><td data-th="Written by"><code>render_site.py</code></td><td data-th="Read by"><code>api/health.js</code></td></tr>
+        <tr><td data-th="File"><code>data/seed/*.json</code></td><td data-th="Written by"><code>scripts/seed.py</code></td><td data-th="Read by">offline tests, <code>bench.py --replay</code> — <b>never the demo</b></td></tr>
+        <tr><td data-th="File"><code>docs/proof/*.json</code></td><td data-th="Written by">the real runs</td><td data-th="Read by">DEMO.md, the page's hero card (<code>docs/proof/ms.json</code>)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="grid three">
+      <div class="card"><div class="n">scripts/ · proof</div><h3><code>spike.py</code> · <code>bench.py</code> · <code>verify.py</code></h3><p>The day-1 question asked three ways with real calls; p50/p95 of the state leg, the ticker question and the join, separately; <code>shelfware verify</code> plus a check that README, DEMO, JUDGE and the page all state the pair the rows produce.</p></div>
+      <div class="card"><div class="n">scripts/ · series</div><h3><code>snapshot.py</code> · <code>seed.py</code></h3><p>The daily census into <code>data/snapshots/YYYY-MM-DD.json</code> and <code>data/delta.json</code> — it never touches <code>data/census.json</code>. <code>seed.py</code> cuts four real responses with provenance and prints the hero rule; not the demo path.</p></div>
+      <div class="card"><div class="n">scripts/ · gates</div><h3><code>render_site.py</code> · <code>check_submission_readiness.py</code></h3><p>The pages and <code>data/health.json</code> from the census; an unfilled <code>{{slot}}</code> fails the render and <code>--check</code> fails on drift. The readiness gate refuses placeholders, TODOs, overclaims, key-shaped strings in any tracked file, and a census older than three days.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="failure">
+  <div class="wrap">
+    <div class="kicker">Failure handling</div>
+    <h2>Every failure is labelled; none becomes a number.</h2>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Condition</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td data-th="Condition"><span class="tag r">429 / 5xx / dropped</span></td><td data-th="Behaviour">Retried with 2, 4, 8, 16 s backoff; then returned with <code>throttled: true</code>.</td></tr>
+        <tr><td data-th="Condition"><span class="tag r">pool exhausted</span> key exported</td><td data-th="Behaviour">The identical call, keyed; the row says so.</td></tr>
+        <tr><td data-th="Condition"><span class="tag r">pool exhausted</span> no key</td><td data-th="Behaviour">The committed state, labelled; the CLI exits 75 after answering.</td></tr>
+        <tr><td data-th="Condition"><span class="tag r">400</span> from a batched call</td><td data-th="Behaviour">The offending symbol / ids named in CMC's message are dropped and the call retried; the rest of the batch survives.</td></tr>
+        <tr><td data-th="Condition"><span class="tag r">any other 4xx</span></td><td data-th="Behaviour">Returned immediately with CMC's own error code and message — never a raw body.</td></tr>
+        <tr><td data-th="Condition"><span class="tag r">malformed JSON</span></td><td data-th="Behaviour">An error, never a number.</td></tr>
+        <tr><td data-th="Condition"><span class="tag r">drift</span></td><td data-th="Behaviour"><code>credits_used</code> ≠ Σ keyed <code>credit_count</code>, or counts ≠ <code>recount()</code>: <code>shelfware verify</code> exits 1 and <code>make check</code> fails.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="layout">
+  <div class="wrap">
+    <div class="kicker">Repository</div>
+    <h2>Where each part lives.</h2>
+<pre><code>shelfware/
+├── shelfware/                  <span class="c">the engine — stdlib only</span>
+│   ├── client.py               <span class="c">one GET, four ledgers, a receipt per call, backoff, no raising</span>
+│   ├── join.py                 <span class="c">the arithmetic: wrappers, resolve, three counting rules, scorecard, hero rule</span>
+│   ├── lookup.py               <span class="c">the ticker question — roster leg + state leg, each row labelled</span>
+│   ├── delta.py · verify.py    <span class="c">two snapshots diffed · every headline recounted from the rows</span>
+│   └── cli.py                  <span class="c">shelfware TICKER · census · verify · delta</span>
+├── api/                        <span class="c">Vercel functions, no dependencies: roster (keyed) · status (keyless first) · health</span>
+├── site/                       <span class="c">generated: the one screen (/), /judge, /pitch — and this page, /architecture</span>
+├── scripts/                    <span class="c">snapshot · seed · bench · verify · render_site · md2html · readiness gate · spike</span>
+├── data/                       <span class="c">census.json · roster_snapshot.json · snapshots/ · delta.json · seed/</span>
+├── docs/proof/                 <span class="c">live_run.json · ms.json · bench.json · spike.json — the receipts</span>
+├── docs/                       <span class="c">METHOD.md · COMPARISON.md · screenshots/ · assets/</span>
+├── tests/                      <span class="c">104 offline · 6 live · api.test.mjs</span>
+├── JUDGE.md · DEMO.md · ARCHITECTURE.md · FEEDBACK.md
+└── README.md</code></pre>
+  </div>
+</section>
+
+<section id="not">
+  <div class="wrap">
+    <div class="kicker">Deliberate non-architecture</div>
+    <h2>What is not here, and why.</h2>
+    <div class="grid three">
+      <div class="card"><div class="n">no database</div><h3>A JSON file a judge can <code>jq</code></h3><p>The census is one file; the series is a directory of dated files.</p></div>
+      <div class="card"><div class="n">no model, no LLM</div><h3>Every number is a count</h3><p>There is nothing to infer.</p></div>
+      <div class="card"><div class="n">no framework</div><h3>One screen, vanilla HTML/CSS/JS</h3><p>Rendered from a template; a build step would add risk for no judge-visible gain.</p></div>
+      <div class="card"><div class="n">no auth</div><h3>The judged path is keyless</h3><p>The proxy's one secret lives in the deployment environment and is never in the repo, the browser, a log or a receipt.</p></div>
+      <div class="card"><div class="n">no runtime dependencies</div><h3><code>python3 -m shelfware MS</code></h3><p>Works on a clean machine with no install step. The only dependencies are the dev ones in <code>pyproject.toml</code>.</p></div>
+      <div class="card"><div class="n">no server on the judged path</div><h3>Static HTML from a committed file</h3><p>The functions exist for the browser only; the CLI never touches them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="go">
+  <div class="wrap">
+    <div class="kicker">Read the code it describes</div>
+    <h2>Every name on this page is a function.</h2>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer"><svg class="gh-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Open the repository <span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="btn" href="/judge">For judges <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn" href="/">Type a ticker <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand"><img src="../assets/icon.svg" alt="" width="30" height="30">Shelfware</div>
+        <p style="margin-top:12px;max-width:40ch">Counts the shelf. Built on the CoinMarketCap API for the <a href="https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail" target="_blank" rel="noopener noreferrer">Build with CMC: API Hackathon<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>, Real World Assets track. MIT licensed.</p>
+      </div>
+      <div>
+        <h3>Repository</h3>
+        <ul>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware" target="_blank" rel="noopener noreferrer">Source<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware/blob/main/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">ARCHITECTURE.md — the long form<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware/blob/main/docs/METHOD.md" target="_blank" rel="noopener noreferrer">Method — the rules and invariants<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a class="link-quiet" href="https://github.com/edycutjong/shelfware/tree/main/docs/proof" target="_blank" rel="noopener noreferrer">Receipts<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <ul>
+          <li><a class="link-quiet" href="/">The one screen — /</a></li>
+          <li><a class="link-quiet" href="/judge">For judges — /judge</a></li>
+          <li><a class="link-quiet" href="/pitch/">Pitch deck — /pitch</a></li>
+          <li><a class="link-quiet" href="https://shelfware-cmc.vercel.app/api/health">/api/health</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>derived from the code after it was built · every function named here exists in <span class="mono">shelfware/</span>, <span class="mono">scripts/</span> or <span class="mono">api/</span></span>
+      <span><a class="link-quiet" href="https://github.com/edycutjong/shelfware/releases/latest" target="_blank" rel="noopener noreferrer"><span class="ver">v1.0.1</span> · latest release<span class="arrow arrow-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  var mq=window.matchMedia?window.matchMedia('(prefers-color-scheme: light)'):null;
+  function current(){var t=root.getAttribute('data-theme');if(t==='light'||t==='dark')return t;return (mq&&mq.matches)?'light':'dark'}
+  function label(){var next=current()==='light'?'dark':'light';btn.setAttribute('aria-label','Switch to '+next+' theme');btn.title='Switch to '+next+' theme'}
+  btn.addEventListener('click',function(){
+    var next=current()==='light'?'dark':'light';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('shelfware-theme',next)}catch(e){}
+    label();
+  });
+  if(mq&&mq.addEventListener)mq.addEventListener('change',label);
+  label();
+})();
+</script>
+</body>
+</html>

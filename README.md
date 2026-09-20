@@ -146,6 +146,9 @@ its listing state on the cryptocurrency map, and reports what the boolean hides.
 four ledgers (3 keyed, 1 keyless)  →  one join on crypto_id  →  three counting rules  →  a receipt beside every number
 ```
 
+<details>
+<summary><b>Architecture diagram</b> (click to expand)</summary>
+
 ```mermaid
 flowchart LR
   subgraph cmc["CoinMarketCap API"]
@@ -173,6 +176,8 @@ flowchart LR
   SITE --> API --> B & D & E
 ```
 
+</details>
+
 No database, no model, no framework, no server on the judged path. The site is static HTML
 rendered from the committed census plus two dependency-free serverless functions that let a
 browser reach an API that sends no CORS header.
@@ -194,7 +199,9 @@ browser reach an API that sends no CORS header.
 | Quality | ruff · mypy · pytest-cov (engine gated at 90%) · pip-audit · gitleaks · CodeQL · Dependabot |
 
 Full derivation from the code, every failure mode, and the deliberate non-architecture:
-**[ARCHITECTURE.md](ARCHITECTURE.md)**. The rules and their invariants: [docs/METHOD.md](docs/METHOD.md).
+**[ARCHITECTURE.md](ARCHITECTURE.md)** — rendered as a page, light or dark:
+[shelfware.edycu.dev/architecture](https://shelfware.edycu.dev/architecture/).
+The rules and their invariants: [docs/METHOD.md](docs/METHOD.md).
 
 ---
 
