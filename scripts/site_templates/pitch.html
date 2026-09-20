@@ -688,7 +688,9 @@ what trades is young      median {{age_median}} d · p90 {{age_p90}} (n={{age_n}
   function buildOverview(){
     slides.forEach(function(s, k){
       var t = document.createElement('div'); t.className = 'thumb'; t.tabIndex = 0; t.setAttribute('role','button');
-      t.innerHTML = '<span class="n">' + pad(k + 1) + '</span><span class="t">' + (s.getAttribute('data-title') || '') + '</span>';
+      var num = document.createElement('span'); num.className = 'n'; num.textContent = pad(k + 1);
+      var title = document.createElement('span'); title.className = 't'; title.textContent = s.getAttribute('data-title') || '';
+      t.appendChild(num); t.appendChild(title);
       t.addEventListener('click', function(){ document.body.classList.remove('overview'); show(k); });
       t.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t.click(); } });
       overview.appendChild(t);

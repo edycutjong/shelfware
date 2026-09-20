@@ -30,8 +30,10 @@ http
       try {
         await fn(req, res);
       } catch (e) {
+        // the detail goes to the terminal, never to the client — the browser sees only a 500
+        console.error(`${url.pathname} failed:`, e);
         res.statusCode = 500;
-        res.end(JSON.stringify({ ok: false, error: String(e) }));
+        res.end(JSON.stringify({ ok: false, error: "internal error" }));
       }
       return;
     }
