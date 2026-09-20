@@ -18,4 +18,4 @@ from shelfware.join import census, hero, recount
 from shelfware.lookup import lookup
 
 __all__ = ["Client", "api_key", "census", "delta", "hero", "lookup", "recount"]
-__version__ = "1.0.0"
+__version__ = "1.0.1"

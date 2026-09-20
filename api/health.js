@@ -16,6 +16,6 @@ module.exports = async (req, res) => {
     hero: h.hero || null,
     roster_key_configured: Boolean(process.env.CMC_API_KEY),
     commit: process.env.VERCEL_GIT_COMMIT_SHA || null,
-    version: "1.0.0",
+    version: "1.0.1",
   });
 };

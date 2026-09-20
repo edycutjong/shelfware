@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "shelfware"
-version = "1.0.0"
+version = "1.0.1"
 description = "Which tokenised stocks on CoinMarketCap actually have a market — a census of the wrappers left on the shelf."
 readme = "README.md"
 license = { text = "MIT" }
