@@ -8,18 +8,41 @@ name: release
 #
 # v1.0.0 was set deliberately on 2026-09-20 to leave 0.x behind; the bump reads the last tag,
 # so releases from here are 1.x.
+#
+# The tag lands on a commit whose stamps ARE the tag: once the next version is known, this job
+# writes it into pyproject.toml / shelfware/__init__.py / api/health.js (scripts/bump_version.py),
+# re-renders site/ from it, commits `chore(release): vX.Y.Z`, tags THAT commit and publishes the
+# release. A tag on a commit still stamped with the previous version would fail the next CI run's
+# drift gate — so the render and the tag move together, here, never by hand.
+#
+# Called by ci.yml after every gate has passed on a push to main (workflow_call), so it never runs
+# on a red build and the production deploy that follows it ships the stamped commit. The push made
+# with GITHUB_TOKEN triggers no further workflow — by design; the commit differs from the one CI
+# just tested only in the version strings and the render of them.
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_call:
+    outputs:
+      sha:
+        description: "The commit to deploy: the release commit when one was made, else the caller's"
+        value: ${{ jobs.release.outputs.sha }}
+      version:
+        description: "The tag minted, or empty when nothing was releasable"
+        value: ${{ jobs.release.outputs.version }}
   workflow_dispatch:
 
 permissions:
-  contents: write        # required to push the tag and create the Release
+  contents: write        # required to push the release commit and the tag, and to create the Release
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    outputs:
+      sha: ${{ steps.publish.outputs.sha || github.sha }}
+      version: ${{ steps.ver.outputs.next }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -59,17 +82,36 @@ jobs:
           echo "Bump: $BUMP  ${LAST:-none} -> $NEXT"
           echo "next=$NEXT"  >> "$GITHUB_OUTPUT"
           echo "bump=$BUMP"  >> "$GITHUB_OUTPUT"
+          echo "last=${LAST:-none}" >> "$GITHUB_OUTPUT"
           echo "skip=false"  >> "$GITHUB_OUTPUT"
 
-      - name: Tag and publish the release
+      - uses: actions/setup-python@v7
         if: steps.ver.outputs.skip == 'false'
+        with: { python-version: '3.11' }
+
+      - name: Stamp the version into the tree and re-render the site from it
+        if: steps.ver.outputs.skip == 'false'
+        run: |
+          set -euo pipefail
+          python3 scripts/bump_version.py "${{ steps.ver.outputs.next }}"
+          python3 scripts/render_site.py
+          python3 scripts/render_site.py --check
+          python3 scripts/verify.py
+
+      - name: Commit the stamped tree, tag it, publish the release
+        if: steps.ver.outputs.skip == 'false'
+        id: publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pyproject.toml shelfware/__init__.py api/health.js site data/health.json
+          git commit -m "chore(release): ${{ steps.ver.outputs.next }} — ${{ steps.ver.outputs.bump }} bump minted by release.yml from the commits since ${{ steps.ver.outputs.last }}; the version stamped into pyproject, __version__, /api/health and the page, then tagged"
           git tag -a "${{ steps.ver.outputs.next }}" -m "${{ steps.ver.outputs.next }}"
+          git push origin HEAD:main
           git push origin "${{ steps.ver.outputs.next }}"
           gh release create "${{ steps.ver.outputs.next }}" \
             --generate-notes --title "${{ steps.ver.outputs.next }}"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"

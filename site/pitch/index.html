@@ -7,7 +7,7 @@
   or from docs/proof/bench.json — nothing is typed in by hand. Screenshots in shots/ are captures of the live site.
   Fonts: the three variable woff2 files the landing ships in site/assets/fonts/, referenced relatively — no CDN, no
   third-party request, and the deck sets in the same faces as the landing page.
-  Version: v1.0.0 — `git describe --tags --abbrev=0` at render time; v0.0.0-dev means no release is tagged yet.
+  Version: v1.0.0 — the version pyproject.toml declares at render time; release.yml bumps it, re-renders and commits before it tags.
 -->
 <html lang="en">
 <head>

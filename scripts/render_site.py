@@ -15,7 +15,6 @@ the template or the census, never the page.
 import hashlib
 import json
 import re
-import subprocess
 import sys
 import urllib.parse
 from datetime import UTC, datetime
@@ -24,6 +23,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import bump_version  # noqa: E402
 import md2html  # noqa: E402
 
 from shelfware.cli import answer_lines  # noqa: E402
@@ -122,20 +122,12 @@ FAVICON = urllib.parse.quote(
 
 
 def version():
-    """The deck's version stamp: the repository's latest tag, so the deck, the README's Release
-    badge and the live app carry the same string. No tag yet reads v0.0.0-dev — an honest signal
-    that no release exists, never a faked number. The CI check job clones with tags for this."""
-    try:
-        out = subprocess.run(
-            ["git", "describe", "--tags", "--abbrev=0"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            check=True,
-        ).stdout.strip()
-        return out or "v0.0.0-dev"
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        return "v0.0.0-dev"
+    """The deck's version stamp: the version pyproject.toml declares, so the deck, the CLI's
+    --version, /api/health and the README's Release badge carry the same string. release.yml
+    bumps that file (scripts/bump_version.py), re-renders and commits BEFORE it tags, so the
+    tag on a release commit is always the stamp on its page — and a clone without tags renders
+    exactly what is committed."""
+    return "v" + bump_version.current()
 
 
 def money(x):
@@ -1040,24 +1032,6 @@ def render_pitch():
     return html
 
 
-VERSION_STAMP = re.compile(r'(<span class="ver">)v\d+\.\d+\.\d+(?:-dev)?(</span>)')
-
-
-def tag_reachable():
-    try:
-        return bool(
-            subprocess.run(
-                ["git", "describe", "--tags", "--abbrev=0"],
-                cwd=ROOT,
-                capture_output=True,
-                text=True,
-                check=True,
-            ).stdout.strip()
-        )
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        return False
-
-
 def main():
     check = "--check" in sys.argv
     html, health = render()
@@ -1068,15 +1042,9 @@ def main():
         PITCH_OUT: render_pitch(),
     }
     if check:
-        # A shallow, tagless clone (the CI test matrix) renders the honest fallback where the
-        # committed page carries the release tag; compare everything but the stamp there, and
-        # say so, rather than fail on a version the checkout cannot see.
-        mask = (lambda t: VERSION_STAMP.sub(r"\1vX\2", t)) if not tag_reachable() else (lambda t: t)
-        stale = [
-            p.name
-            for p, want in targets.items()
-            if not p.exists() or mask(p.read_text()) != mask(want)
-        ]
+        # The render is a function of the tree alone (census, receipts, templates, the version in
+        # pyproject.toml), so any clone — shallow, tagless — must reproduce the committed files.
+        stale = [p.name for p, want in targets.items() if not p.exists() or p.read_text() != want]
         if stale:
             print(
                 f"drift: {', '.join(stale)} is not what the census renders — run: python3 scripts/render_site.py"
@@ -1084,11 +1052,6 @@ def main():
             return 1
         print(
             "site/index.html, site/judge/index.html, site/pitch/index.html and data/health.json match the census"
-            + (
-                ""
-                if tag_reachable()
-                else " (no release tag reachable here — the version stamp was not compared)"
-            )
         )
         return 0
     SITE.mkdir(exist_ok=True)
