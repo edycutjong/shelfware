@@ -20,9 +20,9 @@ CMC-tracked market.</strong> The ticker question is keyless:
 
 <br/>
 
-[![Judge Guide](https://img.shields.io/badge/⚖️_Start-Here-06b6d4?style=for-the-badge)](https://shelfware-cmc.vercel.app/judge)
-[![Live](https://img.shields.io/badge/📦_shelfware--cmc.vercel.app-Live-0B0F14?style=for-the-badge)](https://shelfware-cmc.vercel.app)
-[![Pitch Deck](https://img.shields.io/badge/📊_Pitch-Deck-FFB020?style=for-the-badge)](https://shelfware-cmc.vercel.app/pitch/)
+[![Judge Guide](https://img.shields.io/badge/⚖️_Start-Here-06b6d4?style=for-the-badge)](https://shelfware.edycu.dev/judge)
+[![Live](https://img.shields.io/badge/📦_shelfware.edycu.dev-Live-0B0F14?style=for-the-badge)](https://shelfware.edycu.dev)
+[![Pitch Deck](https://img.shields.io/badge/📊_Pitch-Deck-FFB020?style=for-the-badge)](https://shelfware.edycu.dev/pitch/)
 [![API Feedback](https://img.shields.io/badge/📮_CMC_API-Feedback-4C9AFF?style=for-the-badge)](FEEDBACK.md)
 [![Built for Build with CMC](https://img.shields.io/badge/DoraHacks-Build_with_CMC-8b5cf6?style=for-the-badge)](https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail)
 
@@ -44,7 +44,7 @@ CMC-tracked market.</strong> The ticker question is keyless:
 ## 📸 See it in Action
 
 <div align="center">
-  <img src="docs/screenshots/issuer-scorecard.png" alt="The issuer scorecard on shelfware-cmc.vercel.app: Dinari 100% shelf, Backed Assets 82% with $669M live in the rest, Robinhood 8%, Ondo 2%, bStocks 0% with $797M live" width="100%">
+  <img src="docs/screenshots/issuer-scorecard.png" alt="The issuer scorecard on the live site: Dinari 100% shelf, Backed Assets 82% with $669M live in the rest, Robinhood 8%, Ondo 2%, bStocks 0% with $797M live" width="100%">
 </div>
 
 > **Type a ticker → every wrapper, its issuer, its chain, its listing state → the raw API rows
@@ -89,7 +89,7 @@ its wrapper comes alive tomorrow, the rule moves to APH and the delta panel show
   <img src="docs/screenshots/ticker-nvda-live-evidence.png" alt="The ticker answer for NVDA on the live site: 7 of 8 wrappers with a CMC-tracked market, with the evidence drawer open on the raw /api/roster and /api/status calls, their HTTP status, credit counts and sha256" width="100%">
 </div>
 
-The one screen, live: **[shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)** — the
+The one screen, live: **[shelfware.edycu.dev](https://shelfware.edycu.dev)** — the
 number, the issuer scorecard, the asset-type bars, the day-over-day delta, and the same ticker
 question through the site's proxy with the raw API rows in an evidence drawer beside every answer.
 
@@ -189,7 +189,7 @@ browser reach an API that sends no CORS header.
 |---|---|
 | Engine | Python 3.11, **stdlib only** — `python3 -m shelfware MS` needs no `pip install` |
 | Data | CoinMarketCap RWA family (keyed, Basic tier) + the keyless `/public-api` cryptocurrency surface |
-| Site | Static HTML rendered by `scripts/render_site.py` (landing, `/judge`, `/pitch`); served by Vercel and, once public, GitHub Pages at shelfware.edycu.dev; Vercel functions in dependency-free Node with open CORS |
+| Site | Static HTML rendered by `scripts/render_site.py` (landing, `/judge`, `/pitch`); served by Vercel at shelfware.edycu.dev (and under its default name, shelfware-cmc.vercel.app); Vercel functions in dependency-free Node with open CORS |
 | Tests | pytest · **hypothesis** (property-based) · live contract tests · `node --test` for the functions |
 | Quality | ruff · mypy · pytest-cov (engine gated at 90%) · pip-audit · gitleaks · CodeQL · Dependabot |
 
@@ -336,7 +336,7 @@ python3 -m shelfware verify    # recount every headline from data/census.json
 ```
 
 > **For judges:** there is no account to create and no credential to configure. Start at
-> **[shelfware-cmc.vercel.app/judge](https://shelfware-cmc.vercel.app/judge)** — the claim, the
+> **[shelfware.edycu.dev/judge](https://shelfware.edycu.dev/judge)** — the claim, the
 > 30-second path, the receipt — or its source, [JUDGE.md](JUDGE.md). Try `GILD`, `IBIT`, `PLD`
 > for more shelf; `GOLD` for a commodity that trades; `MSFT` for eight wrappers where one is on
 > the shelf.
@@ -443,12 +443,12 @@ shelfware/
 
 | | |
 |---|---|
-| **Live** | **[shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)** — the census with its receipt, the issuer scorecard, and the ticker question through the site's proxy |
-| **For judges** | **[shelfware-cmc.vercel.app/judge](https://shelfware-cmc.vercel.app/judge)** — the 30-second path; source in [JUDGE.md](JUDGE.md) |
-| **Pitch deck** | **[shelfware-cmc.vercel.app/pitch](https://shelfware-cmc.vercel.app/pitch/)** — 12 slides, arrow keys, `P` for speaker notes, `Cmd+P` for a PDF; rendered from the census by `scripts/render_site.py`, so every number on it is the receipt's. Source: [`scripts/site_templates/pitch.html`](scripts/site_templates/pitch.html) |
-| **Static mirror** | `site/` also deploys to GitHub Pages at **shelfware.edycu.dev** (`site/CNAME`, [`.github/workflows/pages.yml`](.github/workflows/pages.yml)) once the repository is public — same page, same deck; the ticker search calls the Vercel functions cross-origin |
+| **Live** | **[shelfware.edycu.dev](https://shelfware.edycu.dev)** — the census with its receipt, the issuer scorecard, and the ticker question through the site's proxy |
+| **For judges** | **[shelfware.edycu.dev/judge](https://shelfware.edycu.dev/judge)** — the 30-second path; source in [JUDGE.md](JUDGE.md) |
+| **Pitch deck** | **[shelfware.edycu.dev/pitch](https://shelfware.edycu.dev/pitch/)** — 12 slides, arrow keys, `P` for speaker notes, `Cmd+P` for a PDF; rendered from the census by `scripts/render_site.py`, so every number on it is the receipt's. Source: [`scripts/site_templates/pitch.html`](scripts/site_templates/pitch.html) |
+| **Also at** | **[shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)** — the same deployment under the project's default Vercel name (the address the demo video shows). `shelfware.edycu.dev` is the canonical host, a production domain on the same project since 2026-09-20, so the ticker search is same-origin on both. A static mirror of `site/` on GitHub Pages ([`.github/workflows/pages.yml`](.github/workflows/pages.yml), `site/CNAME`) is wired but dormant while the DNS record points at Vercel |
 | **The receipt** | **[DEMO.md](DEMO.md)** — both live runs transcribed, with [`docs/proof/live_run.json`](docs/proof/live_run.json) and [`ms.json`](docs/proof/ms.json) behind them |
-| **Health** | [shelfware-cmc.vercel.app/api/health](https://shelfware-cmc.vercel.app/api/health) — census date, snapshot days, the counts, the deployed commit; a boolean about the key, never the key |
+| **Health** | [shelfware.edycu.dev/api/health](https://shelfware.edycu.dev/api/health) — census date, snapshot days, the counts, the deployed commit; a boolean about the key, never the key |
 | **Screenshots** | [docs/screenshots/](docs/screenshots/) — eight captures of live execution: the MS card, the NVDA answer with its evidence drawer, the issuer scorecard, the census receipt, the delta panel, the type bars, the limits card, the whole page |
 | **The field** | [docs/COMPARISON.md](docs/COMPARISON.md) — the six closest entries by name, what each counts, and what each filters out |
 

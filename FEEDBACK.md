@@ -186,5 +186,5 @@ explicit `status: "untracked"` on the quotes row so the client learns *why* the 
 
 *All of the above is reproducible from this repository: `python3 scripts/spike.py` for #1, #7,
 #12 (2 keyed credits), `python3 -m shelfware census` for #4–#6, #8, #9, #11 (5 credits), and the
-deployment at [shelfware-cmc.vercel.app/api/status](https://shelfware-cmc.vercel.app/api/status?symbols=wMSx&ids=41513)
+deployment at [shelfware.edycu.dev/api/status](https://shelfware.edycu.dev/api/status?symbols=wMSx&ids=41513)
 for #10.*

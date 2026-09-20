@@ -6,7 +6,7 @@
   Every number on every slide is a template slot filled from the committed census (docs/proof/live_run.json is its receipt)
   or from docs/proof/bench.json — nothing is typed in by hand. Screenshots in shots/ are captures of the live site.
   Fonts: the three variable woff2 files the landing ships in site/assets/fonts/, referenced relatively — no CDN, no
-  third-party request, and the deck sets in the same faces as shelfware-cmc.vercel.app.
+  third-party request, and the deck sets in the same faces as the landing page.
   Version: {{version}} — `git describe --tags --abbrev=0` at render time; v0.0.0-dev means no release is tagged yet.
 -->
 <html lang="en">
@@ -390,7 +390,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
   <h2>Type MS. Get the receipt.</h2>
   <div class="sol">
     <div class="browser">
-      <div class="bar"><i></i><i></i><i></i><span class="url">shelfware-cmc.vercel.app/?t=MS</span></div>
+      <div class="bar"><i></i><i></i><i></i><span class="url">{{site_host}}/?t=MS</span></div>
       <!-- SWAP: assets/ui/shots/03-search-ms-live.png — a capture of the live site, not a mockup -->
       <img src="shots/ms.png" width="1080" height="602" loading="lazy" decoding="async" alt="The live site answering MS: Morgan Stanley, has_tokens: true; one wrapper wMSx by Backed Assets on X Layer, price null, status UNTRACKED from /public-api/v1/cryptocurrency/map live keyless 0 credits, listed 2026-08-11, 38 days on the shelf; verdict 0 of 1 wrapper(s) with a CMC-tracked market">
     </div>
@@ -505,12 +505,12 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 
 <!-- 07 LIVE DEMO -->
 <section class="slide" data-title="Live demo">
-  <div class="kicker">Live — shelfware-cmc.vercel.app</div>
+  <div class="kicker">Live — {{site_host}}</div>
   <h2>Issuers, graded by their shelf</h2>
   <div class="demo">
     <div class="shot">
       <div class="browser crop" style="height:660px">
-        <div class="bar"><i></i><i></i><i></i><span class="url">shelfware-cmc.vercel.app — issuers, by shelf rate</span></div>
+        <div class="bar"><i></i><i></i><i></i><span class="url">{{site_host}} — issuers, by shelf rate</span></div>
         <!-- SWAP: assets/ui/shots/07-issuer-table.png — a capture of the live site -->
         <img src="shots/scorecard.png" width="1080" height="916" loading="lazy" decoding="async" alt="The issuer scorecard on the live site: Dinari Assets 100% shelf, 27 of 27 untracked, $0 live; Backed Assets 82%, 632 of 772, $669M live; Robinhood 8%; Ondo Assets 2%, $891M; bStocks 0%, 77 of 77 tracked, $797M">
       </div>
@@ -521,7 +521,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     <div>
       <div class="shot">
         <div class="term">
-          <div class="bar"><i></i><i></i><i></i><span>shelfware-cmc.vercel.app/?t=NVDA — evidence drawer, open</span></div>
+          <div class="bar"><i></i><i></i><i></i><span>{{site_host}}/?t=NVDA — evidence drawer, open</span></div>
 <pre><span class="ok">7 of 8 wrapper(s) with a CMC-tracked market</span>
 <span class="hi">▾ evidence — the raw rows, endpoint, HTTP status, credit_count</span>
 <span class="dim">/api/status → /public-api/v1/cryptocurrency/map?listing_status=active,inactive,untracked

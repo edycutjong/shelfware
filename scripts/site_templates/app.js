@@ -9,10 +9,11 @@
   "use strict";
   var S = window.SHELF;
   var $ = function (id) { return document.getElementById(id); };
-  // The two proxy functions live on Vercel. On that host (and on the local dev server) the
-  // calls are same-origin; served from GitHub Pages (shelfware.edycu.dev) the same page calls
-  // them cross-origin at the absolute URL — the functions answer with Access-Control-Allow-Origin: *.
-  var API = /(^|\.)vercel\.app$|^localhost$|^127\.0\.0\.1$/.test(location.hostname) ? "" : S.api_base;
+  // The two proxy functions live on the Vercel project, which answers on shelfware.edycu.dev and
+  // on *.vercel.app. On those hosts (and on the local dev server) the calls are same-origin; served
+  // from a static mirror the same page calls them cross-origin at the absolute URL — the functions
+  // answer with Access-Control-Allow-Origin: *.
+  var API = /^shelfware\.edycu\.dev$|(^|\.)vercel\.app$|^localhost$|^127\.0\.0\.1$/.test(location.hostname) ? "" : S.api_base;
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
   var FILTERABLE = /^[A-Za-z0-9]+$/;
   var fmt = function (x, dp) { return x == null ? "null" : Number(x).toLocaleString("en-US", { maximumFractionDigits: dp == null ? 0 : dp, minimumFractionDigits: dp == null ? 0 : dp }); };

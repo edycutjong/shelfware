@@ -68,7 +68,8 @@ def test_the_landing_and_judge_pages_link_the_deck_and_call_the_api_at_an_absolu
     inline = json.loads(re.search(r"window\.SHELF = (\{.*?\});\n</script>", landing, re.S).group(1))
     assert inline["api_base"] == render_site.API_URL
     assert f'href="{render_site.API_URL}/api/health"' in landing
-    # the page's fetches go through the base: same-origin on Vercel and localhost, absolute elsewhere
+    # the page's fetches go through the base: same-origin on the canonical host, Vercel and localhost, absolute elsewhere
     app = (ROOT / "scripts" / "site_templates" / "app.js").read_text()
     assert "fetch(API + url" in app and "S.api_base" in app
+    assert "shelfware\\.edycu\\.dev" in app
     assert (ROOT / "site" / "CNAME").read_text().strip() == render_site.PAGES_URL.split("//", 1)[1]

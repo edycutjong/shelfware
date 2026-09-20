@@ -6,15 +6,15 @@
 <title>Shelfware — 60% of CoinMarketCap&#x27;s tokenised assets have no tracked wrapper</title>
 <meta name="description" content="Counts the shelf: 476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Type a ticker: every wrapper, its listing state.">
 <meta name="author" content="Edy Cu">
-<link rel="canonical" href="https://shelfware-cmc.vercel.app/">
+<link rel="canonical" href="https://shelfware.edycu.dev/">
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <meta name="theme-color" content="#0B0E14">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Shelfware">
-<meta property="og:url" content="https://shelfware-cmc.vercel.app/">
+<meta property="og:url" content="https://shelfware.edycu.dev/">
 <meta property="og:title" content="Shelfware — 60% of CoinMarketCap&#x27;s tokenised assets have no tracked wrapper">
 <meta property="og:description" content="476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Counted 2026-09-18, 5 credits.">
-<meta property="og:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=eb3e9283">
+<meta property="og:image" content="https://shelfware.edycu.dev/og-image.png?v=eb3e9283">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Shelfware — 60% of the tokenised assets on CoinMarketCap have no wrapper with a CMC-tracked market: a shelf of boxes, 476 grey and 315 green.">
@@ -23,7 +23,7 @@
 <meta name="twitter:creator" content="@edycutjong">
 <meta name="twitter:title" content="Shelfware — 60% of CoinMarketCap&#x27;s tokenised assets have no tracked wrapper">
 <meta name="twitter:description" content="476 of 791 tokenised underlyings on CoinMarketCap have no wrapper with a CMC-tracked market. Counted 2026-09-18, 5 credits.">
-<meta name="twitter:image" content="https://shelfware-cmc.vercel.app/og-image.png?v=eb3e9283">
+<meta name="twitter:image" content="https://shelfware.edycu.dev/og-image.png?v=eb3e9283">
 <link rel="preload" href="assets/fonts/inter-tight-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -1474,10 +1474,11 @@ window.SHELF = {"definition":"registered cryptocurrency projects that are listed
   "use strict";
   var S = window.SHELF;
   var $ = function (id) { return document.getElementById(id); };
-  // The two proxy functions live on Vercel. On that host (and on the local dev server) the
-  // calls are same-origin; served from GitHub Pages (shelfware.edycu.dev) the same page calls
-  // them cross-origin at the absolute URL — the functions answer with Access-Control-Allow-Origin: *.
-  var API = /(^|\.)vercel\.app$|^localhost$|^127\.0\.0\.1$/.test(location.hostname) ? "" : S.api_base;
+  // The two proxy functions live on the Vercel project, which answers on shelfware.edycu.dev and
+  // on *.vercel.app. On those hosts (and on the local dev server) the calls are same-origin; served
+  // from a static mirror the same page calls them cross-origin at the absolute URL — the functions
+  // answer with Access-Control-Allow-Origin: *.
+  var API = /^shelfware\.edycu\.dev$|(^|\.)vercel\.app$|^localhost$|^127\.0\.0\.1$/.test(location.hostname) ? "" : S.api_base;
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
   var FILTERABLE = /^[A-Za-z0-9]+$/;
   var fmt = function (x, dp) { return x == null ? "null" : Number(x).toLocaleString("en-US", { maximumFractionDigits: dp == null ? 0 : dp, minimumFractionDigits: dp == null ? 0 : dp }); };

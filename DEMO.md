@@ -203,7 +203,7 @@ never violated `strict ≤ loose ≤ has_tokens`, the issuer and type tables nev
 but the wrapper count, the counts block always equalled a recount from the rows, and an unresolved
 id was never counted as shelf. Reproduce: `pytest tests/test_property.py -q`.
 
-## The one screen — [shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)
+## The one screen — [shelfware.edycu.dev](https://shelfware.edycu.dev)
 
 The page carries the census above with its receipt, and the same ticker question through two
 small serverless functions: `/api/roster` (keyed, one symbol, the key in the deployment's

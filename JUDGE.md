@@ -22,7 +22,7 @@ listing state `UNTRACKED` fetched live from `/public-api/v1/cryptocurrency/map` 
 definition of the word beside it, the day it was listed, and the receipt line (endpoint, HTTP,
 credits, sha256).
 
-Or open **[shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)**: the census, the issuer
+Or open **[shelfware.edycu.dev](https://shelfware.edycu.dev)**: the census, the issuer
 table, and the same ticker question live through the site's proxy. Type `NVDA` for a mixed case
 (7 of 8 wrappers tracked; Dinari's is not), `GILD` or `PLD` for more shelf, `GOLD` for a
 commodity that trades. Open the evidence drawer on any answer for the raw `tokens[]` entry, the
@@ -90,4 +90,4 @@ Twelve dated findings for the CMC team are in [FEEDBACK.md](FEEDBACK.md).
 | **The field** | [docs/COMPARISON.md](docs/COMPARISON.md) |
 | **API feedback for CMC** | [FEEDBACK.md](FEEDBACK.md) |
 | **The engine** | [`shelfware/`](shelfware/) — 1,573 lines, stdlib only |
-| **Live** | [shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app) · [/api/health](https://shelfware-cmc.vercel.app/api/health) · this page, served with no auth: [/judge](https://shelfware-cmc.vercel.app/judge) |
+| **Live** | [shelfware.edycu.dev](https://shelfware.edycu.dev) · [/api/health](https://shelfware.edycu.dev/api/health) · this page, served with no auth: [/judge](https://shelfware.edycu.dev/judge) |

@@ -35,7 +35,7 @@ flowchart LR
     SNAP[("data/snapshots/*.json → data/delta.json")]
     PRF[("docs/proof/live_run.json · ms.json · bench.json · spike.json")]
   end
-  subgraph vercel["shelfware-cmc.vercel.app"]
+  subgraph vercel["Vercel — shelfware.edycu.dev (also shelfware-cmc.vercel.app)"]
     SITE["site/index.html<br/>rendered by scripts/render_site.py"]
     RS["api/roster.js<br/>keyed · one symbol · snapshot fallback labelled"]
     ST["api/status.js<br/>keyless first · keyed repeat if refused · no reshaping"]
