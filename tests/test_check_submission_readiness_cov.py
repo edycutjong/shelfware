@@ -77,8 +77,13 @@ def test_a_missing_git_binary_skips_the_key_scan(tree, monkeypatch):
     assert findings == []
 
 
+# Assembled at runtime so this file never carries a UUID-shaped literal of its own — the
+# scanner under test reads every tracked file, this one included (CI 2026-09-21).
+FAKE_UUID = "-".join(["12345678", "1234", "1234", "1234", "123456789abc"])
+
+
 def test_binary_and_deleted_tracked_files_are_skipped_by_the_key_scan(git_tree):
-    uuid = "12345678-1234-1234-1234-123456789abc"
+    uuid = FAKE_UUID
     (git_tree / "logo.png").write_bytes(uuid.encode())
     (git_tree / "gone.txt").write_text(uuid + "\n")
     (git_tree / "kept.txt").write_text("nothing to see\n")
@@ -89,7 +94,7 @@ def test_binary_and_deleted_tracked_files_are_skipped_by_the_key_scan(git_tree):
 
 
 def test_a_uuid_shaped_key_in_a_tracked_text_file_is_reported_once(git_tree):
-    (git_tree / "cfg.txt").write_text("key=12345678-1234-1234-1234-123456789abc\n")
+    (git_tree / "cfg.txt").write_text(f"key={FAKE_UUID}\n")
     subprocess.run(["git", "add", "."], cwd=git_tree, check=True)
     _, findings = gate.scan()
     assert findings == [

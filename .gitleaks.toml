@@ -23,18 +23,18 @@ keywords = ["cmc", "coinmarketcap"]
 # field, and the default generic-api-key rule flags every one of them — 4,421 findings on a
 # repository with no secret in it. Allowlisting the FIELD, not the shape, keeps a UUID-shaped
 # key anywhere else fully visible to both rules above.
-[[allowlists]]
-description = "public on-chain contract addresses in the committed census JSON"
+#
+# Written as the singular `[allowlist]` table on purpose: the `[[allowlists]]` array form only
+# exists from gitleaks 8.25, and gitleaks-action@v3 pins 8.24.3, which silently ignores it
+# (2026-09-21: 4 findings on one regenerated census line, 2,997 on the working tree).
+# Both versions read this form.
+[allowlist]
+description = "public on-chain contract addresses in the committed census JSON; a variable named `key` in scripts/spike.py"
 regexTarget = "match"
 regexes = [
   '''token_address"\s*:\s*"[0-9A-Za-z]{20,64}"''',
   # the same field when the generic rule's match is cut mid-address (no-git / working-tree mode)
   '''token_address"\s*:\s*"[0-9A-Za-z]{20,}''',
-]
-
-[[allowlists]]
-description = "scripts/spike.py passes a variable named `key` next to `symbol=TICKER` — code, not a credential"
-regexTarget = "match"
-regexes = [
+  # scripts/spike.py passes a variable named `key` next to `symbol=TICKER` — code, not a credential
   '''key, symbol=TICKER''',
 ]
