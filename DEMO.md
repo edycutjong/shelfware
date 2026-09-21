@@ -187,13 +187,13 @@ CLI backs off (2, 4, 8, 16 s) when it does.
 
 | | Count |
 |---|---|
-| Total | **121** (104 offline Python, 11 Node for the proxy functions, 6 live) |
+| Total | **262** (245 offline Python, 11 Node for the proxy functions, 6 live) |
 | Regression tests named for the defect they pin, each seen against the live API on 2026-09-18 | 9 |
 | Property-based verification of the join | **500 generated ledgers, 0 failing** — six invariants |
 | Live tests asserting the outside world | 6 — the keyless map returns a state for `wMSx`; ten committed states still match; the info leg carries the listing date; the RWA family still refuses keyless calls with error 1005; with a key, the roster still prices `wMSx` null; the deployed `/judge` route answers 200 with no credentials, no cookies and no redirect |
 
 ```bash
-make test        # 104 offline tests, no internet, ~1 s
+make test        # 245 offline tests, no internet, ~1 s
 make test-api    # 11 tests of api/*.js with a stubbed fetch
 make test-live   # 6 tests against the real CoinMarketCap contract and the deployed /judge route, keyless
 ```

@@ -37,11 +37,11 @@ jobs:
       - run: pip install -r requirements-dev.txt
       # Offline only. The live tests run in the live-api job below, where a CMC rate limit is
       # diagnosed as a rate limit rather than reported as a test failure. The engine
-      # (shelfware/) is gated at 90% coverage; scripts/ are proof and rendering tooling whose
+      # (shelfware/) is gated at 100% coverage; scripts/ are proof and rendering tooling whose
       # network legs (spike, snapshot, the live bench) are exercised by the live job instead.
       - run: >-
-          pytest -q -m "not live" --cov=shelfware --cov-report=term-missing
-          --cov-report=xml --cov-fail-under=90
+          pytest -q -m "not live" --cov=shelfware --cov=scripts --cov-report=term-missing
+          --cov-report=xml --cov-fail-under=100
       - uses: actions/upload-artifact@v7
         if: matrix.python-version == '3.11'
         with: { name: coverage, path: coverage.xml, retention-days: 7 }
@@ -144,7 +144,7 @@ jobs:
       - name: All gates passed
         run: |
           echo "all CI/CD gates passed"
-          echo "  Stage 1 — lint + typecheck · test matrix 3.11/3.12/3.13 (engine coverage >= 90%) · proxy functions"
+          echo "  Stage 1 — lint + typecheck · test matrix 3.11/3.12/3.13 (engine + scripts branch coverage >= 100%) · proxy functions"
           echo "  Stage 2 — pip-audit · no placeholders, no drift, every headline recounted"
           echo "  Stage 3 — deterministic replay bench"
           echo "  Stage 4 — the judged capability against the real CoinMarketCap API, keyless"

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/icon.svg" alt="Shelfware icon" width="144">
+<img src="docs/assets/icon-animated.svg" alt="Shelfware icon" width="144">
 
 <h1>Shelfware 📦</h1>
 
@@ -32,7 +32,7 @@ CMC-tracked market.</strong> The ticker question is keyless:
 ![CoinMarketCap](https://img.shields.io/badge/CoinMarketCap_RWA_API-3861FB?style=flat&logo=coinmarketcap&logoColor=white)
 ![No API key](https://img.shields.io/badge/API_key-optional-4C9AFF?style=flat)
 ![Zero dependencies](https://img.shields.io/badge/runtime_deps-zero-5E6C80?style=flat)
-![Tests](https://img.shields.io/badge/tests-121-3BD37D?style=flat)
+![Tests](https://img.shields.io/badge/tests-262-3BD37D?style=flat)
 [![CI](https://github.com/edycutjong/shelfware/actions/workflows/ci.yml/badge.svg)](https://github.com/edycutjong/shelfware/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/edycutjong/shelfware?sort=semver&color=FFB020)](https://github.com/edycutjong/shelfware/releases/latest)
 [![License](https://img.shields.io/badge/License-MIT-FFB020?style=flat)](LICENSE)
@@ -134,7 +134,7 @@ its listing state on the cryptocurrency map, and reports what the boolean hides.
   beside the live market cap of what does trade.
 - 📊 **Asset-type bars** — stock 49% shelf (606 / 1,244 wrappers) · ETF 38% · commodity 0%.
 - 📅 **Delta panel** — newly tracked / newly shelved / new / gone since the previous daily snapshot
-  (series started 2026-09-18, three days so far; day 3: +0 / +0 / +0 / −0, a real zero on the live page).
+  (series started 2026-09-18, four days so far; day 4: +0 / +0 / +0 / −0, a real zero on the live page).
 - 🧾 **A receipt on every number** — endpoint, HTTP status, `credit_count`, bytes, sha256, UTC —
   and two `jq` filters that re-derive both headlines from the committed rows.
 
@@ -146,8 +146,15 @@ its listing state on the cryptocurrency map, and reports what the boolean hides.
 four ledgers (3 keyed, 1 keyless)  →  one join on crypto_id  →  three counting rules  →  a receipt beside every number
 ```
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/architecture-dark.png">
+  <img src="docs/assets/architecture.png" alt="Shelfware architecture: five CoinMarketCap endpoints (three keyed, two keyless) feed six stdlib modules that write the census, the snapshots and the receipts; three Vercel functions and one static page serve them at shelfware.edycu.dev" width="100%">
+</picture>
+
+<p align="center"><sub>The same diagram as a page, light and dark, with the derivation beside it: <a href="https://shelfware.edycu.dev/architecture/">shelfware.edycu.dev/architecture/</a></sub></p>
+
 <details>
-<summary><b>Architecture diagram</b> (click to expand)</summary>
+<summary><b>Architecture diagram as Mermaid</b> (click to expand)</summary>
 
 ```mermaid
 flowchart LR
@@ -196,7 +203,7 @@ browser reach an API that sends no CORS header.
 | Data | CoinMarketCap RWA family (keyed, Basic tier) + the keyless `/public-api` cryptocurrency surface |
 | Site | Static HTML rendered by `scripts/render_site.py` (landing, `/judge`, `/pitch`); served by Vercel at shelfware.edycu.dev (and under its default name, shelfware-cmc.vercel.app); Vercel functions in dependency-free Node with open CORS |
 | Tests | pytest · **hypothesis** (property-based) · live contract tests · `node --test` for the functions |
-| Quality | ruff · mypy · pytest-cov (engine gated at 90%) · pip-audit · gitleaks · CodeQL · Dependabot |
+| Quality | ruff · mypy · pytest-cov (engine gated at 100%) · pip-audit · gitleaks · CodeQL · Dependabot |
 
 Full derivation from the code, every failure mode, and the deliberate non-architecture:
 **[ARCHITECTURE.md](ARCHITECTURE.md)** — rendered as a page, light or dark:
@@ -275,10 +282,10 @@ and each one changed something in this code. The RWA-family ones, in one screen:
 | Live census wall clock | **40.9 s** — 54 calls, cold start to final line ([`live_run.json`](docs/proof/live_run.json)) |
 | **Keyed credits** | **5** — `/v1/key/info` read 12,020 → 12,025 before and after, equal to Σ `credit_count` over the 39 keyed calls |
 | Keyless calls | 15 — charged to no key |
-| Tests | **121** — 104 offline (~1 s), 11 for the proxy functions, 6 live |
+| Tests | **262** — 245 offline (~1 s), 11 for the proxy functions, 6 live |
 | Regression tests named for the defect they pin, each seen against the live API on 2026-09-18 | 9 |
 | **Property-based verification of the join** | **500 generated ledgers, 0 failing** — six invariants |
-| Engine coverage | 91% of `shelfware/`, gated at 90% in CI |
+| Engine coverage | 100% statements + branches of `shelfware/` and `scripts/`, gated at 100% in CI |
 | Ticker question, keyless | p50 **552 ms** · p95 603 ms (n=9) — [`bench.json`](docs/proof/bench.json) |
 | State leg alone, one keyless map call | p50 **282 ms** · p95 546 ms (n=9) |
 | Join + count over the 1,435 committed wrappers | p50 **1.94 ms** · p95 2.22 ms (n=200) |
@@ -334,7 +341,7 @@ Re-derive by hand: `jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .sta
    `/v2/cryptocurrency/info`, whose vocabulary is coarser, and the map's finer word from the
    committed snapshot; each row names both sources.
 4. **The census is a daily series, not a history.** Untracked rows carry no dates; `date_added`
-   is a listing day, not a market day. The series started 2026-09-18 and has three days.
+   is a listing day, not a market day. The series started 2026-09-18 and has four days.
 5. **The anonymous tier is per IP.** A shared cloud egress can be refused outright (429 error
    1022); the CLI backs off, repeats the identical call keyed if a key is exported and says so,
    and otherwise answers from the snapshot and exits 75 (`EX_TEMPFAIL`).
@@ -386,8 +393,8 @@ roster line and in its receipt, so it can never pass as a keyless one.
 make setup           # dev deps only: pytest, pytest-cov, ruff, mypy, hypothesis, pip-audit
 make lint            # ruff check + format check
 make typecheck       # mypy over the engine, the scripts and the tests
-make test            # 104 offline tests, ~1 s, no internet
-make test-coverage   # the same, with shelfware/ gated at 90%
+make test            # 245 offline tests, ~1 s, no internet
+make test-coverage   # the same, with shelfware/ and scripts/ gated at 100%
 make test-api        # the three Vercel functions, in-process with a stubbed fetch
 make test-live       # 6 tests against the real CoinMarketCap contract and the deployed /judge route
 make demo            # the judged capability, live, no key
@@ -399,7 +406,7 @@ make ci              # lint + typecheck + coverage + api tests + audit + check
 | Layer | Tool | Status |
 |---|---|---|
 | Code quality | ruff (check + format) · mypy | ✅ |
-| Unit testing | pytest, 104 offline tests, engine coverage gated at 90% | ✅ |
+| Unit testing | pytest, 245 offline tests, engine coverage gated at 100% | ✅ |
 | Property testing | hypothesis, 500 generated ledgers | ✅ |
 | Live contract testing | pytest `-m live` against the real API and the deployed `/judge` | ✅ |
 | Proxy functions | `node --test`, 11 tests with a stubbed fetch | ✅ |
@@ -448,7 +455,7 @@ shelfware/
 ├── data/                         census.json · roster_snapshot.json · snapshots/ · delta.json · seed/
 ├── docs/proof/                   live_run.json · ms.json · bench.json · spike.json — the receipts
 ├── docs/                         METHOD.md · COMPARISON.md · screenshots/ · assets/
-├── tests/                        104 offline · 6 live · api.test.mjs
+├── tests/                        245 offline · 6 live · api.test.mjs
 ├── JUDGE.md · DEMO.md · ARCHITECTURE.md · FEEDBACK.md
 └── README.md                     you are here
 ```
@@ -460,13 +467,13 @@ shelfware/
 - [x] The three-endpoint join, live: 476 of 791 on 2026-09-18, 5 credits, 40.9 s
 - [x] The ticker question keyless — state leg live, roster snapshot labelled, key optional
 - [x] The one screen with the evidence drawer, the issuer scorecard and the type bars
-- [x] A daily snapshot series and the delta panel (three days so far, +0 / +0 / +0 / −0)
+- [x] A daily snapshot series and the delta panel (four days so far, +0 / +0 / +0 / −0)
 - [x] Receipts, benchmarks, a property test over 500 ledgers, and a gate that recounts every headline
 - [x] `/judge` — the claim, the 30-second path and the receipt on one page, no auth
 - [x] `/pitch` — the twelve-slide deck, rendered from the census, drift-gated like the page
 - [x] Twelve dated findings for the CoinMarketCap team, filed in [FEEDBACK.md](FEEDBACK.md)
 - [ ] A week of snapshots → the first *weekly* delta ("what changed this week") on the page
-- [ ] A demo video, recorded from the live site and the CLI
+- [x] A demo video, recorded from the live site and the CLI — https://youtu.be/6DTtNmWAv5g
 - [ ] Re-verify every keyed call on a Basic-tier key after 1 October, when hackathon keys revert
 
 ---
@@ -476,9 +483,10 @@ shelfware/
 | | |
 |---|---|
 | **Live** | **[shelfware.edycu.dev](https://shelfware.edycu.dev)** — the census with its receipt, the issuer scorecard, and the ticker question through the site's proxy |
+| **Demo video** | **[https://youtu.be/6DTtNmWAv5g](https://youtu.be/6DTtNmWAv5g)** — 2 min 51 s, real product only, real time: the census page, a real keyless ticker question through the site's proxy, the CLI from a fresh clone, the keyed census, the issuer scorecard and the receipt; subtitles in the upload |
 | **For judges** | **[shelfware.edycu.dev/judge](https://shelfware.edycu.dev/judge)** — the 30-second path; source in [JUDGE.md](JUDGE.md) |
 | **Pitch deck** | **[shelfware.edycu.dev/pitch](https://shelfware.edycu.dev/pitch/)** — 12 slides, arrow keys, `P` for speaker notes, `Cmd+P` for a PDF; rendered from the census by `scripts/render_site.py`, so every number on it is the receipt's. Source: [`scripts/site_templates/pitch.html`](scripts/site_templates/pitch.html) |
-| **Also at** | **[shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)** — the same deployment under the project's default Vercel name (the address the demo video shows). `shelfware.edycu.dev` is the canonical host, a production domain on the same project since 2026-09-20, so the ticker search is same-origin on both. One host, one deployment — there is no GitHub Pages mirror |
+| **Also at** | **[shelfware-cmc.vercel.app](https://shelfware-cmc.vercel.app)** — the same deployment under the project's default Vercel name (the address the 2026-09-20 demo takes were recorded against). `shelfware.edycu.dev` is the canonical host, a production domain on the same project since 2026-09-20, so the ticker search is same-origin on both. One host, one deployment — there is no GitHub Pages mirror |
 | **The receipt** | **[DEMO.md](DEMO.md)** — both live runs transcribed, with [`docs/proof/live_run.json`](docs/proof/live_run.json) and [`ms.json`](docs/proof/ms.json) behind them |
 | **Health** | [shelfware.edycu.dev/api/health](https://shelfware.edycu.dev/api/health) — census date, snapshot days, the counts, the deployed commit; a boolean about the key, never the key |
 | **Screenshots** | [docs/screenshots/](docs/screenshots/) — eight captures of live execution: the MS card, the NVDA answer with its evidence drawer, the issuer scorecard, the census receipt, the delta panel, the type bars, the limits card, the whole page |

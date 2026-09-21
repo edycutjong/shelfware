@@ -18,8 +18,8 @@ typecheck:  ## mypy over the engine, the scripts and the tests
 test:  ## pytest, offline only (no internet), ~1 s
 	pytest -q -m "not live"
 
-test-coverage:  ## the offline suite with coverage of the engine (shelfware/), gated at 90%
-	pytest -q -m "not live" --cov=shelfware --cov-report=term-missing --cov-report=xml --cov-fail-under=90
+test-coverage:  ## the offline suite with statement + branch coverage of the engine (shelfware/) and every script (scripts/), gated at 100%
+	pytest -q -m "not live" --cov=shelfware --cov=scripts --cov-report=term-missing --cov-report=xml --cov-fail-under=100
 
 test-live:  ## the live tests — hit the real CoinMarketCap API, keyless
 	pytest -q -m live

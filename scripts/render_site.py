@@ -50,14 +50,15 @@ SITE_URL = "https://shelfware.edycu.dev"
 VERCEL_URL = "https://shelfware-cmc.vercel.app"
 # Where the api/ functions run, always: the page fetches them same-origin on either Vercel host
 # and at this absolute URL from anywhere else (a local file, a fork's preview), so the search works.
-API_URL = VERCEL_URL
+# The canonical host, so every judge-facing link (/api/health on the judge page) names one address.
+API_URL = SITE_URL
 EVENT = "https://dorahacks.io/hackathon/coinmarketcap-api-202609/detail"
 AUTHOR = "Edy Cu"
 X_HANDLE = "@edycutjong"
 OG_IMAGE = SITE / "og-image.png"
 # Public-page fixtures that are not numbers: test counts as README states them, and the QR that
 # encodes SITE_URL/judge (generated once with segno; static so the render needs no dependency).
-TESTS = {"offline": 104, "node": 11, "live": 6}
+TESTS = {"offline": 245, "node": 11, "live": 6}
 QR_SVG = TEMPLATES / "qr-judge.svg"
 DOTTED = re.compile(r"^[A-Za-z0-9]+$")
 # Every endpoint the client calls, in the order the census calls them; the API table on the

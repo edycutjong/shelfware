@@ -239,3 +239,77 @@ def test_a_failed_ledger_call_raises_with_cmc_message_not_an_empty_universe():
     c, _ = make((403, envelope(None, error_code=1006, error_message="plan")), key="k")
     with pytest.raises(RuntimeError, match="error_code 1006"):
         c.issuers()
+
+
+def test_an_error_body_without_cmcs_status_block_is_described_by_its_http_code_alone():
+    assert C.describe_error([], 502) == "HTTP 502"
+    assert C.describe_error({"status": {"error_code": 0}}, 404) == "HTTP 404"
+
+
+def test_a_failed_rwa_map_or_quotes_page_raises_rather_than_returning_a_short_universe():
+    refused = (403, envelope(None, error_code=1006, error_message="plan"))
+    c, _ = make(refused, key="k")
+    with pytest.raises(RuntimeError, match="rwa/map failed: .*error_code 1006"):
+        c.rwa_map()
+    c, _ = make(refused, key="k")
+    with pytest.raises(RuntimeError, match="rwa/quotes failed: .*error_code 1006"):
+        c.rwa_quotes(rwa_ids=["35"])
+
+
+def test_a_400_naming_a_symbol_that_was_never_sent_stops_the_map_retry_loop():
+    c, op = make(
+        (400, envelope(None, error_code=400, error_message='Invalid value for "symbol": "ZZZ"')),
+    )
+    rows, meta, dropped = c.cmc_map(["wMSx"])
+    assert rows == {} and dropped == [] and meta["http"] == 400 and len(op.requests) == 1
+
+
+def test_a_400_naming_ids_that_were_never_sent_stops_the_info_retry_loop():
+    c, op = make(
+        (400, envelope(None, error_code=400, error_message="Invalid value for 'id': '1,2'")),
+    )
+    rows, metas, dropped = c.cmc_info([41513])
+    assert rows == {} and dropped == [] and len(metas) == 1 and len(op.requests) == 1
+
+
+def test_a_batch_whose_every_id_cmc_rejects_is_not_retried_empty():
+    c, op = make(
+        (400, envelope(None, error_code=400, error_message="Invalid value for 'id': '41513'")),
+    )
+    rows, metas, dropped = c.cmc_info([41513])
+    assert rows == {} and dropped == [41513] and len(op.requests) == 1
+
+
+def test_key_info_is_none_without_a_key_or_when_the_ledger_call_fails():
+    c, op = make()
+    assert c.key_info() is None and op.requests == []
+    c, _ = make((403, envelope(None, error_code=1006, error_message="plan")), key="k")
+    assert c.key_info() is None
+
+
+def test_a_json_list_body_carries_no_credit_count_and_is_still_a_usable_answer():
+    c, _ = make((200, []))
+    js, meta = c.get("/v1/cryptocurrency/map")
+    assert js == [] and meta["error"] is None and meta["credit_count"] is None
+
+
+def test_every_symbol_rejected_one_by_one_ends_with_no_call_left_to_make():
+    def reject(sym):
+        return (
+            400,
+            envelope(None, error_code=400, error_message=f'Invalid value for "symbol": "{sym}"'),
+        )
+
+    c, op = make(reject("AAA"), reject("BBB"))
+    rows, meta, dropped = c.cmc_map(["AAA", "BBB"])
+    assert rows == {} and dropped == ["AAA", "BBB"] and meta["http"] == 400
+    assert len(op.requests) == 2
+
+
+def test_info_gives_up_on_a_batch_after_three_rounds_of_rejected_ids():
+    def reject(i):
+        return (400, envelope(None, error_code=400, error_message=f"Invalid value for 'id': '{i}'"))
+
+    c, op = make(reject(1), reject(2), reject(3))
+    rows, metas, dropped = c.cmc_info([1, 2, 3, 4])
+    assert rows == {} and dropped == [1, 2, 3] and len(metas) == 3 and len(op.requests) == 3

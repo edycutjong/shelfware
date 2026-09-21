@@ -44,9 +44,10 @@ ignore_missing_imports = true
 exclude = ["^site/", "^data/", "^docs/", "^\\.venv/"]
 
 [tool.coverage.run]
-# shelfware/__main__.py is three lines that exist so `python3 -m shelfware` works; it only
-# ever runs as a subprocess, where the tracer cannot see it.
-omit = ["shelfware/__main__.py"]
+# Every Python file — the engine (shelfware/) and every script (scripts/) — statements and
+# branches, gated at 100%. Nothing is omitted: even `python3 -m shelfware` runs under the
+# tracer (tests/test_cli.py drives shelfware/__main__.py in-process).
+branch = true
 
 [tool.coverage.report]
 show_missing = true

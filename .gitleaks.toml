@@ -28,6 +28,8 @@ description = "public on-chain contract addresses in the committed census JSON"
 regexTarget = "match"
 regexes = [
   '''token_address"\s*:\s*"[0-9A-Za-z]{20,64}"''',
+  # the same field when the generic rule's match is cut mid-address (no-git / working-tree mode)
+  '''token_address"\s*:\s*"[0-9A-Za-z]{20,}''',
 ]
 
 [[allowlists]]

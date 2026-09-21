@@ -322,3 +322,35 @@ def test_exhausted_pool_with_a_key_retries_the_identical_call_keyed_and_says_so(
     assert res["temporary_failure"] is False
     keyed_calls = [r for r in op.requests if r.get_header("X-cmc_pro_api_key")]
     assert len(keyed_calls) == 3 and all("/public-api/" not in r.full_url for r in keyed_calls)
+
+
+def test_a_wrapper_the_info_leg_does_not_know_either_is_unresolved():
+    """The map filter rejects the symbol and info returns no row for its id: CMC has no state
+    for it at all. It is unresolved, and it is not counted as shelf."""
+    op = FakeOpener((200, envelope({})))
+    snap = snapshot()
+    snap["underlyings"]["NVDA"]["tokens"] = [
+        t for t in snap["underlyings"]["NVDA"]["tokens"] if t["symbol"] == "NVDA.D"
+    ]
+    res = lookup("NVDA", Client(sleep=noop, opener=op), snap)
+    w = res["wrappers"][0]
+    assert w["status"] == "unresolved" and w["status_source"] == "info"
+    assert res["verdict"] == "0 of 1 wrapper(s) with a CMC-tracked market"
+
+
+def test_an_exhausted_pool_on_the_info_leg_alone_is_retried_keyed_when_a_key_is_there():
+    throttle = (429, envelope(None, error_code=1022, error_message="limit for anonymous access"))
+    op = FakeOpener(
+        (200, envelope({"rwa_assets": [MS_ASSET]}, credit_count=1)),  # roster, keyed
+        (200, envelope([MS_MAP_ROW])),  # keyless map answered
+        throttle,
+        throttle,
+        throttle,
+        throttle,  # keyless info, exhausted
+        (200, envelope(MS_INFO, credit_count=1)),  # the same call, keyed
+    )
+    res = lookup("MS", Client(api_key="k", sleep=noop, opener=op), snapshot())
+    assert res["status"]["base"] == "keyless" and "1022" in res["status"]["keyless_error"]
+    assert res["status"]["info_calls"][-1]["keyed"] is True
+    assert res["wrappers"][0]["date_added"].startswith("2026-08-11")
+    assert res["temporary_failure"] is False

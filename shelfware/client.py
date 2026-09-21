@@ -112,12 +112,12 @@ class Client:
             except (urllib.error.URLError, TimeoutError, ConnectionError, OSError) as e:
                 # a dropped connection is congestion, not a verdict: retry it like a 5xx
                 body, code = str(e).encode(), None
-            if code in TRANSIENT or code is None:
-                if attempt < RETRIES - 1:
-                    self._sleep(BACKOFF_S[attempt])
-                    continue
-                meta["throttled"] = True
-            break
+            if code not in TRANSIENT and code is not None:
+                break
+            if attempt < RETRIES - 1:
+                self._sleep(BACKOFF_S[attempt])
+        else:
+            meta["throttled"] = True  # transient on every attempt
         meta["elapsed_ms"] = round((time.perf_counter() - t0) * 1000)
         meta["http"] = code
         meta["bytes"] = len(body)
@@ -222,9 +222,7 @@ class Client:
             dropped = [s for s in wanted if not FILTERABLE.match(s)]
             wanted = [s for s in wanted if FILTERABLE.match(s)]
             meta = None
-            for _ in range(len(wanted) + 1):
-                if not wanted:
-                    break
+            while wanted:  # each pass answers, or drops one rejected symbol and asks again
                 js, meta = self.get(
                     "/v1/cryptocurrency/map",
                     {"listing_status": ALL_STATUSES, "symbol": ",".join(wanted), "aux": MAP_AUX},
