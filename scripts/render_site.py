@@ -613,7 +613,8 @@ def delta_sentence_html():
     if not p.exists():
         return "no delta yet"
     d = json.loads(p.read_text())
-    moved = d["newly_tracked"] + d["newly_shelved"] + d["new_wrappers"] + d["gone_wrappers"]
+    other = d.get("other_flips", 0)  # e.g. active → inactive, or unresolved → active: a resolution
+    moved = d["newly_tracked"] + d["newly_shelved"] + d["new_wrappers"] + d["gone_wrappers"] + other
     if moved == 0:
         return "the delta between the two latest days is a real zero, printed as one"
     parts = [
@@ -622,6 +623,8 @@ def delta_sentence_html():
         f"+{d['new_wrappers']} new",
         f"{d['gone_wrappers']} gone",
     ]
+    if other:
+        parts.append(f"{other} other flip{'s' if other != 1 else ''}")
     flips = ", ".join(f"{f['symbol']} {f['before']} → {f['after']}" for f in d.get("flips", [])[:3])
     return f"the delta between the two latest days: {' · '.join(parts)}" + (
         f" ({flips})" if flips else ""

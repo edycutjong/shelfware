@@ -48,20 +48,14 @@ def test_the_suite_size_on_every_judge_facing_surface_is_the_suite_size():
     assert f"{c['offline']} offline · {c['node']} node · {c['live']} live" in deck, "deck split"
 
     # the delta series length the README states is the number of committed daily snapshots
-    words = {
-        3: "three",
-        4: "four",
-        5: "five",
-        6: "six",
-        7: "seven",
-        8: "eight",
-        9: "nine",
-        10: "ten",
-        11: "eleven",
-        12: "twelve",
-    }
+    words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    words += ["ten", "eleven", "twelve"]
     days = len(list((ROOT / "data" / "snapshots").glob("2026-*.json")))
-    assert f"{words[days]} days" in readme, f"README day count != {days} committed snapshots"
-    assert not any(f"{w} days" in readme for d, w in words.items() if d != days), (
-        "README carries a stale day count"
+    said = words[days] if days < len(words) else str(days)  # "five days" … "13 days"
+    assert f"{said} days so far" in readme and f"has {said} days" in readme, (
+        f"README day count != {days} committed snapshots"
     )
+    stated = set(
+        re.findall(r"\b(\w+) days so far\b", readme) + re.findall(r"\bhas (\w+) days\b", readme)
+    )
+    assert stated == {said}, f"README carries a stale day count: {sorted(stated)} vs {said}"

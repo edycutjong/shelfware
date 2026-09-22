@@ -189,6 +189,10 @@ def test_the_hero_run_is_absent_when_the_proof_file_is_missing(tmp_path, monkeyp
     (tmp_path / "delta.json").write_text(json.dumps(flip))
     assert "+1 newly shelved" in render_site.delta_sentence_html()
     assert "MXL active → untracked" in render_site.delta_sentence_html()
+    other = dict(zero, other_flips=1, flips=[dict(symbol="X", before="unresolved", after="active")])
+    (tmp_path / "delta.json").write_text(json.dumps(other))
+    assert "1 other flip (X unresolved → active)" in render_site.delta_sentence_html()
+    assert "real zero" not in render_site.delta_sentence_html()
 
 
 def test_an_unfilled_slot_fails_the_judge_page(tmp_path, monkeypatch):
