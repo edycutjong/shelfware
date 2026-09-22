@@ -91,3 +91,5 @@ Twelve dated findings for the CMC team are in [FEEDBACK.md](FEEDBACK.md).
 | **API feedback for CMC** | [FEEDBACK.md](FEEDBACK.md) |
 | **The engine** | [`shelfware/`](shelfware/) — 1,573 lines, stdlib only |
 | **Live** | [shelfware.edycu.dev](https://shelfware.edycu.dev) · [/api/health](https://shelfware.edycu.dev/api/health) · this page, served with no auth: [/judge](https://shelfware.edycu.dev/judge) |
+| **Demo video** | [youtu.be/6DTtNmWAv5g](https://youtu.be/6DTtNmWAv5g) — 2 min 51 s, real product only, captioned |
+| **Submission** | [DoraHacks BUIDL 49022](https://dorahacks.io/buidl/49022) — Build with CMC: API Hackathon, Real World Assets track |
