@@ -46,3 +46,22 @@ def test_the_suite_size_on_every_judge_facing_surface_is_the_suite_size():
     deck = (ROOT / "site" / "pitch" / "index.html").read_text()
     assert f'<div class="v">{c["total"]}</div>' in deck, "deck metric"
     assert f"{c['offline']} offline · {c['node']} node · {c['live']} live" in deck, "deck split"
+
+    # the delta series length the README states is the number of committed daily snapshots
+    words = {
+        3: "three",
+        4: "four",
+        5: "five",
+        6: "six",
+        7: "seven",
+        8: "eight",
+        9: "nine",
+        10: "ten",
+        11: "eleven",
+        12: "twelve",
+    }
+    days = len(list((ROOT / "data" / "snapshots").glob("2026-*.json")))
+    assert f"{words[days]} days" in readme, f"README day count != {days} committed snapshots"
+    assert not any(f"{w} days" in readme for d, w in words.items() if d != days), (
+        "README carries a stale day count"
+    )

@@ -606,6 +606,28 @@ def runs_html(doc):
     return "".join(cards), [p.stem for p in snaps]
 
 
+def delta_sentence_html():
+    """One sentence on the delta between the two latest days, from data/delta.json — never typed:
+    a real zero is printed as one, a flip is named."""
+    p = DATA / "delta.json"
+    if not p.exists():
+        return "no delta yet"
+    d = json.loads(p.read_text())
+    moved = d["newly_tracked"] + d["newly_shelved"] + d["new_wrappers"] + d["gone_wrappers"]
+    if moved == 0:
+        return "the delta between the two latest days is a real zero, printed as one"
+    parts = [
+        f"+{d['newly_tracked']} newly tracked",
+        f"+{d['newly_shelved']} newly shelved",
+        f"+{d['new_wrappers']} new",
+        f"{d['gone_wrappers']} gone",
+    ]
+    flips = ", ".join(f"{f['symbol']} {f['before']} → {f['after']}" for f in d.get("flips", [])[:3])
+    return f"the delta between the two latest days: {' · '.join(parts)}" + (
+        f" ({flips})" if flips else ""
+    )
+
+
 def term_html(res):
     """The terminal: the bare command, then its own output rendered from docs/proof/ms.json by the
     CLI's formatter — the same function that printed it. Never a typed transcript."""
@@ -744,6 +766,7 @@ def render():
         f"a shelf of boxes, {c['underlyings_zero_tracked']} grey and {with_tracked} green."
     )
     runs, snaps = runs_html(doc)
+    delta_sentence = delta_sentence_html()
     hero_doc = doc.get("hero") or {}
     # tickers the anonymous tier refused — finding 2's headline and its prose share this count
     throttled = len({e.split(":")[0] for e in bench.get("errors") or []})
@@ -839,6 +862,7 @@ def render():
         "proof_links": proof_links(doc, hero, bench),
         "runs": runs,
         "snapshots_n": len(snaps),
+        "delta_sentence": delta_sentence,
         "snapshots_list": ", ".join(snaps),
         "term": term_html(hero),
         "cmd": f"git clone {REPO}.git && cd shelfware && python3 -m shelfware {hero['ticker']}",

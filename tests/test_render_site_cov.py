@@ -2,6 +2,7 @@
 market, every state source, a missing proof file, unfilled slots on the judge page and the
 deck, and the write path that --check later confirms."""
 
+import json
 import runpy
 import sys
 
@@ -176,6 +177,18 @@ def test_the_api_table_counts_hero_calls_by_path_and_skips_one_without_a_url():
 def test_the_hero_run_is_absent_when_the_proof_file_is_missing(tmp_path, monkeypatch):
     monkeypatch.setattr(render_site, "PROOF", tmp_path)
     assert render_site.hero_run() is None
+    # the delta sentence is derived the same way: absent file, a real zero, a named flip
+    monkeypatch.setattr(render_site, "DATA", tmp_path)
+    assert render_site.delta_sentence_html() == "no delta yet"
+    zero = dict(newly_tracked=0, newly_shelved=0, new_wrappers=0, gone_wrappers=0, flips=[])
+    (tmp_path / "delta.json").write_text(json.dumps(zero))
+    assert "a real zero, printed as one" in render_site.delta_sentence_html()
+    flip = dict(
+        zero, newly_shelved=1, flips=[dict(symbol="MXL", before="active", after="untracked")]
+    )
+    (tmp_path / "delta.json").write_text(json.dumps(flip))
+    assert "+1 newly shelved" in render_site.delta_sentence_html()
+    assert "MXL active → untracked" in render_site.delta_sentence_html()
 
 
 def test_an_unfilled_slot_fails_the_judge_page(tmp_path, monkeypatch):

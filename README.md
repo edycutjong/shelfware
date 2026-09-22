@@ -134,7 +134,7 @@ its listing state on the cryptocurrency map, and reports what the boolean hides.
   beside the live market cap of what does trade.
 - 📊 **Asset-type bars** — stock 49% shelf (606 / 1,244 wrappers) · ETF 38% · commodity 0%.
 - 📅 **Delta panel** — newly tracked / newly shelved / new / gone since the previous daily snapshot
-  (series started 2026-09-18, four days so far; day 4: +0 / +0 / +0 / −0, a real zero on the live page).
+  (series started 2026-09-18, five days so far; day 5: +0 newly tracked / **+1 newly shelved** / +0 new / 0 gone — `MXL` flipped `active` → `untracked` on 2026-09-22, the first movement in the series, on the live page).
 - 🧾 **A receipt on every number** — endpoint, HTTP status, `credit_count`, bytes, sha256, UTC —
   and two `jq` filters that re-derive both headlines from the committed rows.
 
@@ -148,7 +148,7 @@ four ledgers (3 keyed, 1 keyless)  →  one join on crypto_id  →  three counti
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/architecture-dark.png">
-  <img src="docs/assets/architecture.png" alt="Shelfware architecture: five CoinMarketCap endpoints (three keyed, two keyless) feed six stdlib modules that write the census, the snapshots and the receipts; three Vercel functions and one static page serve them at shelfware.edycu.dev" width="100%">
+  <img src="docs/assets/architecture.png" alt="Shelfware architecture: six CoinMarketCap endpoints (four keyed, two keyless) feed six stdlib modules that write the census, the snapshots and the receipts; three Vercel functions and one static page serve them at shelfware.edycu.dev" width="100%">
 </picture>
 
 <p align="center"><sub>The same diagram as a page, light and dark, with the derivation beside it: <a href="https://shelfware.edycu.dev/architecture/">shelfware.edycu.dev/architecture/</a></sub></p>
@@ -341,7 +341,7 @@ Re-derive by hand: `jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .sta
    `/v2/cryptocurrency/info`, whose vocabulary is coarser, and the map's finer word from the
    committed snapshot; each row names both sources.
 4. **The census is a daily series, not a history.** Untracked rows carry no dates; `date_added`
-   is a listing day, not a market day. The series started 2026-09-18 and has four days.
+   is a listing day, not a market day. The series started 2026-09-18 and has five days.
 5. **The anonymous tier is per IP.** A shared cloud egress can be refused outright (429 error
    1022); the CLI backs off, repeats the identical call keyed if a key is exported and says so,
    and otherwise answers from the snapshot and exits 75 (`EX_TEMPFAIL`).
@@ -467,7 +467,7 @@ shelfware/
 - [x] The three-endpoint join, live: 476 of 791 on 2026-09-18, 5 credits, 40.9 s
 - [x] The ticker question keyless — state leg live, roster snapshot labelled, key optional
 - [x] The one screen with the evidence drawer, the issuer scorecard and the type bars
-- [x] A daily snapshot series and the delta panel (four days so far, +0 / +0 / +0 / −0)
+- [x] A daily snapshot series and the delta panel (five days so far; day 5 recorded the first flip, +0 / +1 / +0 / 0)
 - [x] Receipts, benchmarks, a property test over 500 ledgers, and a gate that recounts every headline
 - [x] `/judge` — the claim, the 30-second path and the receipt on one page, no auth
 - [x] `/pitch` — the twelve-slide deck, rendered from the census, drift-gated like the page
