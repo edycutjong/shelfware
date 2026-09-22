@@ -608,7 +608,8 @@ def runs_html(doc):
 
 def delta_sentence_html():
     """One sentence on the delta between the two latest days, from data/delta.json — never typed:
-    a real zero is printed as one, a flip is named."""
+    a real zero is printed as one; every flip is named under the count it feeds (tracked / shelved /
+    other), the first six per group in full and the rest as "+N more"."""
     p = DATA / "delta.json"
     if not p.exists():
         return "no delta yet"
@@ -625,9 +626,19 @@ def delta_sentence_html():
     ]
     if other:
         parts.append(f"{other} other flip{'s' if other != 1 else ''}")
-    flips = ", ".join(f"{f['symbol']} {f['before']} → {f['after']}" for f in d.get("flips", [])[:3])
+    kind = {("untracked", "active"): "tracked", ("active", "untracked"): "shelved"}
+    groups = {"tracked": [], "shelved": [], "other": []}
+    for f in d.get("flips", []):
+        groups[kind.get((f["before"], f["after"]), "other")].append(
+            f"{f['symbol']} {f['before']} → {f['after']}"
+        )
+    named = []
+    for label, names in groups.items():
+        if names:
+            more = f", +{len(names) - 6} more" if len(names) > 6 else ""
+            named.append(f"{label}: {', '.join(names[:6])}{more}")
     return f"the delta between the two latest days: {' · '.join(parts)}" + (
-        f" ({flips})" if flips else ""
+        f" ({' · '.join(named)})" if named else ""
     )
 
 

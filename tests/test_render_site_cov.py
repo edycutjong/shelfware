@@ -188,11 +188,40 @@ def test_the_hero_run_is_absent_when_the_proof_file_is_missing(tmp_path, monkeyp
     )
     (tmp_path / "delta.json").write_text(json.dumps(flip))
     assert "+1 newly shelved" in render_site.delta_sentence_html()
-    assert "MXL active → untracked" in render_site.delta_sentence_html()
+    assert "(shelved: MXL active → untracked)" in render_site.delta_sentence_html()
     other = dict(zero, other_flips=1, flips=[dict(symbol="X", before="unresolved", after="active")])
     (tmp_path / "delta.json").write_text(json.dumps(other))
-    assert "1 other flip (X unresolved → active)" in render_site.delta_sentence_html()
+    assert "1 other flip (other: X unresolved → active)" in render_site.delta_sentence_html()
     assert "real zero" not in render_site.delta_sentence_html()
+    # a mixed day names each flip under the count it feeds; a plural count pluralises
+    mixed = dict(
+        zero,
+        newly_tracked=1,
+        newly_shelved=1,
+        other_flips=2,
+        flips=[
+            dict(symbol="MXL", before="active", after="untracked"),
+            dict(symbol="X", before="unresolved", after="active"),
+            dict(symbol="Y", before="active", after="inactive"),
+            dict(symbol="Z", before="untracked", after="active"),
+        ],
+    )
+    (tmp_path / "delta.json").write_text(json.dumps(mixed))
+    s = render_site.delta_sentence_html()
+    assert "2 other flips" in s
+    assert (
+        "(tracked: Z untracked → active · shelved: MXL active → untracked · other: X unresolved → active, Y active → inactive)"
+        in s
+    )
+    # more than six of one kind: the first six in full, the rest counted, never dropped silently
+    many = dict(
+        zero,
+        newly_shelved=8,
+        flips=[dict(symbol=f"S{i}", before="active", after="untracked") for i in range(8)],
+    )
+    (tmp_path / "delta.json").write_text(json.dumps(many))
+    s = render_site.delta_sentence_html()
+    assert "S5 active → untracked, +2 more)" in s and "S6" not in s
 
 
 def test_an_unfilled_slot_fails_the_judge_page(tmp_path, monkeypatch):
