@@ -13,7 +13,7 @@ Shelfware answers the question an allocator asks before acting — <strong>does 
 have a market, and whose?</strong> — by joining the wrapper roster, <code>price: null</code> rows
 included, to each wrapper's listing state.</p>
 
-<p><strong>Live, 2026-09-18T22:16Z, 5 keyed credits, 40.9 s:</strong> of the 791 underlyings
+<p><strong>Live, 2026-09-22T08:25Z, 5 keyed credits, 62.3 s:</strong> of the 791 underlyings
 CoinMarketCap flags <code>has_tokens: true</code>, <strong>476 of 791 (60%) have no wrapper with a
 CMC-tracked market.</strong> The ticker question is keyless:
 <code>python3 -m shelfware MS</code>. <a href="DEMO.md">Receipt →</a></p>
@@ -60,19 +60,19 @@ python3 -m shelfware MS
 ```
 shelfware MS — does it have a wrapper that trades, and whose?
 
-  MS  Morgan Stanley · stock · rwa_rank 43 · has_tokens: true
-      roster: snapshot 2026-09-18T22:16:17Z (the RWA endpoints need a key; export CMC_API_KEY to go live)
+  MS  Morgan Stanley · stock · rwa_rank 44 · has_tokens: true
+      roster: snapshot 2026-09-22T08:25:08Z (the RWA endpoints need a key; export CMC_API_KEY to go live)
       ▒ wMSx  Wrapped Morgan Stanley Tokenized Stock (xStock)
           issuer   Backed Assets  6878977dcbbf471de3366e85
           chain    X Layer  0x2874A11805783324C54562eDB1A641C5d1d077a5
           price    null · market_cap null · volume_24h null
           status   UNTRACKED      ← /public-api/v1/cryptocurrency/map, live, keyless, 0 credits
                    "listed, no CMC-tracked market" — CMC: registered cryptocurrency projects that are listed but do not yet meet methodology requirements to have tracked markets
-                   listed 2026-08-11 (date_added) · 38 days on the shelf
+                   listed 2026-08-11 (date_added) · 41 days on the shelf
 
   0 of 1 wrapper(s) with a CMC-tracked market
 
-receipt: cmc/map symbol=wMSx → HTTP 200 · keyless · 0 credits to any key · 491 ms · sha256 d7e1ecdef293e6c8  |  cmc/info batch 1 (1 ids) → HTTP 200 · keyless · 0 credits to any key · 762 ms · sha256 1559b2c185ccabe8
+receipt: cmc/map symbol=wMSx → HTTP 200 · keyless · 0 credits to any key · 579 ms · sha256 983d176a86f84431  |  cmc/info batch 1 (1 ids) → HTTP 200 · keyless · 0 credits to any key · 540 ms · sha256 91e8247f0af5907b
 ```
 
 > **That is a live call.** The listing state comes from CoinMarketCap's keyless `/public-api`
@@ -119,11 +119,11 @@ from **NVDA** (eight wrappers, seven trading).
 underlying, pulls the full wrapper roster *including* the null-price rows, joins each wrapper to
 its listing state on the cryptocurrency map, and reports what the boolean hides.
 
-| | Live, 2026-09-18T22:16Z |
+| | Live, 2026-09-22T08:25Z |
 |---|---|
 | **The number** | **476 of 791** tokenised underlyings (60%) have no wrapper with a CMC-tracked market; stocks alone 437 of 689 (63%) |
-| The wrappers | 673 of 1,435 (47%) are untracked; 603 of those sit on one chain, X Layer, all Backed Assets |
-| The issuers | Dinari 27 / 27 on the shelf · Backed Assets 632 / 772 (82%, $669M live in the rest) · Robinhood 8 / 106 · Ondo 4 / 214 · bStocks 0 / 77 |
+| The wrappers | 674 of 1,435 (47%) are untracked; 603 of those sit on one chain, X Layer, all Backed Assets |
+| The issuers | Dinari 27 / 27 on the shelf · Backed Assets 632 / 772 (82%, $684M live in the rest) · Robinhood 8 / 106 · Ondo 4 / 214 · bStocks 0 / 77 |
 | The exactness | `price == null ⇔ status == "untracked"` held with **0 exceptions across 1,431 resolved wrappers** — the join is a count, not a heuristic |
 
 **Key features:**
@@ -132,7 +132,7 @@ its listing state on the cryptocurrency map, and reports what the boolean hides.
   listing date, with the raw `tokens[]` entry, map row and info row in an evidence drawer. Live.
 - 📋 **Issuer scorecard** — declared catalogue · attached wrappers · tracked wrappers · shelf rate,
   beside the live market cap of what does trade.
-- 📊 **Asset-type bars** — stock 49% shelf (606 / 1,244 wrappers) · ETF 38% · commodity 0%.
+- 📊 **Asset-type bars** — stock 49% shelf (607 / 1,244 wrappers) · ETF 38% · commodity 0%.
 - 📅 **Delta panel** — newly tracked / newly shelved / new / gone since the previous daily snapshot
   (series started 2026-09-18, five days so far; day 5: +0 newly tracked / **+1 newly shelved** / +0 new / 0 gone — `MXL` flipped `active` → `untracked` on 2026-09-22, the first movement in the series, on the live page).
 - 🧾 **A receipt on every number** — endpoint, HTTP status, `credit_count`, bytes, sha256, UTC —
@@ -279,8 +279,8 @@ and each one changed something in this code. The RWA-family ones, in one screen:
 
 | Measurement | Value |
 |---|---|
-| Live census wall clock | **40.9 s** — 54 calls, cold start to final line ([`live_run.json`](docs/proof/live_run.json)) |
-| **Keyed credits** | **5** — `/v1/key/info` read 12,020 → 12,025 before and after, equal to Σ `credit_count` over the 39 keyed calls |
+| Live census wall clock | **62.3 s** — 54 calls, cold start to final line ([`live_run.json`](docs/proof/live_run.json)) |
+| **Keyed credits** | **5** — `/v1/key/info` read 13,655 → 13,660 before and after, equal to Σ `credit_count` over the 39 keyed calls |
 | Keyless calls | 15 — charged to no key |
 | Tests | **262** — 245 offline (~1 s), 11 for the proxy functions, 6 live |
 | Regression tests named for the defect they pin, each seen against the live API on 2026-09-18 | 9 |
@@ -464,7 +464,7 @@ shelfware/
 
 ## 🗺️ Roadmap
 
-- [x] The three-endpoint join, live: 476 of 791 on 2026-09-18, 5 credits, 40.9 s
+- [x] The three-endpoint join, live: 476 of 791 on 2026-09-18 and again on 2026-09-22, 5 credits each
 - [x] The ticker question keyless — state leg live, roster snapshot labelled, key optional
 - [x] The one screen with the evidence drawer, the issuer scorecard and the type bars
 - [x] A daily snapshot series and the delta panel (five days so far; day 5 recorded the first flip, +0 / +1 / +0 / 0)

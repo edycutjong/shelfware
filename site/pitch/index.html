@@ -318,7 +318,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
         <span class="chip flag">Built for Build with CMC</span>
         <span class="chip">v1.0.1</span>
         <span class="chip">stdlib Python · keyless</span>
-        <span class="chip lit">counted 2026-09-18 22:16 UTC</span>
+        <span class="chip lit">counted 2026-09-22 08:25 UTC</span>
       </div>
     </div>
     <svg class="shelfart" viewBox="0 0 720 420" role="img" aria-label="A shelf of ten tokenised boxes: the join sweeps across, six turn grey (no CMC-tracked market), four turn green (tracked)">
@@ -347,7 +347,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <section class="slide" data-title="The hook">
   <div class="hook">
     <div class="stat big">60%</div>
-    <p class="cap">476 of 791 underlyings flagged has_tokens: true · 2026-09-18 22:16 UTC · 5 keyed credits · a count, not a model</p>
+    <p class="cap">476 of 791 underlyings flagged has_tokens: true · 2026-09-22 08:25 UTC · 5 keyed credits · a count, not a model</p>
     <p class="then">of the tokenised assets CoinMarketCap lists have <b>no wrapper with a CMC-tracked market</b>.</p>
   </div>
   <aside class="speaker-notes">Not a model, not an estimate. Four hundred seventy-six of seven hundred ninety-one, counted from the API's own rows on the eighteenth, for five credits. Stocks alone: sixty-three percent. Two jq filters over the committed file give you the same number.</aside>
@@ -440,7 +440,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     <rect class="node free" x="0" y="400" width="560" height="100" rx="16"/>
     <text x="22" y="434" class="t">Listing state</text><text x="538" y="434" class="out" text-anchor="end">keyless · 0 credits</text>
     <text x="22" y="462" class="path">/public-api/v1/cryptocurrency/map</text>
-    <text x="22" y="486" class="m">listing_status=active,inactive,untracked · 38,682 rows</text>
+    <text x="22" y="486" class="m">listing_status=active,inactive,untracked · 38,699 rows</text>
     <rect class="node free" x="0" y="520" width="560" height="100" rx="16"/>
     <text x="22" y="554" class="t">Listing date</text><text x="538" y="554" class="out" text-anchor="end">keyless · 0 credits</text>
     <text x="22" y="582" class="path">/public-api/v2/cryptocurrency/info</text>
@@ -458,7 +458,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     <rect class="node join" x="950" y="200" width="380" height="240" rx="16"/>
     <text x="972" y="238" class="t">join.py — one join, on crypto_id</text>
     <text x="972" y="268" class="m">tokens[] entry → wrapper → its map row</text>
-    <text x="972" y="304" class="lbl">1  wrappers untracked: 673 / 1,435</text>
+    <text x="972" y="304" class="lbl">1  wrappers untracked: 674 / 1,435</text>
     <text x="972" y="334" class="lbl">2  underlyings, every wrapper untracked</text>
     <text x="972" y="364" class="lbl">3  per issuer · per asset type · hero rule</text>
     <text x="972" y="400" class="m">unresolved (4): own bucket, never counted</text>
@@ -479,7 +479,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     <text x="1402" y="474" class="t">python3 -m shelfware TICKER</text>
     <text x="1402" y="500" class="m">state live, keyless · roster dated</text>
     <path class="edge" d="M1355 320 C 1370 320, 1365 480, 1380 480"/>
-    <text x="0" y="636" class="m">No database, no model, no framework on the judged path · 39 keyed calls = 5 credits · 15 keyless calls = 0 credits to any key · 40.9 s end to end</text>
+    <text x="0" y="636" class="m">No database, no model, no framework on the judged path · 39 keyed calls = 5 credits · 15 keyless calls = 0 credits to any key · 62.3 s end to end</text>
   </svg>
   <aside class="speaker-notes">Three keyed calls give the universe, the roster with its null-price rows, and the issuer registry. Two keyless calls give each wrapper's listing state and listing date. The join is one dictionary lookup on crypto_id; the whole engine is fifteen hundred lines of standard-library Python, and the join itself takes about a millisecond.</aside>
 </section>
@@ -495,8 +495,8 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <div class="legend"><span><i></i>476 no tracked wrapper — listed, no CMC-tracked market</span><span><i class="lit"></i>315 at least one tracked wrapper</span></div>
     </div>
     <div>
-      <div class="recipe"><b>$</b> jq '[.wrappers[] | select(.status=="untracked")] | length' data/census.json<br><b>673</b><br><b>$</b> jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .status=="untracked"))) | length' data/census.json<br><b>476</b></div>
-      <div class="types" style="margin-top:26px"><div class="type"><span class="muted">stock</span><div class="bar small" role="img" aria-label="stock: 606 of 1244 wrappers untracked"><span class="dim" style="width:48.7%"></span><span class="lit" style="width:51.1%"></span><span class="unk" style="width:0.2%"></span></div><span class="r">49% shelf</span></div><div class="type"><span class="muted">etf</span><div class="bar small" role="img" aria-label="etf: 67 of 177 wrappers untracked"><span class="dim" style="width:37.9%"></span><span class="lit" style="width:61.6%"></span><span class="unk" style="width:0.6%"></span></div><span class="r">38% shelf</span></div><div class="type"><span class="muted">commodity</span><div class="bar small" role="img" aria-label="commodity: 0 of 14 wrappers untracked"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:92.9%"></span><span class="unk" style="width:7.1%"></span></div><span class="r">0% shelf</span></div></div>
+      <div class="recipe"><b>$</b> jq '[.wrappers[] | select(.status=="untracked")] | length' data/census.json<br><b>674</b><br><b>$</b> jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .status=="untracked"))) | length' data/census.json<br><b>476</b></div>
+      <div class="types" style="margin-top:26px"><div class="type"><span class="muted">stock</span><div class="bar small" role="img" aria-label="stock: 607 of 1244 wrappers untracked"><span class="dim" style="width:48.8%"></span><span class="lit" style="width:51.0%"></span><span class="unk" style="width:0.2%"></span></div><span class="r">49% shelf</span></div><div class="type"><span class="muted">etf</span><div class="bar small" role="img" aria-label="etf: 67 of 177 wrappers untracked"><span class="dim" style="width:37.9%"></span><span class="lit" style="width:61.6%"></span><span class="unk" style="width:0.6%"></span></div><span class="r">38% shelf</span></div><div class="type"><span class="muted">commodity</span><div class="bar small" role="img" aria-label="commodity: 0 of 14 wrappers untracked"><span class="dim" style="width:0.0%"></span><span class="lit" style="width:92.9%"></span><span class="unk" style="width:7.1%"></span></div><span class="r">0% shelf</span></div></div>
       <p class="muted mono" style="font-size:18px;margin-top:22px">strict rule: an id on no public CMC surface (4 today) is shown, never counted · price == null ⇔ status == untracked held with zero exceptions</p>
     </div>
   </div>
@@ -534,8 +534,8 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       </div>
       <ol class="callouts">
         <li><i>1</i><span>Dinari: 27 of 27 on the shelf, $0 live</span></li>
-        <li><i>2</i><span>Backed: 632 of 772 (82%) beside $669M live</span></li>
-        <li><i>3</i><span>bStocks: 0 of 77 — every wrapper trades, $797M</span></li>
+        <li><i>2</i><span>Backed: 632 of 772 (82%) beside $684M live</span></li>
+        <li><i>3</i><span>bStocks: 0 of 77 — every wrapper trades, $751M</span></li>
         <li><i>4</i><span>NVDA: 7 of 8 tracked; Dinari's is the one on the shelf — raw rows shown</span></li>
       </ol>
       <p class="note"><b>demo video: see BUIDL</b> · NVDA for a mixed case (7 of 8 tracked; Dinari's is not), GILD or PLD for more shelf, GOLD for a commodity that trades</p>
@@ -566,23 +566,23 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 
 <!-- 09 IT RUNS -->
 <section class="slide" data-title="It runs">
-  <div class="kicker">It runs — the census receipt, 2026-09-18T22:16:17Z</div>
-  <h2>40.9 seconds, 5 credits, 262 tests</h2>
+  <div class="kicker">It runs — the census receipt, 2026-09-22T08:25:08Z</div>
+  <h2>62.3 seconds, 5 credits, 262 tests</h2>
   <div class="runs">
     <div class="term">
       <div class="bar"><i></i><i></i><i></i><span>python3 -m shelfware census — live, keyed (A, B, C) + keyless (D)</span></div>
 <pre><span class="dim">1.</span> /v5/real-world-assets/map             <span class="hi">7,811 underlyings · 791 has_tokens</span>
 <span class="dim">2.</span> /v5/real-world-assets/quotes/latest   <span class="hi">1,435 wrappers</span>
 <span class="dim">3.</span> /v5/real-world-assets/issuers/list    <span class="hi">25 issuers</span>
-<span class="dim">4.</span> /public-api/v1/cryptocurrency/map     <span class="hi">38,682 rows</span> <span class="dim">keyless</span>
+<span class="dim">4.</span> /public-api/v1/cryptocurrency/map     <span class="hi">38,699 rows</span> <span class="dim">keyless</span>
 <span class="dim">5.</span> /public-api/v2/cryptocurrency/info    <span class="dim">date_added for the shelf</span>
 
-wrappers untracked        <span class="ok">673 of 1,435</span>
+wrappers untracked        <span class="ok">674 of 1,435</span>
 underlyings, every wrapper untracked   <span class="ok">476 of 791  → 60%</span>
-what trades is young      median 80 d · p90 380 (n=757)
+what trades is young      median 83.0 d · p90 383 (n=756)
 
-<span class="hi">40.9 s</span> · 39 keyed calls = <span class="hi">5 credits</span> · 15 keyless calls = 0 credits to any key
-<span class="dim">/v1/key/info before → after: 12020 → 12025   wrote docs/proof/live_run.json</span></pre>
+<span class="hi">62.3 s</span> · 39 keyed calls = <span class="hi">5 credits</span> · 15 keyless calls = 0 credits to any key
+<span class="dim">/v1/key/info before → after: 13655 → 13660   wrote docs/proof/live_run.json</span></pre>
     </div>
     <div class="metrics">
       <div class="metric"><div class="v">552<small> ms</small></div><div class="k">ticker question p50, keyless · p95 603 ms</div></div>
@@ -604,7 +604,7 @@ what trades is young      median 80 d · p90 380 (n=757)
     <div class="rival"><div class="nm">Bedrock<small>48952</small></div><p class="d">A research explorer ranked by price and market cap — <b>a wrapper priced null cannot enter a ranking</b>.</p></div>
     <div class="rival"><div class="nm">Signal Desk<small>48805</small></div><p class="d">Twenty endpoints, one issuer view of what was issued. <b>No listing state</b>, so no shelf.</p></div>
     <div class="rival"><div class="nm">RWA Compass<small>48802</small></div><p class="d">An LLM agent labelling venue concentration of wrappers that trade. <b>Shelfware has no model in it.</b></p></div>
-    <div class="rival"><div class="nm">Shelfware<small>this deck</small></div><p class="d"><b>673 null-price rows, counted</b>; 476 underlyings with no market; every issuer graded by its shelf beside its live cap.</p></div>
+    <div class="rival"><div class="nm">Shelfware<small>this deck</small></div><p class="d"><b>674 null-price rows, counted</b>; 476 underlyings with no market; every issuer graded by its shelf beside its live cap.</p></div>
   </div>
   <p class="field-foot">Same universe, <b>opposite halves of the roster</b>.</p>
   <aside class="speaker-notes">Read from the gallery on the nineteenth, by name. Backstop is the nearest: it measures the half of the tokens that report a market cap and says so; we count the half it sets aside. Parity, Bedrock and Compass drop a null-price wrapper before their first chart. Nobody else grades issuers by the wrappers that have no market.</aside>
@@ -646,7 +646,7 @@ what trades is young      median 80 d · p90 380 (n=757)
 </section>
 
 <div id="chrome">
-  <div class="l"><span class="brandmark"><img src="../assets/icon.svg" alt="" width="26" height="26">Shelfware</span><span class="ver">v1.0.1</span><span>MIT</span><span>counted 2026-09-18 22:16 UTC</span></div>
+  <div class="l"><span class="brandmark"><img src="../assets/icon.svg" alt="" width="26" height="26">Shelfware</span><span class="ver">v1.0.1</span><span>MIT</span><span>counted 2026-09-22 08:25 UTC</span></div>
   <div class="r"><span id="counter">01 / 12</span></div>
   <div class="prog" id="prog"></div>
 </div>

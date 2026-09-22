@@ -36,16 +36,16 @@ raw map row and the raw info row.
 3. **The word is CoinMarketCap's.** "untracked" means *listed, no CMC-tracked market*, and the
    surfaces say so — never "never traded". The spike that settled the wording is committed.
 
-## Receipt — live census, 2026-09-18T22:16:17Z
+## Receipt — live census, 2026-09-22T08:25:08Z
 
 | | |
 |---|---|
-| Wall clock | **40.9 s**, 54 calls |
-| Rows | 7,811 underlyings · 791 `has_tokens` · **1,435 wrappers** · 25 issuers · 38,682 map rows |
-| **Keyed credits** | **5** — `/v1/key/info` read 12,020 → 12,025 before and after |
+| Wall clock | **62.3 s**, 54 calls |
+| Rows | 7,811 underlyings · 791 `has_tokens` · **1,435 wrappers** · 25 issuers · 38,699 map rows |
+| **Keyed credits** | **5** — `/v1/key/info` read 13,655 → 13,660 before and after |
 | Keyless calls | 15, charged to no key |
-| **The number** | **476 of 791** tokenised underlyings with no wrapper that has a CMC-tracked market (60%); stocks alone 437 of 689 (63%); 673 of 1,435 wrappers untracked |
-| Issuers | Dinari 27 / 27 on the shelf · Backed 632 / 772 (82%, $669M live in the rest) · Robinhood 8 / 106 · Ondo 4 / 214 · bStocks 0 / 77 |
+| **The number** | **476 of 791** tokenised underlyings with no wrapper that has a CMC-tracked market (60%); stocks alone 437 of 689 (63%); 674 of 1,435 wrappers untracked |
+| Issuers | Dinari 27 / 27 on the shelf · Backed 632 / 772 (82%, $684M live in the rest) · Robinhood 8 / 106 · Ondo 4 / 214 · bStocks 0 / 77 |
 | Tests | **262** (245 offline in ~1 s, 11 for the proxy functions, 6 live against the real contract and this page's route), 9 named for the defect they pin, one property over 500 generated ledgers |
 | Latency | ticker question p50 **552 ms** keyless (p95 603 ms); the join over the 1,435 committed wrappers 1.94 ms (n=200) |
 | Raw receipts | [`docs/proof/live_run.json`](docs/proof/live_run.json) · [`ms.json`](docs/proof/ms.json) · [`bench.json`](docs/proof/bench.json) · [`spike.json`](docs/proof/spike.json) |

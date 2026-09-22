@@ -1,9 +1,9 @@
 {
   "ticker": "MS",
-  "asked_utc": "2026-09-18T22:43:39Z",
+  "asked_utc": "2026-09-22T08:27:37Z",
   "roster": {
     "source": "snapshot",
-    "as_of": "2026-09-18T22:16:17Z",
+    "as_of": "2026-09-22T08:25:08Z",
     "call": null,
     "fallback_reason": null
   },
@@ -15,11 +15,11 @@
       "keyed": false,
       "http": 200,
       "bytes": 441,
-      "sha256": "d7e1ecdef293e6c8",
+      "sha256": "983d176a86f84431",
       "credit_count": 1,
       "rows": 1,
-      "elapsed_ms": 491,
-      "utc": "2026-09-18T22:43:39Z",
+      "elapsed_ms": 579,
+      "utc": "2026-09-22T08:27:37Z",
       "error": null,
       "throttled": false,
       "attempts": 1
@@ -34,11 +34,11 @@
         "keyed": false,
         "http": 200,
         "bytes": 925,
-        "sha256": "1559b2c185ccabe8",
+        "sha256": "91e8247f0af5907b",
         "credit_count": 1,
         "rows": 1,
-        "elapsed_ms": 762,
-        "utc": "2026-09-18T22:43:39Z",
+        "elapsed_ms": 540,
+        "utc": "2026-09-22T08:27:38Z",
         "error": null,
         "throttled": false,
         "attempts": 1
@@ -51,7 +51,7 @@
       "symbol": "MS",
       "name": "Morgan Stanley",
       "asset_type": "stock",
-      "rwa_rank": 43,
+      "rwa_rank": 44,
       "has_tokens": true,
       "tokens_listed": 1
     }
@@ -65,7 +65,7 @@
       "underlying": "MS",
       "underlying_name": "Morgan Stanley",
       "asset_type": "stock",
-      "rwa_rank": 43,
+      "rwa_rank": 44,
       "issuer_id": "6878977dcbbf471de3366e85",
       "issuer_name": "Backed Assets",
       "price": null,

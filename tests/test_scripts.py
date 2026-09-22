@@ -117,7 +117,10 @@ def test_seed_hero_flag_prints_the_rule_without_network(monkeypatch, capsys):
     monkeypatch.setattr(sys, "argv", ["seed.py", "--hero"])
     assert seed.main() == 0
     out = capsys.readouterr().out
-    assert "hero rule:" in out and "MS (Morgan Stanley) rwa_rank 43" in out
+    # the rank is whatever the committed census says today — the rule is the invariant, not the number
+    hero = json.loads((ROOT / "data" / "census.json").read_text())["hero"]
+    assert "hero rule:" in out
+    assert f"{hero['symbol']} ({hero['name']}) rwa_rank {hero['rwa_rank']}" in out
 
 
 def test_replay_bench_runs_on_the_committed_rows_without_network(monkeypatch):

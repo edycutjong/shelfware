@@ -1,7 +1,7 @@
 # Demo — a real run, with its receipt
 
 Everything below is a transcript of actual runs against CoinMarketCap's live API on
-**2026-09-18**. No fixtures, no flags. Re-run it yourself; the numbers will move, because they come
+**2026-09-22** (first taken 2026-09-18; the headline has not moved). No fixtures, no flags. Re-run it yourself; the numbers will move, because they come
 from the market rather than from this file, and the page states the day it counted.
 
 ## Reproduce — no key, no install
@@ -39,24 +39,24 @@ python3 -m shelfware verify       # recount every headline from the committed ro
 The key is read from the environment at call time, never from a file. A keyed run says so on
 the roster line and in its receipt, so it can never pass as a keyless one.
 
-## Receipt — `python3 -m shelfware MS`, keyless, 2026-09-18T22:43:39Z
+## Receipt — `python3 -m shelfware MS`, keyless, 2026-09-22T08:27:37Z
 
 ```
 shelfware MS — does it have a wrapper that trades, and whose?
 
-  MS  Morgan Stanley · stock · rwa_rank 43 · has_tokens: true
-      roster: snapshot 2026-09-18T22:16:17Z (the RWA endpoints need a key; export CMC_API_KEY to go live)
+  MS  Morgan Stanley · stock · rwa_rank 44 · has_tokens: true
+      roster: snapshot 2026-09-22T08:25:08Z (the RWA endpoints need a key; export CMC_API_KEY to go live)
       ▒ wMSx  Wrapped Morgan Stanley Tokenized Stock (xStock)
           issuer   Backed Assets  6878977dcbbf471de3366e85
           chain    X Layer  0x2874A11805783324C54562eDB1A641C5d1d077a5
           price    null · market_cap null · volume_24h null
           status   UNTRACKED      ← /public-api/v1/cryptocurrency/map, live, keyless, 0 credits
                    "listed, no CMC-tracked market" — CMC: registered cryptocurrency projects that are listed but do not yet meet methodology requirements to have tracked markets
-                   listed 2026-08-11 (date_added) · 38 days on the shelf
+                   listed 2026-08-11 (date_added) · 41 days on the shelf
 
   0 of 1 wrapper(s) with a CMC-tracked market
 
-receipt: cmc/map symbol=wMSx → HTTP 200 · keyless · 0 credits to any key · 491 ms · sha256 d7e1ecdef293e6c8  |  cmc/info batch 1 (1 ids) → HTTP 200 · keyless · 0 credits to any key · 762 ms · sha256 1559b2c185ccabe8
+receipt: cmc/map symbol=wMSx → HTTP 200 · keyless · 0 credits to any key · 579 ms · sha256 983d176a86f84431  |  cmc/info batch 1 (1 ids) → HTTP 200 · keyless · 0 credits to any key · 540 ms · sha256 91e8247f0af5907b
 wrote docs/proof/ms.json
 ```
 
@@ -73,7 +73,7 @@ The two facts on that card come from the same API and disagree about what "token
 `has_tokens: true` from the RWA map, `status: untracked` from the cryptocurrency map. That is the
 whole product, one row at a time. The issuer table is the same pair, 772 times.
 
-## Receipt — `python3 -m shelfware census`, live, 2026-09-18T22:16:17Z
+## Receipt — `python3 -m shelfware census`, live, 2026-09-22T08:25:08Z
 
 ```
 shelfware census — keyed (A, B, C) + keyless (D), live
@@ -85,46 +85,46 @@ shelfware census — keyed (A, B, C) + keyless (D), live
 3. /v5/real-world-assets/issuers/list (keyed, 1 credit)
    25 issuers
 4. /public-api/v1/cryptocurrency/map active,inactive,untracked (keyless, 0 credits)
-   38,681 rows
+   38,698 rows
    +1 resolved by symbol that the paged map omitted
 5. /public-api/v2/cryptocurrency/info date_added for the shelf (keyless, 0 credits)
-   673 listing dates · 4 ids CMC does not know
+   674 listing dates · 4 ids CMC does not know
 
 join
-  wrappers 1,435: active 758 · untracked 673 · inactive 0 · unresolved 4  → 46.9% on the shelf
+  wrappers 1,435: active 757 · untracked 674 · inactive 0 · unresolved 4  → 47.0% on the shelf
   underlyings with has_tokens 791: 476 have no wrapper with a CMC-tracked market  → 60.2%   (loose rule, no active wrapper: 476)
-  what trades is young: median 80 d · p10 24 · p90 380 (n=757)
-  time on the shelf (since date_added): median 38 d · p10 38 · p90 100 (n=673)
-  hero by rule (the most prominent tokenised underlying on CoinMarketCap (lowest rwa_rank) whose every wrapper is untracked): MS rwa_rank 43
+  what trades is young: median 83.0 d · p10 28 · p90 383 (n=756)
+  hero by rule (the most prominent tokenised underlying on CoinMarketCap (lowest rwa_rank) whose every wrapper is untracked): MS rwa_rank 44
 
   issuer                        declared attached tracked  shelf   live market cap
   Dinari Assets                       91       27       0   100%   $0
-  Backed Assets                     1176      772     140    82%   $669,101,579
+  Backed Assets                     1176      772     140    82%   $683,896,242
   (no issuer)                          —        5       3    20%   $0
-  Robinhood                          107      106      98     8%   $135,432,308
-  Ondo Assets                        551      214     210     2%   $891,329,106
-  NA (Derivatives)                   247      131     128     0%   $0
-  bStocks                             77       77      77     0%   $797,027,721
-  Reality                             71       71      71     0%   $131,344,866
-  Hyperliquid Assets                  12       12      12     0%   $1,111
-  Backpack                             7        5       5     0%   $17,404,739
+  Robinhood                          107      106      98     8%   $124,743,882
+  Ondo Assets                        558      214     210     2%   $904,006,425
+  NA (Derivatives)                   249      131     127     1%   $0
+  bStocks                             77       77      77     0%   $750,917,403
+  Reality                             71       71      71     0%   $130,405,941
+  Hyperliquid Assets                  12       12      12     0%   $6,063
+  Backpack                             7        5       5     0%   $16,029,566
 
-  by type: stock 49% shelf (606/1244) · etf 38% shelf (67/177) · commodity 0% shelf (0/14)
+  by type: stock 49% shelf (607/1244) · etf 38% shelf (67/177) · commodity 0% shelf (0/14)
 
-40.9 s · 39 keyed calls = 5 credits · 15 keyless calls = 0 credits to any key
+62.3 s · 39 keyed calls = 5 credits · 15 keyless calls = 0 credits to any key
 wrote data/census.json
 wrote data/roster_snapshot.json (791 underlyings with tokens, 7020 without)
 wrote docs/proof/live_run.json
-wrote data/snapshots/2026-09-18.json
+wrote data/snapshots/2026-09-22.json
+delta 2026-09-21 → 2026-09-22: +0 newly tracked · +1 newly shelved · +0 new wrappers · -0 gone
 ```
 
 | | |
 |---|---|
-| **Wall clock** | **40.9 s**, 54 calls, cold start to final line |
-| **Rows** | 7,811 underlyings · 791 `has_tokens` · **1,435 wrappers** · 38,682 map rows · 25 issuers |
-| **Keyed credits** | **5** — `/v1/key/info` read 12,020 → 12,025 credits used this month, before and after, which equals Σ `status.credit_count` over the 39 keyed calls |
+| **Wall clock** | **62.3 s**, 54 calls, cold start to final line |
+| **Rows** | 7,811 underlyings · 791 `has_tokens` · **1,435 wrappers** · 38,699 map rows · 25 issuers |
+| **Keyed credits** | **5** — `/v1/key/info` read 13,655 → 13,660 credits used this month, before and after, which equals Σ `status.credit_count` over the 39 keyed calls |
 | **Keyless calls** | 15 (8 map pages + 1 retry by symbol + 6 info batches) — the envelope says `credit_count: 1` on each, charged to no key |
-| **The number** | **476 of 791 tokenised underlyings (60.2%) have no wrapper with a CMC-tracked market.** Stocks alone: 437 of 689 (63%). 673 of 1,435 wrappers (46.9%) are on the shelf; 603 of them sit on X Layer, all Backed Assets. |
+| **The number** | **476 of 791 tokenised underlyings (60.2%) have no wrapper with a CMC-tracked market.** Stocks alone: 437 of 689 (63%). 674 of 1,435 wrappers (47.0%) are on the shelf; 603 of them sit on X Layer, all Backed Assets. |
 | **Raw receipt** | [`docs/proof/live_run.json`](docs/proof/live_run.json) — all 54 calls: URL, HTTP, `credit_count`, bytes, sha256, UTC |
 | **The rows** | [`data/census.json`](data/census.json) — every wrapper with its underlying, issuer, price, state, chain, listing date |
 
@@ -135,7 +135,7 @@ verify` does the same in Python and fails on any drift between the rows, the cou
 README and the page.
 
 ```bash
-jq '[.wrappers[] | select(.status=="untracked")] | length' data/census.json                                  # 673
+jq '[.wrappers[] | select(.status=="untracked")] | length' data/census.json                                  # 674
 jq '.wrappers | group_by(.rwa_id) | map(select(all(.[]; .status=="untracked"))) | length' data/census.json  # 476
 ```
 
